@@ -1,7 +1,7 @@
 <?php 
 
-	require_once "SituațieMecanica.php";
-	require_once "SituațieMecanicaGrafica.php";
+	require_once "SituatieMecanica.php";
+	require_once "SituatieMecanicaGrafica.php";
 
 	
 	/**
@@ -12,13 +12,13 @@
 	 * @version			1.2
 	 *
 	 */
-	class SituațieMecanicaGraficaCompleta extends SituațieMecanicaGrafica
+	class SituatieMecanicaGraficaCompleta extends SituatieMecanicaGrafica
 	{
 		private $isFake				= false;
 		
 		/**
 		 *
-		 * Realizeaza o noua situatie, si initializeaza toate variabilele
+		 * Realizeaza o noua situatie, și initializeaza toate variabilele
 		 * 
 		 * @param DataCalendaristica $from		Data de inceput a situatiei
 		 * @param Firma $firma					Referinta spre obiectul firma despre care se face situatia [@Firma]
@@ -31,7 +31,7 @@
 		
 		/**
 		 *
-		 *  Reseteaza totalul incasari, totalul premii si totalul sertar la 0
+		 *  Resetează totalul incasari, totalul premii și totalul sertar la 0
 		 *
 		 */
 		protected function resetTotaluri()
@@ -107,7 +107,7 @@
 		 protected function _processData()
 		 {
 		 	
-			$cea_mai_recenta_data 	= SituațieMecanica::getUltimaCompletare($this->getFirma(), $this->getFrom());
+			$cea_mai_recenta_data 	= SituatieMecanica::getUltimaCompletare($this->getFirma(), $this->getFrom());
 			
 			//cho 'a: '.$cea_mai_recenta_data.'<br />';
 	

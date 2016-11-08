@@ -2,7 +2,7 @@
 <?php
 
 require_once "Aparat.php";
-require_once "Situație.php";
+require_once "Situatie.php";
 require_once "Utilizator.php";
 
 
@@ -14,7 +14,7 @@ require_once "Utilizator.php";
  * @version			1.0
  *
  */
-abstract class SituațieGrafica extends Situație
+abstract class SituatieGrafica extends Situație
 {
 	protected 	$autor			=	null;
 	protected 	$aparate		= 	array();
@@ -22,7 +22,7 @@ abstract class SituațieGrafica extends Situație
 
 	/**
 	 *
-	 * 						Realizeaza o noua situatie, si initializeaza toate variabilele
+	 * 						Realizeaza o noua situatie, și initializeaza toate variabilele
 	 * @param DataCalendaristica $from			Data de inceput a situatiei [@DataCalendaristica]
 	 * @param DataCalendaristica $to			Data de sfarsit a situatiei [@DataCalendaristica]
 	 * @param Firma $firma						Referinta spre obiectul firma despre care se face situatia [@Firma]
@@ -82,7 +82,7 @@ abstract class SituațieGrafica extends Situație
 
 	/**
 	 *
-	 * Adauga un aparat in situatie. Daca aparatul exista, ii actualizeaza setarile si situatia
+	 * Adauga un aparat in situatie. Daca aparatul exista, ii actualizeaza setarile și situatia
 	 *
 	 * @param Aparat $object			Referinta la obiectul Aparat
 	 * @param array $situatie			Un array cu toate index-urile aparatului

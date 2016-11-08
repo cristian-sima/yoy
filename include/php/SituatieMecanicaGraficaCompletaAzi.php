@@ -1,18 +1,18 @@
 <?php 
 
-	require_once "SituațieMecanicaGraficaCompleta.php";
+	require_once "SituatieMecanicaGraficaCompleta.php";
 	require_once "DataCalendaristica.php";
 
 	
 	/**
 	 *
-	 * Reprezinta o situatie mecanica completa. O situatie mecanica are un autor. Se bazeaza pe index-urile mecanice ale aparatelor. Ofera o situatie pentru o zi data (daca exista data) sau cea mai recenta completare din urma. Pune si aparatele care au fost adaugate astazi, sau sterse si transferate
+	 * Reprezinta o situatie mecanica completa. O situatie mecanica are un autor. Se bazeaza pe index-urile mecanice ale aparatelor. Ofera o situatie pentru o zi data (daca exista data) sau cea mai recenta completare din urma. Pune și aparatele care au fost adaugate astazi, sau sterse și transferate
 	 * @author			Cristian Sima
 	 * @data			12.02.2014
 	 * @version			1.2
 	 *
 	 */
-	class SituațieMecanicaGraficaCompletaAzi extends SituațieMecanicaGraficaCompleta
+	class SituatieMecanicaGraficaCompletaAzi extends SituatieMecanicaGraficaCompleta
 	{
 		
 		/**

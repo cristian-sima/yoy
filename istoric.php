@@ -4,7 +4,7 @@
 	require_once "include/php/Aplicatie.php";
 	require_once "include/php/Procesare.php";
 	require_once "include/php/FirmaSpatiu.php";
-	require_once "include/php/SelectSituație_GUI.php";
+	require_once "include/php/SelectSituatie_GUI.php";
 	
 	Page::showHeader();
 	Page::showContent();
@@ -13,7 +13,7 @@
 	Procesare::createEmptyFields($_GET, array ('id_firma', 'data'));
 	
 	$_criterii_MYSQL	= (($_GET['id_firma'] != '')?("AND i.idFirma='".$_GET['id_firma']."'"):(""));
-	$selector_GUI		= new SelectSituație_GUI($_GET['data'], $_GET['id_firma']);
+	$selector_GUI		= new SelectSituatie_GUI($_GET['data'], $_GET['id_firma']);
 	$totalS 			= 0;
 	
 	$selector_GUI->afiseazaButon(true);

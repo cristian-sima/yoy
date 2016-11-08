@@ -15,7 +15,7 @@
 
 	if($ultima_data == null)
 	{
-		$ultima_data 	= "Niciodata";
+		$ultima_data 	= "Niciodată";
 		$zileTrecute	= "";
 	}
 	else
@@ -23,7 +23,7 @@
 		$now 			= time(); // or your date as well
 		$datediff 		= $now - strtotime($ultima_data);
 		$dif 			= (floor($datediff/(60*60*24)));
-		$zileTrecute 	= '( '.(($dif==1)?"o zi in urma":(($dif==0)?"Astazi":($dif." zile".'  in urma'))).' )';
+		$zileTrecute 	= '( '.(($dif==1)?"o zi în urmă":(($dif==0)?"Astăzi":($dif." zile".'  în urmă'))).' )';
 	}
 
 	?>
@@ -44,7 +44,7 @@
 						</tr>
 						<tr>
 							<td width="50%" class="smoke">Statut firmă</td>
-							<td width="50%"><?php $color = (($firma->isActiva())?"green":"red"); echo '<span style="color:'.$color.'">'.(($firma->isActiva())?"contract activ":"contract incetat")."
+							<td width="50%"><?php $color = (($firma->isActiva())?"green":"red"); echo '<span style="color:'.$color.'">'.(($firma->isActiva())?"contract activ":"contract încetat")."
 										</span>";?>
 							</td>
 						</tr>
@@ -52,23 +52,11 @@
 							<td width="50%" class="smoke">Procent</td>
 							<td width="50%"><?php echo $firma->getProcentFirma($data);?>%</td>
 						</tr>
-						<!--
-									<tr>
-
-										<td width="50%" class="smoke">
-											Restanta
-										</td>
-
-										<td width="50%">
-											<?php //echo $firma['restanta'];?> <span class="smoke">lei</span>
-										</td>
-									</tr>
-									-->
 					</table>
 				</td>
 				<td width="50%"><a
 					onclick="document.location='situatie_mecanica.php?id_firma=<?php echo$firma->getID(); ?>'"
-					class="button green medium">Situatie zilnica</a><br /> <span
+					class="button green medium">Situație zilnică</a><br /> <span
 					class="smoke" style="font-size: 12px">Ultima completare: <?php echo$ultima_data.' '.$zileTrecute; ?>
 				</span>
 				</td>
@@ -76,7 +64,7 @@
 		</table>
 	</fieldset>
 	<fieldset>
-		<legend class="bold">Situatii</legend>
+		<legend class="bold">Situații</legend>
 		<table width="100%">
 			<tr>
 				<td width="50%" class="smoke"><?php
@@ -101,22 +89,22 @@
 				</td>
 				<td width="50%" style="text-align: right"><?php if($firma->isActiva()){ ?>
 					<a href="acorda_premii.php?id_firma=<?php echo $firma->getID(); ?>"
-					class="button orange small bold">Acorda premii</a> <a
+					class="button orange small bold">Acordă premii</a> <a
 					onclick="seeData('inchide_situatie_luna')" href="#"
-					class="button orange small bold">Inchidere luna</a> <a
+					class="button orange small bold">Închidere lună</a> <a
 					onclick="seeData('editare_date_firma')" href="#"
-					class="button orange small bold">Edit. date firma</a> <?php } ?>
+					class="button orange small bold">Editare date firmă</a> <?php } ?>
 				</td>
 			</tr>
 		</table>
 
 		<br /> <br /> <a onclick="seeData('istoric')" href="#"
 			class="button blue small bold">Istoric impozit</a> <a
-			onclick="seeData('incasari')" href="#" class="button gray small bold">Incasari</a>
+			onclick="seeData('incasari')" href="#" class="button gray small bold">Încasări</a>
 		<a onclick="seeData('vizualizare_dispozitii')" href="#"
-			class="button blue small bold">Dispozitii</a> <a
+			class="button blue small bold">Dispoziții</a> <a
 			onclick="seeData('registru_firma_spatiu')" href="#"
-			class="button gray small bold">Reg. firma</a> <a
+			class="button gray small bold">Registru firmă</a> <a
 			onclick="seeData('afisare_decont_firma')" href="#" class="button blue small bold">Decont</a>
 
 	</fieldset>
@@ -145,7 +133,7 @@
 					<tr>
 						<th>Nr</th>
 						<th>Seria</th>
-						<th>Numele ap.</th>
+						<th>Denumirea</th>
 						<th>Exp. autoriz.</th>
 						<th>Exp. insp. tech.</th>
 					</tr>
@@ -195,7 +183,7 @@
 					<tr>
 						<th>Utilizator</th>
 						<th>Tip cont</th>
-						<th>Optiuni</th>
+						<th>Opțiuni</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -209,8 +197,8 @@
 					<td >'.$row['nume'].'(<span class="smoke">'.$row['user'].'</span>)</td>
 
 					<td>'.(($row['tipCont']=="admin")?"Administrator":"Operator (".$row['tipOperator'].')').'</td>
-					<td><input type="button" value="Editeaza date" onclick="document.location='."'".'editare_date_utilizator.php?id_user='.$row['id'].''."'".'"/>';
-					if($firma->isActiva()!='0'){ echo'<input type="button" value="Dezactiveaza contul" onclick="document.location='."'".'activeaza_utilizator.php?id_user='.$row['id'].'&type=0'."'".'" />'; }
+					<td><input type="button" value="Editează date" onclick="document.location='."'".'editare_date_utilizator.php?id_user='.$row['id'].''."'".'"/>';
+					if($firma->isActiva()!='0'){ echo'<input type="button" value="Dezactivează contul" onclick="document.location='."'".'activeaza_utilizator.php?id_user='.$row['id'].'&type=0'."'".'" />'; }
 					echo'</td>
 					</tr>';
 				}

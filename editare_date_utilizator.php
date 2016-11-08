@@ -33,7 +33,7 @@ if(Aplicatie::getInstance()->getUtilizator()->isAdministrator())
 {
 	echo ' <a href="utilizatori.php"><input type="button" value="Înapoi la utilizatori" /></a>
 	&nbsp; &nbsp; &nbsp; &nbsp;
- 	<a href="reseteaza_parola.php?id_user='.$utilizator->getID().'"><input type="button" value="Reseteaza parola" /> </a>';
+ 	<a href="reseteaza_parola.php?id_user='.$utilizator->getID().'"><input type="button" value="Resetează parola" /> </a>';
 }
 else
 {

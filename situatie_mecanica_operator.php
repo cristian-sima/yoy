@@ -7,9 +7,9 @@
 	require_once "include/php/Aplicatie.php";
 	require_once "include/php/Guvern.php";
 	require_once "include/php/Utilizator.php";
-	require_once "include/php/Situație_GUI.php";
+	require_once "include/php/Situatie_GUI.php";
 	require_once "include/php/BileteGrafice.php";
-	require_once "include/php/SituațieMecanicaGraficaCompletaAzi.php";
+	require_once "include/php/SituatieMecanicaGraficaCompletaAzi.php";
 	
 	
 	$html = "";
@@ -34,7 +34,7 @@
 	{
 		$firma					= new FirmaSpatiu($_GET['id_firma']);
 		$today					= new DataCalendaristica(date("Y-m-d"));	
-		$ultima_data			= SituațieMecanica::getUltimaCompletareStrict($firma, $today);
+		$ultima_data			= SituatieMecanica::getUltimaCompletareStrict($firma, $today);
 		
 		if(isset($_GET['last']))
 		{
@@ -65,11 +65,11 @@
 		
 	if($data1.'' != $today.'')
 	{
-		$situatie	= new SituațieMecanicaGraficaCompleta($data1, $firma);
+		$situatie	= new SituatieMecanicaGraficaCompleta($data1, $firma);
 		$bilete 	= new BileteGrafice($data1, $data1, $firma);
 		$numar_de_carnete	= count($bilete->getCarnete());
 		$numar_de_randuri	= $situatie->getNumarulDeAparate();		
-		$GUI		= new Situație_GUI($situatie, $bilete, $firma);
+		$GUI		= new Situatie_GUI($situatie, $bilete, $firma);
 		$GUI->isInteractiva(false);
 		$GUI->displayAddCarnet(false);					
 				
@@ -80,12 +80,12 @@
 	
 	/*---------------------- Totalizare astazi ---------------*/
 				
-		$situatie	= new SituațieMecanicaGraficaCompletaAzi($firma);
+		$situatie	= new SituatieMecanicaGraficaCompletaAzi($firma);
 		$bilete 	= new BileteGrafice($data1, $data1, $firma);
 		$numar_de_carnete	= count($bilete->getCarnete());
 		$numar_de_randuri	= $situatie->getNumarulDeAparate();		
 		
-		$GUI		= new Situație_GUI($situatie, $bilete, $firma);
+		$GUI		= new Situatie_GUI($situatie, $bilete, $firma);
 		
 	}
 		

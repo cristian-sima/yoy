@@ -51,7 +51,7 @@ try
 	$_temp_data		= new DataCalendaristica($data['data']);
 	
 	
-	// ne asiguram ca daca este operator este doar firma aia si ca nu a setat optiunea automata
+	// ne asiguram ca daca este operator este doar firma aia și ca nu a setat optiunea automata
 	$data['_to']			= ((Aplicatie::getInstance()->getUtilizator()->isAdministrator())?($data['_to']):(Aplicatie::getInstance()->getUtilizator()->getIDFirma()));
 	$data['auto']			= ((Aplicatie::getInstance()->getUtilizator()->isAdministrator())?($data['auto']):('nu'));
 

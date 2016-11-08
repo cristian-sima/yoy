@@ -3,7 +3,7 @@
 	require_once "DataCalendaristica.php";
 		
 	/**
-	 *	Reprezinta obiectul cu toate taxele si darile spre stat
+	 *	Reprezinta obiectul cu toate taxele și darile spre stat
 	 *
 	 *  @author					Cristian Sima
 	 *  @date					10.02.2014

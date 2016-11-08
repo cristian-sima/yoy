@@ -18,7 +18,7 @@
 		
 		/**
 		 *
-		 * Realizeaza o noua firma si stocheaza datele despre ea.
+		 * Realizeaza o noua firma și stocheaza datele despre ea.
 		 * @param string $id				ID-ul firmei
 		 * @throw Exception					Atunci cand firma nu exista
 		 *

@@ -1,7 +1,7 @@
 <?php
 	
 	/**
-	 *	Reprezinta un carnet de bilete. Acest carnet nu este complet si poate să conțină de la 1 la 100 de bilete. Carnetul incepe de la valoarea 01 si se termina la 000 cu alta serie. Seria carnetului se obtine din sfarsit sau inceput minus 1.
+	 *	Reprezinta un carnet de bilete. Acest carnet nu este complet și poate să conțină de la 1 la 100 de bilete. Carnetul incepe de la valoarea 01 și se termina la 000 cu alta serie. Seria carnetului se obtine din sfarsit sau inceput minus 1.
 	 *  
 	 *  @example
 	 *
@@ -26,7 +26,7 @@
 		private $end;
 		
 		/**
-		 *  Contructorul ia incaputul si sfarsitul si construieste un nou carnet. Daca seria nu este aceeasi, arunca o exceptie
+		 *  Contructorul ia incaputul și sfarsitul și construieste un nou carnet. Daca seria nu este aceeasi, arunca o exceptie
 		 *  
 		 *  @param string $start					Token-ul de start al carnetului
 		 *  @param string $end						Token-ul de sfarsit al carnetului
@@ -150,7 +150,7 @@
 				throw new Exception ("Exceptie: Noul carnet trebuie sa fie de tip CarnetDeBilete !");
 			
 			if($this->getSeria() != $new->getSeria())
-				throw new Exception ("Carnetul ".$this.' si carnetul '.$new.' trebuie sa aiba aceeasi serie pentru a se putea extinde.');
+				throw new Exception ("Carnetul ".$this.' și carnetul '.$new.' trebuie sa aiba aceeasi serie pentru a se putea extinde.');
 				
 			if(! ($this->getEnd()+1 == $new->getStart()))
 				throw new Exception ("Noul carnet trebuie sa aiba o seria potrivita pentru a se putea exitinde. End1 ".$this->getEnd().', Start2: '.$new->getStart());

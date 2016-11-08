@@ -2,7 +2,7 @@
 
 	require_once "Aparat.php";
 	require_once "Utilizator.php";
-	require_once "SituațieGrafica.php";
+	require_once "SituatieGrafica.php";
 		
 	
 	/**
@@ -14,7 +14,7 @@
 	 * @version			1.2
 	 *
 	 */
-	class SituațieMecanicaGrafica extends SituațieGrafica
+	class SituatieMecanicaGrafica extends SituatieGrafica
 	{
 		private $idCompletare		= null;
 		private $filterFrom			= null;
@@ -23,7 +23,7 @@
 		
 		/**
 		 *
-		 *  Realizeaza o noua situatie, si initializeaza toate variabilele
+		 *  Realizeaza o noua situatie, și initializeaza toate variabilele
 		 * @param Firma $from						Data de inceput a situatiei [@DataCalendaristica]
 		 * @param DataCalendaristica $to			Data de sfarsit a situatiei [@DataCalendaristica]
 		 * @param DataCalendaristica $firma			Referinta spre obiectul firma despre care se face situatia [@Firma]

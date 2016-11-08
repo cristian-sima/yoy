@@ -6,7 +6,7 @@ require_once "DataCalendaristica.php";
 
 /**
  *
- * @description		Contine informatiile necasare la totalul dispozitiilor si dispozitiile dintre 2 perioade de timp
+ * @description		Contine informatiile necasare la totalul dispozitiilor și dispozitiile dintre 2 perioade de timp
  * @author			Cristian Sima
  * @data			02.02.2014
  * @version			1.0
@@ -20,7 +20,7 @@ class Dispozitii
 
 	/**
 	 *
-	 * Realizeaza si proceseaza datele
+	 * Realizeaza și proceseaza datele
 	 *
 	 * @param DataCalendaristica $from			Inceputul de interval
 	 * @param DataCalendaristica _type $to		Sfarstitul de interval

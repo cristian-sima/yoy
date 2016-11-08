@@ -19,7 +19,7 @@ class Page
 
 	/**
 	 *
-	 * 		Afiseaza inceputul paginii si incepe headerul <head>. De asemenea, forteaza aplicatia sa inceapa
+	 * 		Afiseaza inceputul paginii și incepe headerul <head>. De asemenea, forteaza aplicatia sa inceapa
 	 *
 	 */
 	public static function showHeader()
@@ -52,7 +52,7 @@ class Page
 
 	/**
 	 *
-	 * Afiseaza meniul aplicatiei in functie de utilizator si versiunea de device
+	 * Afiseaza meniul aplicatiei in functie de utilizator și versiunea de device
 	 *
 	 */
 	private static function showMeniu()
@@ -113,7 +113,7 @@ class Page
 	}
 
 	/**
-	 * Afiseaza titlul paginii si in partea dreapta afiseaza continutul primit prin parametru
+	 * Afiseaza titlul paginii și in partea dreapta afiseaza continutul primit prin parametru
 	 *
 	 * @param string $title						Titlul paginii pe care se afla utilizatorul
 	 * @param string $right_side				Continutul din partea dreapta
@@ -135,7 +135,7 @@ class Page
 
 	/**
 	 *
-	 * 	Afiseaza content-ul paginii. Acest content include meniul, si incepe div-ul de content
+	 * 	Afiseaza content-ul paginii. Acest content include meniul, și incepe div-ul de content
 	 *
 	 */
 	public static function showContent()
@@ -151,7 +151,7 @@ class Page
 
 	/**
 	 *
-	 * 		Afiseaza footer-ul paginii si inchide tagurile <div> <body> <html>
+	 * 		Afiseaza footer-ul paginii și inchide tagurile <div> <body> <html>
 	 *
 	 */
 	public static function showFooter()
@@ -231,7 +231,7 @@ class Page
 
 
 	/**
-	 * Afiseaza un mesaj de eroare si opreste aplicatia
+	 * Afiseaza un mesaj de eroare și opreste aplicatia
 	 *
 	 * @param string $message				Mesajul care va aparea pe ecran
 	 */

@@ -3,8 +3,8 @@
 require_once "include/php/Aparat.php";
 require_once "include/php/FirmaSpatiu.php";
 require_once "include/php/Aplicatie.php";
-require_once "include/php/SituațieMecanicaTotaluri.php";
-require_once "include/php/SituațieMecanicaGraficaCompletaAparatNou.php";
+require_once "include/php/SituatieMecanicaTotaluri.php";
+require_once "include/php/SituatieMecanicaGraficaCompletaAparatNou.php";
 
 
 Page::showHeader();
@@ -46,7 +46,7 @@ try
 		
 		$firma		= new FirmaSpatiu($data['id_firma_noua']);
 		$data_		= new DataCalendaristica(date("Y-m-d"));
-		$situatie 	= new SituațieMecanicaGraficaCompletaAparatNou($firma, $aparat_, $data['mecanic_intrare'], $data['mecanic_iesire']);
+		$situatie 	= new SituatieMecanicaGraficaCompletaAparatNou($firma, $aparat_, $data['mecanic_intrare'], $data['mecanic_iesire']);
 		
 		$aparate    = $situatie->getAparate();
 
@@ -177,7 +177,7 @@ try
 
 		
 		// in felul asta se verifica daca avem situatie
-		$situatie_mecanica =  new SituațieMecanica($data_, $data_, $firma);
+		$situatie_mecanica =  new SituatieMecanica($data_, $data_, $firma);
 		
 		
 		// actualizare totaluri

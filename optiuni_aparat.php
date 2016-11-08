@@ -3,7 +3,7 @@
 require_once "include/php/Aparat.php";
 require_once 'include/php/Aplicatie.php';
 require_once 'include/php/FirmaSpatiu.php';
-require_once "include/php/SelectSituație_GUI.php";
+require_once "include/php/SelectSituatie_GUI.php";
 
 Page::showHeader();
 Page::showContent();
@@ -114,7 +114,7 @@ echo  '<table width="100%">
 					<fieldset>
 						<legend>Muta aparat</legend>
 						<br />
-						<span title="Mutarea aparatului nu influenteaza situatia de astazi de la firma veche. Aceasta situatie poate sa fie completata pana la ora 24 astazi. De maine, aparatul nu mai apare  in firma. Insa, pentru Firmă nouă, se va crea o noua situatie (sau se modifica cea actuala) si se adauga aparatul" style="color:blue;text-decoration:underline">Ce inseamna mutarea intre 2 firme ?</span><br />
+						<span title="Mutarea aparatului nu influenteaza situatia de astazi de la firma veche. Aceasta situatie poate sa fie completata pana la ora 24 astazi. De maine, aparatul nu mai apare  in firma. Insa, pentru Firmă nouă, se va crea o noua situatie (sau se modifica cea actuala) și se adauga aparatul" style="color:blue;text-decoration:underline">Ce inseamna mutarea intre 2 firme ?</span><br />
 						<br />
 						<input type="hidden" value="'.$aparat->getID().'" name="id_aparat" />						
 						<input type="hidden" name="id_aparat" value="'.$aparat->getID().'" />

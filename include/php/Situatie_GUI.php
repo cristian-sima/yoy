@@ -2,7 +2,7 @@
 
 require_once "Firma.php";
 require_once "BileteGrafice.php";
-require_once "SituațieGrafica.php";
+require_once "SituatieGrafica.php";
 
 
 /**
@@ -14,7 +14,7 @@ require_once "SituațieGrafica.php";
  * @version			1.2
  *
  */
-class Situație_GUI
+class Situatie_GUI
 {
 	// referinte
 	private $situatie;
@@ -38,13 +38,13 @@ class Situație_GUI
 
 	
 	/**
-	 * Afiseaza o situatie grafica pentru o firma intr-o anumita perioada. Aceasta situatie este compusa din situatia index-urilor si a biletelor care au fost vandute in aceea zi sau perioada
+	 * Afiseaza o situatie grafica pentru o firma intr-o anumita perioada. Aceasta situatie este compusa din situatia index-urilor și a biletelor care au fost vandute in aceea zi sau perioada
 	 *
-	 * @param SituațieGrafica $situatie				Situatia grafica pentru firma respectiva
+	 * @param SituatieGrafica $situatie				Situatia grafica pentru firma respectiva
 	 * @param object $bilete						Situatia biletelor pentru firma respectiva
 	 * @param Firma $firma							Referinta spre obiectul firmei de spatiu
 	 */
-	public function __construct(SituațieGrafica $situatie, $bilete, Firma $firma)
+	public function __construct(SituatieGrafica $situatie, $bilete, Firma $firma)
 	{			
 		$this->situatie					= $situatie;
 		$this->bilete					= $bilete;
@@ -184,7 +184,7 @@ class Situație_GUI
 	/**
 	 *
 	 *  Returneaza referinta spre situatie
-	 * @return SituațieMecanicaGraficaCompleta		Situatia
+	 * @return SituatieMecanicaGraficaCompleta		Situatia
 	 *
 	 */
 	public function getSituație()
@@ -232,7 +232,7 @@ class Situație_GUI
 
 	/**
 	 *
-	 * Afiseaza inceputul situatiei si deschide formularul
+	 * Afiseaza inceputul situatiei și deschide formularul
 	 *
 	 */
 	private function displayStart()
@@ -290,7 +290,7 @@ class Situație_GUI
 
 	/**
 	 *
-	 * Afiseaza titlul si subtitlul pentru situatie
+	 * Afiseaza titlul și subtitlul pentru situatie
 	 *
 	 */
 	private function displayTitle()
@@ -468,7 +468,7 @@ class Situație_GUI
 
 	/**
 	 *
-	 * Afiseaza header-ul. Acesta include persoana care a completat situatia, situatia de bilite si toate totalurile
+	 * Afiseaza header-ul. Acesta include persoana care a completat situatia, situatia de bilite și toate totalurile
 	 *
 	 */
 	private function displayHeader()
@@ -584,7 +584,7 @@ class Situație_GUI
 
 	/**
 	 *
-	 * Afiseaza tabelul cu totaluri. Acesta include totalul de incasari, de plati si ceea ce ramane in sertar
+	 * Afiseaza tabelul cu totaluri. Acesta include totalul de incasari, de plati și ceea ce ramane in sertar
 	 *
 	 */
 	private function _displayTotaluri()
@@ -614,7 +614,7 @@ class Situație_GUI
 
 	/**
 	 *
-	 * 	Afiseaza inchiderea formularului si a situatiei (div)
+	 * 	Afiseaza inchiderea formularului și a situatiei (div)
 	 *
 	 */
 	private function displayEnd()

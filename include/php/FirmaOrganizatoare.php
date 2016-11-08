@@ -17,7 +17,7 @@
 		
 		/**
 		 *
-		 * Realizeaza o noua firma organizatoare si stocheaza datele despre ea.
+		 * Realizeaza o noua firma organizatoare și stocheaza datele despre ea.
 		 * @param $MYSQL			Link spre resursa MYSQL
 		 * @param $id				ID-ul firmei
 		 * @throw Exception			Atunci cand firma nu exista

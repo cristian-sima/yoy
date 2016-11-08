@@ -3,7 +3,7 @@
 	require_once "include/php/Procesare.php";
 	require_once "include/php/Aplicatie.php";
 	require_once "include/php/FirmaSpatiu.php";
-	require_once "include/php/SituațieMecanica.php";
+	require_once "include/php/SituatieMecanica.php";
 	
 	Login::permiteOperator();
 	
@@ -79,7 +79,7 @@
 		}		
 		
 		
-		// sterge orice index-uri de bilete din aceasta zi si pentru aceasta firma	
+		// sterge orice index-uri de bilete din aceasta zi și pentru aceasta firma	
 		$mysql	= "DELETE FROM `carnete_bilete` WHERE `id_completare` = '".$id_old_completare_bilete."' ";		
 		mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
 		
@@ -138,7 +138,7 @@
 		}		
 		
 		
-		// sterge orice index-uri de bilete din aceasta zi si pentru aceasta firma	
+		// sterge orice index-uri de bilete din aceasta zi și pentru aceasta firma	
 		$mysql	= "DELETE FROM `index_mecanic` WHERE `id_completare` = '".$id_old_completare_mecanica."' ";		
 		mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
 		
@@ -182,7 +182,7 @@
 		$data_situatie = new DataCalendaristica($data['from']);
 		
 		// in felul asta se verifica daca avem situatie
-		$situatie =  new SituațieMecanica($data_situatie, $data_situatie, $firma);
+		$situatie =  new SituatieMecanica($data_situatie, $data_situatie, $firma);
 		
 		$mysql	= "UPDATE `completare_mecanica` 
 					SET 	`total_incasari` = '".$situatie->getTotalIncasari()."',

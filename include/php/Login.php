@@ -37,10 +37,10 @@ class Login
 		}
 
 
-		/* verifica daca exista in sesiune numele si parola setate */
+		/* verifica daca exista in sesiune numele și parola setate */
 		if(isset($_SESSION['user']) && isset($_SESSION['parola']))
 		{
-			/* Confirma daca numele si parola sunt valide */
+			/* Confirma daca numele și parola sunt valide */
 
 
 			$sql1 = "SELECT _temp,tipCont from `utilizator` WHERE `user`='".$_SESSION['user']."'";
@@ -95,7 +95,7 @@ class Login
 		{
 			if(isset($_POST['sublogin']) && isset($_POST['user']) && isset($_POST['pass']))
 			{					
-				// Elimina spatiile din marginile numelui si parolei
+				// Elimina spatiile din marginile numelui și parolei
 				$_POST['user'] = trim($_POST['user']);
 				// $_POST['pass'] = trim($_POST['pass']);
 
@@ -106,12 +106,12 @@ class Login
 
 				/* verifica lungimea numelui */
 				else if(strlen($_POST['user'])<3 || strlen($_POST['user'])>32) {
-					$eroare='Numele trebuie să conțină intre 3 si 32 caractere';
+					$eroare='Numele trebuie să conțină intre 3 și 32 caractere';
 				}
 
 				else
 				{
-					// Verifica si adauga incercarea de logare in tabelul user_temp
+					// Verifica și adauga incercarea de logare in tabelul user_temp
 					$continua = self::temp_user($_POST['user']);
 
 					if ($continua=='continua')
@@ -120,7 +120,7 @@ class Login
 						$parola  = $_POST['pass'];
 						$md5pass =  md5($_POST['pass']);		// Cripteaza parola
 
-						/* verifica daca numele este in baza de date si parola este corecta */
+						/* verifica daca numele este in baza de date și parola este corecta */
 						$result = self::confirmUser($_POST['user'], $md5pass);
 
 						/* Seteaza mesajul in cazul in care user sau parola sunt incorecte */
@@ -141,7 +141,7 @@ class Login
 							$q = "UPDATE utilizator SET _temp='0' WHERE user='".$_POST['user']."' LIMIT 1" ;
 							$result = mysql_query($q, $mysql->getResource());
 
-							/* daca numele si parola sunt corecte, inregistreaza variabilele in sesiune */
+							/* daca numele și parola sunt corecte, inregistreaza variabilele in sesiune */
 							$_SESSION['user'] = $_POST['user'];
 							$_SESSION['parola'] = $md5pass;
 
@@ -194,7 +194,7 @@ class Login
 
 	/**
 	 *
-	 * Verifica daca user exista in baza de date daca da, verifica daca parola se potriveste cu cea din baza de date daca numele sau parola nu sunt corecte, returneaza eroarea (1 sau 2). pentru nume si parola confirmate returneaza 0.
+	 * Verifica daca user exista in baza de date daca da, verifica daca parola se potriveste cu cea din baza de date daca numele sau parola nu sunt corecte, returneaza eroarea (1 sau 2). pentru nume și parola confirmate returneaza 0.
 	 *
 	 * @param String $user			Utilizatorul care va fi verificat
 	 * @param String $parola		Parola utilizatorului criptata md5
@@ -249,7 +249,7 @@ class Login
 	}
 
 	/**
-	 * Sterge cook-urile, datele de sesiune si implicit deconecteaza utilizatorul conectat
+	 * Sterge cook-urile, datele de sesiune și implicit deconecteaza utilizatorul conectat
 	 */
 	public static function disconnect()
 	{
@@ -318,7 +318,7 @@ class Login
 			if ($incercari<5)
 			{
 				$incercari++;
-				// incrementeaza nr. incercari cu 1 si actualizeaza data
+				// incrementeaza nr. incercari cu 1 și actualizeaza data
 				$sql1 = "UPDATE `user_temp` SET `incercari`='$incercari', `data`='$data' WHERE `user`='$user'";
 				$result = mysql_query($sql1, self::$mysql->getResource());
 				return 'continua';
@@ -326,7 +326,7 @@ class Login
 			else if ($incercari>=3)
 			{
 				$timp = 600 - ($data - $tbarray['data']);
-				return $timp;		// Indica nr. incercari depasit si returneaza timpul pt. calculare asteptare
+				return $timp;		// Indica nr. incercari depasit și returneaza timpul pt. calculare asteptare
 			}
 		}
 	}

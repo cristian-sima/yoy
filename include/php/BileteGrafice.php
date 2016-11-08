@@ -17,7 +17,7 @@ class BileteGrafice extends Bilete
 
 	/**
 	 *
-	 * @description 							Constructorul creaza un nou obiect Bilete si activeaza functia care calculeaza carnetele
+	 * @description 							Constructorul creaza un nou obiect Bilete și activeaza functia care calculeaza carnetele
 	 * @param DataCalendaristica $from			Data de inceput a perioadei
 	 * @param DataCalendaristica $to			Data de sfarsit a perioadei
 	 * @param int $firma						Id-ul firmei

@@ -6,7 +6,7 @@ require_once "Firma.php";
 /**
  *
  *
- * Reprezinta o situatie. Aceasta situatie contine aparatele si totalurile
+ * Reprezinta o situatie. Aceasta situatie contine aparatele și totalurile
  *
  *
  * @author			Cristian Sima
@@ -25,7 +25,7 @@ abstract class Situație
 	/**
 	 *
 	 *
-	 * Realizeaza o noua situatie, si initializeaza toate variabilele
+	 * Realizeaza o noua situatie, și initializeaza toate variabilele
 	 *
 	 * @param DataCalendaristica $from				Data de inceput a situatiei [@DataCalendaristica]
 	 * @param DataCalendaristica $to				Data de sfarsit a situatiei [@DataCalendaristica]
@@ -123,7 +123,7 @@ abstract class Situație
 
 	/**
 	 *
-	 * Returneaza totalul de bani ramasi in sertar (diferenta intre incasari si premii)
+	 * Returneaza totalul de bani ramasi in sertar (diferenta intre incasari și premii)
 	 * @return int				Totalul de bani ramas in sertar
 	 *
 	 */

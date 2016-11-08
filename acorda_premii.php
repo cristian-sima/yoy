@@ -5,7 +5,7 @@ require_once "include/php/Guvern.php";
 require_once "include/php/Aplicatie.php";
 require_once "include/php/Procesare.php";
 require_once "include/php/FirmaSpatiu.php";
-require_once "include/php/SelectSituație_GUI.php";
+require_once "include/php/SelectSituatie_GUI.php";
 
 Login::permiteOperator();
 Page::showHeader();
@@ -13,7 +13,7 @@ Page::showContent();
 
 Procesare::createEmptyFields($_GET, array ('id_firma', 'data'));
 
-// forteaza utilizatorul sa aiba access doar la luna curenta si la firma lui
+// forteaza utilizatorul sa aiba access doar la luna curenta și la firma lui
 $_GET['id_firma'] 	=	((Aplicatie::getInstance()->getUtilizator()->isAdministrator())?$_GET['id_firma']:(Aplicatie::getInstance()->getUtilizator()->getIDFirma()));
 $_GET['data'] 		=	((Aplicatie::getInstance()->getUtilizator()->isAdministrator())?$_GET['data']:(new DataCalendaristica(date("Y-m-d"))));
 

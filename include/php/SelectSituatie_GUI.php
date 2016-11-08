@@ -6,13 +6,13 @@ require_once "FirmaOrganizatoare.php";
 
 /**
  *
- * Reprezinta obiectul afiseaza un chooser de situatie. Afiseaza lunile, anii si toate firme (inactive si active)
+ * Reprezinta obiectul afiseaza un chooser de situatie. Afiseaza lunile, anii și toate firme (inactive și active)
  * @author			Cristian Sima
  * @data			21.02.2014
  * @version			1.5
  *
  */
-class SelectSituație_GUI
+class SelectSituatie_GUI
 {
 	private $data							= null;
 	private $type_							= "Situație";
@@ -31,12 +31,12 @@ class SelectSituație_GUI
 
 
 	/**
-	 * Constructorul realizeaza o noua data si salveza id-ul firmei
+	 * Constructorul realizeaza o noua data și salveza id-ul firmei
 	 *
 	 * @param string $data					Data calendaristica pentru situatie sau "" pentru data curenta
 	 * @param string $id_firma				ID-ul firmei de spatiu
 	 */
-	public function SelectSituație_GUI($data, $id_firma)
+	public function SelectSituatie_GUI($data, $id_firma)
 	{
 		if($data == "")
 		$data = date("Y-m-d");

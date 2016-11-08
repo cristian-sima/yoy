@@ -98,7 +98,7 @@ function beforeSubmit()
 
 	if(serie1 != serie2)
 	{
-		alert("Primul carnet trebuie sa aiba aceeasi serie pentru inceput si sfarsit");
+		alert("Primul carnet trebuie sa aiba aceeasi serie pentru inceput și sfarsit");
 		problem = true;
 		$("#carnet_default_end").focus();
 		return false;
@@ -145,7 +145,7 @@ function beforeSubmit()
 		 
 		if(serie1 != serie2)
 		{
-			alert("Primul carnet trebuie sa aiba aceeasi serie pentru inceput si sfarsit");
+			alert("Primul carnet trebuie sa aiba aceeasi serie pentru inceput și sfarsit");
 			problem = true;
 			$("#carnet_"+carnetID+"_end").focus();
 			return false;

@@ -11,7 +11,7 @@ Page::showContent();
 ?>
 <table id="heading">
 	<tr>
-		<td>Adauga utilizator</td>
+		<td>Adaugă utilizator</td>
 		<td style="text-align: right"><input type="button"
 			value="Înapoi la utilizatori"
 			onclick="document.location='utilizatori.php'" />
@@ -30,23 +30,23 @@ Page::showContent();
 			<cufon class="cufon cufon-canvas" alt="Register"
 				style="width: 106px; height: 25px;"> <canvas width="122" height="28"
 				style="width: 122px; height: 28px; top: -2px; left: 0px;"></canvas>
-			<cufontext> Creați un nou utilizator </cufontext></cufon>
+			<cufontext> Creați utilizator </cufontext></cufon>
 		</h3>
 		<div class="column">
 			<div>
 				<label>Nume şi prenume:</label> <input check="true"
 					criteria='{type:"string",  minSize: "5", maxSize:"30"}' name="nume"
-					type="text" id="nume"> <span class="error">Exista o eroare</span>
+					type="text" id="nume"> <span class="error">Există o eroare</span>
 			</div>
 			<div>
 				<label>Utilizator:</label> <input id="user" name="user" check="true"
 					criteria='{type:"string",minSize:"5",  maxSize:"30"}' type="text">
-				<span class="error">Exista o eroare</span>
+				<span class="error">Există o eroare</span>
 			</div>
 			<div>
 				<label>Parolă:</label> <input check="true"
 					criteria='{type:"string",  minSize: "5", maxSize:"9"}' id="parola"
-					name="parola" type="password"> <span class="error">Exista o eroare</span>
+					name="parola" type="password"> <span class="error">Există o eroare</span>
 			</div>
 			<?php if($_GET['type']=='normal'){ ?>
 			<div style="margin-left: 20px;">
@@ -84,7 +84,7 @@ Page::showContent();
 						<option value="<?php echo$row2['id'];?>">
 						<?php echo$row2['nume'];?>
 						</option>
-						<?php 
+						<?php
 					} ?>
 					</select>
 				</div>
@@ -96,7 +96,7 @@ Page::showContent();
 			<div class="remember"></div>
 
 			<input type="button" class="submit" onclick="checkForm('f1')"
-				value="Utilizator Nou"> <a href="#" rel="login" class="linkform">&nbsp;</a>
+				value="Adaugă utilizator"> <a href="#" rel="login" class="linkform">&nbsp;</a>
 			<div class="clear"></div>
 		</div>
 	</form>

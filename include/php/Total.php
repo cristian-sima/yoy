@@ -2,7 +2,7 @@
 
 /**
  *
- * Reprezinta un total contabil. Contine plati si incasari. Isi poate actualiza valorile
+ * Reprezinta un total contabil. Contine plati și incasari. Isi poate actualiza valorile
  * @author			Cristian Sima
  * @data			12.02.2014
  * @version			1.1
@@ -15,7 +15,7 @@ class Total
 	private $incasari	= 0;
 	
 	/**
-	 * Realizeaza un nou obiect Balanta si reseteaza toate totalurile la 0
+	 * Realizeaza un nou obiect Balanta și reseteaza toate totalurile la 0
 	 * 
 	 * @param stirng $nume				Numele totalului
 	 * 
@@ -66,7 +66,7 @@ class Total
 	
 	
 	/**
-	 * Returneaza diferenta dintre plati si incasari
+	 * Returneaza diferenta dintre plati și incasari
 	 */
 	public function getTotal()
 	{

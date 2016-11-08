@@ -4,7 +4,7 @@
 	require_once "include/php/Procesare.php";
 	require_once "include/php/Aplicatie.php";
 	require_once "include/php/FirmaSpatiu.php";
-	require_once "include/php/SituațieMecanicaGraficaCompletaAparatNou.php";
+	require_once "include/php/SituatieMecanicaGraficaCompletaAparatNou.php";
 	
 	Page::showHeader();
 	Page::showContent();
@@ -93,7 +93,7 @@
 		
 			
 			$firma		= new FirmaSpatiu($data['firma_id']);
-			$situatie 	= new SituațieMecanicaGraficaCompletaAparatNou($firma, $aparat_, $data['mecanic_intrare'], $data['mecanic_iesire']);
+			$situatie 	= new SituatieMecanicaGraficaCompletaAparatNou($firma, $aparat_, $data['mecanic_intrare'], $data['mecanic_iesire']);
 			
 			$aparate    = $situatie->getAparate();
 			

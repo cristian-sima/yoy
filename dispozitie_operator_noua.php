@@ -3,7 +3,7 @@
 require_once "include/php/Aplicatie.php";
 require_once "include/php/Procesare.php";
 require_once "include/php/FirmaSpatiu.php";
-require_once "include/php/SelectSituație_GUI.php";
+require_once "include/php/SelectSituatie_GUI.php";
 
 Login::permiteOperator();
 

@@ -6,9 +6,9 @@
 	require_once "include/php/Aplicatie.php";
 	require_once "include/php/Guvern.php";
 	require_once "include/php/Utilizator.php";
-	require_once "include/php/Situație_GUI.php";
+	require_once "include/php/Situatie_GUI.php";
 	require_once "include/php/BileteGrafice.php";
-	require_once "include/php/SituațieMecanicaGraficaCompletaAzi.php";
+	require_once "include/php/SituatieMecanicaGraficaCompletaAzi.php";
 	
 	$GUI = "";
 	$html = "";
@@ -50,8 +50,8 @@
 		
 		$data2 		= new DataCalendaristica($_GET['to']);			
 			
-		$ultima_data			= SituațieMecanica::getUltimaCompletareStrict($firma, $data1);
-		$urmatoarea_data		= SituațieMecanica::getUrmatoareaCompletareStrict($firma, $data1);
+		$ultima_data			= SituatieMecanica::getUltimaCompletareStrict($firma, $data1);
+		$urmatoarea_data		= SituatieMecanica::getUrmatoareaCompletareStrict($firma, $data1);
 		
 	}
 	catch(Exception $e)
@@ -68,17 +68,17 @@
 	{
 		while(strtotime($data1) <= strtotime($data2))
 		{
-			$situatie	= new SituațieMecanicaGraficaCompleta($data1, $firma);
+			$situatie	= new SituatieMecanicaGraficaCompleta($data1, $firma);
 			
 			
 			if(!$situatie->isFake())
 			{			
 				$bilete 	= new BileteGrafice($data1, $data1, $firma);	
-				$GUI		= new Situație_GUI($situatie, $bilete, $firma);							
+				$GUI		= new Situatie_GUI($situatie, $bilete, $firma);							
 			}
 			else
 			{
-				$GUI		= new Situație_GUI($situatie, null, $firma);
+				$GUI		= new Situatie_GUI($situatie, null, $firma);
 				$GUI->displayBilete(false);
 				$GUI->displayAutor(false);
 			}			
@@ -99,8 +99,8 @@
 		{
 			
 		
-			$situatie			= new SituațieMecanicaGrafica($data1, $data2, $firma);
-			$GUI				= new Situație_GUI($situatie, null, $firma);
+			$situatie			= new SituatieMecanicaGrafica($data1, $data2, $firma);
+			$GUI				= new Situatie_GUI($situatie, null, $firma);
 			$numar_de_randuri	= $situatie->getNumarulDeAparate();
 			
 			$GUI->displayBilete(false);
@@ -118,11 +118,11 @@
 				
 			if($data1.'' != $today.'')
 			{
-				$situatie				= new SituațieMecanicaGraficaCompleta($data1, $firma);
+				$situatie				= new SituatieMecanicaGraficaCompleta($data1, $firma);
 				$bilete 				= new BileteGrafice($data1, $data1, $firma);
 				$numar_de_carnete	= count($bilete->getCarnete());
 				$numar_de_randuri		= $situatie->getNumarulDeAparate();
-				$GUI					= new Situație_GUI($situatie, $bilete, $firma);
+				$GUI					= new Situatie_GUI($situatie, $bilete, $firma);
 				
 				if($situatie->isFake())
 				{
@@ -139,11 +139,11 @@
 			
 			/*---------------------- Totalizare astazi ---------------*/
 						
-				$situatie			= new SituațieMecanicaGraficaCompletaAzi($firma);
+				$situatie			= new SituatieMecanicaGraficaCompletaAzi($firma);
 				$bilete 			= new BileteGrafice($data1, $data1, $firma);
 				$numar_de_carnete	= count($bilete->getCarnete());
 				$numar_de_randuri	= $situatie->getNumarulDeAparate();				
-				$GUI				= new Situație_GUI($situatie, $bilete, $firma);
+				$GUI				= new Situatie_GUI($situatie, $bilete, $firma);
 			
 				
 				$numar_de_randuri	= $situatie->getNumarulDeAparate();

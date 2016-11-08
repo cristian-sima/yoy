@@ -5,7 +5,7 @@
 	
 /**
  *
- * Reprezinta o situatie tip registru. Aceasta are un total (incasari si plati) precum si datile de inceput si sfarsit
+ * Reprezinta o situatie tip registru. Aceasta are un total (incasari și plati) precum și datile de inceput și sfarsit
  * @author			Cristian Sima
  * @data			14.02.2014
  * @version			1.1
@@ -18,7 +18,7 @@ abstract class Registru extends Total
 	private $total	= null;
 	
 	/**
-	 * Apeleaza contructorul parinte si initializeaz campurile. Apeleaza metoda care proceseaza si adauga date in situatie
+	 * Apeleaza contructorul parinte și initializeaz campurile. Apeleaza metoda care proceseaza și adauga date in situatie
 	 */
 	public function Registru(DataCalendaristica $data)
 	{
@@ -51,7 +51,7 @@ abstract class Registru extends Total
 	}
 	
 	/**
-	 *  Metoda proceseaza informatiile si adauga randuri in tabel in functie de obiecte. Este diferita pentru fiecare obiect
+	 *  Metoda proceseaza informatiile și adauga randuri in tabel in functie de obiecte. Este diferita pentru fiecare obiect
 	 */
 	protected abstract function _processData();
 }

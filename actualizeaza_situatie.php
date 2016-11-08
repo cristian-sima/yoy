@@ -4,9 +4,9 @@ set_time_limit (0);
 
 require_once "include/php/Aplicatie.php";
 require_once "include/php/FirmaSpatiu.php";
-require_once "include/php/SituațieMecanica.php";
+require_once "include/php/SituatieMecanica.php";
 require_once "include/php/DataCalendaristica.php";
-require_once "include/php/SituațieMecanicaTotaluri.php";
+require_once "include/php/SituatieMecanicaTotaluri.php";
 
 Page::showHeader();
 Page::showContent();
@@ -49,7 +49,7 @@ $_data = new DataCalendaristica(addslashes($_POST['from']));
 				// actualizare situatie
 				
 				// in felul asta se verifica daca avem situatie
-				$situatie =  new SituațieMecanica($_OBJ_data, $_OBJ_data, $firma);
+				$situatie =  new SituatieMecanica($_OBJ_data, $_OBJ_data, $firma);
 		
 				$mysql	= "UPDATE `completare_mecanica` 
 					SET 	`total_incasari` = '".$situatie->getTotalIncasari()."',
@@ -60,7 +60,7 @@ $_data = new DataCalendaristica(addslashes($_POST['from']));
 		
 				console('Am actualizat situatia nr <b> '.$situatie->getId().'</b> din data de <b>'.$_OBJ_data.'</b> pentru firma <b>'.$firma->getDenumire().'</b>');
 				
-				$_data = SituațieMecanica::getUrmatoareaCompletareStrict($firma, $_OBJ_data);
+				$_data = SituatieMecanica::getUrmatoareaCompletareStrict($firma, $_OBJ_data);
 				
 			}while($_data && (strtotime($_data) <= (strtotime($to)) ));
 			
@@ -73,7 +73,7 @@ console("<span style='weight:bold;background:green;color:white'> Totul este ok a
 
 }else {
 	echo '
-		Aceasta optiune se poate folosi dupa ce modificati date in situatiile din trecut (atat carnete de bilete cat si indexi). Se pot modifica si in baza de date situatiile
+		Aceasta optiune se poate folosi dupa ce modificati date in situatiile din trecut (atat carnete de bilete cat și indexi). Se pot modifica și in baza de date situatiile
 		
 		<br/> 		
 		<br />

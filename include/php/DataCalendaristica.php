@@ -2,7 +2,7 @@
 
 /**
  *
- * Reprezinta o data calendaristica in format ANUL-LUNA-ZIUA. Poate returna ziua, luna si anul, precum si data.
+ * Reprezinta o data calendaristica in format ANUL-LUNA-ZIUA. Poate returna ziua, luna și anul, precum și data.
  * @author			Cristian Sima
  * @data			17.10.2014
  * @version			1.6
@@ -150,7 +150,7 @@ class DataCalendaristica
 	 * 
 	 * Returneaza numele lunii in functie de numarul
 	 * 
-	 * @param unknown_type $luna			Un numar intre 1 si 12
+	 * @param unknown_type $luna			Un numar intre 1 și 12
 	 * 
 	 */
 	public static function getNumeleLunii($luna)

@@ -1,6 +1,6 @@
 <?php 
 		
-	require_once "Situație.php";
+	require_once "Situatie.php";
 	
 	/**
 	 *
@@ -10,14 +10,14 @@
 	 * @version			1.1
 	 *
 	 */
-	class SituațieMecanica extends Situație
+	class SituatieMecanica extends Situație
 	{
 		private $numarulDeAparate	= 0;
 		private $id;
 		
 		/**
 		 *
-		 * Realizeaza o noua situatie mecanica, si initializeaza toate variabilele
+		 * Realizeaza o noua situatie mecanica, și initializeaza toate variabilele
 		 * @param DataCalendaristica $from		Data de inceput a situatiei [@DataCalendaristica]
 		 * @param DataCalendaristica $to		Data de sfarsit a situatiei [@DataCalendaristica]
 		 * @param Firma $firma					Referinta spre obiectul firma despre care se face situatia [@Firma]

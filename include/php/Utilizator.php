@@ -19,7 +19,7 @@
 		
 		/**
 		 *
-		 * Realizeaza un nou utilizator si stocheaza datele despre el.
+		 * Realizeaza un nou utilizator și stocheaza datele despre el.
 		 * @param string $id		ID-ul utilizatorului [@String]
 		 * @throw Exception			Atunci cand utilizatorul nu exista
 		 *
@@ -118,7 +118,7 @@
 		/**
 		 *
 		 * @description			Returneaza tipul operatorului
-		 * @return				null pentru admin sau desktop si mobil
+		 * @return				null pentru admin sau desktop și mobil
 		 *
 		 */		
 		public function getTipOperator()

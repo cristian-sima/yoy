@@ -20,7 +20,7 @@ class Bilete
 
 	/**
 	 *
-	 * @description 				Constructorul creaza un nou obiect Bilete si activeaza functia care calculeaza carnetele
+	 * @description 				Constructorul creaza un nou obiect Bilete și activeaza functia care calculeaza carnetele
 	 * @param DataCalendaristica	$from				Data de inceput a perioadei
 	 * @param DataCalendaristica	$to				Data de sfarsit a perioadei
 	 * @param $id_firma				Id-ul firmei
@@ -114,7 +114,7 @@ class Bilete
 
 	/**
 	 *
-	 * @description				Returneaza carnetele pentru aceasta perioada si firma
+	 * @description				Returneaza carnetele pentru aceasta perioada și firma
 	 * @return Array			Array cu carnete
 	 *
 	 */
@@ -126,7 +126,7 @@ class Bilete
 
 	/**
 	 *
-	 * @description				Calculeaza carnetele de bilete si le pastreaza in variabila carnete
+	 * @description				Calculeaza carnetele de bilete și le pastreaza in variabila carnete
 	 *
 	 */
 	private function process()

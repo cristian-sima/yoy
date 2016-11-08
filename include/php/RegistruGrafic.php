@@ -26,7 +26,7 @@ abstract class RegistruGrafic extends Registru
 	protected $sum_columns			= array();
 
 	/**
-	 * Apeleaza contructorul parinte si initializeaz campurile. Apeleaza metoda care proceseaza si adauga date in situatie
+	 * Apeleaza contructorul parinte și initializeaz campurile. Apeleaza metoda care proceseaza și adauga date in situatie
 	 * @param DataCalendaristica		Data registrului
 	 */
 	public function RegistruGrafic(DataCalendaristica $data)
@@ -63,7 +63,7 @@ abstract class RegistruGrafic extends Registru
 	/**
 	 * Seteaza  coloane care se vor totaliza pe fiecare pagina
 	 *	
-	 * @param array $col			O matrice cu toate sumele pentru fiecare coloana. Trebuie sa aiba aceas numar de elemente ca si numarul de coloane
+	 * @param array $col			O matrice cu toate sumele pentru fiecare coloana. Trebuie sa aiba aceas numar de elemente ca și numarul de coloane
 	 */
 	public function setColoaneTotalizate(array $col)
 	{
@@ -77,7 +77,7 @@ abstract class RegistruGrafic extends Registru
 	/**
 	 * Seteaza sumele pentru coloanele totalizate
 	 *	
-	 * @param array $new			O matrice cu toate sumele pentru fiecare coloana. Trebuie sa aiba aceas numar de elemente ca si numarul de coloane
+	 * @param array $new			O matrice cu toate sumele pentru fiecare coloana. Trebuie sa aiba aceas numar de elemente ca și numarul de coloane
 	 */
 	public function setSumeColoaneTotalizate(array $new)
 	{
@@ -85,8 +85,8 @@ abstract class RegistruGrafic extends Registru
 	}
 	
 	/**
-	 * Returneaza ID-ul coloanei unde se vor afisa "SOLD RAPORTAT" si "TOTAL PAGINA"
-	 * @return 			ID-ul coloanei unde se vor afisa "SOLD RAPORTAT" si "TOTAL PAGINA"		
+	 * Returneaza ID-ul coloanei unde se vor afisa "SOLD RAPORTAT" și "TOTAL PAGINA"
+	 * @return 			ID-ul coloanei unde se vor afisa "SOLD RAPORTAT" și "TOTAL PAGINA"		
 	 */
 	public function getTotalTitleColumn()
 	{
@@ -130,9 +130,9 @@ abstract class RegistruGrafic extends Registru
 	}
 
 	/**
-	 * Seteaza ID-ul coloanei unde se vor afisa "SOLD RAPORTAT" si "TOTAL PAGINA"
+	 * Seteaza ID-ul coloanei unde se vor afisa "SOLD RAPORTAT" și "TOTAL PAGINA"
 	 *
-	 * @param int $value			ID-ul coloanei unde se vor afisa "SOLD RAPORTAT" si "TOTAL PAGINA"
+	 * @param int $value			ID-ul coloanei unde se vor afisa "SOLD RAPORTAT" și "TOTAL PAGINA"
 	 */
 	protected function setTotalTitleColumn($value)
 	{
@@ -285,7 +285,7 @@ abstract class RegistruGrafic extends Registru
 	}		
 	
 	/** 
-	 * Returneaza o matrice cu toate totalurile si sumele pentru acestea 
+	 * Returneaza o matrice cu toate totalurile și sumele pentru acestea 
 	 * @return				Matricea care contine totalurile situatiei 
 	 */
 	public function getTotaluri()

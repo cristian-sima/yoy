@@ -2,9 +2,9 @@
 
 require_once "include/php/Aplicatie.php";
 require_once "include/php/FirmaSpatiu.php";
-require_once "include/php/SituațieMecanica.php";
+require_once "include/php/SituatieMecanica.php";
 require_once "include/php/DataCalendaristica.php";
-require_once "include/php/SituațieMecanicaTotaluri.php";
+require_once "include/php/SituatieMecanicaTotaluri.php";
 
 Page::showHeader();
 Page::showContent();
@@ -53,7 +53,7 @@ while($situatie = mysql_fetch_array($result))
 	$firma = new FirmaSpatiu($situatie['id_firma']);
 		
 		// in felul asta se verifica daca avem situatie
-	$situatie_rezultata =  new SituațieMecanica($data_situatie, $data_situatie, $firma);
+	$situatie_rezultata =  new SituatieMecanica($data_situatie, $data_situatie, $firma);
 		
 	$mysql	= "UPDATE `completare_mecanica` 
 					SET 	`total_incasari` = '".$situatie_rezultata->getTotalIncasari()."',

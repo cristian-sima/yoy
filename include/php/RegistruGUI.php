@@ -81,7 +81,7 @@ class RegistruGUI
 	}
 	
 	/**
-	 * Seteaza daca se afiseaza sau nu semnaturile pentru casier si contabilitate pe fiecare pagina
+	 * Seteaza daca se afiseaza sau nu semnaturile pentru casier și contabilitate pe fiecare pagina
 	 *
 	 * @param boolean $value			True daca se afiseaza, false in caz contrar
 	 */
@@ -96,7 +96,7 @@ class RegistruGUI
 
 	/**
 	 *
-	 * Afiseaza intregul datele sub forma de tabel numerotand randuri. Afiseaza headerul documentului (data, titlul) si footerul. Afiseaza toate totalurile la final
+	 * Afiseaza intregul datele sub forma de tabel numerotand randuri. Afiseaza headerul documentului (data, titlul) și footerul. Afiseaza toate totalurile la final
 	 *
 	 */
 	public function afiseaza()
@@ -132,7 +132,7 @@ class RegistruGUI
 
 	/**
 	 *
-	 *  Afiseaza headerul situatiei. Acest header este compus din unitatea firmei care organizeaza, titlul tabelului si data.
+	 *  Afiseaza headerul situatiei. Acest header este compus din unitatea firmei care organizeaza, titlul tabelului și data.
 	 *
 	 */
 	private function afiseazaHeader()
@@ -150,7 +150,7 @@ class RegistruGUI
 
 	/**
 	 *
-	 * Afiseaza un tabel cu toate totalurile si denumirea lor. Tabelul se afiseaza pe o pagina separata
+	 * Afiseaza un tabel cu toate totalurile și denumirea lor. Tabelul se afiseaza pe o pagina separata
 	 *
 	 */
 	private function afiseazaDIVTotaluri()
@@ -178,7 +178,7 @@ class RegistruGUI
 
 	/**
 	 *
-	 * Afiseaza o noua pagina pentru tabel. O pagina are un footer, continutul si un header. Footerul este realizat din capetele de coloane, continutul este bazat pe continutul tabelului si headerul adreseaza subtotalul pentru incasari si iesiri dar si totalul acumulat pana in acel punct
+	 * Afiseaza o noua pagina pentru tabel. O pagina are un footer, continutul și un header. Footerul este realizat din capetele de coloane, continutul este bazat pe continutul tabelului și headerul adreseaza subtotalul pentru incasari și iesiri dar și totalul acumulat pana in acel punct
 	 *
 	 * @param int $i					Numarul paginii
 	 */
@@ -205,7 +205,7 @@ class RegistruGUI
 	}
 
 	/**
-	 * Afiseaza paginarea pentru o pagina. Acesta este compusa din nr paginii si numarul total de pagini
+	 * Afiseaza paginarea pentru o pagina. Acesta este compusa din nr paginii și numarul total de pagini
 	 *
 	 * @param int $pagina				Nr paginii
 	 */
@@ -216,7 +216,7 @@ class RegistruGUI
 
 	/**
 	 *
-	 * Afiseaza headerul unei pagini. Acesta este compus din captele de tabel ale tabelului si suma acumulata pana in momentul de fata pentru incasari si pierderi
+	 * Afiseaza headerul unei pagini. Acesta este compus din captele de tabel ale tabelului și suma acumulata pana in momentul de fata pentru incasari și pierderi
 	 *
 	 */
 	private function afiseazaHeaderPagina()
@@ -359,7 +359,7 @@ class RegistruGUI
 	}
 
 	/**
-	 * Afiseaza locurile pentru semnaturile casierului si a contabilitatii
+	 * Afiseaza locurile pentru semnaturile casierului și a contabilitatii
 	 */
 	private function afiseazaTabelSemnaturi()
 	{
@@ -374,7 +374,7 @@ class RegistruGUI
 	
 	/**
 	 *
-	 * Afiseaza foterul paginii. Acesta este compus din totalul pentru pagina curenta si totalul de pana acum
+	 * Afiseaza foterul paginii. Acesta este compus din totalul pentru pagina curenta și totalul de pana acum
 	 *
 	 */
 	private function afiseazaFooterPagina()

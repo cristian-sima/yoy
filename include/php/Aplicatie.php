@@ -28,8 +28,8 @@ class Aplicatie
 
 	/**
 	 *
-	 * @description				Realizeaza aplicatia. Aplicatia are access la baza de date, si verifica conexiunea utilizatorului
-	 * @die						In cazul in care obiectele MYSQL si login arunca o exceptie
+	 * @description				Realizeaza aplicatia. Aplicatia are access la baza de date, și verifica conexiunea utilizatorului
+	 * @die						In cazul in care obiectele MYSQL și login arunca o exceptie
 	 *
 	 */
 	private function __construct()

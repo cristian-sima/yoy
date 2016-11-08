@@ -6,9 +6,9 @@ require_once "include/php/Guvern.php";
 require_once "include/php/Romanian.php";
 require_once "include/php/FirmaSpatiu.php";
 require_once "include/php/RegistruGrafic.php";
-require_once "include/php/SituațieMecanica.php";
+require_once "include/php/SituatieMecanica.php";
 require_once "include/php/DataCalendaristica.php";
-require_once "include/php/SituațieMecanicaTotaluri.php";
+require_once "include/php/SituatieMecanicaTotaluri.php";
 
 /**
  *
@@ -49,7 +49,7 @@ class RegistruGraficFirma extends RegistruGrafic
 
 	/**
 	 *
-	 * Proceseaza datele pentru situatia registru grafica pentru o firma intr-o luna. Datele sunt formate din incasari, plati si bilete.
+	 * Proceseaza datele pentru situatia registru grafica pentru o firma intr-o luna. Datele sunt formate din incasari, plati și bilete.
 	 *
 	 * @see RegistruGrafic::_processData()
 	 */
@@ -117,7 +117,7 @@ class RegistruGraficFirma extends RegistruGrafic
 				
 			/* -------------- PLATI SI INCASARI ---------------- */
 				
-			$situatie = new SituațieMecanicaTotaluri($data_curenta, $data_curenta, $this->firma);
+			$situatie = new SituatieMecanicaTotaluri($data_curenta, $data_curenta, $this->firma);
 
 			if($situatie->isCompletata())
 			{
