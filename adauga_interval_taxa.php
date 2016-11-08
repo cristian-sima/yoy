@@ -12,7 +12,7 @@ Page::showContent();
 	<tr>
 		<td></td>
 		<td style="text-align: right"><input type="button"
-			value="Înapoi la setari" onclick="document.location='setari.php'" />
+			value="Înapoi la setări" onclick="document.location='setari.php'" />
 		</td>
 	</tr>
 </table>
@@ -42,6 +42,10 @@ Page::showContent();
 					<label>Până la :</label> <input class="alege" id="to" name="to"
 						check="true" criteria='{type:"string"}' type="text"> <span
 						class="error">Exista o eroare</span>
+
+													<i><small>Info: Lăsați
+													câmpul liber pentru a specifica o perioadă infinită (implicit o
+													perioadă din prezent)</small></i>
 				</div>
 				<div>
 					<label>Valoare :</label> <input check="true"
@@ -52,13 +56,12 @@ Page::showContent();
 
 			</div>
 
+
 			<div class="bottom">
 				<div class="remember"></div>
 
 				<input type="button" class="submit" onclick="checkForm('f1')"
-					value="Perioada Noua"> <a href="#" rel="login" class="linkform">Lasati
-					câmpul liber pentru a specifica o perioada infinita (implicit o
-					perioada din prezent)</a>
+					value="Adaugă perioadă">
 				<div class="clear"></div>
 			</div>
 		</form>
@@ -69,7 +72,7 @@ Page::showContent();
 	<script>
  $( ".alege" ).datepicker({
     });
-	
+
 	$( ".alege" ).change(function() {
       $( ".alege" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
     });

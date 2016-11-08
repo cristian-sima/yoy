@@ -1,7 +1,7 @@
 <?php
-	
+
 	require_once "DataCalendaristica.php";
-		
+
 	/**
 	 *	Reprezinta obiectul cu toate taxele și darile spre stat
 	 *
@@ -10,7 +10,7 @@
 	 *  @version				1.1
 	 *
 	 */
-	class Guvern 
+	class Guvern
 	{
 		/**
 		 *
@@ -21,9 +21,9 @@
 		 */
 		public static function getTaxaDeAutorizareAparat(DataCalendaristica $data)
 		{
-			return (self::_doWork("aparat", $data));	
+			return (self::_doWork("aparat", $data));
 		}
-		
+
 		/**
 		 *
 		 * Returneaza procentul de impozitarea pentru care se ofera data
@@ -33,9 +33,9 @@
 		 */
 		public static function getProcentDeImpozitare(DataCalendaristica $data)
 		{
-			return (self::_doWork('procent', $data));		
+			return (self::_doWork('procent', $data));
 		}
-		
+
 		/**
 		 *
 		 * Returneaza pretul unui bilet, impus de guvern in luna pentru care se ofera data
@@ -45,9 +45,9 @@
 		 */
 		public static function getPretBilet(DataCalendaristica $data)
 		{
-			return (self::_doWork('bilet', $data));		
+			return (self::_doWork('bilet', $data));
 		}
-	
+
 		/**
 		 *
 		 * @description						Returneaza pragul de impozitare impus de guvern in luna pentru care se ofera data
@@ -57,10 +57,10 @@
 		 */
 		public static function getPragDeImpozitare(DataCalendaristica $data)
 		{
-			return (self::_doWork('suma', $data));		
+			return (self::_doWork('suma', $data));
 		}
-		
-		
+
+
 		/**
 		 *
 		 * Returneaza o anumita taxa/impozit din baza de date sau opreste executia programuui daca nu exista accea taxa stabilita
@@ -71,25 +71,25 @@
 		 */
 		private static function _doWork($type, DataCalendaristica $data)
 		{
-			
+
 			$valoare 	= 0;
 			$exist 		= false;
-				
-			
-			$A = "SELECT valoare from taxa WHERE tip='".$type."' AND ( ( isNow='0' AND _from>='".$data->getFirstDayOfMonth()."' AND _to <= '".$data->getLastDayOfMonth()."') OR ( isNow='1' AND '".$data->getFirstDayOfMonth()."'>=_from )) LIMIT 1";					
 
-			
-			$result = mysql_query($A, Aplicatie::getInstance()->getMYSQL()->getResource()) or die(mysql_error());				
+
+			$A = "SELECT valoare from taxa WHERE tip='".$type."' AND ( ( isNow='0' AND _from>='".$data->getFirstDayOfMonth()."' AND _to <= '".$data->getLastDayOfMonth()."') OR ( isNow='1' AND '".$data->getFirstDayOfMonth()."'>=_from )) LIMIT 1";
+
+
+			$result = mysql_query($A, Aplicatie::getInstance()->getMYSQL()->getResource()) or die(mysql_error());
 			while($taxa = mysql_fetch_array($result))
-			{						
-				$valoare = $taxa['valoare'];					
+			{
+				$valoare = $taxa['valoare'];
 				$exist = true;
-			}		
-			
+			}
+
 			if(!$exist)
 			{
-				die("Nu exista un pret stabilit pentru [#".$type."#] pentru data: ".$data);
-			}		
+				die("Nu există o valoare stabilită pentru [#".$type."#] pentru data: ".$data);
+			}
 			return $valoare;
-		}		
-	}		
+		}
+	}

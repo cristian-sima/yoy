@@ -19,7 +19,7 @@ try
 
 
 	// confirmation
-	Page::showConfirmation('<span class="confirmation">Perioada a fost stearsa</span> <a href="setari.php">Înapoi la setari</a>');
+	Page::showConfirmation('<span class="confirmation">Perioada a fost stearsa</span> <a href="setari.php">Înapoi la setări</a>');
 	
 }
 catch(Exception $e)

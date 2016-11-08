@@ -14,7 +14,7 @@ require_once "FirmaOrganizatoare.php";
  */
 class Page
 {
-	public static $version = "2.9";
+	public static $version = "3.0";
 
 
 	/**

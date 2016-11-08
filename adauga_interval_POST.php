@@ -16,27 +16,27 @@ try
 	// content
 
 	$isNow=0;
-		
+
 	if($data['to'] == "")
 	{
 		$data['to'] = DataCalendaristica::getZiuaUrmatoare(date("Y-m-d"));
 		$isNow=1;
 	}
-		
+
 	if(strtotime($data['from']) >= strtotime($data['to']))
 	{
-		throw new Exception("Prima data trebuie sa fie mai mare decat a doua !");
-	}	
-		
-		
+		throw new Exception("Prima dată trebuie să fie mai mare decât a doua !");
+	}
+
+
 	//introdu firma
 	$q = "INSERT INTO `taxa`(`tip`, `_from`, `_to`, `valoare`,`isNow`) VALUES ('".$data['tip']."','".$data['from']."','".$data['to']."','".$data['valoare']."','".$isNow."')";
 	$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL()->getResource());
-		
-		
+
+
 	// confirmation
-	Page::showConfirmation('<span class="confirmation">Taxa a fost adaugata</span> <a href="setari.php">Înapoi</a>');
-	
+	Page::showConfirmation('<span class="confirmation">Taxa a fost adaugată</span> <a href="setari.php">Înapoi</a>');
+
 }
 catch(Exception $e)
 {

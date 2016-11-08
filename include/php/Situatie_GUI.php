@@ -29,6 +29,7 @@ class Situatie_GUI
 	private $displayDefaultBilete 	= true;
 	private $displayAddCarnet		= true;
 	private $isInteractive			= true;
+	private $isPaper			= false;
 
 	// content
 	private $nrTotalRows 			= 15;
@@ -99,6 +100,11 @@ class Situatie_GUI
 	public function displayDefaultBilete($boolean)
 	{
 		$this->displayDefaultBilete = $boolean;
+	}
+
+	public function isPaper()
+	{
+		$this->isPaper = true;
 	}
 
 
@@ -251,7 +257,7 @@ class Situatie_GUI
 		<input type="hidden" value="'.$this->getSituație()->getFrom().'" 	name="from" />
 
 
-		<link href="include/css/situatie_GUI_'.(($this->isInteractive) ? 'web' : 'paper') .'.css" rel="stylesheet" type="text/css"/>
+		<link href="include/css/situatie_GUI_'.(($this->isPaper) ? 'paper' : 'web') .'.css" rel="stylesheet" type="text/css"/>
 		';
 	}
 

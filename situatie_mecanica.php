@@ -232,6 +232,7 @@
 	else {
 		// generate PDF
 		$GUI->isInteractiva(false);
+		$GUI->isPaper();
 		$html =  $GUI->getHTML();
 		header("Content-Type", "text/html; charset=utf-8");
 		require_once 'pdf/dompdf_config.inc.php';

@@ -57,7 +57,7 @@ echo '
 						style="width: 106px; height: 25px;"> <canvas width="122"
 						height="28"
 						style="width: 122px; height: 28px; top: -2px; left: 0px;"></canvas>
-					<cufontext> Modifică date personale</cufontext></cufon>
+					<cufontext> Modifică datele personale</cufontext></cufon>
 				</h3>'; ?>
 <div class="column">
 	<div>
