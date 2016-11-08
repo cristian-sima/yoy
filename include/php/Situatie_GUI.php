@@ -239,6 +239,7 @@ class Situatie_GUI
 	{
 
 		$this->html.= '
+
 		<script type="text/javascript" src="include/js/situatie_GUI.js" ></script>
 
 		<div class="situatie_div privatePage_prt">
@@ -250,7 +251,7 @@ class Situatie_GUI
 		<input type="hidden" value="'.$this->getSituație()->getFrom().'" 	name="from" />
 
 
-		<link href="include/css/situatie_GUI.css" rel="stylesheet" type="text/css"/>
+		<link href="include/css/situatie_GUI_'.(($this->isInteractive) ? 'web' : 'paper') .'.css" rel="stylesheet" type="text/css"/>
 		';
 	}
 
