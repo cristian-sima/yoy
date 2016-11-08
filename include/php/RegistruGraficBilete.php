@@ -11,7 +11,7 @@
 
 /**
  *
- * Afiseaza situatia a biletelor desfasurata pentru o luna pentru toate firmele
+ * Afișează situatia a biletelor desfasurata pentru o luna pentru toate firmele
  * @author			Cristian Sima
  * @data			13.02.2014
  * @version			1.0
@@ -56,15 +56,15 @@ class RegistruGraficBilete extends RegistruGrafic
 									"width" 	=>	"160px" 
 								),
 								array(
-									"content" 	=> 	"DENUMIRE FIRMA",
+									"content" 	=> 	"DENUMIRE FIRMĂ",
 									"width" 	=>	"210px" 
 								),
 								array(
-									"content" 	=> 	"LOCATIE FIRMA",
+									"content" 	=> 	"LOCAȚIE FIRMĂ",
 									"width" 	=>	"274px" 
 								),
 								array(
-									"content" 	=> 	"INCASARI",
+									"content" 	=> 	"ÎNCASĂRI",
 									"width"		=>	"286px" 
 								)
 							);

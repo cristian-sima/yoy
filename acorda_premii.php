@@ -38,7 +38,7 @@ Page::showHeading('<img class="disp" src="img/icons/_premii.png" align="absmiddl
 		<td style="text-align: right"><?php 
 		if(Aplicatie::getInstance()->getUtilizator()->isAdministrator())
 		{
-			?> <input type="button" class="disp" value="Printează"
+			?> <input type="button" class="disp" value="Tipărește"
 			onclick="window.print()" />	
 			 <input class="disp" type="button" value="Înapoi la situație"		onclick="document.location='situatie_mecanica.php?id_firma=<?php echo$firma->getID();?>'" />
 			<?php
@@ -82,7 +82,7 @@ Page::showHeading('<img class="disp" src="img/icons/_premii.png" align="absmiddl
 
 echo'</br><br /><br />';
 
-echo'<table id="example" class="display" width="100%"><tr class="pad head"><td class="smoke" style="border:1px solid #dfdfdf">Nume</td><td style="border:1px solid #dfdfdf" class="smoke">CNP</td><td class="smoke" style="border:1px solid #dfdfdf"> Suma</td><td class="smoke" style="border:1px solid #dfdfdf">Impozit stat</td><td style="border:1px solid #dfdfdf" class="smoke disp"> Optiuni</td></tr>';
+echo'<table id="example" class="display" width="100%"><tr class="pad head"><td class="smoke" style="border:1px solid #dfdfdf">Nume</td><td style="border:1px solid #dfdfdf" class="smoke">CNP</td><td class="smoke" style="border:1px solid #dfdfdf"> Suma</td><td class="smoke" style="border:1px solid #dfdfdf">Impozit stat</td><td style="border:1px solid #dfdfdf" class="smoke disp"> Opțiuni</td></tr>';
 
 
 $totalI = 0;
@@ -124,7 +124,7 @@ while($premiu = mysql_fetch_array($result2))
 	if(Aplicatie::getInstance()->getUtilizator()->isAdministrator())
 	{
 		echo '<td >'.htmlspecialchars($premiu['numeJucator']).'</td><td>'.$premiu['CNP'].'</td><td>'.$premiu['suma'].' lei</td><td style="color:green">'.$impozit.' lei</td><td class="disp">
-		<input type="button" value="Sterge"
+		<input type="button" value="Șterge"
 			onclick="document.location='."'".'sterge_premiu_persoana.php?id_firma='.$firma->getID().'&id_premiu='.$premiu['id'].' '."'".'" />
 			</td></tr>';
 

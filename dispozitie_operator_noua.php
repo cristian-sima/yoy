@@ -11,7 +11,7 @@ Procesare::createEmptyFields($_GET, array ('id_firma'));
 
 Page::showHeader();
 Page::showContent();
-Page::showHeading("Dispozitie noua", ((Aplicatie::getInstance()->getUtilizator()->isAdministrator())?('<input type="button" value="Înapoi la dispozitii" onclick="document.location='."'".'vizualizare_dispozitii.php?id_firma='.$_GET['id_firma']."'".'" />'):('<input	type="button" class="disp" value="Înapoi la situație" onclick="document.location='."'".'situatie_mecanica_operator.php'."'".'" />')));
+Page::showHeading("Dispozitie noua", ((Aplicatie::getInstance()->getUtilizator()->isAdministrator())?('<input type="button" value="Înapoi la dispoziții" onclick="document.location='."'".'vizualizare_dispozitii.php?id_firma='.$_GET['id_firma']."'".'" />'):('<input	type="button" class="disp" value="Înapoi la situație" onclick="document.location='."'".'situatie_mecanica_operator.php'."'".'" />')));
 
 
 

@@ -22,7 +22,7 @@ $selector_GUI->setAdresaButon("inchide_situatie_luna.php");
 $selector_GUI->afiseazaDescriere(false);
 
 
-Page::showHeading("Vizualizati inchiderile de situatii", '
+Page::showHeading("Vizualizați inchiderile de situatii", '
 			<input	class="disp" type="button" value="Înapoi actiuni" class="disp" onclick="document.location='."'".'actiuni.php?data='.$data."'".'" />
 			');
 
@@ -32,7 +32,7 @@ $selector_GUI->display();
 /* ---------------- content ---------------------*/
 
 
-echo'&nbsp;&nbsp;&nbsp;&nbsp;<center><table id="example"><tr><th width="20%">Denumire firma</th><th width="30%">Actiune</th><th width="50%">Sold total</th></tr>';
+echo'&nbsp;&nbsp;&nbsp;&nbsp;<center><table id="example"><tr><th width="20%">DENUMIRE FIRMĂ</th><th width="30%">Actiune</th><th width="50%">Sold total</th></tr>';
 
 
 $mysql = "

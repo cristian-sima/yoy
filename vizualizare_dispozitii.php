@@ -22,8 +22,8 @@
 	$selector_GUI->setAdresaButon("vizualizare_dispozitii.php");
 	$selector_GUI->setTypeOfDocument("Dispozitii");
 	
-	Page::showHeading("Vizualizati dispozitii", '
-			<input class="disp" type="button" value="Printează" class="disp" onclick="window.print();" /> 
+	Page::showHeading("Vizualizați dispoziții", '
+			<input class="disp" type="button" value="Tipărește" class="disp" onclick="window.print();" /> 
 			<input	class="disp" type="button" value="Dispoziție noua" class="disp" onclick="document.location='."'".'dispozitie_operator_noua.php'."'".';" />			
 		');
 	
@@ -47,7 +47,7 @@
 	
 	if(mysql_num_rows($result) == 0)
 	{
-		echo 'Nu sunt dispozitii';
+		echo 'Nu sunt dispoziții';
 	}
 	else
 	{

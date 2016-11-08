@@ -24,8 +24,8 @@ $selector_GUI->setAdresaButon("administreaza_deconturi.php");
 $selector_GUI->setTypeOfDocument("Deconturi");
 
 
-Page::showHeading("Vizualizati deconturi", '
-			<input class="disp" type="button" value="Printează" class="disp" onclick="window.print();" /> 
+Page::showHeading("Vizualizați deconturi", '
+			<input class="disp" type="button" value="Tipărește" class="disp" onclick="window.print();" /> 
 			<input	class="disp" type="button" value="Înapoi actiuni" class="disp" onclick="document.location='."'".'actiuni.php?data='.$data."'".'" />
 			<input	class="disp" type="button" value="Decont nou" class="disp" onclick="document.location='."'".'decont_nou.php?data='.$data."'".'" />');
 

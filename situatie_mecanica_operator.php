@@ -133,7 +133,7 @@
 				<td style="text-align:center"> &nbsp;&nbsp;&nbsp;
 					<input type="button" class="bold" value="Premii acordate" onclick="document.location='."'".'acorda_premii.php?id='.$firma->getID()."'".'" />
 					&nbsp;&nbsp;&nbsp;
-					<input type="button" value="Printează situatie"  onclick="window.print()" />
+					<input type="button" value="Tipărește situatie"  onclick="window.print()" />
 				</td>
 				<td>
 				'; echo '&nbsp;&nbsp;&nbsp;<a href="situatie_mecanica_operator.php?id_firma='.$firma->getID().'&from='.$data1.'&to='.$data2.'&type=PDF'.(isset($_GET['last'])?"&last=true":"").'"><input type="button" value="Descarca situatie" /></a>';		

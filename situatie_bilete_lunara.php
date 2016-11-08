@@ -12,7 +12,7 @@
 	
 	Page::showHeader();
 	Page::showContent();	
-	Page::showHeading("Situație bilete lunara", '<input type="button" class="disp" value="Printeaza" onclick="window.print()">&nbsp; <a onclick="goTo('."'".'selecteaza_situatie.php'."'".')" href="#"><input type="button" value="Înapoi la Situații" /></a>');
+	Page::showHeading("Situație bilete lunara", '<input type="button" class="disp" value="Tipărește" onclick="window.print()">&nbsp; <a onclick="goTo('."'".'selecteaza_situatie.php'."'".')" href="#"><input type="button" value="Înapoi la situații" /></a>');
 		
 	Procesare::createEmptyFields($_GET, array("data", "id_firma", "afiseaza_totaluri"));
 	
@@ -28,11 +28,11 @@
 									  	"id"		=> "afiseaza_totaluri",
 										"optiuni"	=> array(
 															array(
-																"denumire" => "Afiseaza totaluri",
+																"denumire" => "Afișează totaluri",
 																"valoare" => ""
 															),
 															array(
-																"denumire" => "Nu afisa totaluri",
+																"denumire" => "Nu afișa totaluri",
 																"valoare" => "false"
 															)
 														)));

@@ -19,7 +19,7 @@ class Page
 
 	/**
 	 *
-	 * 		Afiseaza inceputul paginii și incepe headerul <head>. De asemenea, forteaza aplicatia sa inceapa
+	 * 		Afișează inceputul paginii și incepe headerul <head>. De asemenea, forteaza aplicatia sa inceapa
 	 *
 	 */
 	public static function showHeader()
@@ -52,7 +52,7 @@ class Page
 
 	/**
 	 *
-	 * Afiseaza meniul aplicatiei in functie de utilizator și versiunea de device
+	 * Afișează meniul aplicatiei in functie de utilizator și versiunea de device
 	 *
 	 */
 	private static function showMeniu()
@@ -113,7 +113,7 @@ class Page
 	}
 
 	/**
-	 * Afiseaza titlul paginii și in partea dreapta afiseaza continutul primit prin parametru
+	 * Afișează titlul paginii și in partea dreapta afiseaza continutul primit prin parametru
 	 *
 	 * @param string $title						Titlul paginii pe care se afla utilizatorul
 	 * @param string $right_side				Continutul din partea dreapta
@@ -135,7 +135,7 @@ class Page
 
 	/**
 	 *
-	 * 	Afiseaza content-ul paginii. Acest content include meniul, și incepe div-ul de content
+	 * 	Afișează content-ul paginii. Acest content include meniul, și incepe div-ul de content
 	 *
 	 */
 	public static function showContent()
@@ -151,7 +151,7 @@ class Page
 
 	/**
 	 *
-	 * 		Afiseaza footer-ul paginii și inchide tagurile <div> <body> <html>
+	 * 		Afișează footer-ul paginii și inchide tagurile <div> <body> <html>
 	 *
 	 */
 	public static function showFooter()
@@ -173,7 +173,7 @@ class Page
 	}
 
 	/**
-	 * Afiseaza design-ul pentru formularul de login
+	 * Afișează design-ul pentru formularul de login
 	 */
 	public static function showCSSLogin()
 	{
@@ -182,7 +182,7 @@ class Page
 
 	/**
 	 *
-	 * Afiseaza formularul de conectare. De asemenea, include fisierul CSS respectiv
+	 * Afișează formularul de conectare. De asemenea, include fisierul CSS respectiv
 	 *
 	 */
 	public static function showLoginForm()
@@ -219,7 +219,7 @@ class Page
 
 	/**
 	 *
-	 * Afiseaza un mesaj de confirmare
+	 * Afișează un mesaj de confirmare
 	 *
 	 * @param string $message			Mesajul care va fi afisat
 	 *
@@ -231,7 +231,7 @@ class Page
 
 
 	/**
-	 * Afiseaza un mesaj de eroare și opreste aplicatia
+	 * Afișează un mesaj de eroare și opreste aplicatia
 	 *
 	 * @param string $message				Mesajul care va aparea pe ecran
 	 */
@@ -243,7 +243,7 @@ class Page
 
 	/**
 	 *
-	 * Afiseaza un mesaj de erroare
+	 * Afișează un mesaj de erroare
 	 * @param string $message			Mesajul care va fi afisat
 	 *
 	 */
@@ -255,7 +255,7 @@ class Page
 
 	/**
 	 *
-	 * Afiseaza toate campurile detinute de obiectul primit ca parametru.
+	 * Afișează toate campurile detinute de obiectul primit ca parametru.
 	 *
 	 * @param Object $obj			Obiectul care va fi afisat
 	 *

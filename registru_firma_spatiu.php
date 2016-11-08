@@ -11,7 +11,7 @@
 	Login::permiteOperator();
 	Page::showHeader();
 	Page::showContent();
-	Page::showHeading("Registru de casă firmă", '<input type="button" class="disp" value="Printeaza" onclick="window.print()">&nbsp;
+	Page::showHeading("Registru de casă firmă", '<input type="button" class="disp" value="Tipărește" onclick="window.print()">&nbsp;
 	'.((Aplicatie::getInstance()->getUtilizator()->isAdministrator())?('<a onclick="goTo('."'".'selecteaza_situatie.php'."'".')" href="#"><input type="button" value="Înapoi la situații" /></a>
 	'):('<a onclick="document.location = '."'".'situatie_mecanica_operator.php'."'".'" href="#"><input type="button" value="Înapoi la situații" /></a>
 	')).'

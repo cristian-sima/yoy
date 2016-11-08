@@ -146,7 +146,7 @@ if(mysql_num_rows($result) == 0){
 
 }else
 {
-	echo'<table width="100%"><tr><tD  class="smoke" style="background: rgb(231, 231, 231);">De la</td><td class="smoke" style="background: rgb(231, 231, 231);">La</td><td style="background: rgb(231, 231, 231);" class="smoke" style="background: rgb(231, 231, 231);">Valoare</td><td class="smoke" style="background: rgb(231, 231, 231);"> Optiuni</td></tr>';
+	echo'<table width="100%"><tr><tD  class="smoke" style="background: rgb(231, 231, 231);">De la</td><td class="smoke" style="background: rgb(231, 231, 231);">La</td><td style="background: rgb(231, 231, 231);" class="smoke" style="background: rgb(231, 231, 231);">Valoare</td><td class="smoke" style="background: rgb(231, 231, 231);"> Opțiuni</td></tr>';
 	while($r = mysql_fetch_array($result)){
 		echo'<td>'.$r['_from'].'</td><td>'.(($r['isNow']=="1")?"Prezent":$r['_to']).'</td><td>'.$r['valoare'].'</td><td>';
 
@@ -217,7 +217,7 @@ if(mysql_num_rows($result) == 0){
 
 }else
 {
-	echo'<table width="100%"><tr><tD  class="smoke" style="background: rgb(231, 231, 231);">De la</td><td class="smoke" style="background: rgb(231, 231, 231);">La</td><td style="background: rgb(231, 231, 231);" class="smoke" style="background: rgb(231, 231, 231);">Valoare</td><td class="smoke" style="background: rgb(231, 231, 231);"> Optiuni</td></tr>';
+	echo'<table width="100%"><tr><tD  class="smoke" style="background: rgb(231, 231, 231);">De la</td><td class="smoke" style="background: rgb(231, 231, 231);">La</td><td style="background: rgb(231, 231, 231);" class="smoke" style="background: rgb(231, 231, 231);">Valoare</td><td class="smoke" style="background: rgb(231, 231, 231);"> Opțiuni</td></tr>';
 	while($r = mysql_fetch_array($result)){
 		echo'<td>'.$r['_from'].'</td><td>'.(($r['isNow']=="1")?"Prezent":$r['_to']).'</td><td>'.$r['valoare'].'</td><td>';
 
@@ -288,7 +288,7 @@ if(mysql_num_rows($result) == 0){
 
 }else
 {
-	echo'<table width="100%"><tr><tD  class="smoke" style="background: rgb(231, 231, 231);">De la</td><td class="smoke" style="background: rgb(231, 231, 231);">La</td><td style="background: rgb(231, 231, 231);" class="smoke" style="background: rgb(231, 231, 231);">Valoare</td><td class="smoke" style="background: rgb(231, 231, 231);"> Optiuni</td></tr>';
+	echo'<table width="100%"><tr><tD  class="smoke" style="background: rgb(231, 231, 231);">De la</td><td class="smoke" style="background: rgb(231, 231, 231);">La</td><td style="background: rgb(231, 231, 231);" class="smoke" style="background: rgb(231, 231, 231);">Valoare</td><td class="smoke" style="background: rgb(231, 231, 231);"> Opțiuni</td></tr>';
 	while($r = mysql_fetch_array($result)){
 		echo'<td>'.$r['_from'].'</td><td>'.(($r['isNow']=="1")?"Prezent":$r['_to']).'</td><td>'.$r['valoare'].'</td><td>';
 

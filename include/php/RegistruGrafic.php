@@ -39,7 +39,7 @@ abstract class RegistruGrafic extends Registru
 	}
 	
 	/**
-	 * Actualizeaza suma totala pentru o coloana
+	 * Actualizeaza suma totală pentru o coloana
 	 *
 	 * @param int $coloana			ID-ul coloanei pentru care se va actualiza suma
 	 * @param int $suma				Suma care se va adauga la cea existenta
@@ -53,7 +53,7 @@ abstract class RegistruGrafic extends Registru
 	 * Returneaza totalul pentru o coloana
 	 *
 	 * @param int $coloana			ID-ul coloanei pentru care se doreste totalul
-	 * @return 						Suma totala pentru o coloana pana in momentul de fata
+	 * @return 						Suma totală pentru o coloana pana in momentul de fata
 	 */
 	public function getSumaTotalaColoana($coloana)
 	{
@@ -85,8 +85,8 @@ abstract class RegistruGrafic extends Registru
 	}
 	
 	/**
-	 * Returneaza ID-ul coloanei unde se vor afisa "SOLD RAPORTAT" și "TOTAL PAGINA"
-	 * @return 			ID-ul coloanei unde se vor afisa "SOLD RAPORTAT" și "TOTAL PAGINA"		
+	 * Returneaza ID-ul coloanei unde se vor afișa "SOLD RAPORTAT" și "TOTAL PAGINĂ"
+	 * @return 			ID-ul coloanei unde se vor afișa "SOLD RAPORTAT" și "TOTAL PAGINĂ"		
 	 */
 	public function getTotalTitleColumn()
 	{
@@ -130,9 +130,9 @@ abstract class RegistruGrafic extends Registru
 	}
 
 	/**
-	 * Seteaza ID-ul coloanei unde se vor afisa "SOLD RAPORTAT" și "TOTAL PAGINA"
+	 * Seteaza ID-ul coloanei unde se vor afișa "SOLD RAPORTAT" și "TOTAL PAGINĂ"
 	 *
-	 * @param int $value			ID-ul coloanei unde se vor afisa "SOLD RAPORTAT" și "TOTAL PAGINA"
+	 * @param int $value			ID-ul coloanei unde se vor afișa "SOLD RAPORTAT" și "TOTAL PAGINĂ"
 	 */
 	protected function setTotalTitleColumn($value)
 	{

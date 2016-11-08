@@ -6,7 +6,7 @@ require_once "FirmaOrganizatoare.php";
 
 /**
  *
- * Reprezinta obiectul afiseaza un chooser de situatie. Afiseaza lunile, anii și toate firme (inactive și active)
+ * Reprezinta obiectul afiseaza un chooser de situatie. Afișează lunile, anii și toate firme (inactive și active)
  * @author			Cristian Sima
  * @data			21.02.2014
  * @version			1.5
@@ -76,7 +76,7 @@ class SelectSituatie_GUI
 
 	/**
 	 *
-	 * Afiseaza un button care duce la link-ul specificat ca parametru
+	 * Afișează un button care duce la link-ul specificat ca parametru
 	 *
 	 * @param String $link			Unde se va duce procesarea selectorului
 	 */
@@ -224,7 +224,7 @@ class SelectSituatie_GUI
 
 	/**
 	 *
-	 * Afiseaza chooser-ul de situatie
+	 * Afișează chooser-ul de situatie
 	 *
 	 */
 	public function display()
@@ -326,7 +326,7 @@ class SelectSituatie_GUI
 		
 		if($this->afiseazaButon)
 		{
-			echo '&nbsp;&nbsp;&nbsp;&nbsp;<input value="Vizualizati" type="button" onclick="goTo('."'".$this->adresaButon.''."'".')" />';
+			echo '&nbsp;&nbsp;&nbsp;&nbsp;<input value="Vizualizați" type="button" onclick="goTo('."'".$this->adresaButon.''."'".')" />';
 		}
 
 		echo '</form></div>';

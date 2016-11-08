@@ -35,7 +35,7 @@ class RegistruGraficFirma extends RegistruGrafic
 		$this->firma		= $firma;
 
 		parent::__construct($data);
-		parent::setTitle("REGISTRU DE CASA");
+		parent::setTitle("REGISTRU DE CASĂ");
 		parent::setPrimulRand($firma->getDenumire().' din '.$firma->getLocatie());
 	}
 
@@ -61,44 +61,44 @@ class RegistruGraficFirma extends RegistruGrafic
 									"width"		=> "50px"
 									),
 									array(
-									"content" 	=> 	"NR. <br /> ACT CASA",
-									"width" 	=>	"125px" 
+									"content" 	=> 	"NR. <br /> ACT CASĂ",
+									"width" 	=>	"125px"
 									),
 									array(
 									"content" 	=> 	"DATA",
-									"width" 	=>	"100px" 
+									"width" 	=>	"100px"
 									),
 									array(
-									"content" 	=> 	"EXPLICATII",
-									"width" 	=>	"300px" 
+									"content" 	=> 	"EXPLICAȚII",
+									"width" 	=>	"300px"
 									),
 									array(
-									"content" 	=> 	"INCASARI",
-									"width" 	=>	"200px" 
+									"content" 	=> 	"ÎNCASĂRI",
+									"width" 	=>	"200px"
 									),
 									array(
-									"content" 	=> 	"PLATI",
-									"width"		=>	"200px" 
+									"content" 	=> 	"PLĂȚI",
+									"width"		=>	"200px"
 									)
 									);
 		$pret_taxa_pe_bilet		= Guvern::getPretBilet($this->getFrom());
 		$prag_de_impozitare 	= Guvern::getPragDeImpozitare($this->getFrom());
 		$procent_impozitare 	= Guvern::getProcentDeImpozitare($this->getFrom());
 		$data_curenta 			= $this->getFrom();
-		
-		$incasari		= new Total("Incasari");
-		$plati			= new Total("Plati");
+
+		$incasari		= new Total("Încasări");
+		$plati			= new Total("Plăți");
 		$bilete			= new Total("Bilete");
 		$total			= new Total("General");
 		$impozit		= new Total("Impozit");
-		$dispozitii		= new Total("Dispozitii");
-		
+		$dispoziții		= new Total("Dispoziții");
+
 		$suma = self::getSoldTotalLunar($this->getFirma(), new DataCalendaristica(DataCalendaristica::getZiuaPrecedenta($this->getFrom())));
 
 		if($suma > 0)
 		{
 			$total->actualizeazaIncasari($suma);
-		}	
+		}
 		else
 		{
 			$total->actualizeazaPlati(-$suma);
@@ -107,23 +107,23 @@ class RegistruGraficFirma extends RegistruGrafic
 		parent::setColoaneTotalizate(array(4, 5));
 		parent::setTotalTitleColumn(3);
 		parent::setSumeColoaneTotalizate(array(4=>$total->getIncasari(), 5=>$total->getPlati()));
-		
-	
-		
+
+
+
 		while(strtotime($data_curenta) <= strtotime($this->getTo()))
 		{
 			$data_curenta = new DataCalendaristica($data_curenta);
 
-				
-			/* -------------- PLATI SI INCASARI ---------------- */
-				
+
+			/* -------------- PLĂȚI SI ÎNCASĂRI ---------------- */
+
 			$situatie = new SituatieMecanicaTotaluri($data_curenta, $data_curenta, $this->firma);
 
 			if($situatie->isCompletata())
 			{
 				if($situatie->getTotalIncasari() != 0)
 				{
-					$this->addRow(array($this->getIndexNewRow(), "", $data_curenta->romanianFormat(), "INCASARI",  $situatie->getTotalIncasari(), 0));
+					$this->addRow(array($this->getIndexNewRow(), "", $data_curenta->romanianFormat(), "ÎNCASĂRI",  $situatie->getTotalIncasari(), 0));
 				}
 
 				if($situatie->getTotalPremii() != 0)
@@ -143,7 +143,7 @@ class RegistruGraficFirma extends RegistruGrafic
 				foreach ($calcul_bilete->getCarnete() as $carnet)
 				{
 					$numar_de_bilete  = $carnet->getNumarulDeBilete();
-						
+
 					if($numar_de_bilete != 0)
 					{
 						$_suma = $numar_de_bilete * $pret_taxa_pe_bilet;
@@ -153,20 +153,20 @@ class RegistruGraficFirma extends RegistruGrafic
 				}
 			}
 
-				
+
 			/* ------------------------ IMPOZIT ------------------------------*/
-	
+
 			$_suma = 0;
-												
-	
+
+
 			$q="SELECT 	i.id,
 					i.data,
 					i.suma
-			FROM impozit AS i 
-			LEFT JOIN firma AS f ON f.id=i.idFirma 
-			WHERE 	i.idFirma='".$this->getFirma()->getID()."' AND 
-					i.data='".$data_curenta."'";		
-			
+			FROM impozit AS i
+			LEFT JOIN firma AS f ON f.id=i.idFirma
+			WHERE 	i.idFirma='".$this->getFirma()->getID()."' AND
+					i.data='".$data_curenta."'";
+
 			$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL()->getResource());
 			while($premiu = mysql_fetch_array($result))
 			{
@@ -175,18 +175,18 @@ class RegistruGraficFirma extends RegistruGrafic
 					$_suma += (($premiu['suma'] - $prag_de_impozitare) * $procent_impozitare / 100);
 				}
 			}
-			
+
 			if($_suma != 0)
 			{
 				$impozit->actualizeazaIncasari($_suma);
 				$this->addRow(array($this->getIndexNewRow(), "", $data_curenta->romanianFormat(), "IMPOZIT",  $_suma, 0));
 			}
-		
-		
-		
+
+
+
 			/* ---------------------------- DISPOZITII -------------------------------*/
 
-			
+
 			$query = "SELECT
 						d.id,
 						d.data,
@@ -196,51 +196,51 @@ class RegistruGraficFirma extends RegistruGrafic
 						d.document,
 						d.explicatie,
 						(SELECT nume FROM `firma` AS f WHERE f.id = d._to) AS denumire_firma
-					FROM dispozitie AS d 				
-					WHERE  data='".$data_curenta."'  AND _to='".$this->getFirma()->getID()."' ";					
-			
+					FROM dispozitie AS d
+					WHERE  data='".$data_curenta."'  AND _to='".$this->getFirma()->getID()."' ";
+
 			$result_zi = mysql_query($query, Aplicatie::getInstance()->getMYSQL()->getResource());
-	
+
 			while($dispozitie = mysql_fetch_array($result_zi))
-			{	
+			{
 				if($dispozitie['tip'] == "plata")
-				{	
-					$this->addRow(array($this->getIndexNewRow(), htmlspecialchars($dispozitie['document']), $data_curenta->romanianFormat(), "DISPOZITIE INCASARE",  $dispozitie['valoare'],0));
-					$dispozitii->actualizeazaIncasari($dispozitie['valoare']);
-				}
-				else 
 				{
-					$this->addRow(array($this->getIndexNewRow(), htmlspecialchars($dispozitie['document']), $data_curenta->romanianFormat(), "DISPOZITIE PLATA",  0, $dispozitie['valoare']));
-					$dispozitii->actualizeazaPlati($dispozitie['valoare']);					
+					$this->addRow(array($this->getIndexNewRow(), htmlspecialchars($dispozitie['document']), $data_curenta->romanianFormat(), "DISPOZIȚIE ÎNCASARE",  $dispozitie['valoare'],0));
+					$dispoziții->actualizeazaIncasari($dispozitie['valoare']);
 				}
-			}	
-		
+				else
+				{
+					$this->addRow(array($this->getIndexNewRow(), htmlspecialchars($dispozitie['document']), $data_curenta->romanianFormat(), "DISPOZIȚIE PLATĂ",  0, $dispozitie['valoare']));
+					$dispoziții->actualizeazaPlati($dispozitie['valoare']);
+				}
+			}
+
 			/* ----------------------- mergem la ziua urmatoare ---------------------------*/
-			
+
 			$data_curenta = new DataCalendaristica(DataCalendaristica::getZiuaUrmatoare($data_curenta));
 		}
-	
+
 		/* --------------- Adaugare totaluri ---------------- */
-			
-		$total->actualizeazaIncasari($impozit->getIncasari());		
+
+		$total->actualizeazaIncasari($impozit->getIncasari());
 		$total->actualizeazaIncasari($incasari->getIncasari());
 		$total->actualizeazaIncasari($bilete->getIncasari());
-		$total->actualizeazaIncasari($dispozitii->getIncasari());
-		$total->actualizeazaPlati($dispozitii->getPlati());
+		$total->actualizeazaIncasari($dispoziții->getIncasari());
+		$total->actualizeazaPlati($dispoziții->getPlati());
 		$total->actualizeazaPlati($plati->getIncasari());
-	
+
 		$this->addTotal($plati);
 		$this->addTotal($incasari);
 		$this->addTotal($bilete);
 		$this->addTotal($impozit);
-		$this->addTotal($dispozitii);
+		$this->addTotal($dispoziții);
 		$this->addTotal($total);
-		
-		
+
+
 		$this->actualizeazaIncasari($total->getIncasari());
 		$this->actualizeazaPlati($total->getPlati());
 	}
-	
+
 
 	/**
 	 * Returneaza soldul total care a fost in luna trecuta penmtru o firma. Returneaza 0 daca nu exista niciun sold
@@ -251,17 +251,17 @@ class RegistruGraficFirma extends RegistruGrafic
 	 */
 	public static function getSoldTotalLunar(Firma $firma, DataCalendaristica $data)
 	{
-		$_total = 0;	
-	
+		$_total = 0;
+
 		$q="SELECT 	valoare
 		FROM sold_inchidere_luna
-		 WHERE data_>='".$data->getFirstDayOfMonth()."' AND data_<= '".$data->getLastDayOfMonth()."' AND idFirma = '".$firma->getID()."'";	
-		
+		 WHERE data_>='".$data->getFirstDayOfMonth()."' AND data_<= '".$data->getLastDayOfMonth()."' AND idFirma = '".$firma->getID()."'";
+
 		$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL()->getResource());
 		while($db = mysql_fetch_array($result))
-		{				
+		{
 			$_total += intval($db['valoare']);
-		}		
+		}
 		return $_total;
 	}
 }

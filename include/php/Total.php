@@ -75,7 +75,7 @@ class Total
 	
 	
 	/**
-	 * Returneaza suma totala care reprezinta platile
+	 * Returneaza suma totală care reprezinta platile
 	 */
 	public function getPlati()
 	{

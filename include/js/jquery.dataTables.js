@@ -9524,7 +9524,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sZeroRecords": "Se pare ca nu exista rezultate pentru cautare"
+			"sZeroRecords": "Se pare că nu există rezultate pentru căutare"
 		},
 
 

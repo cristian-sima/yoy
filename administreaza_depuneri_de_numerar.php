@@ -24,8 +24,8 @@ $selector_GUI->setAdresaButon("administreaza_depuneri_de_numerar.php");
 $selector_GUI->setTypeOfDocument("Depuneri de numerar");
 
 
-Page::showHeading("Vizualizati depuneri de numerar", '
-			<input class="disp" type="button" value="Printează" class="disp" onclick="window.print();" /> 
+Page::showHeading("Vizualizați depuneri de numerar", '
+			<input class="disp" type="button" value="Tipărește" class="disp" onclick="window.print();" /> 
 			<input	class="disp" type="button" value="Înapoi actiuni" class="disp" onclick="document.location='."'".'actiuni.php?data='.$data."'".'" />
 			<input	class="disp" type="button" value="Depunere noua" class="disp" onclick="document.location='."'".'depunere_numerar_noua.php?data='.$data."'".'" />
 			

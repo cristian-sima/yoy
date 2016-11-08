@@ -249,7 +249,7 @@ class Login
 	}
 
 	/**
-	 * Sterge cook-urile, datele de sesiune și implicit deconecteaza utilizatorul conectat
+	 * Șterge cook-urile, datele de sesiune și implicit deconecteaza utilizatorul conectat
 	 */
 	public static function disconnect()
 	{
@@ -261,7 +261,7 @@ class Login
 
 		if(isset($_SESSION['user']))
 		{
-			/* Sterge sesiunea */
+			/* Șterge sesiunea */
 			unset($_SESSION['user']);
 			unset($_SESSION['parola']);
 			$_SESSION = array(); // reseteaza matricea sesiunii
@@ -288,7 +288,7 @@ class Login
 		$data_expir = $data-601;
 		$ip = $_SERVER['REMOTE_ADDR'];
 
-		/* Sterge randurile din tabelul user_temp mai vechi de 10 min */
+		/* Șterge randurile din tabelul user_temp mai vechi de 10 min */
 		$sql = "DELETE FROM `user_temp`
 					WHERE `data`<$data_expir";
 		mysql_query($sql, self::$mysql->getResource());

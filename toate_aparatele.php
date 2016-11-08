@@ -28,7 +28,7 @@
 				<th>Numele ap.</th>
 				<th>Exp. autoriz.</th>
 				<th>Exp. insp. tech.</th>
-				<th>Denumire firma spatiu</th>
+				<th>DENUMIRE FIRMĂ spatiu</th>
 			</tr>
 		</thead>
 		<tbody>';
@@ -68,7 +68,7 @@
 				<th>Numele ap.</th>
 				<th>Exp. autoriz.</th>
 				<th>Exp. insp. tech.</th>
-				<th>Denumire firma spatiu</th>
+				<th>DENUMIRE FIRMĂ spatiu</th>
 			</tr>
 		</thead>
 		<tbody>';

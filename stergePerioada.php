@@ -42,7 +42,7 @@
 			
 			//procent
 			
-			echo'<span class="confirmation">Perioada a fost stearsa</span> <a href="perioade.php?id='.$data['idFirma'].'">Înapoi la perioade</a>';
+			echo'<span class="confirmation">Perioada a fost ștearsă</span> <a href="perioade.php?id='.$data['idFirma'].'">Înapoi la perioade</a>';
 			
 			
 			?>

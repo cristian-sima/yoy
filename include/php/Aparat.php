@@ -86,7 +86,7 @@
 		
 		/**
 		 *
-		 * @description			Returneaza ordinea aparatului. Aceasta valoare este folosita pentru a afisa aparatele intr-o anumita ordine
+		 * @description			Returneaza ordinea aparatului. Aceasta valoare este folosita pentru a afișa aparatele intr-o anumita ordine
 		 * @return int			Ordinea aparatului stabilita de administrator.
 		 *
 		 */

@@ -49,7 +49,7 @@ class RegistruGraficGeneral extends RegistruGrafic
 									"width"		=> "50px"
 									),
 									array(
-									"content" 	=> 	"NR. <br /> ACT CASA",
+									"content" 	=> 	"NR. <br /> ACT CASĂ",
 									"width" 	=>	"125px" 
 									),
 									array(
@@ -57,15 +57,15 @@ class RegistruGraficGeneral extends RegistruGrafic
 									"width" 	=>	"90px" 
 									),
 									array(
-									"content" 	=> 	"EXPLICATII",
+									"content" 	=> 	"EXPLICAȚII",
 									"width" 	=>	"310px" 
 									),
 									array(
-									"content" 	=> 	"INCASARI",
+									"content" 	=> 	"ÎNCASĂRI",
 									"width" 	=>	"200px" 
 									),
 									array(
-									"content" 	=> 	"PLATI",
+									"content" 	=> 	"PLĂȚI",
 									"width"		=>	"200px" 
 									)
 									);
@@ -75,12 +75,12 @@ class RegistruGraficGeneral extends RegistruGrafic
 		$procent_impozitare 	= Guvern::getProcentDeImpozitare($this->getFrom());
 		$data_curenta 			= $this->getFrom();
 
-		$incasari		= new Total("Incasari");
-		$plati			= new Total("Plati");
+		$incasari		= new Total("Încasări");
+		$plati			= new Total("Plăți");
 		$bilete			= new Total("Bilete");
 		$total			= new Total("General");
 		$impozit		= new Total("Impozit");
-		$dispozitii		= new Total("Dispozitii");
+		$dispoziții		= new Total("Dispozitii");
 
 		$suma = self::getSoldTotalLunar(new DataCalendaristica(DataCalendaristica::getZiuaPrecedenta($this->getFrom())));
 		
@@ -111,7 +111,7 @@ class RegistruGraficGeneral extends RegistruGrafic
 			$data_curenta 			= new DataCalendaristica($data_curenta);
 
 				
-			/* -------------- PLATI SI INCASARI ---------------- */
+			/* -------------- PLĂȚI SI ÎNCASĂRI ---------------- */
 			
 			
 			$q="SELECT 	id_firma 
@@ -151,7 +151,7 @@ class RegistruGraficGeneral extends RegistruGrafic
 		
 			if($_aparate_mecanice->getIncasari() != 0)
 			{
-				$this->addRow(array($this->getIndexNewRow(), "", $data_curenta->romanianFormat(), "INCASARI",  $_aparate_mecanice->getIncasari(), 0));
+				$this->addRow(array($this->getIndexNewRow(), "", $data_curenta->romanianFormat(), "ÎNCASĂRI",  $_aparate_mecanice->getIncasari(), 0));
 			}
 
 			if($_aparate_mecanice->getPlati() != 0)
@@ -220,12 +220,12 @@ class RegistruGraficGeneral extends RegistruGrafic
 				if($dispozitie['tip'] == "plata")
 				{	
 					$this->addRow(array($this->getIndexNewRow(), htmlspecialchars($dispozitie['document']), $data_curenta->romanianFormat(), "DISP INCASARE DE LA CASA SPRE ".$dispozitie['denumire_firma'], $dispozitie['valoare'],0));
-					$dispozitii->actualizeazaIncasari($dispozitie['valoare']);
+					$dispoziții->actualizeazaIncasari($dispozitie['valoare']);
 				}
 				else 
 				{
 					$this->addRow(array($this->getIndexNewRow(), htmlspecialchars($dispozitie['document']), $data_curenta->romanianFormat(), "DISP. PLATA DE LA ".$dispozitie['denumire_firma'].' SPRE CASA',  0, $dispozitie['valoare']));
-					$dispozitii->actualizeazaPlati($dispozitie['valoare']);					
+					$dispoziții->actualizeazaPlati($dispozitie['valoare']);					
 				}
 			}	
 				
@@ -239,15 +239,15 @@ class RegistruGraficGeneral extends RegistruGrafic
 		$total->actualizeazaIncasari($impozit->getIncasari());		
 		$total->actualizeazaIncasari($incasari->getIncasari());
 		$total->actualizeazaIncasari($bilete->getIncasari());
-		$total->actualizeazaIncasari($dispozitii->getIncasari());
-		$total->actualizeazaPlati($dispozitii->getPlati());
+		$total->actualizeazaIncasari($dispoziții->getIncasari());
+		$total->actualizeazaPlati($dispoziții->getPlati());
 		$total->actualizeazaPlati($plati->getIncasari());
 	
 		$this->addTotal($plati);
 		$this->addTotal($incasari);
 		$this->addTotal($bilete);
 		$this->addTotal($impozit);
-		$this->addTotal($dispozitii);
+		$this->addTotal($dispoziții);
 		$this->addTotal($total);
 		
 		

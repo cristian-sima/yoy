@@ -24,10 +24,9 @@
 			id="example" style="">
 			<thead>
 				<tr>
-					<th>Nume firma</th>
+					<th>Denumire</th>
 					<th>Localitate</th>
 					<th>Procent</th>
-
 				</tr>
 			</thead>
 			<tbody>
@@ -64,7 +63,7 @@
 			id="example2" style="">
 			<thead>
 				<tr>
-					<th>Nume firma</th>
+					<th>Denumire</th>
 					<th>Localitate</th>
 					<th>Data incetare</th>
 

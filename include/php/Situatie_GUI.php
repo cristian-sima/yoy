@@ -39,7 +39,7 @@ class Situatie_GUI
 
 
 	/**
-	* Afiseaza o situatie grafica pentru o firma intr-o anumita perioada. Aceasta situatie este compusa din situatia index-urilor și a biletelor care au fost vandute in aceea zi sau perioada
+	* Afișează o situatie grafica pentru o firma intr-o anumita perioada. Aceasta situatie este compusa din situatia index-urilor și a biletelor care au fost vandute in aceea zi sau perioada
 	*
 	* @param SituatieGrafica $situatie				Situatia grafica pentru firma respectiva
 	* @param object $bilete						Situatia biletelor pentru firma respectiva
@@ -82,7 +82,7 @@ class Situatie_GUI
 
 	/**
 	*
-	* Seteaza daca butonul de adaugat bilete se va afisa sau nu
+	* Seteaza daca butonul de adaugat bilete se va afișa sau nu
 	* @param $boolean			True daca butonul de adaugat bilete se afiseaza false daca nu
 	*
 	*/
@@ -93,7 +93,7 @@ class Situatie_GUI
 
 	/**
 	*
-	* Seteaza daca biletele default se va afisa sau nu
+	* Seteaza daca biletele default se va afișa sau nu
 	* @param $boolean			True daca biletele default se afiseaza false daca nu
 	*
 	*/
@@ -110,7 +110,7 @@ class Situatie_GUI
 
 	/**
 	*
-	* Seteaza daca biletele se va afisa sau nu
+	* Seteaza daca biletele se va afișa sau nu
 	* @param $boolean			True daca biletele se afiseaza false daca nu
 	*
 	*/
@@ -121,7 +121,7 @@ class Situatie_GUI
 
 	/**
 	*
-	* Seteaza daca autorul se va afisa sau nu
+	* Seteaza daca autorul se va afișa sau nu
 	* @param $boolean			True daca autorul se afiseaza false daca nu
 	*
 	*/
@@ -202,7 +202,7 @@ class Situatie_GUI
 
 	/**
 	*
-	* Afiseaza intreaga situatie in format PDF
+	* Afișează intreaga situatie in format PDF
 	*
 	*/
 	public function display()
@@ -238,7 +238,7 @@ class Situatie_GUI
 
 	/**
 	*
-	* Afiseaza inceputul situatiei și deschide formularul
+	* Afișează inceputul situatiei și deschide formularul
 	*
 	*/
 	private function displayStart()
@@ -264,7 +264,7 @@ class Situatie_GUI
 
 	/**
 	*
-	* Afiseaza informatii sumative despre situatie. Acestea include data, organizatorul, etc
+	* Afișează informatii sumative despre situatie. Acestea include data, organizatorul, etc
 	*
 	*/
 	private function displayInformation()
@@ -297,7 +297,7 @@ class Situatie_GUI
 
 	/**
 	*
-	* Afiseaza titlul și subtitlul pentru situatie
+	* Afișează titlul și subtitlul pentru situatie
 	*
 	*/
 	private function displayTitle()
@@ -311,7 +311,7 @@ class Situatie_GUI
 
 	/**
 	*
-	* Afiseaza headerul pentru tabel. Acesta include capetele de tabel.
+	* Afișează headerul pentru tabel. Acesta include capetele de tabel.
 	*
 	*/
 	private function displayHeaderData()
@@ -376,7 +376,7 @@ class Situatie_GUI
 
 	/**
 	*
-	* Afiseaza datele despre aparate in tabelul pentru situatie
+	* Afișează datele despre aparate in tabelul pentru situatie
 	*
 	*/
 	private function displayData()
@@ -456,7 +456,7 @@ class Situatie_GUI
 
 	/**
 	*
-	* Afiseaza un rand in situatie. Acest rand este compus din 17 campuri
+	* Afișează un rand in situatie. Acest rand este compus din 17 campuri
 	*
 	* @param int $id					ID-ul randului
 	* @param array $columns			O matrice cu 17 campuri pentru toate coloanele
@@ -475,7 +475,7 @@ class Situatie_GUI
 
 	/**
 	*
-	* Afiseaza header-ul. Acesta include persoana care a completat situatia, situatia de bilite și toate totalurile
+	* Afișează header-ul. Acesta include persoana care a completat situatia, situatia de bilite și toate totalurile
 	*
 	*/
 	private function displayHeader()
@@ -501,7 +501,7 @@ class Situatie_GUI
 
 	/**
 	*
-	* Afiseaza persoana care a completat situatia
+	* Afișează persoana care a completat situatia
 	*
 	*/
 	private function _displayAutor()
@@ -519,7 +519,7 @@ class Situatie_GUI
 
 	/**
 	*
-	* Afiseaza situatia de bilete pentru situatie
+	* Afișează situatia de bilete pentru situatie
 	*
 	*/
 	private function _displayBilete()
@@ -591,7 +591,7 @@ class Situatie_GUI
 
 	/**
 	*
-	* Afiseaza tabelul cu totaluri. Acesta include totalul de incasari, de plati și ceea ce ramane in sertar
+	* Afișează tabelul cu totaluri. Acesta include totalul de incasari, de plati și ceea ce ramane in sertar
 	*
 	*/
 	private function _displayTotaluri()
@@ -621,7 +621,7 @@ class Situatie_GUI
 
 	/**
 	*
-	* 	Afiseaza inchiderea formularului și a situatiei (div)
+	* 	Afișează inchiderea formularului și a situatiei (div)
 	*
 	*/
 	private function displayEnd()

@@ -133,14 +133,14 @@ while($taxa = mysql_fetch_array($result)){
 			<table width="100%">
 			<tr>
 			<td>
-		<big>Incasari:</big>
+		<big>Încasări:</big>
 			</td>
 			<td style="text-align:right">
 				<?php 
 				if($infoUser['type'] == 'admin')
 				{
 					?>
-					<input type="button" class="disp" value="Printeaza" onclick="window.print()"/>
+					<input type="button" class="disp" value="Tipărește" onclick="window.print()"/>
 			
 			<input type="button" class="disp" value="Înapoi la incasari" onclick="document.location='incasari.php?id=<?php echo$firma['id'];?>'" />
 					
@@ -191,11 +191,11 @@ while($taxa = mysql_fetch_array($result)){
 					echo '<b>Numar bilete: </b> '.$incasare['bilete'].' bilete<br />';
 					echo '<b>Taxa bilete: </b> '.$incasare['taxaBilete'].' lei<br />';
 					echo '<b>Taxa autorizare aparate </b>: '.$incasare['taxaAparate'].' lei<br /><br /><hr><br />';
-					echo '<b>Incasari aparate: </b> '.$incasare['incasari'].' lei<br />';
+					echo '<b>Încasări aparate: </b> '.$incasare['incasari'].' lei<br />';
 					echo '<b>Premii aparate: </b>'.$incasare['plati'].' lei<br /><br /><br /><hr><br />';
 					echo '<b>Procent partener: </b> '.$incasare['procent'].'%<br /><br />';
 					echo '<b>Restanta din urma: </b> '.$incasare['restanta'].' lei<br /><br /><hr><br />';
-					echo '<b>Total retinut = [ (Incasari + Taxa Bilete + Taxa autorizare - Premii ) x '.(100-$incasare['procent']).']/100 + Restanta =  : </b> <big style="color:orange"> '.$incasare['total'].' lei</big><br />';
+					echo '<b>Total retinut = [ (Încasări + Taxa Bilete + Taxa autorizare - Premii ) x '.(100-$incasare['procent']).']/100 + Restanta =  : </b> <big style="color:orange"> '.$incasare['total'].' lei</big><br />';
 					
 					echo '<b>Cat a platit de fapt: </b> <big style="color:green">  '.$incasare['catAplatit'].' lei</big><br />';
 					

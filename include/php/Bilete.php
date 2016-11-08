@@ -42,7 +42,7 @@ class Bilete
 
 	/**
 	 *
-	 * @description				Printeaza o descrie a tuturor carnetelor
+	 * @description				Tipărește o descrie a tuturor carnetelor
 	 * @return					Descrierea biletele petru perioada respectiva
 	 *
 	 */

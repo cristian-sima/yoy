@@ -48,7 +48,7 @@ class RegistruGraficCentral extends RegistruGrafic
 									"width"		=> "50px"
 									),
 									array(
-									"content" 	=> 	"NR. <br /> ACT CASA",
+									"content" 	=> 	"NR. <br /> ACT CASĂ",
 									"width" 	=>	"125px" 
 									),
 									array(
@@ -56,15 +56,15 @@ class RegistruGraficCentral extends RegistruGrafic
 									"width" 	=>	"90px" 
 									),
 									array(
-									"content" 	=> 	"EXPLICATII",
+									"content" 	=> 	"EXPLICAȚII",
 									"width" 	=>	"310px" 
 									),
 									array(
-									"content" 	=> 	"INCASARI",
+									"content" 	=> 	"ÎNCASĂRI",
 									"width" 	=>	"200px" 
 									),
 									array(
-									"content" 	=> 	"PLATI",
+									"content" 	=> 	"PLĂȚI",
 									"width"		=>	"200px" 
 									)
 									);
@@ -74,7 +74,7 @@ class RegistruGraficCentral extends RegistruGrafic
 		$sold_precedent	= new Total("Sold precedent");
 		$deconturi		= new Total("Deconturi");
 		$depuneri		= new Total("Depuneri");
-		$dispozitii		= new Total("Dispozitii");
+		$dispoziții		= new Total("Dispozitii");
 		$total			= new Total("General");
 
 		$suma = self::getSoldTotalLunar(new DataCalendaristica(DataCalendaristica::getZiuaPrecedenta($this->getFrom())));
@@ -128,12 +128,12 @@ class RegistruGraficCentral extends RegistruGrafic
 				if($dispozitie['tip'] == "incasare")
 				{	
 					$this->addRow(array($this->getIndexNewRow(), htmlspecialchars($dispozitie['document']), $data_curenta->romanianFormat(), "DISP. INCASARE <small>DE LA</small> ".$dispozitie['denumire_firma'], $dispozitie['valoare'],0));
-					$dispozitii->actualizeazaIncasari($dispozitie['valoare']);
+					$dispoziții->actualizeazaIncasari($dispozitie['valoare']);
 				}
 				else 
 				{
 					$this->addRow(array($this->getIndexNewRow(), htmlspecialchars($dispozitie['document']), $data_curenta->romanianFormat(), "DISP. PLATA <small>SPRE</small> ".$dispozitie['denumire_firma'],  0, $dispozitie['valoare']));
-					$dispozitii->actualizeazaPlati($dispozitie['valoare']);					
+					$dispoziții->actualizeazaPlati($dispozitie['valoare']);					
 				}
 			}	
 			
@@ -184,13 +184,13 @@ class RegistruGraficCentral extends RegistruGrafic
 				
 	$total->actualizeazaPlati($deconturi->getIncasari());
 	$total->actualizeazaPlati($depuneri->getIncasari());	
-	$total->actualizeazaPlati($dispozitii->getPlati());	
-	$total->actualizeazaIncasari($dispozitii->getIncasari());
+	$total->actualizeazaPlati($dispoziții->getPlati());	
+	$total->actualizeazaIncasari($dispoziții->getIncasari());
 
 	$this->addTotal($sold_precedent);
 	$this->addTotal($deconturi);
 	$this->addTotal($depuneri);
-	$this->addTotal($dispozitii);
+	$this->addTotal($dispoziții);
 	$this->addTotal($total);
 	
 	$this->actualizeazaIncasari($total->getIncasari());

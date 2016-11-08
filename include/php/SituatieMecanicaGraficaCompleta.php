@@ -67,7 +67,7 @@
 		
 		/**
 		 *
-		 * 		Sterge orice fel de incasari la toate aparatele
+		 * 		Șterge orice fel de incasari la toate aparatele
 		 *
 		 */
 		private function makeNoProfit()

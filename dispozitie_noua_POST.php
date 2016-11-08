@@ -120,7 +120,7 @@ try
 			<big><span class="confirmation">Dispoziția a fost scrisă </span></big>
 			<div style="margin-left:50px;">
 				<ul >
-					<li><a href="vizualizare_dispozitii.php">Înapoi la dispozitii</a></li>
+					<li><a href="vizualizare_dispozitii.php">Înapoi la dispoziții</a></li>
 					<li><a href="registru_firma_spatiu.php?id_firma='.$data['_to'].'&data='.date("Y-m-d").'">Înapoi la registrul de casă al firmei</a></li>
 					<li><a href="situatie_mecanica.php?id_firma='.$data['_to'].'">Înapoi la situție zilnică</a></li>
 				</ul>

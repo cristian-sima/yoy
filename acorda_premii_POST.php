@@ -13,29 +13,29 @@ Page::showContent();
 
 
 
-  
+
 // functia care valideaza datele primite și returneaza erorile daca sunt
 function is_cnp_valid($cnp_primit)
     {
-  
+
     $cnp['cnp primit'] = $cnp_primit;
     // prima cifra din cnp reprezinta sexul și nu poate fi decat 1,2,5,6 (pentru cetatenii romani)
     // 1, 2 pentru cei nascuti intre anii 1900 și 1999
     // 5, 6 pentru cei nsacuti dupa anul 2000
-    $cnp['sex'] = $cnp['cnp primit']{0};      
+    $cnp['sex'] = $cnp['cnp primit']{0};
     // cifrele 2 și 3 reprezinta anul nasterii
-    $cnp['an'] = $cnp['cnp primit']{1}.$cnp['cnp primit']{2};            
+    $cnp['an'] = $cnp['cnp primit']{1}.$cnp['cnp primit']{2};
     // cifrele 4 și 5 reprezinta luna (nu poate fi decat intre 1 și 12)
-    $cnp['luna']    = $cnp['cnp primit']{3}.$cnp['cnp primit']{4};    
+    $cnp['luna']    = $cnp['cnp primit']{3}.$cnp['cnp primit']{4};
     // cifrele 6 și 7 reprezinta ziua (nu poate fi decat intre 1 și 31)
-    $cnp['zi']    = $cnp['cnp primit']{5}.$cnp['cnp primit']{6};                                
+    $cnp['zi']    = $cnp['cnp primit']{5}.$cnp['cnp primit']{6};
     // cifrele 8 și 9 reprezinta codul judetului (nu poate fi decat intre 1 și 52)
-    $cnp['judet'] = $cnp['cnp primit']{7}.$cnp['cnp primit']{8};                                            
+    $cnp['judet'] = $cnp['cnp primit']{7}.$cnp['cnp primit']{8};
     // cifrele 10,11,12 reprezinta un nr. poate fi intre 001 și 999.
     // Numerele din acest interval se impart pe judete,
     // birourilor de evidenta a populatiei, astfel inct un anumit numar din acel
     // interval sa fie alocat unei singure persoane intr-o anumita zi.
-  
+
     // cifra 13 reprezinta cifra de control aflata in relatie cu
     // toate celelate 12 cifre ale CNP-ului.
     // fiecare cifra din CNP este inmultita cu cifra de pe aceeasi pozitie
@@ -51,7 +51,7 @@ function is_cnp_valid($cnp_primit)
     // setarea variabilei de erori, in cazul in care nu exista erori
     // sa returneze un array gol (altfel ar da eroare)
     $erori = array();
-  
+
     if (empty($cnp['cnp primit']))
         $erori[] = 'Câmpul CNP este gol!<br>';
 
@@ -59,7 +59,7 @@ function is_cnp_valid($cnp_primit)
         {
         if (! is_numeric($cnp['cnp primit']))
             $erori[] = 'CNP-ul este format doar din cifre!<br>';
-          
+
         if (strlen($cnp['cnp primit']) != 13)
             {
             $cifre = strlen($cnp['cnp primit']);
@@ -67,37 +67,37 @@ function is_cnp_valid($cnp_primit)
             }
         if($cnp['sex'] != 1 && $cnp['sex'] != 2 && $cnp['sex'] != 5 && $cnp['sex'] != 6)
             $erori[] = 'Prima cifra din CNP - eronata!<br>';
-  
+
         if($cnp['luna'] > 12 || $cnp['luna'] == 0 )
             $erori[] = 'Luna este incorecta!<br>';
-  
+
         if($cnp['zi'] > 31 || $cnp['zi'] == 0)
             $erori[] = 'Ziua este incorecta!<br>';
-  
+
         if ( is_numeric($cnp['luna']) && is_numeric($cnp['zi']) && is_numeric($cnp['an']) )
         {
             if (! checkdate($cnp['luna'],$cnp['zi'],$cnp['an']))
                 $erori[] = 'Data de nastere specificata este incorecta<br>';
         }
-          
+
         if($cnp['judet'] > 52 || $cnp['judet'] == 0)
             $erori[] = 'Codul judetului este eronat!<br>';
-  
+
         if (($cnp['rest'] < 10 && $cnp['rest'] != $cnp['cnp primit']{12})
             || ($cnp['rest'] >= 10 && $cnp['cnp primit']{12} != 1))
             $erori[] = 'Cifra de control este gresita! (CNP-ul nu este valid)<br>';
         }
 
-     if (count($erori) != 0) 
+     if (count($erori) != 0)
      {
-     	return false;	
+     	return false;
      }
      else
      {
-     	return true;	
+     	return true;
      }
 }
- 
+
 
 
 
@@ -120,10 +120,10 @@ try
 	$data 						= $_POST;
 
 	// Page::representVisual($data);
-	
+
 	Procesare::checkRequestedData(  array('persoane','id_firma','data','suma','nume','CNP','confirmation'),$data,'acorda_premii.php');
 
-	
+
 	$firma 						= new FirmaSpatiu($_POST['id_firma']);
 	$today						= new DataCalendaristica($data['data']);
 	$prag_de_impozitare 		= Guvern::getPragDeImpozitare($today);
@@ -132,15 +132,15 @@ try
 	/*
 	 * Verificare valoare
 	 */
-	
+
 	$data['CNP'] = trim($data['CNP']);
-	
+
 	if(! is_cnp_valid($data['CNP']))
 	{
 		throw new Exception("CNP-ul nu este numeric");
 	}
-	
-	$data['suma']  = str_replace(",",".",$data['suma']);	
+
+	$data['suma']  = str_replace(",",".",$data['suma']);
 	if(!is_numeric  ($data['suma']))
 	{
 		throw new Exception("Valoare trebuie sa fie numerica. (Daca doriti sa scrieti cu zecimale folositi punctul");
@@ -150,8 +150,8 @@ try
 	{
 		throw new Exception("Valoare trebuie sa fie mai mare sau egala cu 0");
 	}
-	
-	
+
+
 
 	if(Aplicatie::getInstance()->getUtilizator()->isOperator() &&
 	($data['id_firma'] != Aplicatie::getInstance()->getUtilizator()->getIDFirma()) )
@@ -164,7 +164,7 @@ try
 	$mysql = "SELECT suma
 			  FROM `impozit`
 			  WHERE 	`CNP`='".$data['CNP']."' AND
-			  		 	`idFirma`='".$data['id_firma']."' AND 
+			  		 	`idFirma`='".$data['id_firma']."' AND
 			  		 	`data`='".$data['data']."'";
 	$result = mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
 	while($premiu = mysql_fetch_array($result))
@@ -191,21 +191,21 @@ try
 
 	if(($suma_premiu != 0) && ($data['confirmation'] == 'false') && ($castigat> $prag_de_impozitare) )
 	{
-		echo'<span style="font-size:20px;color:orange"><img src="img/atentie.png" align="absmiddle" /> Atentie !</span><br /> <span style="color:red">Aceasta persoana a mai jucat astazi și a depasit pragul de impozitare. </span><br />
+		echo'<span style="font-size:20px;color:orange"><img src="img/atentie.png" align="absmiddle" /> Atenție !</span><br /> <span style="color:red">Această persoană a mai jucat astăzi și a depășit pragul de impozitare. </span><br />
 			<br />
 			<table width="400px">
-			<tr><td width="50%">Suma totala castigata:</td><td width="50%"> <b>'.$castigat.'</b> <span class="smoke">lei</span></td></tr>
+			<tr><td width="50%">Sumă totală câștigată:</td><td width="50%"> <b>'.$castigat.'</b> <span class="smoke">lei</span></td></tr>
 			<tr><td width="50%">
-			Suma castigata acum: </td><td width="50%"><b>'.($data['suma']).'</b> <span class="smoke"> lei</span></td>
+			Sumă câștigată acum: </td><td width="50%"><b>'.($data['suma']).'</b> <span class="smoke"> lei</span></td>
 			<tr><td width="50%">
-			Suma impozitata: <hr></td><td width="50%"><b>'.($data['suma'] - $diferenta).'</b>  <span class="smoke">lei</span><hr></td></tr>
+			Sumă impozitată: <hr></td><td width="50%"><b>'.($data['suma'] - $diferenta).'</b>  <span class="smoke">lei</span><hr></td></tr>
 			<tr><td width="50%">Impozit: <hr></td><td width="50%"><b>'.$impozit.'</b>  <span class="smoke">lei</span><hr></td></tr>
-			<tr><td width="50%">Suma restituita clientului:</td> <td width="50%"><b style="color:orange">'.($data['suma'] - $impozit).'</b>  <span class="smoke">lei</span></td></tr>
+			<tr><td width="50%">Sumă restituită clientului:</td> <td width="50%"><b style="color:orange">'.($data['suma'] - $impozit).'</b>  <span class="smoke">lei</span></td></tr>
 			</table>
-			<br />	
+			<br />
 			<center>
 			<big style="color:blue;font-size:20px">
-			Validati datele ?</big>
+			Validați datele ?</big>
 			<br />';?>
 
 <form action="acorda_premii_POST.php" method="POST">
@@ -248,26 +248,26 @@ try
 			$impoz = $data['suma'] - $diferenta;
 			$imp = ($data['suma'] - $diferenta) * $procent_impozitare / 100;
 		}
-			
+
 		echo'<br />
 					<table width="400px">
 					<tr><td width="50%">
-					Suma totala castigata:</td><td width="50%"> <b>'.$castigat.'</b> <span class="smoke">lei</span></td></tr>
+					Sumă totală câștigată:</td><td width="50%"> <b>'.$castigat.'</b> <span class="smoke">lei</span></td></tr>
 					<tr><td width="50%">
-					Suma castigata acum: </td><td width="50%"><b>'.($data['suma']).'</b> <span class="smoke"> lei</span></td>
+					Sumă câștigată acum: </td><td width="50%"><b>'.($data['suma']).'</b> <span class="smoke"> lei</span></td>
 					<tr><td width="50%">
-					Suma impozitata: <hr></td><td width="50%"><b>'.($data['suma']-$diferenta).'</b>  <span class="smoke">lei</span><hr></td></tr>
+					Sumă impozitată: <hr></td><td width="50%"><b>'.($data['suma']-$diferenta).'</b>  <span class="smoke">lei</span><hr></td></tr>
 					<tr><td width="50%">Impozit: <hr></td><td width="50%"><b>'.$imp.'</b>  <span class="smoke">lei</span><hr></td></tr>
-					<tr><td width="50%">Suma restituita clientului:</td> <td width="50%"><b style="color:orange">'.($data['suma']-$imp).'</b>  <span class="smoke">lei</span></td></tr>
+					<tr><td width="50%">Sumă restituită clientului:</td> <td width="50%"><b style="color:orange">'.($data['suma']-$imp).'</b>  <span class="smoke">lei</span></td></tr>
 					</table>
 					<br /><br />';
-			
-			
-			
+
+
+
 		$mysql = "SELECT suma from impozit WHERE `CNP`='".$data['CNP']."' AND `idFirma`='".$data['id_firma']."' AND `data`='".$data['data']."'";
 		$result = mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
-			
-			
+
+
 		if(mysql_num_rows($result) != 0)
 		{
 			$mysql = "UPDATE impozit SET suma=suma+".$data['suma']." WHERE `CNP`='".$data['CNP']."' AND `idFirma`='".$data['id_firma']."' AND `data`='".$data['data']."'";
@@ -278,9 +278,9 @@ try
 			$mysql = "INSERT into impozit(`data`,`idFirma`,`CNP`,`nume`,`suma`) VALUES('".$data['data']."', '".$data['id_firma']."','".$_POST['CNP']."','".$_POST['nume']."','".$_POST['suma']."')";
 			$result = mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
 		}
-			
 
-		Page::showConfirmation('<span class="confirmation">Datele au fost introduse cu succes in baza de date</span> <a href="acorda_premii.php?id_firma='.$data['id_firma'].'" style="color:blue"> Înapoi la pagina cu premii</a>');
+
+		Page::showConfirmation('<span class="confirmation">Datele au fost introduse cu succes în baza de date</span> <a href="acorda_premii.php?id_firma='.$data['id_firma'].'" style="color:blue"> Înapoi la pagina cu premii</a>');
 	}
 
 }

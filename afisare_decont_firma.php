@@ -23,12 +23,12 @@ $total_firma_incasari	= round($firma->getProcentFirma($data) * $total_plati / 10
 
 
 $selector_GUI		= new SelectSituatie_GUI($_GET['data'], $_GET['id_firma']);
-	
+
 $selector_GUI->afiseazaButon(true);
 $selector_GUI->setAdresaButon("afisare_decont_firma.php");
 $selector_GUI->afiseazaDescriere(false);
 $selector_GUI->afiseazaToateFirmele(false);
-	
+
 Page::showHeading("Decont ", "");
 
 $selector_GUI->display();
@@ -38,12 +38,12 @@ $selector_GUI->display();
 <table width="100%">
 	<tr>
 		<td width="100%" style="text-align: right"><input type="button"
-			class="disp" value="Printeaza" onclick="window.print()" /> <input
+			class="disp" value="Tipărește" onclick="window.print()" /> <input
 			type="button" class="disp" value="Înapoi la situatii"
 			onclick="document.location='selecteaza_situatie.php?id_firma=<?php echo$firma->getID();?>&data=<?php echo$data;?>'" />
-		
+
 		<td>
-	
+
 	</tr>
 </table>
 
@@ -147,7 +147,7 @@ function nice($text){
 				cont</td>
 			<td class=xl655063 width=86
 				style='border-top: none; border-left: none; width: 65pt'>Valoare
-				totala</td>
+				totală</td>
 			<td class=xl855063 width=60 style='width: 45pt'></td>
 			<td class=xl855063 width=64 style='width: 48pt'></td>
 			<td class=xl795063>&nbsp;</td>
@@ -167,7 +167,7 @@ function nice($text){
 			<td height=17 class=xl675063 style='height: 12.75pt'>&nbsp;</td>
 			<td class=xl645063 width=62 style='border-top: none; width: 47pt'>1</td>
 			<td class=xl635063 style='border-top: none; border-left: none'>708</td>
-			<td class=xl635063 style='border-top: none; border-left: none'>Incasari</td>
+			<td class=xl635063 style='border-top: none; border-left: none'>Încasări</td>
 			<td class=xl765063 style='border-top: none; border-left: none'><?php echo $situatie->getTotalIncasari();?>
 			</td>
 			<td class=xl855063 width=60 style='width: 45pt'></td>
@@ -179,7 +179,7 @@ function nice($text){
 			<td class=xl645063 width=62 style='border-top: none; width: 47pt'>2</td>
 			<td class=xl635063 style='border-top: none; border-left: none'>462</td>
 			<td class=xl635063 style='border-top: none; border-left: none'>Premii
-				jucatori</td>
+				jucători</td>
 			<td class=xl765063 style='border-top: none; border-left: none'><?php echo $situatie->getTotalPremii();?>
 			</td>
 			<td class=xl855063 width=60 style='width: 45pt'></td>
@@ -272,7 +272,7 @@ function nice($text){
 		</tr>
 		<tr height=17 style='height: 12.75pt'>
 			<td height=17 class=xl675063 style='height: 12.75pt'>&nbsp;</td>
-			<td colspan=6 class=xl705063 width=506 style='width: 381pt'>PARTILE
+			<td colspan=6 class=xl705063 width=506 style='width: 381pt'>PĂRȚILE
 				AU STABILIT DE COMUN ACORD CUANTUMUL CHIRIEI PENTRU</td>
 			<td class=xl795063>&nbsp;</td>
 		</tr>
@@ -327,7 +327,7 @@ function nice($text){
 		</tr>
 		<tr height=20 style='height: 15.0pt'>
 			<td height=20 class=xl675063 style='height: 15.0pt'>&nbsp;</td>
-			<td class=xl805063>Intocmit,</td>
+			<td class=xl805063>Întocmit,</td>
 			<td class=xl805063>Numele:</td>
 			<td class=xl815063><?php echo Aplicatie::getInstance()->getFirmaOrganizatoare()->getPatron();?></td>
 			<td class=xl725063></td>
@@ -477,7 +477,6 @@ function nice($text){
 
 	</table>
 </center>
-<?php 
+<?php
 
 	Page::showFooter();
-
