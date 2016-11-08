@@ -1,0 +1,244 @@
+.tabel_header
+{
+	margin:				0px;	
+	height:				54px;
+	border-collapse:	collapse;
+	margin-bottom:0px;	
+	width: 100%;
+}
+
+.tabel_header tr td
+{
+	border:				1px solid black;
+	padding:			10px;	
+	
+}
+
+.table_header_first_row
+{
+	
+	width: 33%;
+	padding-top: 1px;
+	padding-right: 1px;
+	padding-left: 1px;
+	mso-ignore: padding;
+	color: #000;
+	font-size: 10.0pt;
+	font-weight: 700;
+	font-style: normal;
+	text-decoration: none;
+	font-family: Arial, sans-serif;
+	mso-font-charset: 0;
+	mso-number-format: General;
+	text-align: center;
+	vertical-align: middle;
+	border-top: 1.0pt solid #000;
+	border-right: none;
+	border-bottom: none;
+	border-left: 1.0pt solid #000;
+	mso-background-source: auto;
+	mso-pattern: auto;
+	white-space: normal;	
+}
+
+.table_header_title
+{
+	width: 34%;
+	padding-top: 1px;
+	padding-right: 1px;
+	padding-left: 1px;
+	mso-ignore: padding;
+	color: #000;
+	font-size: 16.0pt;
+	font-weight: 700;
+	font-style: normal;
+	text-decoration: none;
+	font-family: Arial, sans-serif;
+	mso-font-charset: 0;
+	mso-number-format: General;
+	text-align: center;
+	vertical-align: middle;
+	border-top: 1.0pt solid #000;
+	border-right: none;
+	border-bottom: none;
+	border-left: 1.0pt solid #000;
+	mso-background-source: auto;
+	mso-pattern: auto;
+	white-space: normal;
+}
+
+.table_header_date
+{
+	width: 33%;
+	padding-top: 1px;
+	padding-right: 1px;
+	padding-left: 1px;
+	mso-ignore: padding;
+	color: #000;
+	font-size: 12.0pt;
+	font-weight: 700;
+	font-style: normal;
+	text-decoration: none;
+	font-family: Arial, sans-serif;
+	mso-font-charset: 0;
+	mso-number-format: "\[$-418\]mmmm\\-yy\;\@";
+	text-align: center;
+	vertical-align: middle;
+	border-top: 1.0pt solid #000;
+	border-right: 1.0pt solid #000;
+	border-bottom: none;
+	border-left: 1.0pt solid #000;
+	mso-background-source: auto;
+	mso-pattern: auto;
+	white-space: normal;
+}
+
+.table_div
+{
+	width: 				100%;
+	text-align:			center;	
+	margin:      0px;
+	
+}
+
+.table_div_totaluri
+{
+	width:				400px;
+	border-collapse:	collapse;
+	margin:				0px auto;
+	margin-top:			30px;
+}
+
+.tabel_page_bilete
+{
+	font-size: 9px;	
+}
+
+.tabel_page_bilete_big
+{
+	font-size: 14px;	
+}
+
+.table_div_totaluri tr th
+{
+	background: #FF9;
+	padding-top: 1px;
+	padding-right: 1px;
+	padding-left: 1px;
+	mso-ignore: padding;
+	color: #000;
+	font-size: 10.0pt;
+	font-style: normal;
+	text-decoration: none;
+	font-family: Arial, sans-serif;
+	mso-font-charset: 0;
+	mso-number-format: Fixed;
+	text-align: center;
+	vertical-align: middle;
+	border: 1px solid #000;
+	mso-background-source: auto;
+	mso-pattern: auto;
+	white-space: normal;	
+	
+}
+
+
+.table_div_totaluri tr td
+{
+	padding-top: 1px;
+	padding-right: 1px;
+	padding-left: 1px;
+	mso-ignore: padding;
+	color: #000;
+	font-size: 10.0pt;
+	font-style: normal;
+	text-decoration: none;
+	font-family: Arial, sans-serif;
+	mso-font-charset: 0;
+	mso-number-format: Fixed;
+	text-align: center;
+	vertical-align: middle;
+	border: 1px solid #000;
+	mso-background-source: auto;
+	mso-pattern: auto;
+	white-space: normal;
+}
+
+
+.table_page
+{
+	margin-top:			-1px;
+	border-collapse:	collapse;
+		
+	
+}
+
+.table_page tr td, .table_page th
+{
+	padding-top: 1px;
+	padding-right: 1px;
+	padding-left: 1px;
+	mso-ignore: padding;
+	color: #000;
+	font-size: 9.0pt;
+	font-weight: 700;
+	font-style: normal;
+	text-decoration: none;
+	font-family: Arial, sans-serif;
+	mso-font-charset: 0;
+	mso-number-format: General;
+	text-align: center;
+	vertical-align: middle;
+	border: 1px solid #000;
+	mso-background-source: auto;
+	mso-pattern: auto;
+	white-space: normal;	
+	height: 37px;	
+	border: 1px solid black;
+}
+
+.sold_total
+{
+	background:	#E4E5FF;	
+	font-size:	13px;
+}
+
+.table_page tr th
+{
+	background: #FF9;
+}
+.table_page tr td
+{
+	height: 21px;
+	font-weight:normal;	
+}
+
+.total_pagina
+{
+	background: #E3FFE3;	
+	font-size:	13px;
+}
+
+.tabel_pagina_paginare
+{
+	width: 100%;
+	margin-top:20px;	
+}
+
+.table_semnaturi
+{
+	width:			100%;
+	margin-top:		10px;	
+	border:			0px;
+}
+
+.table_semnaturi td
+{
+	text-align:		center;
+}
+
+.table_semnaturi_completare
+{
+	border-bottom: 1px dashed #000;
+	font-weight: bold;	
+}

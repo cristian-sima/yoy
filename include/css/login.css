@@ -1,0 +1,425 @@
+@CHARSET "UTF-8";
+
+input,select {
+	vertical-align: middle;
+}
+
+body {
+	background: #e3e3e3;
+	padding: 20px;
+}
+
+input[type=button],input[type=submit],button {
+	border: 1px solid #aaaaaa;
+	min-width: 100px;
+	border-radius: 3px;
+	padding: 5px;
+	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff),
+		to(#dddddd) );
+	background: -webkit-linear-gradient(top, #ffffff, #dddddd);
+	font-family: Helvetica, sans-serif;
+	font-size: 13px;
+	-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5), inset 0 0 10px
+		rgba(0, 0, 0, 0.1);
+	text-shadow: 0 1px 0 white;
+	vertical-align: middle;
+	color: #404040;
+	cursor: pointer;
+}
+
+input[type=button]:hover,input[type=submit]:hover,button:hover {
+	background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8),
+		to(#d8d8d8) );
+	background: -webkit-linear-gradient(top, #f8f8f8, #d8d8d8);
+	border-color: #a8a8a8;
+}
+
+input[type=button]:focus,input[type=submit]:focus,button:focus {
+	outline: 0;
+	-webkit-box-shadow: 0 0 4px rgba(27, 155, 224, 0.9), inset 0 0 10px
+		rgba(0, 0, 0, 0.15), 0 1px 0 rgba(255, 255, 255, 0.5);
+	-webkit-background-clip: padding-box;
+}
+
+input[type=button]:active,input[type=submit]:active,button:active,input[type=checkbox]:active
+	{
+	background: -webkit-gradient(linear, left top, left bottom, from(#dddddd),
+		to(#ffffff) ) !important;
+	background: -webkit-linear-gradient(top, #dddddd, #ffffff);
+	border-color: #aaaaaa;
+	position: relative;
+	top: 1px;
+	-webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+input[type=button]:disabled,input[type=submit]:disabled,button:disabled
+	{
+	opacity: 0.6;
+	background: #eeeeee;
+	-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+	cursor: default;
+	text-shadow: none;
+}
+
+input[type=checkbox]:active {
+	top: 0;
+}
+
+input[type=checkbox],input[type=radio] {
+	-webkit-appearance: none;
+	height: 15px;
+	width: 15px;
+	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff),
+		to(#dddddd) );
+	background: -webkit-linear-gradient(top, #ffffff, #dddddd);
+	vertical-align: middle;
+	border: 1px solid #aaaaaa;
+	border-radius: 3px;
+	text-align: center;
+	padding: 0 !important;
+	cursor: pointer;
+	-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5), inset 0 0 3px
+		rgba(0, 0, 0, 0.1);
+}
+
+input[type=checkbox]:focus,input[type=radio]:focus {
+	outline: 0;
+	-webkit-box-shadow: 0 0 4px rgba(27, 155, 224, 0.9), inset 0 0 10px
+		rgba(0, 0, 0, 0.15), 0 1px 0 rgba(255, 255, 255, 0.5);
+	-webkit-background-clip: padding-box;
+}
+
+input[type=checkbox]:hover,input[type=radio]:hover {
+	background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8),
+		to(#d8d8d8) );
+	background: -webkit-linear-gradient(top, #f8f8f8, #d8d8d8);
+	border-color: #a8a8a8;
+}
+
+input[type=checkbox]:checked::after,input[type=radio]:checked::after {
+	content: "â";
+	line-height: 10px;
+	font-family: Arial, sans-serif !important;
+	font-size: 13px;
+	margin-left: 1px;
+	color: #404040;
+	text-shadow: 0 1px 0 white;
+}
+
+input[type=checkbox]:disabled,input[type=radio]:disabled {
+	opacity: 0.6;
+	background: #eeeeee;
+	-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+	cursor: default;
+}
+
+input[type=radio] {
+	border-radius: 8.5px;
+}
+
+input[type=radio]:checked::after {
+	content: "â¢";
+	font-size: 14px;
+	position: relative;
+	top: 1px;
+}
+
+input[type="text"],textarea,input[type=email],input[type=password],input[type=url],input[type=date],input[type=time]
+	{
+	min-width: 150px;
+	border: 1px solid #aaaaaa;
+	border-radius: 3px;
+	padding: 5px;
+	background: -webkit-gradient(linear, left top, left bottom, from(#eeeeee),
+		to(#ffffff) );
+	background: -webkit-linear-gradient(top, #eeeeee, #ffffff);
+	font-family: Helvetica, sans-serif;
+	font-size: 13px;
+	-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5), inset 0 0 10px
+		rgba(0, 0, 0, 0.15);
+	vertical-align: middle;
+}
+
+input[type=text]:focus,textarea:focus,input[type=email]:focus,input[type=password]:focus,input[type=url]:focus,input[type=date]:focus,input[type=time]:focus
+	{
+	outline: 0;
+	-webkit-box-shadow: 0 0 4px rgba(36, 0, 255, 1), inset 0 0 10px rgba(0, 0, 0, 0), 0 1px 0 rgba(255, 255, 255, 0.5);
+	-webkit-background-clip: padding-box;
+}
+
+input[type=text]:disabled,textarea:disabled,input[type=email]:disabled,input[type=password]:disabled,input[type=url]:disabled,input[type=date]:disabled,input[type=time]:disabled
+	{
+	background: #e8e8e8;
+	-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+	opacity: 0.6;
+}
+
+textarea {
+	display: block;
+	overflow: auto;
+	height: 150px;
+	width: 200px;
+	margin: 2px;
+}
+
+input[type=range] {
+	-webkit-appearance: none;
+	height: 3px;
+	width: 150px;
+	border: 1px solid #aaaaaa;
+	background: -webkit-gradient(linear, left top, left bottom, from(#dddddd),
+		to(#ffffff) );
+	background: -webkit-linear-gradient(top, #dddddd, #ffffff);
+	border-radius: 3.5px;
+	-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5), inset 0 0 1px
+		rgba(0, 0, 0, 0.1);
+	vertical-align: middle;
+	margin: 5px 2px;
+	cursor: pointer;
+}
+
+input[type=range]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	height: 15px;
+	width: 15px;
+	border: 1px solid #aaaaaa;
+	border-radius: 8.5px;
+	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff),
+		to(#dddddd) );
+	background: -webkit-linear-gradient(top, #ffffff, #dddddd);
+	-webkit-background-clip: content-box;
+	-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5), inset 0 0 3px
+		rgba(0, 0, 0, 0.1);
+}
+
+input[type=range]:hover::-webkit-slider-thumb {
+	background: -webkit-gradient(linear, left top, left bottom, from(#f4f4f4),
+		to(#d4d4d4) );
+	background: -webkit-linear-gradient(top, #f8f8f8, #d8d8d8);
+}
+
+input[type=range]:disabled {
+	background: #eeeeee;
+	-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+	opacity: 0.6;
+	cursor: default;
+}
+
+input[type=range]:disabled::-webkit-slider-thumb {
+	background: #eeeeee;
+	-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.buttonset input[type=button],.buttonset input[type=submit],.buttonset button
+	{
+	margin: 0 -5px 0 0;
+	border-radius: 0;
+	-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25), inset 0 0 10px
+		rgba(0, 0, 0, 0.1);
+}
+
+.buttonset input[type=button]:first-child,.buttonset input[type=submit]:first-child,.buttonset button:first-child
+	{
+	border-radius: 3px 0 0 3px;
+}
+
+.buttonset input[type=button]:last-child,.buttonset input[type=submit]:last-child,.buttonset button:last-child
+	{
+	border-radius: 0 3px 3px 0;
+}
+
+.buttonset input[type=button]:active,.buttonset input[type=submit]:active,.buttonset button:active
+	{
+	top: 0;
+	z-index: 1;
+}
+
+.buttonset input[type=button]:hover,.buttonset input[type=submit]:hover,.buttonset button:hover
+	{
+	z-index: 1;
+}
+
+.buttonset {
+	margin: 2px;
+	display: inline-block;
+	-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25), inset 0 0 10px
+		rgba(0, 0, 0, 0.1);
+}
+
+select {
+	-webkit-appearance: none;
+	background: url(http://i.imgur.com/Lt32a.png) center right no-repeat,
+		-webkit-gradient(linear, left top, left bottom, from(#ffffff),
+		to(#dddddd) );
+	min-width: 150px;
+	border: 1px solid #aaaaaa;
+	border-radius: 3px;
+	padding: 5px;
+	padding-right: 34px;
+	font-size: 12px;
+	-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5), inset 0 0 10px
+		rgba(0, 0, 0, 0.15);
+	vertical-align: middle;
+	cursor: pointer;
+	text-shadow: 0 1px 0 white;
+}
+
+select:hover {
+	background: url(http://i.imgur.com/Lt32a.png) center right no-repeat,
+		-webkit-gradient(linear, left top, left bottom, from(#f8f8f8),
+		to(#d8d8d8) );
+}
+
+select:focus {
+	outline: 0;
+	-webkit-background-clip: padding-box;
+	background: url(http://i.imgur.com/Lt32a.png) center right no-repeat,
+		-webkit-gradient(linear, left top, left bottom, from(#dddddd),
+		to(#ffffff) );
+}
+
+select:disabled {
+	background: url(http://i.imgur.com/Lt32a.png) center right no-repeat,
+		#eeeeee;
+	opacity: 0.6;
+	-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+	text-shadow: none;
+	cursor: default;
+}
+
+input[type=checkbox].switch {
+	width: 24px;
+	height: 12px;
+	margin-top: 4px;
+	border-radius: 6px;
+	position: relative;
+	background: -webkit-gradient(linear, left top, left bottom, from(#dddddd),
+		to(#ffffff) );
+	background: -webkit-linear-gradient(top, #dddddd, #ffffff);
+	-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5), inset 0 2px 2px
+		rgba(0, 0, 0, 0.1);
+}
+
+input[type=checkbox].switch::after {
+	content: " ";
+	height: 15px;
+	width: 15px;
+	position: absolute;
+	line-height: auto;
+	left: -3px;
+	top: -4px;
+	margin: 0;
+	border: 1px solid #aaaaaa;
+	border-radius: 8.5px;
+	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff),
+		to(#dddddd) );
+	background: -webkit-linear-gradient(top, #ffffff, #dddddd);
+	-webkit-background-clip: content-box;
+	-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5), inset 0 0 3px
+		rgba(0, 0, 0, 0.1);
+}
+
+input[type=checkbox].switch:checked {
+	background: -webkit-gradient(linear, left top, left bottom, from(#B1CBDD),
+		to(#CCE9FF) );
+	background: -webkit-linear-gradient(top, #B1CBDD, #CCE9FF);
+	border: 1px solid #8FA2B3;
+}
+
+input[type=checkbox].switch:checked::after {
+	right: -3px;
+	left: auto;
+}
+
+input[type=checkbox].switch:disabled,input[type=checkbox].switch:disabled::after
+	{
+	background: #eeeeee;
+	-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+input[type=checkbox].switch:checked:disabled {
+	background: #bedaee;
+}
+
+.select {
+	font-family: Helvetica, sans-serif;
+	font-size: 13px;
+	margin: 2px;
+	width: 200px;
+	border: 1px solid #aaaaaa;
+	border-radius: 3px;
+	-webkit-background-clip: content-box;
+	overflow: hidden;
+	position: relative;
+	z-index: 1;
+	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff),
+		to(#dddddd) );
+	background: -webkit-linear-gradient(top, #ffffff, #dddddd);
+}
+
+.select input[type=radio] {
+	-wekit-appearance: none;
+	padding: 6px 5px !important;
+	height: auto;
+	display: block;
+	margin: 0;
+	border: 0;
+	width: 200px;
+	border-radius: 0;
+	background: transparent;
+	border-bottom: 1px solid #aaaaaa;
+	border-top: 1px solid #ffffff;
+	position: relative;
+	z-index: -1;
+	cursor: pointer;
+	text-align: left;
+	font-size: 13px !important;
+	-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5), inset 0 0 10px
+		rgba(0, 0, 0, 0.1);
+}
+
+.select input[type=radio]::after {
+	content: attr(value);
+	color: inherit;
+	text-shadow: none;
+	font-family: Helvetica, sans-serif;
+	font-size: 13px;
+	top: 0;
+	margin-left: 0;
+}
+
+.select input[type=radio]:hover {
+	background: rgba(0, 0, 0, 0.05);
+}
+
+.select input[type=radio]:checked {
+	background: rgba(190, 218, 238, 0.7);
+	border-bottom: 1px solid #8FA2B3;
+	border-top: 1px solid #CCE9FF;
+	cursor: default;
+}
+
+.select input[type=radio]:disabled {
+	opacity: 0.6;
+	color: #888888;
+	cursor: default;
+	background: transparent;
+	font-family: Helvetica, sans-serif;
+	font-size: 13px;
+}
+
+.select input[type=radio]:first-child {
+	border-top: none;
+}
+
+.select input[type=radio]:last-child {
+	border-bottom: none;
+}
+
+#msg {
+	width: 300px;
+	margin: 0 auto;
+	box-shadow: 0px 0px 20px gray;
+	border: 1px solid #888888;
+	padding: 20px;
+}

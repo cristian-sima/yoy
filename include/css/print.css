@@ -1,0 +1,33 @@
+
+#dispare1,#dispare2,.mod,.disp,.hide_prt, #dispare3 {display:none;opacity:0;}
+ @page {size: landscape}
+ #container, #content, .noBorder_prt,.noBorder_prt:disabled {border:none;}
+ 
+ 
+ .NP {
+ 	height:0px;
+	display:none;
+ }
+ .bw,.head{
+	color:black;
+	font-weight:normal;
+ }
+ 
+ .bold_prt,.bold_prt:disabled { font-weight:bold}
+ .black_prt, .bold_port:disabled {font-weight:bold}
+ 
+.privatePage_prt
+{
+    page-break-after: always;
+    page-break-inside: avoid;
+}
+
+.whiteBorder_prt, .whiteBorder_prt:disabled
+{
+	border: 1px solid #FFF;	
+}
+
+.transparent_prt, .transparent_prt:disabled
+{
+	background: transparent;
+}

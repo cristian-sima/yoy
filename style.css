@@ -1,0 +1,246 @@
+
+body {
+	margin:0;
+	padding:0;
+	line-height: 1.5em;
+	font-family: "Trebuchet MS", Verdana, Helvetica, Arial;
+	font-size: 12px;
+	color: #000000;
+	background: #999999 url(images/templatemo_bg.gif);
+}
+a:link, a:visited { color: #0066CC; text-decoration: none} 
+a:active, a:hover { color: #008800; text-decoration: underline}
+
+#content {
+	width: 810px;
+	margin: 10px auto 5px auto;
+}
+
+
+#container {
+	
+	background:white;
+	box-shadow: 0px 0px 10px gray;
+	border-radius:5px;
+}
+#header {
+
+	height: 25px;	/* 'padding-top' + 'height' must be equal to the 'background image height' */
+	margin-top:20px;
+	margin-bottom:10px;
+}
+
+
+#inner_header {
+	height: 160px;
+	background: url(images/templatemo_header.jpg) no-repeat center center;
+}
+#templatemo_left_column {
+	clear: left;
+	float: left;
+	width: 540px;
+	padding-left: 20px;
+}
+#templatemo_right_column {
+	float: right;
+	width: 216px;
+	padding-right: 15px;
+}
+#templatemo_footer {
+	clear: both;
+	padding-top: 18px;
+	height: 37px;
+	text-align: center;
+	font-size: 11px;
+	
+	color: #666666;
+}
+#templatemo_footer a {
+	color: #666666;
+}
+#templatemo_site_title {
+	padding-top: 65px;
+	font-weight: bold;
+	font-size: 32px;
+	color: #FFFFFF;
+}
+#templatemo_site_slogan {
+	padding-top: 14px;
+	font-weight: bold;
+	font-size: 13px;
+	color: #AAFFFF;
+}
+.templatemo_spacer {
+	clear: left;
+	height: 18px;
+}
+.templatemo_pic {
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	border: 1px solid #000000;
+}
+.section_box {
+	margin: 10px;
+	padding: 10px;
+	border: 1px dashed #CCCCCC;
+	background: #F2F2F2;
+}
+.section_box2 {
+	clear: left;
+	margin-top: 10px;
+	background: #F6F6F6;
+	color: #000000;
+}
+.text_area {
+	padding: 10px;
+}
+.publish_date {
+	clear: both;
+	margin-top: 10px;
+	color: #999999;
+	font-size: 11px;
+	font-weight: bold;
+}
+.title {
+	padding-bottom: 12px;
+	font-size: 18px;
+	font-weight: bold;
+	color: #0066CC;
+}
+.subtitle {
+	padding-bottom: 6px;
+	font-size: 14px;
+	font-weight: bold;
+	color: #666666;
+}
+.post_title {
+	padding: 6px;
+	padding-left: 10px;
+	background: #DDEEFF;
+	font-size: 14px;
+	font-weight: bold;
+	color: #0066CC;
+}
+.templatemo_menu {
+	list-style-type: none;
+	margin: 10px;
+	margin-top: 0px;
+	padding: 0px;
+	width: 195px;
+}
+.templatemo_menu li a{
+	background: #F4F4F4 url(images/button_default.gif) no-repeat;
+	font-size: 13px;
+	font-weight: bold;
+	color: #0066CC;
+	display: block;
+	width: auto;
+	margin-bottom: 2px;
+	padding: 5px;
+	padding-left: 12px;
+	text-decoration: none;
+}
+* html .templatemo_menu li a{ 
+	width: 190px;
+}
+.templatemo_menu li a:visited, .templatemo_menu li a:active{
+	color: #0066CC;
+}
+.templatemo_menu li a:hover{
+	background: #EEEEEE url(images/button_active.gif) no-repeat;
+	color: #FF3333;
+}
+
+.center {
+	text-align:center;
+}
+
+
+/* MENU */
+/*Initialize*/
+ul#menu {
+
+
+
+} 
+
+
+ul#menu ul.sub-menu {
+    padding:0;
+    margin: 0;
+}
+ul#menu li, ul#menu ul.sub-menu li {
+    list-style-type: none;
+    display: inline-block;
+		 -webkit-transition: all 0.30s ease-in-out;
+ -moz-transition: all 0.30s ease-in-out;
+ -ms-transition: all 0.30s ease-in-out;
+ -o-transition: all 0.30s ease-in-out;
+}
+
+ul#menu li #current {
+	background: rgb(255, 214, 176);
+	border: 1px solid rgb(253, 176, 35);
+	color:#CC6200;
+}
+
+/*Link Appearance*/
+ul#menu li a, ul#menu li ul.sub-menu li a {
+	text-align: center;
+	width: 90px;
+	font-size: 16px;
+	text-decoration: none;
+	color: #0066CC;
+	padding: 5px;
+	display: inline-block;
+	border: 1px solid #B4CCD8;
+	background: #DDEEFF;
+ -webkit-transition: all 0.30s ease-in-out;
+ -moz-transition: all 0.30s ease-in-out;
+ -ms-transition: all 0.30s ease-in-out;
+ -o-transition: all 0.30s ease-in-out;
+ border-radius: 6px;
+}
+
+ul#menu li a:hover, ul#menu li ul.sub-menu li a:hover{
+
+	background: rgb(82, 226, 87);
+	border: 1px solid rgb(106, 184, 106);
+	color:#1E7C4B;
+	
+ box-shadow: 0px 0px 10px white;
+}
+
+
+
+ul#menu li a:active, ul#menu li ul.sub-menu li a:active{
+
+	background:orange;
+}
+
+
+/*Make the parent of sub-menu relative*/
+ul#menu li {
+    position: relative;
+	
+}
+/*sub menu*/
+ul#menu li ul.sub-menu {
+    display:none;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    width: 100px;
+	 -webkit-transition: all 0.30s ease-in-out;
+ -moz-transition: all 0.30s ease-in-out;
+ -ms-transition: all 0.30s ease-in-out;
+ -o-transition: all 0.30s ease-in-out;
+}
+ul#menu li:hover ul.sub-menu {
+    display:block;
+		 -webkit-transition: all 0.30s ease-in-out;
+ -moz-transition: all 0.30s ease-in-out;
+ -ms-transition: all 0.30s ease-in-out;
+ -o-transition: all 0.30s ease-in-out;
+}
