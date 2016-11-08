@@ -34,7 +34,7 @@ class Procesare
 	/**
 	 * Functia creeaza campuri cu valori "" in cazul in care nu exista valorile in matrice
 	 *
-	 * @param array $data				Matricea care contine valorile		
+	 * @param array $data				Matricea care contine valorile
 	 * @param array $toCheck			Matricea cu valorile care se verifica
 	 */
 	public static function createEmptyFields(&$data, $toCheck)

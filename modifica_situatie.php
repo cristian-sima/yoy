@@ -196,7 +196,7 @@
 		
 		
 		
-		Page::showConfirmation('<span class="confirmation"> Situatia pe data de '.$data['from'].' a fost modificata !</span> <span style="color:orange" class="bold"> Va rugam sa printati situatia acum !</span>  <a href="'.((Aplicatie::getInstance()->getUtilizator()->isOperator())?("situatie_mecanica_operator.php"):("situatie_mecanica.php")).'?id_firma='.$data['id_firma'].'&from='.$data['from'].'&to='.$data['from'].'">Înapoi la situatie</a>');
+		Page::showConfirmation('<span class="confirmation"> Situatia pe data de '.$data['from'].' a fost modificata !</span> <span style="color:orange" class="bold"> Va rugam sa printati situatia acum !</span>  <a href="'.((Aplicatie::getInstance()->getUtilizator()->isOperator())?("situatie_mecanica_operator.php"):("situatie_mecanica.php")).'?id_firma='.$data['id_firma'].'&from='.$data['from'].'&to='.$data['from'].'">Înapoi la situație</a>');
 	}
 	catch(Exception $e)
 	{

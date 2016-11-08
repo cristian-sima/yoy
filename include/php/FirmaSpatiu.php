@@ -1,7 +1,7 @@
 <?php
-	
+
 	require_once "Firma.php";
-		
+
 	/**
 	 *	Encapsuleaza informatiile despre o firma care detine spatiul
 	 *
@@ -15,7 +15,7 @@
 		private $activa;
 		private $comentarii;
 		private $dateContact;
-		
+
 		/**
 		 *
 		 * Realizeaza o noua firma și stocheaza datele despre ea.
@@ -25,26 +25,26 @@
 		 */
 		public function FirmaSpatiu($id)
 		{
-			
+
 			$q = "SELECT dateContact, comentarii, nume AS denumire,localitate AS locatie,activa from `firma` WHERE `id`='".$id."'";
 			$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL()->getResource());
-			
+
 			if(mysql_num_rows($result) == 0)
 				throw new Exception("Nu exista aceasta companie cu id-ul [".$id.']');
-				
+
 			while($firma = mysql_fetch_array($result))
 			{
 				$this->denumire 	= $firma['denumire'];
 				$this->locatie 		= $firma['locatie'];
-				$this->activa 		= $firma['activa'];		
-				$this->comentarii	= $firma['comentarii'];	
+				$this->activa 		= $firma['activa'];
+				$this->comentarii	= $firma['comentarii'];
 				$this->dateContact  = $firma['dateContact'];
 			}
-			
+
 			$this->id = $id;
 		}
-		
-		
+
+
 		/**
 		 *
 		 * Verifica daca firma este activa sau nu
@@ -55,7 +55,7 @@
 		{
 			return (($this->activa == '1')?true:false);
 		}
-		
+
 		/**
 		 *
 		 * Returneaza datele de contact ale firmei
@@ -66,9 +66,9 @@
 		{
 			return $this->dateContact;
 		}
-		
-		
-		
+
+
+
 		/**
 		 *
 		 * Returneaza comentariile despre firma
@@ -79,7 +79,7 @@
 		{
 			return $this->comentarii;
 		}
-		
+
 		/**
 		 *
 		 * Aduce procentul firmei pentru o anumita data
@@ -91,8 +91,8 @@
 		{
 			$valoare		= 0;
 			$exista			= false;
-			
-		
+
+
 			$A2 = "SELECT valoare from procent WHERE idFirma='".$this->id."' AND  (( isNow='0' AND '".$data->getFirstDayOfMonth()."'>=_from AND  '".$data->getLastDayOfMonth()."<=_to ') OR ( isNow='1' AND '".$data->getFirstDayOfMonth()."'>=_from))  LIMIT 1";
 			$result = mysql_query($A2, Aplicatie::getInstance()->getMYSQL()->getResource()) or die(mysql_error());
 			if(mysql_num_rows($result)==0)
@@ -105,10 +105,10 @@
 				$valoare		= $p['valoare'];
 				$exista			= true;
 			}
-			
+
 			if(!$exista)
 				throw new Exception("Nu exista procent impus pentru ".$this.' la data '.$data);
-				
+
 			return $valoare;
-		}		
+		}
 	}

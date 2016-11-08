@@ -3,10 +3,10 @@
 	require_once "include/php/Aparat.php";
 	require_once "include/php/Aplicatie.php";
 	require_once "include/php/FirmaSpatiu.php";
-	
+
 	Page::showHeader();
 	Page::showContent();
-	
+
 	$firma	= new FirmaSpatiu($_GET['id']);
 
 
@@ -17,16 +17,16 @@ echo '
 		</b>
 		</td>
 		<td style="text-align: right">
-		'; 
+		';
 		if($firma->isActiva())
 		{
-			?><input type="button" value="Aparat nou"
+			?><input type="button" value="Adaugă aparat"
 			onclick="document.location='adauga_aparat.php?id_firma=<?php echo $firma->getID();?>'" />
 			<?php
 		}
-		?> <input type="button" value="Înapoi la situatie"
+		?> <input type="button" value="Înapoi la situație"
 			onclick="document.location='situatie_mecanica.php?id_firma=<?php echo $firma->getID();?>'" />
-		<?php 
+		<?php
 		echo '
 		</td>
 	</tr>
@@ -46,7 +46,7 @@ echo '
 			</tr>
 		</thead>
 		<tbody>';
-			
+
 		$q = "SELECT aparat.*,(SELECT `nume` FROM `firma` WHERE firma.id=aparat.id_firma ) AS denumire_firma FROM `aparat` AS aparat
 					WHERE aparat.activ='1' AND aparat.id_firma = '".$firma->getID()."'
 					ORDER BY aparat.ordinea ASC";
@@ -54,7 +54,7 @@ echo '
 		$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL()->getResource());
 		while($aparat = mysql_fetch_array($result))
 		{
-			echo'	
+			echo'
 			<tr onclick="document.location='."'"."optiuni_aparat.php?id_aparat=".$aparat['id']."&id_firma=".$aparat['id_firma']."'".'" class="hover" >
 			<td >'.$aparat['ordinea'].'</td>
 			<td >'.$aparat['serie'].'</td>
@@ -64,11 +64,11 @@ echo '
 			<td >'.$aparat['denumire_firma'].'</td>
 			</tr>';
 		}
-		
+
 		echo '
 		</tbody>
 	</table>
-</div>';		
+</div>';
 ?>
 
 <script>

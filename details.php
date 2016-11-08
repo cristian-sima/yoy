@@ -116,7 +116,7 @@
 		<table width="100%">
 			<tr>
 				<td><?php if($firma->isActiva()!='0'){?><input type="button"
-					value="Aparat nou"
+					value="Adaugă aparat"
 					onclick="document.location='adauga_aparat.php?id_firma=<?php echo$firma->getID();?>'" />
 					<?php }?>
 				</td>

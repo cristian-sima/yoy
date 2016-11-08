@@ -128,7 +128,7 @@ try
 		}
 		else
 		{
-			Page::showConfirmation("Dispozitia a fost realizata cu suscces. <a href='situatie_mecanica_operator.php'>Înapoi la situatie</a>");
+			Page::showConfirmation("Dispozitia a fost realizata cu suscces. <a href='situatie_mecanica_operator.php'>Înapoi la situație</a>");
 		}
 	}
 

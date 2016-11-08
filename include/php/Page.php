@@ -29,21 +29,21 @@ class Page
 		echo '	<!DOCTYPE>
 				<html xmlns="http://www.w3.org/1999/xhtml">
 				<head>
-				<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+				<meta charset="utf-8">
 				<title>YOY.ro</title>
 				<meta name="description" content="Soft de gestiune online"/>
 				<meta name="author" content="Cristian Sima"/>
-				<script type="text/javascript" src="include/js/jquery-1.9.1.js" ></script>
-				<script type="text/javascript" src="include/js/jquery-ui-1.10.3.custom.min.js" ></script>
-				<script type="text/javascript" src="include/js/jquery.dataTables.js" ></script>
-				<script type="text/javascript" src="include/js/extra.js" ></script>
-				<link href="include/css/jquery-ui-1.10.3.custom.min.css" rel="stylesheet" type="text/css"/>
+				<link href="include/css/aplicatie.css" rel="stylesheet" type="text/css" />
 				<link href="include/css/aplicatie.css" rel="stylesheet" type="text/css"/>
 				<link href="include/css/extra.css" rel="stylesheet" type="text/css"/>
+				<link href="include/css/jquery-ui-1.10.3.custom.min.css" rel="stylesheet" type="text/css"/>
 				<link href="include/css/menu.css" rel="stylesheet" type="text/css"/>
 				<link href="include/css/print.css" rel="stylesheet" type="text/css" media="print" />
-				<link href="include/css/aplicatie.css" rel="stylesheet" type="text/css" />
-				<link href="include/css/t.css" rel="stylesheet" type="text/css"/>';
+				<link href="include/css/t.css" rel="stylesheet" type="text/css"/>
+				<script type="text/javascript" src="include/js/extra.js" ></script>
+				<script type="text/javascript" src="include/js/jquery-1.9.1.js" ></script>
+				<script type="text/javascript" src="include/js/jquery-ui-1.10.3.custom.min.js" ></script>
+				<script type="text/javascript" src="include/js/jquery.dataTables.js" ></script>';
 
 			// forteaza aplicatia sa inceapa
 	}
