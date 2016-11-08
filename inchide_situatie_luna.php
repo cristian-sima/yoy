@@ -4,7 +4,7 @@ require_once "include/php/Romanian.php";
 require_once "include/php/Aplicatie.php";
 require_once "include/php/Procesare.php";
 require_once "include/php/FirmaSpatiu.php";
-require_once "include/php/SelectSituatie_GUI.php";
+require_once "include/php/SelectSituație_GUI.php";
 
 Page::showHeader();
 Page::showContent();
@@ -12,7 +12,7 @@ Page::showContent();
 
 Procesare::createEmptyFields($_GET, array ('data', 'id_firma'));
 
-$selector_GUI		= new SelectSituatie_GUI($_GET['data'], $_GET['id_firma']);
+$selector_GUI		= new SelectSituație_GUI($_GET['data'], $_GET['id_firma']);
 $total	 			= 0;
 $data				= $selector_GUI->getDataCurenta();
 
@@ -23,7 +23,7 @@ $selector_GUI->afiseazaDescriere(false);
 
 
 Page::showHeading("Vizualizati inchiderile de situatii", '
-			<input	class="disp" type="button" value="Inapoi actiuni" class="disp" onclick="document.location='."'".'actiuni.php?data='.$data."'".'" />
+			<input	class="disp" type="button" value="Înapoi actiuni" class="disp" onclick="document.location='."'".'actiuni.php?data='.$data."'".'" />
 			');
 
 

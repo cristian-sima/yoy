@@ -1,6 +1,6 @@
 <?php 
 
-	require_once "SituatieMecanicaGraficaCompleta.php";
+	require_once "SituațieMecanicaGraficaCompleta.php";
 	require_once "DataCalendaristica.php";
 
 	
@@ -11,7 +11,7 @@
 	 * @version			1.2
 	 *
 	 */
-	class SituatieMecanicaGraficaCompletaAparatNou extends SituatieMecanicaGraficaCompleta
+	class SituațieMecanicaGraficaCompletaAparatNou extends SituațieMecanicaGraficaCompleta
 	{
 		/**
 		 *

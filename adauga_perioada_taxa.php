@@ -31,7 +31,7 @@
 		
 			</td>
 			<td style="text-align:right">
-			<input type="button" value="Inapoi la perioade" onclick="document.location='perioade.php?idFirma=<?php echo $_GET['idFirma'];?>'" />
+			<input type="button" value="Înapoi la perioade" onclick="document.location='perioade.php?idFirma=<?php echo $_GET['idFirma'];?>'" />
 			</td>
 			</tr>
 			</table>
@@ -67,7 +67,7 @@
 							</div>
 							
 							<input type="button" class="submit" onclick="checkForm('f1')" value="Perioada Noua">
-							<a href="#" rel="login" class="linkform">Lasati campul liber pentru a specifica o perioada infinita (implicit o perioada din prezent)</a>
+							<a href="#" rel="login" class="linkform">Lasati câmpul liber pentru a specifica o perioada infinita (implicit o perioada din prezent)</a>
 							<div class="clear"></div>
 						</div>
 					</form>

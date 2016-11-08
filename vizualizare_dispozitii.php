@@ -5,7 +5,7 @@
 	require_once "include/php/Aplicatie.php";
 	require_once "include/php/Procesare.php";
 	require_once "include/php/FirmaSpatiu.php";
-	require_once "include/php/SelectSituatie_GUI.php";
+	require_once "include/php/SelectSituație_GUI.php";
 	
 	Page::showHeader();
 	Page::showContent();
@@ -14,7 +14,7 @@
 	Procesare::createEmptyFields($_GET, array ('id_firma', 'data'));
 	
 	$_criterii_MYSQL	= (($_GET['id_firma'] != '')?("AND _to='".$_GET['id_firma']."'"):(""));
-	$selector_GUI		= new SelectSituatie_GUI($_GET['data'], $_GET['id_firma']);
+	$selector_GUI		= new SelectSituație_GUI($_GET['data'], $_GET['id_firma']);
 	$total_plati		= 0;
 	$total_incasari		= 0;
 	
@@ -24,7 +24,7 @@
 	
 	Page::showHeading("Vizualizati dispozitii", '
 			<input class="disp" type="button" value="Printează" class="disp" onclick="window.print();" /> 
-			<input	class="disp" type="button" value="Dispoziţie noua" class="disp" onclick="document.location='."'".'dispozitie_operator_noua.php'."'".';" />			
+			<input	class="disp" type="button" value="Dispoziție noua" class="disp" onclick="document.location='."'".'dispozitie_operator_noua.php'."'".';" />			
 		');
 	
 	
@@ -55,9 +55,9 @@
 		<table id="example" class="display" width="100%">
 			<tr class="head pad" >
 				<td class="smoke"  >Data</td>
-				<td  class="smoke"> Total plaţi</td>
+				<td  class="smoke"> Total plați</td>
 				<td  class="smoke"> Total încasări</td>
-				<td  class="smoke disp"> Opţiuni</td>
+				<td  class="smoke disp"> Opțiuni</td>
 			</tr>';
 	
 		while($dispozitie = mysql_fetch_array($result))
@@ -120,7 +120,7 @@
 					<td  class="smoke">Tip </td>
 					<td >Valoare</td>
 					<td >Document</td>
-					<td >Explicaţie</td>
+					<td >Explicație</td>
 				</tr>';
 			
 			while($dispozitie = mysql_fetch_array($result_zi))

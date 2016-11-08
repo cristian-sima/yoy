@@ -62,7 +62,7 @@
 	$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL()->getResource());
 		
 	
-	Page::showConfirmation('<span class="confirmation">Parola a fost resetata cu succes ! Noua parola este </span><span style="font-size:18px;background:yellow;" class="bold">'.$parola_noua.'</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="utilizatori.php ">Inapoi</a>');
+	Page::showConfirmation('<span class="confirmation">Parola a fost resetata cu succes ! Noua parola este </span><span style="font-size:18px;background:yellow;" class="bold">'.$parola_noua.'</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="utilizatori.php ">Înapoi</a>');
 		
 	
 	Page::showFooter();

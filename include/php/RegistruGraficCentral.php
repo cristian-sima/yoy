@@ -6,7 +6,7 @@ require_once "include/php/Guvern.php";
 require_once "include/php/Romanian.php";
 require_once "include/php/FirmaSpatiu.php";
 require_once "include/php/RegistruGrafic.php";
-require_once "include/php/SituatieMecanica.php";
+require_once "include/php/SituațieMecanica.php";
 require_once "include/php/DataCalendaristica.php";
 
 /**

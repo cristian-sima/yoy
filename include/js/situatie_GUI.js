@@ -149,7 +149,7 @@ function checkBilet(b1,b2,where, noShow){
 			});
 
 
-			$(where).tooltip({ items: where, content: "Seria trebuie sa contina cel putin 5 caractere"});
+			$(where).tooltip({ items: where, content: "Seria trebuie să conțină cel putin 5 caractere"});
 			$(where).tooltip("open");
 
 
@@ -651,7 +651,7 @@ function before(){
 			"background":"red"
 		});
 
-		alert('Seria de bilete trebuie sa contina minim 5 caractere');
+		alert('Seria de bilete trebuie să conțină minim 5 caractere');
 
 
 

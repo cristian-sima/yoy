@@ -1,16 +1,16 @@
 <?php 
 		
-	require_once "Situatie.php";
+	require_once "Situație.php";
 	
 	/**
 	 *
-	 * Reprezinta o situatie mecanica doar cu totaluri. Este foarte rapida, dar nu contine detalii despre situatie. Daca doriti sa vedeti una compelta vezi SituatieMecanica.php
+	 * Reprezinta o situatie mecanica doar cu totaluri. Este foarte rapida, dar nu contine detalii despre situatie. Daca doriti sa vedeti una compelta vezi SituațieMecanica.php
 	 * @author			Cristian Sima
 	 * @data			10.02.2014
 	 * @version			1.1
 	 *
 	 */
-	class SituatieMecanicaTotaluri extends Situatie
+	class SituațieMecanicaTotaluri extends Situație
 	{
 		private $numarulDeAparate	= 0;
 		

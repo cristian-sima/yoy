@@ -1,7 +1,7 @@
 <?php
 	
 	/**
-	 *	Reprezinta un carnet de bilete. Acest carnet nu este complet si poate sa contina de la 1 la 100 de bilete. Carnetul incepe de la valoarea 01 si se termina la 000 cu alta serie. Seria carnetului se obtine din sfarsit sau inceput minus 1.
+	 *	Reprezinta un carnet de bilete. Acest carnet nu este complet si poate să conțină de la 1 la 100 de bilete. Carnetul incepe de la valoarea 01 si se termina la 000 cu alta serie. Seria carnetului se obtine din sfarsit sau inceput minus 1.
 	 *  
 	 *  @example
 	 *

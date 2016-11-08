@@ -31,19 +31,19 @@ echo '
 
 if(Aplicatie::getInstance()->getUtilizator()->isAdministrator())
 {
-	echo ' <a href="utilizatori.php"><input type="button" value="Inapoi la utilizatori" /></a>
+	echo ' <a href="utilizatori.php"><input type="button" value="Înapoi la utilizatori" /></a>
 	&nbsp; &nbsp; &nbsp; &nbsp;
  	<a href="reseteaza_parola.php?id_user='.$utilizator->getID().'"><input type="button" value="Reseteaza parola" /> </a>';
 }
 else
 {
-	echo '<a href="index.php" ><input 	type="button" value="Inapoi" />';
+	echo '<a href="index.php" ><input 	type="button" value="Înapoi" />';
 }
 echo '
 			</td>
 		</tr>
 	</table>
-	
+
 	<div class="content">
 		<div id="dialog"></div>
 		<div id="form_wrapper" class="form_wrapper"
@@ -57,11 +57,11 @@ echo '
 						style="width: 106px; height: 25px;"> <canvas width="122"
 						height="28"
 						style="width: 122px; height: 28px; top: -2px; left: 0px;"></canvas>
-					<cufontext> Editati date</cufontext></cufon>
+					<cufontext> Modifică date personale</cufontext></cufon>
 				</h3>'; ?>
 <div class="column">
 	<div>
-		<label>Nume si prenume:</label> <input check="true"
+		<label>Nume și prenume:</label> <input check="true"
 			criteria='{type:"string",  minSize: "5", maxSize:"30"}' name="nume"
 			type="text" value="<?php echo $utilizator->getNume(); ?>" id="nume">
 
@@ -74,10 +74,9 @@ echo '
 
 	</div>
 	<div>
-		<label>Parola:</label> <input check="true"
+		<label>Parolă:</label> <input check="true"
 			criteria='{type:"string", reg:"(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$",  minSize: "8", empty:"true"}'
-			id="parola" value="" name="parola" type="password"> Lasati liber daca nu
-		se schimba
+			id="parola" value="" name="parola" type="password"> Lăsă câmpul gol dacă nu vrei să modifici parola
 
 	</div>
 	<?php
@@ -93,21 +92,21 @@ echo '
 		{
 			echo '<option
 					'.(($row2['id']==$user['idFirma'])?"selected='selected'":"").'
-						value="'.$firma['id'].'">'.$firma['nume'].'</option>'; 
+						value="'.$firma['id'].'">'.$firma['nume'].'</option>';
 		}
 		echo '
 				</select>
-			</div>	
+			</div>
 		</div>';
 	}
 	else
 	echo'<input type="hidden" name="idFirma" value="'.$utilizator->getIDFirma().'"/>';
 	echo '
-	</div>	
+	</div>
 	<div class="bottom">
 		<div class="remember"></div>'; ?>
 	<input type="button" class="button" onclick="checkForm('f1')"
-		value="Modifica date">
+		value="Modifică date">
 		<?php
 		if(Aplicatie::getInstance()->getUtilizator()->isOperator())
 		{

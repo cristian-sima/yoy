@@ -2,7 +2,7 @@
 <?php
 
 require_once "Aparat.php";
-require_once "Situatie.php";
+require_once "Situație.php";
 require_once "Utilizator.php";
 
 
@@ -14,7 +14,7 @@ require_once "Utilizator.php";
  * @version			1.0
  *
  */
-abstract class SituatieGrafica extends Situatie
+abstract class SituațieGrafica extends Situație
 {
 	protected 	$autor			=	null;
 	protected 	$aparate		= 	array();

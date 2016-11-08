@@ -67,18 +67,18 @@
 		
 	<?php if($isInDepozit){?>
 	
-	<input type="button" value="Inapoi la depozit" onclick="document.location = 'depozit.php'" />
+	<input type="button" value="Înapoi la depozit" onclick="document.location = 'depozit.php'" />
 	
 	<?php }else if(isset($_GET['aparat'])){
 	?>
-		<input type="submit" class="mod" value="Inapoi la aparate" onclick="document.location='aparatura.php'" />
+		<input type="submit" class="mod" value="Înapoi la aparate" onclick="document.location='aparatura.php'" />
 	 
 	<?php
 	
 	} else
 	{?>
 	
-			<input type="submit" class="mod" value="Inapoi la aparatele firmei" onclick="document.location='aparate.php?id=<?php echo$_GET['idFirma'];?>'" />
+			<input type="submit" class="mod" value="Înapoi la aparatele firmei" onclick="document.location='aparate.php?id=<?php echo$_GET['idFirma'];?>'" />
 	
 	<?php 
 	} ?>

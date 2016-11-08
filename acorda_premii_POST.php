@@ -53,7 +53,7 @@ function is_cnp_valid($cnp_primit)
     $erori = array();
   
     if (empty($cnp['cnp primit']))
-        $erori[] = 'Campul CNP este gol!<br>';
+        $erori[] = 'Câmpul CNP este gol!<br>';
 
     else
         {
@@ -280,7 +280,7 @@ try
 		}
 			
 
-		Page::showConfirmation('<span class="confirmation">Datele au fost introduse cu succes in baza de date</span> <a href="acorda_premii.php?id_firma='.$data['id_firma'].'" style="color:blue"> Inapoi la pagina cu premii</a>');
+		Page::showConfirmation('<span class="confirmation">Datele au fost introduse cu succes in baza de date</span> <a href="acorda_premii.php?id_firma='.$data['id_firma'].'" style="color:blue"> Înapoi la pagina cu premii</a>');
 	}
 
 }

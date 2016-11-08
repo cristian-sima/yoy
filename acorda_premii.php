@@ -5,7 +5,7 @@ require_once "include/php/Guvern.php";
 require_once "include/php/Aplicatie.php";
 require_once "include/php/Procesare.php";
 require_once "include/php/FirmaSpatiu.php";
-require_once "include/php/SelectSituatie_GUI.php";
+require_once "include/php/SelectSituație_GUI.php";
 
 Login::permiteOperator();
 Page::showHeader();
@@ -40,13 +40,13 @@ Page::showHeading('<img class="disp" src="img/icons/_premii.png" align="absmiddl
 		{
 			?> <input type="button" class="disp" value="Printează"
 			onclick="window.print()" />	
-			 <input class="disp" type="button" value="Înapoi la situaţie"		onclick="document.location='situatie_mecanica.php?id_firma=<?php echo$firma->getID();?>'" />
+			 <input class="disp" type="button" value="Înapoi la situație"		onclick="document.location='situatie_mecanica.php?id_firma=<?php echo$firma->getID();?>'" />
 			<?php
 		}
 		else 
 		{
 			?>
-			 <input class="disp" type="button" value="Înapoi la situaţie"		onclick="document.location='situatie_mecanica_operator.php?id_firma=<?php echo$firma->getID();?>'" />
+			 <input class="disp" type="button" value="Înapoi la situație"		onclick="document.location='situatie_mecanica_operator.php?id_firma=<?php echo$firma->getID();?>'" />
 			<?php
 		}
 		?>		

@@ -3,7 +3,7 @@
 	require_once "include/php/Procesare.php";
 	require_once "include/php/Aplicatie.php";
 	require_once "include/php/FirmaSpatiu.php";
-	require_once "include/php/SituatieMecanica.php";
+	require_once "include/php/SituațieMecanica.php";
 	
 	Login::permiteOperator();
 	
@@ -182,7 +182,7 @@
 		$data_situatie = new DataCalendaristica($data['from']);
 		
 		// in felul asta se verifica daca avem situatie
-		$situatie =  new SituatieMecanica($data_situatie, $data_situatie, $firma);
+		$situatie =  new SituațieMecanica($data_situatie, $data_situatie, $firma);
 		
 		$mysql	= "UPDATE `completare_mecanica` 
 					SET 	`total_incasari` = '".$situatie->getTotalIncasari()."',
@@ -196,7 +196,7 @@
 		
 		
 		
-		Page::showConfirmation('<span class="confirmation"> Situatia pe data de '.$data['from'].' a fost modificata !</span> <span style="color:orange" class="bold"> Va rugam sa printati situatia acum !</span>  <a href="'.((Aplicatie::getInstance()->getUtilizator()->isOperator())?("situatie_mecanica_operator.php"):("situatie_mecanica.php")).'?id_firma='.$data['id_firma'].'&from='.$data['from'].'&to='.$data['from'].'">Inapoi la situatie</a>');
+		Page::showConfirmation('<span class="confirmation"> Situatia pe data de '.$data['from'].' a fost modificata !</span> <span style="color:orange" class="bold"> Va rugam sa printati situatia acum !</span>  <a href="'.((Aplicatie::getInstance()->getUtilizator()->isOperator())?("situatie_mecanica_operator.php"):("situatie_mecanica.php")).'?id_firma='.$data['id_firma'].'&from='.$data['from'].'&to='.$data['from'].'">Înapoi la situatie</a>');
 	}
 	catch(Exception $e)
 	{

@@ -32,7 +32,7 @@ echo '
 					<th>Utilizator</th>
 					<th>Firma</th>
 					<th>Tip cont</th>
-					<th>Opţiuni</th>
+					<th>Opțiuni</th>
 
 				</tr>
 			</thead>
@@ -69,7 +69,7 @@ echo '
 					<th>Utilizator</th>
 					<th>Firma</th>
 					<th>Tip cont</th>
-					<th>Opţiuni</th>
+					<th>Opțiuni</th>
 
 				</tr>
 			</thead>

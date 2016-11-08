@@ -21,7 +21,7 @@
 		$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL()->getResource());
 			
 		
-		Page::showConfirmation('<span class="confirmation">Datele au fost modificate</span> <a href="utilizatori.php ">Inapoi la utilizatori</a>');
+		Page::showConfirmation('<span class="confirmation">Datele au fost modificate</span> <a href="utilizatori.php ">Înapoi la utilizatori</a>');
 		
 	}
 	catch(Exception $e)

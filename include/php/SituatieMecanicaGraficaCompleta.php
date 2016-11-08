@@ -1,7 +1,7 @@
 <?php 
 
-	require_once "SituatieMecanica.php";
-	require_once "SituatieMecanicaGrafica.php";
+	require_once "SituațieMecanica.php";
+	require_once "SituațieMecanicaGrafica.php";
 
 	
 	/**
@@ -12,7 +12,7 @@
 	 * @version			1.2
 	 *
 	 */
-	class SituatieMecanicaGraficaCompleta extends SituatieMecanicaGrafica
+	class SituațieMecanicaGraficaCompleta extends SituațieMecanicaGrafica
 	{
 		private $isFake				= false;
 		
@@ -107,7 +107,7 @@
 		 protected function _processData()
 		 {
 		 	
-			$cea_mai_recenta_data 	= SituatieMecanica::getUltimaCompletare($this->getFirma(), $this->getFrom());
+			$cea_mai_recenta_data 	= SituațieMecanica::getUltimaCompletare($this->getFirma(), $this->getFrom());
 			
 			//cho 'a: '.$cea_mai_recenta_data.'<br />';
 	

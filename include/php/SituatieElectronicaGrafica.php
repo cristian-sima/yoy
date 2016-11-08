@@ -2,7 +2,7 @@
 
 	require_once "Aparat.php";
 	require_once "Utilizator.php";
-	require_once "SituatieGrafica.php";
+	require_once "SituațieGrafica.php";
 		
 	
 	/**
@@ -13,7 +13,7 @@
 	 * @version			1.2
 	 *
 	 */
-	class SituatieElectronicaGrafica extends SituatieGrafica
+	class SituațieElectronicaGrafica extends SituațieGrafica
 	{
 		
 		/**

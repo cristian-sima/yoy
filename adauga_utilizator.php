@@ -13,7 +13,7 @@ Page::showContent();
 	<tr>
 		<td>Adauga utilizator</td>
 		<td style="text-align: right"><input type="button"
-			value="Inapoi la utilizatori"
+			value="Înapoi la utilizatori"
 			onclick="document.location='utilizatori.php'" />
 		</td>
 	</tr>
@@ -30,7 +30,7 @@ Page::showContent();
 			<cufon class="cufon cufon-canvas" alt="Register"
 				style="width: 106px; height: 25px;"> <canvas width="122" height="28"
 				style="width: 122px; height: 28px; top: -2px; left: 0px;"></canvas>
-			<cufontext> Creaţi un nou utilizator </cufontext></cufon>
+			<cufontext> Creați un nou utilizator </cufontext></cufon>
 		</h3>
 		<div class="column">
 			<div>
@@ -53,9 +53,9 @@ Page::showContent();
 				<label>Tip operator:</label> <label
 					onclick="$('#idFirma').slideDown()" class="hover"><input
 					checked="checked" type="radio" name="tipOperator" value="desktop">
-					Interfaţă desktop</label> <label onclick="$('#idFirma').slideUp()"
+					Interfață desktop</label> <label onclick="$('#idFirma').slideUp()"
 					class="hover"><input type="radio" name="tipOperator" value="mobile">
-					Interfaţă mobil</label>
+					Interfață mobil</label>
 
 			</div>
 			<?php }?>

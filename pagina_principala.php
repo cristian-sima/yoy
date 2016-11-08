@@ -1,20 +1,20 @@
 <?php
-	
+
 	require_once 'include/php/Aplicatie.php';
-	
+
 	Page::showHeader();
 	Page::showContent();
-	
+
 ?>
-	
+
 	<table id="heading">
 		<tr>
 			<td>
 				<h2 style="color: orange">
-					<img src="img/firme.png" align="absmiddle" />Firme partenere spatiu
+					<img src="img/firme.png" align="absmiddle" />Firme partenere spațiu
 				</h2>
 			</td>
-			<td style="text-align: right"><input type="button" value="Firma noua"
+			<td style="text-align: right"><input type="button" value="Firmă nouă"
 				onclick="document.location='firma_noua.php'" />
 			</td>
 		</tr>
@@ -27,7 +27,7 @@
 					<th>Nume firma</th>
 					<th>Localitate</th>
 					<th>Procent</th>
-	
+
 				</tr>
 			</thead>
 			<tbody>
@@ -37,7 +37,7 @@
 			while($row = mysql_fetch_array($result))
 			{
 				echo'
-	
+
 			<tr onclick="document.location='."'"."details.php?idFirma=".$row['id']."'".'" class="hover">
 				<td >'.$row['nume'].'</td>
 				<td>'.$row['localitate'].'</td>
@@ -48,18 +48,18 @@
 				{
 					echo $row2['valoare'];
 				}
-	
+
 				echo'</td>
-			
-				
-				
+
+
+
 				</tr>';
 		 }?>
 			</tbody>
 		</table>
-	
+
 		<br /> <br /> Firme inactive (contracte terminate)<br /> <br />
-	
+
 		<table cellpadding="0" cellspacing="0" border="0" class="display"
 			id="example2" style="">
 			<thead>
@@ -67,7 +67,7 @@
 					<th>Nume firma</th>
 					<th>Localitate</th>
 					<th>Data incetare</th>
-	
+
 				</tr>
 			</thead>
 			<tbody>
@@ -80,13 +80,13 @@
 				<tr onclick="document.location='."'"."details.php?idFirma=".$row['id']."'".'" class="hover">
 				<td >'.$row['nume'].'</td>
 				<td>'.$row['localitate'].'</td>
-				<td>'.$row['dataIncetare'].'</td>		
+				<td>'.$row['dataIncetare'].'</td>
 				</tr>';
 		 }?>
 			</tbody>
 		</table>
 	</div>
-	
+
 	<script>
 	$(document).ready(function() {
 	    $('#example').dataTable({	"bJQueryUI": true,
@@ -95,9 +95,9 @@
 						"sPaginationType": "full_numbers"});
 	} );
 	</script>
-	
+
 		 <?php
-	
+
 		 PAGE::showFooter();
-	
+
 		 ?>

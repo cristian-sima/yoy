@@ -80,19 +80,19 @@ class Page
 							</ul>
 						</li>
 						<li>
-							<a href="selecteaza_situatie.php">Situaţii</a>
+							<a href="selecteaza_situatie.php">Situații</a>
 						</li>
 						<li>
-							<a href="actiuni.php">Acţiuni</a>
+							<a href="actiuni.php">Acțiuni</a>
 						</li>
 						<li>
-							<a href="vizualizare_dispozitii.php">Dispoziţii</a>
+							<a href="vizualizare_dispozitii.php">Dispoziții</a>
 						</li>
 						<li>
 							<a href="istoric.php">Impozit</a>
 						</li>
 						<li>
-							<a href="setari.php">Setari</a>
+							<a href="setari.php">Setări</a>
 						</li>
 					</ul>
 				</div>';
@@ -105,8 +105,8 @@ class Page
 
 		echo'</td>
 			<td style="text-align:right">
-				<input type="button" onclick="document.location='."'".'editare_date_utilizator.php?id_user='.Aplicatie::getInstance()->getUtilizator()->getID()."'".'" value="Modifica date personale" />
-				<input type="button" onclick="confirmRequest('."'Esti sigur ca vrei sa te deconectezi ?',"."'" ."paraseste_aplicatia.php"."'".')"  value="Deconecteaza-te" />
+				<input type="button" onclick="document.location='."'".'editare_date_utilizator.php?id_user='.Aplicatie::getInstance()->getUtilizator()->getID()."'".'" value="Modifică datele personale" />
+				<input type="button" onclick="confirmRequest('."'Ești sigur că vrei să te deconectezi ?',"."'" ."paraseste_aplicatia.php"."'".')"  value="Deconectează-te" />
 			</td>
 		</tr>
 		</table>';
@@ -161,8 +161,8 @@ class Page
 		<div class="aplicatie_footer center hide_prt">
 			<table width="100%">
 				<tr>
-					<td width:30%>yoy.ro '.date('Y').' -  <small>Generat in '.Aplicatie::getInstance()->getTimeOfExecution().' secunde</small></td>
-					<td width="30%;text-align:center"><small> Versiunea '.self::$version.'</small></td>
+					<td width:30%>yoy.ro '.date('Y').'</td>
+					<td width="30%;text-align:center"><small> V'.self::$version.'</small></td>
 					<td style="width:30%;text-align:right">Toate drepturile rezervate</td>
 				</tr>
 			</table>

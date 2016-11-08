@@ -26,7 +26,7 @@ class Procesare
 		{
 			if(!isset($array[$arg]))
 			{
-				throw new Exception("Campul ".$arg." nu a fost completat ! <a href='".$address."'>Inapoi</a>");
+				throw new Exception("Câmpul ".$arg." nu a fost completat ! <a href='".$address."'>Înapoi</a>");
 			}
 		}
 	}

@@ -4,8 +4,8 @@ require_once "include/php/Guvern.php";
 require_once "include/php/Aplicatie.php";
 require_once "include/php/Procesare.php";
 require_once "include/php/FirmaSpatiu.php";
-require_once "include/php/SituatieMecanica.php";
-require_once "include/php/SelectSituatie_GUI.php";
+require_once "include/php/SituațieMecanica.php";
+require_once "include/php/SelectSituație_GUI.php";
 
 Page::showHeader();
 Page::showContent();
@@ -15,14 +15,14 @@ $firma 					= new FirmaSpatiu($_GET['id_firma']);
 $data					= new DataCalendaristica($_GET['data']);
 $from					= new DataCalendaristica($data->getFirstDayOfMonth());
 $to						= new DataCalendaristica($data->getLastDayOfMonth());
-$situatie				= new SituatieMecanica($from, $to, $firma);
+$situatie				= new SituațieMecanica($from, $to, $firma);
 $taxa_autorizatie		= Guvern::getTaxaDeAutorizareAparat($data);
 $plata_taxa				= $situatie->getNumarulDeAparate() * $taxa_autorizatie;
 $total_plati			= $situatie->getTotalInSertar()- $plata_taxa;
 $total_firma_incasari	= round($firma->getProcentFirma($data) * $total_plati / 100);
 
 
-$selector_GUI		= new SelectSituatie_GUI($_GET['data'], $_GET['id_firma']);
+$selector_GUI		= new SelectSituație_GUI($_GET['data'], $_GET['id_firma']);
 	
 $selector_GUI->afiseazaButon(true);
 $selector_GUI->setAdresaButon("afisare_decont_firma.php");
@@ -39,7 +39,7 @@ $selector_GUI->display();
 	<tr>
 		<td width="100%" style="text-align: right"><input type="button"
 			class="disp" value="Printeaza" onclick="window.print()" /> <input
-			type="button" class="disp" value="Inapoi la situatii"
+			type="button" class="disp" value="Înapoi la situatii"
 			onclick="document.location='selecteaza_situatie.php?id_firma=<?php echo$firma->getID();?>&data=<?php echo$data;?>'" />
 		
 		<td>

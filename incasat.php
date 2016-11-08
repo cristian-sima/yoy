@@ -142,7 +142,7 @@ while($taxa = mysql_fetch_array($result)){
 					?>
 					<input type="button" class="disp" value="Printeaza" onclick="window.print()"/>
 			
-			<input type="button" class="disp" value="Inapoi la incasari" onclick="document.location='incasari.php?id=<?php echo$firma['id'];?>'" />
+			<input type="button" class="disp" value="Înapoi la incasari" onclick="document.location='incasari.php?id=<?php echo$firma['id'];?>'" />
 					
 					<?php 
 				}

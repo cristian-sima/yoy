@@ -42,7 +42,7 @@
 					reportProblem("Contactati administratorul: ".mysql_error());
 			
 			}
-			echo'<span class="confirmation">Aparatele au fost resetate cu succes la 0 </span> <a href="mobile.php">Inapoi la firme</a>';
+			echo'<span class="confirmation">Aparatele au fost resetate cu succes la 0 </span> <a href="mobile.php">Înapoi la firme</a>';
 			?>
 		</div>
 	</div>

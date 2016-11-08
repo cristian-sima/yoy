@@ -54,7 +54,7 @@
 			
 			//procent
 			
-			echo'<span class="confirmation">Restanta a fost memorata</span> <a href="index.php ">Inapoi la firme</a>';
+			echo'<span class="confirmation">Restanta a fost memorata</span> <a href="index.php ">Înapoi la firme</a>';
 			
 			
 			?>

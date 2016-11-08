@@ -13,7 +13,7 @@
 echo '
 <table id="heading">
 	<tr>
-		<td>Vizualizaţi aparatele curente din firma <b>'.$firma->getDenumire().'
+		<td>Vizualizați aparatele curente din firma <b>'.$firma->getDenumire().'
 		</b>
 		</td>
 		<td style="text-align: right">
@@ -24,7 +24,7 @@ echo '
 			onclick="document.location='adauga_aparat.php?id_firma=<?php echo $firma->getID();?>'" />
 			<?php
 		}
-		?> <input type="button" value="Inapoi la situatie"
+		?> <input type="button" value="Înapoi la situatie"
 			onclick="document.location='situatie_mecanica.php?id_firma=<?php echo $firma->getID();?>'" />
 		<?php 
 		echo '

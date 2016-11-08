@@ -6,18 +6,18 @@
 	require_once "include/php/RegistruGUI.php";
 	require_once "include/php/RegistruGrafic.php";
 	require_once "include/php/DataCalendaristica.php";
-	require_once "include/php/SelectSituatie_GUI.php";
+	require_once "include/php/SelectSituație_GUI.php";
 	require_once "include/php/RegistruGraficBilete.php";
 	
 	
 	Page::showHeader();
 	Page::showContent();	
-	Page::showHeading("Situatie bilete lunara", '<input type="button" class="disp" value="Printeaza" onclick="window.print()">&nbsp; <a onclick="goTo('."'".'selecteaza_situatie.php'."'".')" href="#"><input type="button" value="Inapoi la Situatii" /></a>');
+	Page::showHeading("Situație bilete lunara", '<input type="button" class="disp" value="Printeaza" onclick="window.print()">&nbsp; <a onclick="goTo('."'".'selecteaza_situatie.php'."'".')" href="#"><input type="button" value="Înapoi la Situatii" /></a>');
 		
 	Procesare::createEmptyFields($_GET, array("data", "id_firma", "afiseaza_totaluri"));
 	
 	$data					= new DataCalendaristica($_GET['data']);	
-	$selector				= new SelectSituatie_GUI($data, $_GET['id_firma']);	
+	$selector				= new SelectSituație_GUI($data, $_GET['id_firma']);	
 	$registru_content		= new RegistruGraficBilete($data);	
 	$registru_gui 		 	= new RegistruGUI($registru_content);
 	

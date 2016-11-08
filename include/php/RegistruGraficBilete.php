@@ -6,7 +6,7 @@
 	require_once "include/php/Romanian.php";
 	require_once "include/php/FirmaSpatiu.php";
 	require_once "include/php/RegistruGrafic.php";
-	require_once "include/php/SituatieMecanica.php";
+	require_once "include/php/SituațieMecanica.php";
 	require_once "include/php/DataCalendaristica.php";
 
 /**
@@ -42,7 +42,7 @@ class RegistruGraficBilete extends RegistruGrafic
 	 * 
 	 * Proceseaza datele pentru situatia bilete
 	 *  
-	 * @see SituatieRegistru::_processData()			
+	 * @see SituațieRegistru::_processData()			
 	 */
 	protected function _processData()
 	{

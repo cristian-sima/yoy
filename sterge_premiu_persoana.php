@@ -20,7 +20,7 @@ try
 	$q = "DELETE FROM impozit WHERE  id='".$data['id_premiu']."' ";
 	$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL()->getResource());
 
-	Page::showConfirmation('<span class="confirmation">Persoana a fost stearsa cu succes !</span> <a href="acorda_premii.php?id_firma='.$data['id_firma'].' ">Inapoi acordare premii</a>');
+	Page::showConfirmation('<span class="confirmation">Persoana a fost stearsa cu succes !</span> <a href="acorda_premii.php?id_firma='.$data['id_firma'].' ">Înapoi acordare premii</a>');
 }
 catch(Exception $e)
 {

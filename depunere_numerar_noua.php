@@ -4,7 +4,7 @@ require_once "include/php/Guvern.php";
 require_once "include/php/Aplicatie.php";
 require_once "include/php/Procesare.php";
 require_once "include/php/FirmaSpatiu.php";
-require_once "include/php/SelectSituatie_GUI.php";
+require_once "include/php/SelectSituație_GUI.php";
 
 Page::showHeader();
 Page::showContent();
@@ -16,7 +16,7 @@ $_criterii_MYSQL	= (($_GET['id_firma'] != '')?("AND i.idFirma='".$_GET['id_firma
 
 Page::showHeading("Realizati o depunere de numerar", '
 			
-			<input	class="disp" type="button" value="Inapoi la depuneri" class="disp" onclick="document.location='."'".'administreaza_depuneri_de_numerar.php'."'".'" />');
+			<input	class="disp" type="button" value="Înapoi la depuneri" class="disp" onclick="document.location='."'".'administreaza_depuneri_de_numerar.php'."'".'" />');
 /* ---------------- content ---------------------*/
 ?>
 
@@ -60,7 +60,7 @@ Page::showHeading("Realizati o depunere de numerar", '
 				</div>
 
 				<div>
-					<label>Explicaţie:</label> <input id="explicatie" value=""
+					<label>Explicație:</label> <input id="explicatie" value=""
 						name="explicatie" check="true"
 						criteria='{type:"string",  maxSize:"30"}' type="text">
 

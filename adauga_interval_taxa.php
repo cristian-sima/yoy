@@ -12,7 +12,7 @@ Page::showContent();
 	<tr>
 		<td></td>
 		<td style="text-align: right"><input type="button"
-			value="Inapoi la setari" onclick="document.location='setari.php'" />
+			value="Înapoi la setari" onclick="document.location='setari.php'" />
 		</td>
 	</tr>
 </table>
@@ -57,7 +57,7 @@ Page::showContent();
 
 				<input type="button" class="submit" onclick="checkForm('f1')"
 					value="Perioada Noua"> <a href="#" rel="login" class="linkform">Lasati
-					campul liber pentru a specifica o perioada infinita (implicit o
+					câmpul liber pentru a specifica o perioada infinita (implicit o
 					perioada din prezent)</a>
 				<div class="clear"></div>
 			</div>

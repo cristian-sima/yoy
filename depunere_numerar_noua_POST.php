@@ -30,7 +30,7 @@ try
 	$result = mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
 				
 
-	Page::showConfirmation('<span class="confirmation">Depunerea a fost realizata cu succes !</span> <a href="administreaza_depuneri_de_numerar.php ">Inapoi la depuneri</a>');
+	Page::showConfirmation('<span class="confirmation">Depunerea a fost realizata cu succes !</span> <a href="administreaza_depuneri_de_numerar.php ">Înapoi la depuneri</a>');
 
 }
 catch(Exception $e)

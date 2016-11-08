@@ -51,7 +51,7 @@
 			
 			
 			
-			echo'<span class="confirmation">Aparatul a fost sters</span> <a href="aparate.php?id='.$data['idFirma'].' ">Inapoi</a>';
+			echo'<span class="confirmation">Aparatul a fost sters</span> <a href="aparate.php?id='.$data['idFirma'].' ">Înapoi</a>';
 			
 			
 			?>

@@ -35,7 +35,7 @@ try
 		
 		
 	// confirmation
-	Page::showConfirmation('<span class="confirmation">Taxa a fost adaugata</span> <a href="setari.php">Inapoi</a>');
+	Page::showConfirmation('<span class="confirmation">Taxa a fost adaugata</span> <a href="setari.php">Înapoi</a>');
 	
 }
 catch(Exception $e)

@@ -56,7 +56,7 @@ try
 	}
 
 
-	Page::showConfirmation('<span class="confirmation">Aparatul a fost mutat in depozit</span> <a href="optiuni_aparat.php?id_aparat='.$data['id_aparat'].'">Inapoi la optiuni aparat</a>');
+	Page::showConfirmation('<span class="confirmation">Aparatul a fost mutat in depozit</span> <a href="optiuni_aparat.php?id_aparat='.$data['id_aparat'].'">Înapoi la optiuni aparat</a>');
 
 }
 catch(Exception $e)

@@ -30,7 +30,7 @@ try
 	$result = mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
 				
 
-	Page::showConfirmation('<span class="confirmation">Decontul a fost realizat cu succes !</span> <a href="administreaza_deconturi.php ">Inapoi la deconturi</a>');
+	Page::showConfirmation('<span class="confirmation">Decontul a fost realizat cu succes !</span> <a href="administreaza_deconturi.php ">Înapoi la deconturi</a>');
 
 }
 catch(Exception $e)

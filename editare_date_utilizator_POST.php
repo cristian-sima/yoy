@@ -46,7 +46,7 @@
 		
 		$r = mysql_query("SELECT user from utilizator WHERE user='".$data['user']."' AND id != '".$utilizator->getID()."'", Aplicatie::getInstance()->getMYSQL()->getResource());
 		if(mysql_num_rows($r) != 0)
-			throw new Exception ("Mai exista un utilizator cu acest username. Alegeti altul ! <a href='utilizatori.php'>Inapoi</a>");
+			throw new Exception ("Mai exista un utilizator cu acest username. Alegeti altul ! <a href='utilizatori.php'>Înapoi</a>");
 	
 		if(trim($data['parola']) == "")
 			$q = "UPDATE utilizator SET idFirma='".$data['idFirma']."', nume='".$data['nume']."',user='".$data['user']."' WHERE id='".$utilizator->getID()."'";
@@ -72,9 +72,9 @@
 	
 		// confirmation
 		if(Aplicatie::getInstance()->getUtilizator()->isOperator())
-			Page::showConfirmation('<span class="confirmation">Modificarile au fost realizate.</span> <a href="index.php ">Inapoi</a>');	
+			Page::showConfirmation('<span class="confirmation">Modificarile au fost realizate.</span> <a href="index.php ">Înapoi</a>');	
 		else
-			Page::showConfirmation('<span class="confirmation">Modificarile au fost realizate.</span> <a href="utilizatori.php ">Inapoi</a>');	
+			Page::showConfirmation('<span class="confirmation">Modificarile au fost realizate.</span> <a href="utilizatori.php ">Înapoi</a>');	
 		
 	}
 	catch(Exception $e)

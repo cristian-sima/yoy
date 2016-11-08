@@ -60,7 +60,7 @@
 		
 			//procent
 			
-			echo'<span class="confirmation">Contoarele au fost resetate fortat la 0.</span> <a href="electronic.php?id='.$data['idFirma'].' ">Inapoi la situatii</a>';
+			echo'<span class="confirmation">Contoarele au fost resetate fortat la 0.</span> <a href="electronic.php?id='.$data['idFirma'].' ">Înapoi la situatii</a>';
 			
 			
 			?>

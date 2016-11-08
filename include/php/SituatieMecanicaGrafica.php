@@ -2,7 +2,7 @@
 
 	require_once "Aparat.php";
 	require_once "Utilizator.php";
-	require_once "SituatieGrafica.php";
+	require_once "SituațieGrafica.php";
 		
 	
 	/**
@@ -14,7 +14,7 @@
 	 * @version			1.2
 	 *
 	 */
-	class SituatieMecanicaGrafica extends SituatieGrafica
+	class SituațieMecanicaGrafica extends SituațieGrafica
 	{
 		private $idCompletare		= null;
 		private $filterFrom			= null;

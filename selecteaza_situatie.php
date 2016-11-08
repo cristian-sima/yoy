@@ -2,14 +2,14 @@
 	
 	require_once "include/php/Aplicatie.php";
 	require_once "include/php/Procesare.php";
-	require_once "include/php/SelectSituatie_GUI.php";
+	require_once "include/php/SelectSituație_GUI.php";
 	
 	Page::showHeader();
 	Page::showContent();
 	
 	
 	Procesare::createEmptyFields($_GET, array ('id_firma', 'data'));	
-	$selector_GUI		= new SelectSituatie_GUI($_GET['data'], $_GET['id_firma']);
+	$selector_GUI		= new SelectSituație_GUI($_GET['data'], $_GET['id_firma']);
 	$selector_GUI->afiseazaToateFirmele(false);
 	$selector_GUI->afiseazaDescriere(false);
 	$selector_GUI->afiseazaButon(false);
@@ -35,9 +35,9 @@
 					</td>
 					<td width="50%" style="vertical-align: top">
 					<fieldset>
-						<legend>Alte situaţii</legend>
+						<legend>Alte situații</legend>
 						<a onclick="goTo('."'".'situatie_bilete_lunara.php'."'".')" href="#"
-							class="button orange medium bold">Situaţie bilete</a> <br /> <br />
+							class="button orange medium bold">Situație bilete</a> <br /> <br />
 						<a onclick="goTo('."'".'afisare_decont_firma.php'."'".')" href="#"
 							class="button medium green bold">Decont Firmă</a> <br /> <br />
 					</fieldset>

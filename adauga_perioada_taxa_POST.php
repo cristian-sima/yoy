@@ -54,7 +54,7 @@
 			
 			//procent
 			
-			echo'<span class="confirmation">Perioada a fost creata</span> <a href="perioade.php?idFirma='.$data['idFirma'].' ">Inapoi</a>';
+			echo'<span class="confirmation">Perioada a fost creata</span> <a href="perioade.php?idFirma='.$data['idFirma'].' ">Înapoi</a>';
 			
 			
 			?>

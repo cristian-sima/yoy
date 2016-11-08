@@ -102,7 +102,7 @@ function checkForm(formID) {
 
   // close the dialog
 	closeDialog();
-	 
+
 
 	var gresealaGasita = false;
 
@@ -113,35 +113,35 @@ function checkForm(formID) {
 		if (input.attr("check") == "true") {
 			var criteria = {};
 			eval("var criteria= " + input.attr("criteria"));
-			
-			// regex 
-			
+
+			// regex
+
 			if(criteria.empty != undefined && valoare=="")
 				return;
-			
+
 			if(criteria.reg != undefined){
-			
+
 				var re = /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
 					if(! re.test(valoare)) {
-					
-						
+
+
 						showDialog({
 							type: "error",
-							message: "Parola trebuie sa contina cel putin <br />&nbsp;- un caracter majuscul<br /> &nbsp;&nbsp;&nbsp;- o litera mica<br />&nbsp;&nbsp;&nbsp;- un numar sau un caracter special<br />&nbsp;&nbsp;&nbsp;- cel putin 8 caractere",
+							message: "Parola trebuie să conțină cel puțin <br />&nbsp;- un caracter majuscul<br /> &nbsp;&nbsp;&nbsp;- o literă mică<br />&nbsp;&nbsp;&nbsp;- un număr sau un caracter special<br />&nbsp;&nbsp;&nbsp;- cel puțin 8 caractere",
 							focus: input.attr("id")
 						});
 						gresealaGasita = true;
 						return false;
 					}
-					
+
 			}
-			
-			
+
+
 			if (criteria.minSize != undefined) {
 				if (valoare.length < criteria.minSize) {
 					showDialog({
 						type: "error",
-						message: "Campul <b>" + input.attr("name") + "</b> trebuie sa contina minim " + criteria.minSize + " caractere !",
+						message: "Câmpul <b>" + input.attr("name") + "</b> trebuie să conțină minim " + criteria.minSize + " caractere !",
 						focus: input.attr("id")
 					});
 					gresealaGasita = true;
@@ -153,7 +153,7 @@ function checkForm(formID) {
 				if (valoare.length > criteria.maxSize) {
 					showDialog({
 						type: "error",
-						message: "Campul <b>" + input.attr("name") + "</b> trebuie sa contina maxim " + criteria.maxSize + " caractere !",
+						message: "Câmpul <b>" + input.attr("name") + "</b> trebuie să conțină maxim " + criteria.maxSize + " caractere !",
 						focus: input.attr("id")
 
 					});
@@ -166,7 +166,7 @@ function checkForm(formID) {
 				if (valoare.length != criteria.fixSize) {
 					showDialog({
 						type: "error",
-						message: "Campul <b>" + input.attr("name") + "</b> are exact " + criteria.fixSize + " caractere !",
+						message: "Câmpul <b>" + input.attr("name") + "</b> are exact " + criteria.fixSize + " caractere !",
 						focus: input.attr("id")
 					});
 					gresealaGasita = true;
@@ -180,7 +180,7 @@ function checkForm(formID) {
 				if (valoare != '' && !isNumeric(valoare)) {
 					showDialog({
 						type: "error",
-						message: "Campul <b>" + input.attr("name") + "</b> trebuie sa contina numai cifre !",
+						message: "Câmpul <b>" + input.attr("name") + "</b> trebuie să conțină numai cifre !",
 						focus: input.attr("id")
 					});
 					gresealaGasita = true;
@@ -195,7 +195,7 @@ function checkForm(formID) {
 					if (!isAlphaOrParen(valoare)) {
 						showDialog({
 							type: "error",
-							message: "Campul <b>" + input.attr("name") + "</b> trebuie sa contina doar litere ÃÅ¸i spatii !",
+							message: "Câmpul <b>" + input.attr("name") + "</b> trebuie să conțină doar litere ÃÅ¸i spatii !",
 							focus: input.attr("id")
 						});
 						gresealaGasita = true;
@@ -213,7 +213,7 @@ function checkForm(formID) {
 				if (valoare == criteria.dateFormat) {
 					showDialog({
 						type: "error",
-						message: "Campul <b>" + input.attr("name") + "</b> nu a fost completat !",
+						message: "Câmpul <b>" + input.attr("name") + "</b> nu a fost completat !",
 						focus: input.attr("id")
 					});
 					gresealaGasita = true;
@@ -227,7 +227,7 @@ function checkForm(formID) {
 					if (date[0].length != 4 || (!isNumeric(date[0])) || (!isNumeric(date[1])) || parseInt(date[0]) < 1900 || parseInt(date[0]) > 2100 || parseInt(date[1]) < 1 || parseInt(date[1]) > 12) {
 						showDialog({
 							type: "error",
-							message: "Campul <b>" + input.attr("name") + "</b> nu are un format corect pentru o data. Formatul acceptat este <b> ANUL/LUNA</span>",
+							message: "Câmpul <b>" + input.attr("name") + "</b> nu are un format corect pentru o data. Formatul acceptat este <b> ANUL/LUNA</span>",
 							focus: input.attr("id")
 						});
 						gresealaGasita = true;
@@ -241,7 +241,7 @@ function checkForm(formID) {
 		}
 	});
 
-	if (!gresealaGasita) 
+	if (!gresealaGasita)
 		$("#"+formID).submit();
 	else
 		return false;

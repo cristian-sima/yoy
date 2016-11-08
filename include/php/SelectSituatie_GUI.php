@@ -12,10 +12,10 @@ require_once "FirmaOrganizatoare.php";
  * @version			1.5
  *
  */
-class SelectSituatie_GUI
+class SelectSituație_GUI
 {
 	private $data							= null;
-	private $type_							= "Situatie";
+	private $type_							= "Situație";
 	private $id_firma						= "";
 	private $adresaButon					= "";
 	private $select							= null;
@@ -36,7 +36,7 @@ class SelectSituatie_GUI
 	 * @param string $data					Data calendaristica pentru situatie sau "" pentru data curenta
 	 * @param string $id_firma				ID-ul firmei de spatiu
 	 */
-	public function SelectSituatie_GUI($data, $id_firma)
+	public function SelectSituație_GUI($data, $id_firma)
 	{
 		if($data == "")
 		$data = date("Y-m-d");
@@ -65,7 +65,7 @@ class SelectSituatie_GUI
 	 * 			)
 	 * 		 )
 	 *
-	 * @param array $select			O matrice care contine campul select
+	 * @param array $select			O matrice care contine câmpul select
 	 */
 	public function adaugaCampSelect($select)
 	{

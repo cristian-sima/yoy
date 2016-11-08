@@ -51,7 +51,7 @@
 			
 			
 			
-				echo'<span class="confirmation">Aparatul a fost scos din uz</span> <a href="depozit.php">Inapoi la depozit</a>';
+				echo'<span class="confirmation">Aparatul a fost scos din uz</span> <a href="depozit.php">Înapoi la depozit</a>';
 			
 			
 			}
@@ -114,7 +114,7 @@
 			
 			
 			
-			echo'<span class="confirmation">Aparatul a fost sters</span> <a href="aparate.php?id='.$data['idFirma'].' ">Inapoi la aparatele firmei</a>';
+			echo'<span class="confirmation">Aparatul a fost sters</span> <a href="aparate.php?id='.$data['idFirma'].' ">Înapoi la aparatele firmei</a>';
 			}
 			
 			?>

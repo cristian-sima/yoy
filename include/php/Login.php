@@ -106,7 +106,7 @@ class Login
 
 				/* verifica lungimea numelui */
 				else if(strlen($_POST['user'])<3 || strlen($_POST['user'])>32) {
-					$eroare='Numele trebuie sa contina intre 3 si 32 caractere';
+					$eroare='Numele trebuie să conțină intre 3 si 32 caractere';
 				}
 
 				else

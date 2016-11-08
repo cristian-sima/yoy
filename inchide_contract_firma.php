@@ -24,7 +24,7 @@ try
 	$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL()->getResource());
 
 		
-	Page::showConfirmation('<span class="confirmation">Contractul a fost incheiat</span> <a href="details.php?id_firma='.$_GET['idFirma'].'">Inapoi</a>');
+	Page::showConfirmation('<span class="confirmation">Contractul a fost incheiat</span> <a href="details.php?id_firma='.$_GET['idFirma'].'">Înapoi</a>');
 		
 		
 }

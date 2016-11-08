@@ -12,7 +12,7 @@
 echo '
 <table id="heading">
 	<tr>
-		<td>Vizualizaţi aparatele din depozit
+		<td>Vizualizați aparatele din depozit
 		</b>
 		</td>
 		<td style="text-align: right">

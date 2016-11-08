@@ -4,7 +4,7 @@
 	require_once "include/php/Procesare.php";
 	require_once "include/php/Aplicatie.php";
 	require_once "include/php/FirmaSpatiu.php";
-	require_once "include/php/SituatieMecanicaGraficaCompletaAparatNou.php";
+	require_once "include/php/SituațieMecanicaGraficaCompletaAparatNou.php";
 	
 	Page::showHeader();
 	Page::showContent();
@@ -85,7 +85,7 @@
 		 
 		if($data['firma_id'] == "0")
 		{
-			Page::showConfirmation('<span class="confirmation">Aparatul a fost adaugat in depozit</span> <a href="aparate_din_depozit.php">Inapoi la depozit</a>');			
+			Page::showConfirmation('<span class="confirmation">Aparatul a fost adaugat in depozit</span> <a href="aparate_din_depozit.php">Înapoi la depozit</a>');			
 		}
 		else
 		{
@@ -93,7 +93,7 @@
 		
 			
 			$firma		= new FirmaSpatiu($data['firma_id']);
-			$situatie 	= new SituatieMecanicaGraficaCompletaAparatNou($firma, $aparat_, $data['mecanic_intrare'], $data['mecanic_iesire']);
+			$situatie 	= new SituațieMecanicaGraficaCompletaAparatNou($firma, $aparat_, $data['mecanic_intrare'], $data['mecanic_iesire']);
 			
 			$aparate    = $situatie->getAparate();
 			
@@ -176,7 +176,7 @@
 			
 			if($data['firma_id'] != "0")
 			{	
-				Page::showConfirmation('<span class="confirmation">Aparatul a fost adaugat la firma !</span> <a href="aparate.php?id='.$_POST['firma_id'].' ">Inapoi</a>');
+				Page::showConfirmation('<span class="confirmation">Aparatul a fost adaugat la firma !</span> <a href="aparate.php?id='.$_POST['firma_id'].' ">Înapoi</a>');
 			}
 		}
 	}

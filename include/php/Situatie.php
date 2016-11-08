@@ -14,7 +14,7 @@ require_once "Firma.php";
  * @version			1.1
  *
  */
-abstract class Situatie
+abstract class Situație
 {
 	private   $firma		= null;
 	protected $from			= null;
@@ -32,7 +32,7 @@ abstract class Situatie
 	 * @param Firma $firma							Referinta spre obiectul firma despre care se face situatia [@Firma]
 	 *
 	 */
-	protected function Situatie(DataCalendaristica $from, DataCalendaristica $to, Firma $firma)
+	protected function Situație(DataCalendaristica $from, DataCalendaristica $to, Firma $firma)
 	{
 		$this->from 				= $from;
 		$this->to					= $to;
@@ -103,7 +103,7 @@ abstract class Situatie
 	 */
 	public function __toString()
 	{
-		return "[@Situatie, ".$this->getFrom().' -> '.$this->getTo().' for '.$this->getFirma().']';
+		return "[@Situație, ".$this->getFrom().' -> '.$this->getTo().' for '.$this->getFirma().']';
 	}
 
 	/**

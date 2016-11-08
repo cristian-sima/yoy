@@ -6,9 +6,9 @@ require_once "include/php/Guvern.php";
 require_once "include/php/Romanian.php";
 require_once "include/php/FirmaSpatiu.php";
 require_once "include/php/RegistruGrafic.php";
-require_once "include/php/SituatieMecanica.php";
+require_once "include/php/SituațieMecanica.php";
 require_once "include/php/DataCalendaristica.php";
-require_once "include/php/SituatieMecanicaTotaluri.php";
+require_once "include/php/SituațieMecanicaTotaluri.php";
 
 /**
  *
@@ -123,7 +123,7 @@ class RegistruGraficGeneral extends RegistruGrafic
 			{				
 				$firma = new FirmaSpatiu($db['id_firma']);
 				
-				$situatie = new SituatieMecanicaTotaluri($data_curenta, $data_curenta, $firma);
+				$situatie = new SituațieMecanicaTotaluri($data_curenta, $data_curenta, $firma);
 	
 				if($situatie->isCompletata())
 				{

@@ -2,7 +2,7 @@
 
 require_once "Firma.php";
 require_once "BileteGrafice.php";
-require_once "SituatieGrafica.php";
+require_once "SituațieGrafica.php";
 
 
 /**
@@ -14,7 +14,7 @@ require_once "SituatieGrafica.php";
  * @version			1.2
  *
  */
-class Situatie_GUI
+class Situație_GUI
 {
 	// referinte
 	private $situatie;
@@ -40,11 +40,11 @@ class Situatie_GUI
 	/**
 	 * Afiseaza o situatie grafica pentru o firma intr-o anumita perioada. Aceasta situatie este compusa din situatia index-urilor si a biletelor care au fost vandute in aceea zi sau perioada
 	 *
-	 * @param SituatieGrafica $situatie				Situatia grafica pentru firma respectiva
+	 * @param SituațieGrafica $situatie				Situatia grafica pentru firma respectiva
 	 * @param object $bilete						Situatia biletelor pentru firma respectiva
 	 * @param Firma $firma							Referinta spre obiectul firmei de spatiu
 	 */
-	public function __construct(SituatieGrafica $situatie, $bilete, Firma $firma)
+	public function __construct(SituațieGrafica $situatie, $bilete, Firma $firma)
 	{			
 		$this->situatie					= $situatie;
 		$this->bilete					= $bilete;
@@ -62,7 +62,7 @@ class Situatie_GUI
 			$this->textTitle			= "";
 		}
 			
-		$this->completedRows			= $this->getSituatie()->getNumarulDeAparate();
+		$this->completedRows			= $this->getSituație()->getNumarulDeAparate();
 	}
 
 
@@ -184,10 +184,10 @@ class Situatie_GUI
 	/**
 	 *
 	 *  Returneaza referinta spre situatie
-	 * @return SituatieMecanicaGraficaCompleta		Situatia
+	 * @return SituațieMecanicaGraficaCompleta		Situatia
 	 *
 	 */
-	public function getSituatie()
+	public function getSituație()
 	{
 		return $this->situatie;
 	}
@@ -247,7 +247,7 @@ class Situatie_GUI
 						<input type="hidden" name="aparate_" value="" id="aparate_" />
 						<input type="hidden" name="carnete_" value="" id="carnete_" />
 						<input type="hidden" value="'.$this->getFirma()->getID().'" 		name="id_firma" />
-						<input type="hidden" value="'.$this->getSituatie()->getFrom().'" 	name="from" />	
+						<input type="hidden" value="'.$this->getSituație()->getFrom().'" 	name="from" />	
 
 
 				<link href="include/css/situatie_GUI.css" rel="stylesheet" type="text/css"/>						
@@ -299,7 +299,7 @@ class Situatie_GUI
 				<div class="situatie_titlu">SITUATIA INCASARILOR '.$this->getTextTitle().'</div>
 				
 				<div class="situatie_subTitlu">pentru activitatea de exploatare a masinilor
-					electronice cu castiguri (Lei)</div>';
+					electronice cu câștiguri (Lei)</div>';
 	}
 
 	/**
@@ -441,7 +441,7 @@ class Situatie_GUI
 	 */
 	private function displayTotalRow()
 	{
-		$t = $this->getSituatie()->getTotal();
+		$t = $this->getSituație()->getTotal();
 		$this->displayRow("total", array("","<span class='bold'>TOTAL</span>","","","","","","","","","","","","","","",'<span id="total_bani">'.$t['sertar'].'</span> lei'));
 			
 	}
@@ -499,12 +499,12 @@ class Situatie_GUI
 	 */
 	private function _displayAutor()
 	{
-		if($this->displayAutor && ($this->getSituatie()->getAutor() != null))
+		if($this->displayAutor && ($this->getSituație()->getAutor() != null))
 		{
 			$this->html.= '<div class="situatie_autor">
 						Intocmit, <br />
 						<span class="situatie_nume_autor">&nbsp;&nbsp;&nbsp;';
-			$this->html.= htmlspecialchars($this->getSituatie()->getAutor()->getNume());
+			$this->html.= htmlspecialchars($this->getSituație()->getAutor()->getNume());
 			$this->html.= '&nbsp;&nbsp;&nbsp;</span></div>';
 		}
 	}
@@ -589,7 +589,7 @@ class Situatie_GUI
 	 */
 	private function _displayTotaluri()
 	{
-		$t = $this->getSituatie()->getTotal();
+		$t = $this->getSituație()->getTotal();
 
 		$this->html.= '	<table class="situatie_totaluri">
 						<colgroup>

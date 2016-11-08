@@ -110,25 +110,25 @@ try
 		$result = mysql_query($query, Aplicatie::getInstance()->getMYSQL()->getResource());
 
 
-		Page::showConfirmation('<span class="confirmation">Dispoziţiile au fost scrise </span> <a href="vizualizati_dispozitii.php">Înapoi la dispoziţii</a>');
+		Page::showConfirmation('<span class="confirmation">Dispozițiile au fost scrise </span> <a href="vizualizati_dispozitii.php">Înapoi la dispoziții</a>');
 	}
 	else
 	{
 		if(Aplicatie::getInstance()->getUtilizator()->isAdministrator())
 		{
 			Page::showConfirmation('
-			<big><span class="confirmation">Dispoziţia a fost scrisă </span></big>
+			<big><span class="confirmation">Dispoziția a fost scrisă </span></big>
 			<div style="margin-left:50px;">
 				<ul >
 					<li><a href="vizualizare_dispozitii.php">Înapoi la dispozitii</a></li>
 					<li><a href="registru_firma_spatiu.php?id_firma='.$data['_to'].'&data='.date("Y-m-d").'">Înapoi la registrul de casă al firmei</a></li>
-					<li><a href="situatie_mecanica.php?id_firma='.$data['_to'].'">Înapoi la situţie zilnică</a></li>
+					<li><a href="situatie_mecanica.php?id_firma='.$data['_to'].'">Înapoi la situție zilnică</a></li>
 				</ul>
 			</div>');
 		}
 		else
 		{
-			Page::showConfirmation("Dispozitia a fost realizata cu suscces. <a href='situatie_mecanica_operator.php'>Inapoi la situatie</a>");
+			Page::showConfirmation("Dispozitia a fost realizata cu suscces. <a href='situatie_mecanica_operator.php'>Înapoi la situatie</a>");
 		}
 	}
 

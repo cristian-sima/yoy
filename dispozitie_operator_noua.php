@@ -3,7 +3,7 @@
 require_once "include/php/Aplicatie.php";
 require_once "include/php/Procesare.php";
 require_once "include/php/FirmaSpatiu.php";
-require_once "include/php/SelectSituatie_GUI.php";
+require_once "include/php/SelectSituație_GUI.php";
 
 Login::permiteOperator();
 
@@ -11,7 +11,7 @@ Procesare::createEmptyFields($_GET, array ('id_firma'));
 
 Page::showHeader();
 Page::showContent();
-Page::showHeading("Dispozitie noua", ((Aplicatie::getInstance()->getUtilizator()->isAdministrator())?('<input type="button" value="Inapoi la dispozitii" onclick="document.location='."'".'vizualizare_dispozitii.php?id_firma='.$_GET['id_firma']."'".'" />'):('<input	type="button" class="disp" value="Înapoi la situaţie" onclick="document.location='."'".'situatie_mecanica_operator.php'."'".'" />')));
+Page::showHeading("Dispozitie noua", ((Aplicatie::getInstance()->getUtilizator()->isAdministrator())?('<input type="button" value="Înapoi la dispozitii" onclick="document.location='."'".'vizualizare_dispozitii.php?id_firma='.$_GET['id_firma']."'".'" />'):('<input	type="button" class="disp" value="Înapoi la situație" onclick="document.location='."'".'situatie_mecanica_operator.php'."'".'" />')));
 
 
 
@@ -26,7 +26,7 @@ echo '
 			<cufon class="cufon cufon-canvas" alt="Register"
 				style="width: 106px; height: 25px;"> <canvas width="122" height="28"
 				style="width: 122px; height: 28px; top: -2px; left: 0px;"></canvas>
-			<cufontext>Dispoziţie nouă</cufontext></cufon>
+			<cufontext>Dispoziție nouă</cufontext></cufon>
 		</h3>'; ?>
 		<div class="column">			
 			<div>
@@ -58,7 +58,7 @@ echo '
 
 			</div>
 			<div><br />
-				<label>Explicaţie optionala:</label> <input id="explicatie" value=""
+				<label>Explicație optionala:</label> <input id="explicatie" value=""
 					name="explicatie" check="true"
 					criteria='{type:"string", maxSize:"60"}' type="text"> <span
 					class="error">Exista o eroare</span>
@@ -71,7 +71,7 @@ echo '
 		<div class="bottom">
 			<div class="remember"></div>
 			<input type="button" class="submit" onclick="checkForm('f1')"
-				value="Adaugă dispoziţie"> <a href="#" rel="login" class="linkform">&nbsp;</a>
+				value="Adaugă dispoziție"> <a href="#" rel="login" class="linkform">&nbsp;</a>
 			<div class="clear"></div>
 		<?php 
 		echo '

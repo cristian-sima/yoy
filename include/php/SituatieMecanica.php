@@ -1,6 +1,6 @@
 <?php 
 		
-	require_once "Situatie.php";
+	require_once "Situație.php";
 	
 	/**
 	 *
@@ -10,7 +10,7 @@
 	 * @version			1.1
 	 *
 	 */
-	class SituatieMecanica extends Situatie
+	class SituațieMecanica extends Situație
 	{
 		private $numarulDeAparate	= 0;
 		private $id;
