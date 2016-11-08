@@ -99,7 +99,7 @@ class Page
 		}
 		else
 		{
-			echo'<br /><big>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bine ai venit !</big><br >';
+			echo'<br /><big>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yoy.ro</big><br >';
 		}
 
 
@@ -161,9 +161,8 @@ class Page
 		<div class="aplicatie_footer center hide_prt">
 			<table width="100%">
 				<tr>
-					<td width:30%>yoy.ro '.date('Y').'</td>
-					<td width="30%;text-align:center"><small> V'.self::$version.'</small></td>
-					<td style="width:30%;text-align:right">Toate drepturile rezervate</td>
+					<td width:30%>&copy; Sima Cristian - yoy.ro '.date('Y').'</td>
+					<td width="70%" style="text-align:right"><small> V'.self::$version.'</small></td>
 				</tr>
 			</table>
 		</div>
@@ -198,15 +197,15 @@ class Page
 							<td><input type="text" name="user" size="7" maxlength="30" id="user" /></td>
 						</tr>
 						<tr>
-							<td align="center"><label for="pass">Parola: </label></td>
+							<td align="center"><label for="pass">Parolă: </label></td>
 							<td><input type="password" name="pass" size="7" maxlength="30" id="pass" /></td>
 						</tr>
 					</table>
 					<br />
 					<table align="center" border="0" cellspacing="0" cellpadding="1" width="270" >
 						<tr>
-							<td> &nbsp; <input type="submit" onclick="beforeSubmit()" name="sublogin" value="Autentifica" /></td>
-							<td align="center"><input type="checkbox" class="switch" name="remember" /><font size="2">Tine-ma minte</font></td>
+							<td> &nbsp; <input type="submit" onclick="beforeSubmit()" name="sublogin" value="Autentifică" /></td>
+							<td align="center"><input type="checkbox" class="switch" name="remember" /><font size="2">Ține-mă minte</font></td>
 						</tr>
 					</table>
 				</div>

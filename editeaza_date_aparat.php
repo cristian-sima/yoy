@@ -27,7 +27,7 @@ Page::showHeading("Editează date aparat",'<input	type="button" class="disp" val
 						style="width: 106px; height: 25px;"> <canvas width="122"
 						height="28"
 						style="width: 122px; height: 28px; top: -2px; left: 0px;"></canvas>
-					<cufontext> Editare date aparat </cufontext></cufon>
+					<cufontext> Modificare date aparat </cufontext></cufon>
 				</h3>
 				<div class="column">
 					<div>

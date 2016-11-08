@@ -45,15 +45,17 @@ Page::showContent();
 			</div>
 			<div>
 				<label>Parolă:</label> <input check="true"
-					criteria='{type:"string",  minSize: "5", maxSize:"9"}' id="parola"
+					criteria='{type:"string",  minSize: "5", maxSize:"15"}' id="parola"
 					name="parola" type="password"> <span class="error">Există o eroare</span>
 			</div>
+			<input type="hidden"
+					name="tipOperator" value="desktop" />
 			<?php
 			if($_GET['type']=="admin")
 			{
 				?>
-				<input type="hidden" name="idFirma" value="0" /> <input type="hidden"
-						name="tipOperator" value="desktop" />
+
+				<input type="hidden" name="idFirma" value="0" /> 
 
 				<?php
 

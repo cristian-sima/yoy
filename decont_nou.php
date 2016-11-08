@@ -14,8 +14,8 @@ Procesare::createEmptyFields($_GET, array ('id_firma', 'data'));
 
 $_criterii_MYSQL	= (($_GET['id_firma'] != '')?("AND i.idFirma='".$_GET['id_firma']."'"):(""));
 
-Page::showHeading("Realizati un decont nou", '
-			
+Page::showHeading("Decont nou", '
+
 			<input	class="disp" type="button" value="Înapoi la deconturi" class="disp" onclick="document.location='."'".'administreaza_deconturi.php'."'".'" />');
 /* ---------------- content ---------------------*/
 ?>
@@ -75,7 +75,7 @@ Page::showHeading("Realizati un decont nou", '
 			<div class="bottom">
 				<div class="remember"></div>
 				<input type="button" class="submit" onclick="checkForm('f1')"
-					value="Realizează decont"> <a href="#" rel="login" class="linkform">&nbsp;</a>
+					value="Adaugă decont"> <a href="#" rel="login" class="linkform">&nbsp;</a>
 				<div class="clear"></div>
 			</div>
 		</form>
@@ -86,7 +86,7 @@ Page::showHeading("Realizati un decont nou", '
 
 <script>
 $( ".alegeData" ).datepicker({
-   
+
    });
    	 $( ".alegeData" ).change(function() {
       $( ".alegeData" ).datepicker( "option", "dateFormat", "yy-mm-dd" );

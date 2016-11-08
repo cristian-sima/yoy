@@ -14,8 +14,8 @@ Procesare::createEmptyFields($_GET, array ('id_firma', 'data'));
 
 $_criterii_MYSQL	= (($_GET['id_firma'] != '')?("AND i.idFirma='".$_GET['id_firma']."'"):(""));
 
-Page::showHeading("Realizati o depunere de numerar", '
-			
+Page::showHeading("Adaugă depunere", '
+
 			<input	class="disp" type="button" value="Înapoi la depuneri" class="disp" onclick="document.location='."'".'administreaza_depuneri_de_numerar.php'."'".'" />');
 /* ---------------- content ---------------------*/
 ?>
@@ -31,7 +31,7 @@ Page::showHeading("Realizati o depunere de numerar", '
 					style="width: 106px; height: 25px;"> <canvas width="122"
 					height="28"
 					style="width: 122px; height: 28px; top: -2px; left: 0px;"></canvas>
-				<cufontext>Decont nou</cufontext></cufon>
+				<cufontext>Adaugă depunere</cufontext></cufon>
 			</h3>
 			<div class="column">
 
@@ -75,7 +75,7 @@ Page::showHeading("Realizati o depunere de numerar", '
 			<div class="bottom">
 				<div class="remember"></div>
 				<input type="button" class="submit" onclick="checkForm('f1')"
-					value="Realizează depunere"> <a href="#" rel="login" class="linkform">&nbsp;</a>
+					value="Adaugă depunere"> <a href="#" rel="login" class="linkform">&nbsp;</a>
 				<div class="clear"></div>
 			</div>
 		</form>
@@ -86,7 +86,7 @@ Page::showHeading("Realizati o depunere de numerar", '
 
 <script>
 $( ".alegeData" ).datepicker({
-   
+
    });
    	 $( ".alegeData" ).change(function() {
       $( ".alegeData" ).datepicker( "option", "dateFormat", "yy-mm-dd" );

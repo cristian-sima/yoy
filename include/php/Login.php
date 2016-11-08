@@ -62,7 +62,7 @@ class Login
 				setcookie("cookuser", "", time()-60*60*24*100, "/");
 				setcookie("cookpass", "", time()-60*60*24*100, "/");
 
-				throw new Exception('Exceptie conexiune: Ai fost deconectat automat pentru ca au trecut mai mult de 10 minute de la ultima actiune. Te poti re-conecta <a href="index.php">aici</a></center>');
+				throw new Exception('Ai fost deconectat automat pentru că au trecut mai mult de 10 minute de la ultima acțiune. Te poți re-conecta <a href="index.php">aici</a></center>');
 			}
 			else
 			{
@@ -80,12 +80,12 @@ class Login
 				unset($_SESSION['user']);
 				unset($_SESSION['parola']);
 
-				throw new Exception("A intervenit o problema cu conectarea. Va sfatuim sa mai incercati inca o data conectarea. ");
+				throw new Exception("A intervenit o problemă cu conectarea. Vă sfătuim să mai încercați încă o dată conectarea.");
 			}
 			else
 			{
 				$q = "UPDATE utilizator
-					SET 	_temp='".time()."' 
+					SET 	_temp='".time()."'
 					WHERE 	user='".$_SESSION['user']."'
 					LIMIT 1" ;
 				$result = mysql_query($q, self::$mysql->getResource());
@@ -94,7 +94,7 @@ class Login
 		else
 		{
 			if(isset($_POST['sublogin']) && isset($_POST['user']) && isset($_POST['pass']))
-			{					
+			{
 				// Elimina spatiile din marginile numelui și parolei
 				$_POST['user'] = trim($_POST['user']);
 				// $_POST['pass'] = trim($_POST['pass']);
@@ -106,7 +106,7 @@ class Login
 
 				/* verifica lungimea numelui */
 				else if(strlen($_POST['user'])<3 || strlen($_POST['user'])>32) {
-					$eroare='Numele trebuie să conțină intre 3 și 32 caractere';
+					$eroare='Numele trebuie să conțină între 3 și 32 caractere';
 				}
 
 				else
@@ -125,15 +125,15 @@ class Login
 
 						/* Seteaza mesajul in cazul in care user sau parola sunt incorecte */
 						if($result==1) {
-							$eroare='Numele <b>'. stripslashes($_POST['user']). '</b> nu este inregistrat sau contul a fost dezactivat de catre administrator';
+							$eroare='Numele <b>'. stripslashes($_POST['user']). '</b> nu este înregistrat sau contul a fost dezactivat de către administrator';
 						}
 						else if($result==2)
 						{
-							$eroare='Parola este incorecta.';
+							$eroare='Parola este incorectă.';
 						}
 						else if($result==3)
 						{
-							$eroare = ('<center><br /><br /><font color="red"><h3>Inregistrarea pt. <u>'. stripslashes($_POST['user']). '</u> este neconfirmata.</h3></font> Verificati contul de e-mail folosit la inregistrare (inclusiv in Spamm) pt. mesajul cu link-ul de confirmare.<br /><br /> </center>');
+							$eroare = ('<center><br /><br /><font color="red"><h3>Înregistrarea pt. <u>'. stripslashes($_POST['user']). '</u> este neconfirmată.</h3></font> Verificați contul de e-mail folosit la înregistrare (inclusiv în Spamm) pt. mesajul cu link-ul de confirmare.<br /><br /> </center>');
 						}
 						else
 						{
@@ -150,10 +150,10 @@ class Login
 
 
 							PAGE::showCSSLogin();
-							PAGE::showConfirmation('Am stabilit conexiunea cu serverul ! <br />Aplicatia se incarca...');
-							
+							PAGE::showConfirmation('Am stabilit conexiunea cu serverul ! <br />Aplicația se încarcă...');
+
 							/* Auto redirect pentru a evita retrimiterea datelor cand da inapoi sau la refresh */
-							echo '<meta http-equiv="Refresh" content="1;url=index.php">';
+							echo '<meta http-equiv="Refresh" content="0;url=index.php">';
 							die();
 						}
 					}
@@ -161,14 +161,14 @@ class Login
 					{
 						// Seteaza mesajul cu timpul ramas pana la o noua incercare de autentificare
 						$continua = floor($continua/60). ' minute, '. ($continua%60). ' secunde';
-						$eroare = 'Ati depasit numarul incercari permise pt. autentificare. Puteti reincerca dupa <br /><b>'. $continua. '</b>';
-					}					
+						$eroare = 'Ați depășit numarul de încercari permise pt. autentificare. Puteți reîncerca după <br /><b>'. $continua. '</b>';
+					}
 				}
 					throw new Exception($eroare);
 			}
 			else
 			{
-				throw new Exception("Aceasta pagina necesita conectare !");
+				throw new Exception("Această pagină necesită conectare !");
 			}
 		}
 
@@ -183,7 +183,7 @@ class Login
 		return self::$id_user;
 
 	}
-	
+
 	/**
 	 * Permite accesul la aplicatie petru operatori. In mod prestabilit posibilitate de accesare este doar pentru administratori
 	 */
@@ -205,7 +205,7 @@ class Login
 	 */
 	private static function confirmUser($user, $parola)
 	{
-			
+
 		/* Adauga slashuri daca este necesar (pentru query) */
 		if(!get_magic_quotes_gpc())
 		{
@@ -216,7 +216,7 @@ class Login
 
 		/* Verifica daca numle este in baza de date */
 		$mysql_ = "	SELECT parola,id
-				FROM `utilizator` 
+				FROM `utilizator`
 				WHERE `user`='$user' AND activ='1' ".((self::$allowOperator)?(""):("AND tipCont = 'admin'"))."
 				LIMIT 1";
 
@@ -267,13 +267,13 @@ class Login
 			$_SESSION = array(); // reseteaza matricea sesiunii
 			@session_destroy();   // sterge toate sesiunile.
 
-			PAGE::showCSSLogin();			
-			Page::showConfirmation("Ai fost deconectat cu succes ! <br /> Redirectionare la pagina principala in 3 secunde. <meta http-equiv='Refresh' content='3;url=index.php'>");	
+			PAGE::showCSSLogin();
+			Page::showConfirmation("Ai fost deconectat cu succes ! <br /> Redirecționare la pagina principală în 3 secunde. <meta http-equiv='Refresh' content='3;url=index.php'>");
 		}
 		else
-		{			
+		{
 			echo " <meta http-equiv='Refresh' content='0;url=index.php'>";
-		}	
+		}
 	}
 
 	/**

@@ -1,3 +1,3 @@
-<?php 
+<?php
 
-echo 'Momentan nu exista';
+echo 'Momentan nu există';

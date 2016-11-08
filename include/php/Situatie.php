@@ -123,7 +123,7 @@ abstract class Situație
 
 	/**
 	 *
-	 * Returneaza totalul de bani ramasi in sertar (diferenta intre incasari și premii)
+	 * Returneaza totalul de bani ramasi in sertar (diferenta între incasari și premii)
 	 * @return int				Totalul de bani ramas in sertar
 	 *
 	 */

@@ -16,14 +16,14 @@ try
 	Procesare::checkRequestedData(array('id_firma','data'), $data, 'inchide_situatie_luna.php');
 
 	$data_dorita		= new DataCalendaristica($data['data']);
-	
+
 	if($data['id_firma'] == "0")
 	{
 		$registru = new RegistruGraficCentral($data_dorita);
 	}
 	else
 	{
-		$firma				= new FirmaSpatiu($data['id_firma']);		
+		$firma				= new FirmaSpatiu($data['id_firma']);
 		$registru = new RegistruGraficFirma($firma, $data_dorita);
 	}
 
@@ -31,10 +31,10 @@ try
 	$result = mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
 
 	$mysql = "INSERT INTO `sold_inchidere_luna`
-					(`valoare`, 
-					`idFirma`, 
+					(`valoare`,
+					`idFirma`,
 					`data_`)
-					 VALUES 
+					 VALUES
 					 ('".$registru->getTotal()."',
 					 '".$data['id_firma']."',
 					 '".$data['data']."'
@@ -42,8 +42,8 @@ try
 	$result = mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
 
 	Page::showConfirmation('
-		<big><span class="confirmation">Situatia lunara a fost inchisa</span></big>
-		<a href="inchide_situatie_luna.php?data='.$data['data'].'">Înapoi la inchideri</a>');
+		<big><span class="confirmation">Situația lunară a fost închisă</span></big>
+		<a href="inchide_situatie_luna.php?data='.$data['data'].'">Înapoi la închideri</a>');
 }
 catch(Exception $e)
 {

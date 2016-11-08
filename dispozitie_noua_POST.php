@@ -28,12 +28,12 @@ try
 
 	Procesare::checkRequestedData(array('_to','valoare','explicatie','data','tip','auto','document'), $data, 'adauga_interval_taxa?type='.$_POST['tip']);
 
-	
+
 	/*
 	 * Verificare valoare
 	 */
-	
-	$data['valoare']  = str_replace(",",".",$data['valoare']);	
+
+	$data['valoare']  = str_replace(",",".",$data['valoare']);
 	if(!is_numeric  ($data['valoare']))
 	{
 		throw new Exception("Valoare trebuie sa fie numerica. (Daca doriti sa scrieti cu zecimale folositi punctul");
@@ -43,14 +43,14 @@ try
 	{
 		throw new Exception("Valoare trebuie sa fie mai mare sau egala cu 0");
 	}
-	
-	
+
+
 	/*
 	 * Verificare data
 	 */
 	$_temp_data		= new DataCalendaristica($data['data']);
-	
-	
+
+
 	// ne asiguram ca daca este operator este doar firma aia și ca nu a setat optiunea automata
 	$data['_to']			= ((Aplicatie::getInstance()->getUtilizator()->isAdministrator())?($data['_to']):(Aplicatie::getInstance()->getUtilizator()->getIDFirma()));
 	$data['auto']			= ((Aplicatie::getInstance()->getUtilizator()->isAdministrator())?($data['auto']):('nu'));
@@ -63,9 +63,9 @@ try
 				 `data`,
 				 `_to`,
 				 `document`,
-				 `tip`, 
-				 `valoare`)				 
-		   VALUES 
+				 `tip`,
+				 `valoare`)
+		   VALUES
 				 ('".$data['explicatie']."',
 				 '".$data['data']."',
 				 '".$data['_to']."',
@@ -97,7 +97,7 @@ try
 								`document`,
 								`tip`,
 								`valoare`
-							) 
+							)
 							VALUES (
 								'".$data['explicatie']."',
 								'".$data['data']."',
@@ -128,7 +128,7 @@ try
 		}
 		else
 		{
-			Page::showConfirmation("Dispozitia a fost realizata cu suscces. <a href='situatie_mecanica_operator.php'>Înapoi la situație</a>");
+			Page::showConfirmation("Dispoziția a fost realizată cu suscces. <a href='situatie_mecanica_operator.php'>Înapoi la situație</a>");
 		}
 	}
 

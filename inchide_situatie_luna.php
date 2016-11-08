@@ -22,8 +22,8 @@ $selector_GUI->setAdresaButon("inchide_situatie_luna.php");
 $selector_GUI->afiseazaDescriere(false);
 
 
-Page::showHeading("Vizualizați inchiderile de situatii", '
-			<input	class="disp" type="button" value="Înapoi actiuni" class="disp" onclick="document.location='."'".'actiuni.php?data='.$data."'".'" />
+Page::showHeading("Vizualizați închiderile de situații", '
+			<input	class="disp" type="button" value="Înapoi acțiuni" class="disp" onclick="document.location='."'".'actiuni.php?data='.$data."'".'" />
 			');
 
 
@@ -32,14 +32,14 @@ $selector_GUI->display();
 /* ---------------- content ---------------------*/
 
 
-echo'&nbsp;&nbsp;&nbsp;&nbsp;<center><table id="example"><tr><th width="20%">DENUMIRE FIRMĂ</th><th width="30%">Actiune</th><th width="50%">Sold total</th></tr>';
+echo'&nbsp;&nbsp;&nbsp;&nbsp;<center><table id="example"><tr><th width="20%">DENUMIRE FIRMĂ</th><th width="30%">Acțiune</th><th width="50%">Sold total</th></tr>';
 
 
 $mysql = "
 	SELECT 	f.nume,
 			f.id,
-			f.dataIncetare			
-	FROM 	firma AS f	
+			f.dataIncetare
+	FROM 	firma AS f
 	WHERE 	f.activa='1' OR ( f.dataIncetare>'".$data->getLastDayOfMonth()."')
 	";
 $result = mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
@@ -47,14 +47,14 @@ $result = mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource(
 while($firma = mysql_fetch_array($result))
 {
 	$firma['valoare']	= 0;
-	
+
 	$mysql_2 = "
 					SELECT 	count(idFirma) AS este, valoare
 					FROM 	sold_inchidere_luna
 					WHERE (idFirma='".$firma['id']."' AND data_>='".$data->getFirstDayOfMonth()."' AND data_<= '".$data->getLastDayOfMonth()."')
 					";
 	$result2 = mysql_query($mysql_2, Aplicatie::getInstance()->getMYSQL()->getResource()) or die(mysql_error());
-	
+
 	while($inchisa = mysql_fetch_array($result2))
 	{
 		$firma['inchisa'] = $inchisa['este'];
@@ -64,8 +64,8 @@ while($firma = mysql_fetch_array($result))
 	echo'
 	<tr>
 		<td width="20%">'.$firma['nume'].'</td>
-		<td width="30%"><input type="button" onclick="document.location=\'inchide_situatie_lunara_GET.php?id_firma='.$firma['id'].'&data='.$data->getLastDayOfMonth().'\'" value="Inchidere luna" />'.(($firma['dataIncetare'] != NULL)?"(incetata pe ".$firma['dataIncetare'].")":"").'</td>
-		<td width="50%">'.(($firma['inchisa'] != 0)?Romanian::currency($firma['valoare']):"<span style='color:red'>Neinchis</span>").'</td>
+		<td width="30%"><input type="button" onclick="document.location=\'inchide_situatie_lunara_GET.php?id_firma='.$firma['id'].'&data='.$data->getLastDayOfMonth().'\'" value="Închidere lună" />'.(($firma['dataIncetare'] != NULL)?"(încetată pe ".$firma['dataIncetare'].")":"").'</td>
+		<td width="50%">'.(($firma['inchisa'] != 0)?Romanian::currency($firma['valoare']):"<span style='color:red'>Neînchis</span>").'</td>
 	</tr>';
 }
 
@@ -85,7 +85,7 @@ while($f2 = mysql_fetch_array($result2))
 	$valoare = $f2['valoare'];
 }
 
-echo'<tr></tr><tr></tr><tr></tr><tr><td class="bold" width="30%">'.Aplicatie::getInstance()->getFirmaOrganizatoare()->getDenumire().'</td><td width="20%"><input type="button" onclick="document.location=\'inchide_situatie_lunara_GET.php?id_firma=0&data='.$data.'\'" value="Inchidere luna" /></td><td width="50%">'.(($inchisa != 0)?Romanian::currency($valoare):"<span style='color:red'>Neinchis</span>").'</td></tr></table>';
+echo'<tr></tr><tr></tr><tr></tr><tr><td class="bold" width="30%">'.Aplicatie::getInstance()->getFirmaOrganizatoare()->getDenumire().'</td><td width="20%"><input type="button" onclick="document.location=\'inchide_situatie_lunara_GET.php?id_firma=0&data='.$data.'\'" value="Închidere lună" /></td><td width="50%">'.(($inchisa != 0)?Romanian::currency($valoare):"<span style='color:red'>Neînchis</span>").'</td></tr></table>';
 
 Page::showFooter();
 ?>
@@ -102,7 +102,7 @@ Page::showFooter();
 #example td
 {
 	padding:	5px;
-	border:		1px solid #dfdfdf;	
+	border:		1px solid #dfdfdf;
 }
 
 #example tr:hover {

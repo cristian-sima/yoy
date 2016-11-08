@@ -15,7 +15,7 @@ try
 	Procesare::checkRequestedData(
 	array('id_firma'),
 	$data,
-							'editare_date_firma.php?id_firma='.$_GET['id_firma']);	
+							'editare_date_firma.php?id_firma='.$_GET['id_firma']);
 
 	$q = "UPDATE `firma` SET activa='0',dataIncetare='".date("Y-m-d")."' WHERE id='".$data['id_firma']."'";
 	$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL()->getResource());
@@ -23,10 +23,10 @@ try
 	$q = "UPDATE `utilizator` SET activ='1' WHERE idFirma='".$data['id_firma']."'";
 	$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL()->getResource());
 
-		
-	Page::showConfirmation('<span class="confirmation">Contractul a fost incheiat</span> <a href="details.php?id_firma='.$_GET['idFirma'].'">Înapoi</a>');
-		
-		
+
+	Page::showConfirmation('<span class="confirmation">Contractul a fost încheiat</span> <a href="details.php?idFirma='.$_GET['id_firma'].'">Înapoi</a>');
+
+
 }
 catch(Exception $e)
 {

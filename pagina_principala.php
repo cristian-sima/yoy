@@ -65,7 +65,7 @@
 				<tr>
 					<th>Denumire</th>
 					<th>Localitate</th>
-					<th>Data incetare</th>
+					<th>Dată încetare</th>
 
 				</tr>
 			</thead>

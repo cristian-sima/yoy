@@ -93,7 +93,7 @@
 					onclick="seeData('inchide_situatie_luna')" href="#"
 					class="button orange small bold">Închidere lună</a> <a
 					onclick="seeData('editare_date_firma')" href="#"
-					class="button orange small bold">Editare date firmă</a> <?php } ?>
+					class="button orange small bold">Modificare date firmă</a> <?php } ?>
 				</td>
 			</tr>
 		</table>

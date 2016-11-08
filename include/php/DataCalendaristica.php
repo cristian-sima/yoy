@@ -150,7 +150,7 @@ class DataCalendaristica
 	 * 
 	 * Returneaza numele lunii in functie de numarul
 	 * 
-	 * @param unknown_type $luna			Un numar intre 1 și 12
+	 * @param unknown_type $luna			Un numar între 1 și 12
 	 * 
 	 */
 	public static function getNumeleLunii($luna)

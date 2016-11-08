@@ -25,10 +25,10 @@ $selector_GUI->setTypeOfDocument("Depuneri de numerar");
 
 
 Page::showHeading("Vizualizați depuneri de numerar", '
-			<input class="disp" type="button" value="Tipărește" class="disp" onclick="window.print();" /> 
-			<input	class="disp" type="button" value="Înapoi actiuni" class="disp" onclick="document.location='."'".'actiuni.php?data='.$data."'".'" />
-			<input	class="disp" type="button" value="Depunere noua" class="disp" onclick="document.location='."'".'depunere_numerar_noua.php?data='.$data."'".'" />
-			
+			<input class="disp" type="button" value="Tipărește" class="disp" onclick="window.print();" />
+			<input	class="disp" type="button" value="Înapoi acțiuni" class="disp" onclick="document.location='."'".'actiuni.php?data='.$data."'".'" />
+			<input	class="disp" type="button" value="Adaugă depunere" class="disp" onclick="document.location='."'".'depunere_numerar_noua.php?data='.$data."'".'" />
+
 			');
 
 
@@ -40,7 +40,7 @@ $mysql = "SELECT 	data,
 				suma,
 				document,
 				explicatie
-		FROM depunere_numerar 
+		FROM depunere_numerar
 		WHERE data >= '".$data->getFirstDayOfMonth()."' AND data <= '".$data->getLastDayOfMonth()."'";
 
 $eliberari 		= mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
@@ -58,7 +58,7 @@ else
 					<td> Data</td>
 					<td> Valoare</td>
 					<td> Document</td>
-					<td> Explicatie</td>
+					<td> Explicație</td>
 					</tr>
 					';
 
@@ -75,7 +75,7 @@ else
 			';
 		$total += $depunere['suma'];
 	}
-	
+
 	echo'
 			<tr class="pad">
 				<td class="bold" > Total</td>
@@ -84,7 +84,7 @@ else
 				<td></td>
 				<td></td>
 			</tr>';
-	
+
 	echo '</table>';
 }
 
@@ -106,7 +106,7 @@ Page::showFooter();
 
 #example td
 {
-	border:		1px solid #dfdfdf;	
+	border:		1px solid #dfdfdf;
 }
 
 #example tr:hover {

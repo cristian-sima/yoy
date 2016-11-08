@@ -119,7 +119,7 @@
 				<tr class="head pad">
 					<td class="smoke"  >Data</td><td  class="smoke">Firmă </td>
 					<td  class="smoke"> Suma</td>
-					<td >Suma impozitabila</td>
+					<td >Sumă impozabilă</td>
 					<td  class="disp" >Opțiuni</td>
 				</tr>';
 

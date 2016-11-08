@@ -20,18 +20,18 @@ function is_cnp_valid($cnp_primit)
 
     $cnp['cnp primit'] = $cnp_primit;
     // prima cifra din cnp reprezinta sexul și nu poate fi decat 1,2,5,6 (pentru cetatenii romani)
-    // 1, 2 pentru cei nascuti intre anii 1900 și 1999
+    // 1, 2 pentru cei nascuti între anii 1900 și 1999
     // 5, 6 pentru cei nsacuti dupa anul 2000
     $cnp['sex'] = $cnp['cnp primit']{0};
     // cifrele 2 și 3 reprezinta anul nasterii
     $cnp['an'] = $cnp['cnp primit']{1}.$cnp['cnp primit']{2};
-    // cifrele 4 și 5 reprezinta luna (nu poate fi decat intre 1 și 12)
+    // cifrele 4 și 5 reprezinta luna (nu poate fi decat între 1 și 12)
     $cnp['luna']    = $cnp['cnp primit']{3}.$cnp['cnp primit']{4};
-    // cifrele 6 și 7 reprezinta ziua (nu poate fi decat intre 1 și 31)
+    // cifrele 6 și 7 reprezinta ziua (nu poate fi decat între 1 și 31)
     $cnp['zi']    = $cnp['cnp primit']{5}.$cnp['cnp primit']{6};
-    // cifrele 8 și 9 reprezinta codul judetului (nu poate fi decat intre 1 și 52)
+    // cifrele 8 și 9 reprezinta codul judetului (nu poate fi decat între 1 și 52)
     $cnp['judet'] = $cnp['cnp primit']{7}.$cnp['cnp primit']{8};
-    // cifrele 10,11,12 reprezinta un nr. poate fi intre 001 și 999.
+    // cifrele 10,11,12 reprezinta un nr. poate fi între 001 și 999.
     // Numerele din acest interval se impart pe judete,
     // birourilor de evidenta a populatiei, astfel inct un anumit numar din acel
     // interval sa fie alocat unei singure persoane intr-o anumita zi.

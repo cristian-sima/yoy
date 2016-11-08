@@ -18,8 +18,8 @@ Page::showHeading("Editeaza date firma",'<input	type="button" class="disp" value
 	<tr>
 		<td></td>
 		<td style="text-align: right"><?php if($firma->isActiva())
-		{?> <input type="button" value="Inchide contract"
-			onclick="confirmRequest('Esti sigur ca vrei sa inchei contractul ?', 'inchide_contract_firma.php?id_firma=<?php echo$firma->getID();?>')" />
+		{?> <input type="button" value="Închide contract"
+			onclick="confirmRequest('Ești sigur că vrei să închei contractul ?', 'inchide_contract_firma.php?id_firma=<?php echo$firma->getID();?>')" />
 			<?php
 		} ?>
 		</td>
@@ -38,7 +38,7 @@ Page::showHeading("Editeaza date firma",'<input	type="button" class="disp" value
 					style="width: 106px; height: 25px;"> <canvas width="122"
 					height="28"
 					style="width: 122px; height: 28px; top: -2px; left: 0px;"></canvas>
-				<cufontext> Editare date firma</cufontext></cufon>
+				<cufontext> Modificare date firma</cufontext></cufon>
 			</h3>
 			<div class="column">
 				<div>
@@ -87,6 +87,6 @@ Page::showHeading("Editeaza date firma",'<input	type="button" class="disp" value
 	<div class="clear"></div>
 </div>
 
-<?php 
+<?php
 
 	Page::showFooter();

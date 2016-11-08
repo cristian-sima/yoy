@@ -56,7 +56,7 @@ else
 					<td> Data</td>
 					<td> Valoare</td>
 					<td> Document</td>
-					<td> Explicatie</td>
+					<td> Explicație</td>
 					</tr>
 					';
 
