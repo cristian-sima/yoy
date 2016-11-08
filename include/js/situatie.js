@@ -7,170 +7,170 @@ carnete.data 		= new Array();
 function beforeSubmit()
 {
 	// verifica index-uri
-	
+
 	var tabel = document.getElementById('situatie_data');
 
-	
+
 	var problem			= false;
-	
+
 	for (row = 3; row <= situatie.nrDeAparate + 2; row++)
-	{		
+	{
 		start_intrare = ($(tabel.rows[row].cells[2]).text());
 		end_intrare = ($(tabel.rows[row].cells[5]).children()[0].value);
 
 		start_iesire = ($(tabel.rows[row].cells[4]).text());
 		end_iesire = ($(tabel.rows[row].cells[7]).children()[0].value);
-		
+
 		serie_aparat = ($(tabel.rows[row].cells[1]).text());
 		id_aparat =  ($(tabel.rows[row].cells[9]).children()[0].value);
 
-		
+
 		if(end_iesire.length < 2)
 		{
-			alert("Index-ul de iesire pentru aparatul cu seria "+serie_aparat+" trebuie sa aiba 2 cifre cel putin");
+			alert("Index-ul de ieșire pentru aparatul cu seria "+serie_aparat+" trebuie să aibă cel puțin 2 cifre");
 			$problem		= true;
 			$(tabel.rows[row].cells[7]).children()[0].focus();
 			return false;
 		}
-		
+
 
 		if(end_intrare.length < 2)
 		{
-			alert("Index-ul de intrare pentru aparatul cu seria "+serie_aparat+" trebuie sa aiba 2 cifre cel putin");
+			alert("Index-ul de intrare pentru aparatul cu seria "+serie_aparat+" trebuie să aibă cel puțin 2 cifre");
 			$problem		= true;
 			$(tabel.rows[row].cells[5]).children()[0].focus();
 			return false;
 		}
-		
+
 
 		start_intrare 	= parseInt(start_intrare);
 		end_intrare		= parseInt(end_intrare);
 		start_iesire	= parseInt(start_iesire);
 		end_iesire		= parseInt(end_iesire);
-		
-		
-		
+
+
+
 		if(start_intrare > end_intrare)
 		{
-			alert("Index-ul de intrare pentru aparatul cu seria "+serie_aparat+" trebuie sa fie mai mare ca cel de inceput");
+			alert("Index-ul de intrare pentru aparatul cu seria "+serie_aparat+" trebuie să fie mai mare decât cel de început");
 			$problem		= true;
 			$(tabel.rows[row].cells[5]).children()[0].focus();
 			return false;
 		}
-		
+
 		if(start_iesire > end_iesire)
 		{
-			alert("Index-ul de iesire pentru aparatul cu seria "+serie_aparat+" trebuie sa fie mai mare ca cel de inceput");
-			$problem		= true;	
+			alert("Index-ul de ieșire pentru aparatul cu seria "+serie_aparat+" trebuie să fie mai mare decât cel de început");
+			$problem		= true;
 			$(tabel.rows[row].cells[7]).children()[0].focus();
 			return false;
 		}
-		
-		
+
+
 		aparate.push(id_aparat);
 	}
-	
+
 	// check carnet default
-	
-	
+
+
 	var start	= $("#carnet_default_start").val();
 	var end		= $("#carnet_default_end").val();
-	
-	
+
+
 	if(start.length != 5)
 	{
-		alert("Seria pentru primul carnet trebuie sa fie de exact 5 cifre");
+		alert("Seria pentru primul carnet trebuie să aibă exact 5 cifre");
 		problem		= true;
 		$("#carnet_default_start").focus();
 		return false;
 	}
-	
+
 	if(end.length != 5)
 	{
-		alert("Seria pentru primul carnet trebuie sa fie de exact 5 cifre");
+		alert("Seria pentru primul carnet trebuie să aibă exact 5 cifre");
 		problem = true;
 		$("#carnet_default_end").focus();
 		return false;
-	}	
-	
+	}
+
 	serie1  = ((parseInt(start)-1)+"").substring(0,3);
 	serie2  = ((parseInt(end)-1)+"").substring(0,3);
 
 	if(serie1 != serie2)
 	{
-		alert("Primul carnet trebuie sa aiba aceeasi serie pentru inceput și sfarsit");
+		alert("Primul carnet trebuie să aibă aceeași serie pentru început și sfârșit");
 		problem = true;
 		$("#carnet_default_end").focus();
 		return false;
 	}
-	
+
 	if(parseInt(start) > parseInt(end))
 	{
-		alert("Seria pentru primul carnet trebuie sa fie mai mare sau egala decat inceputul");
+		alert("Seria pentru primul carnet trebuie să fie mai mare sau egală decât începutul");
 		problem = true;
 		$("#carnet_default_end").focus();
 		return false;
 	}
-	
+
 	// carnete
-	
+
 	for (var index in carnete.data)
 	{
 		carnetID = carnete.data[index];
-		
+
 		console.log(carnetID);
-		
+
 		start	= $("#carnet_"+carnetID+"_start").val();
 		end		= $("#carnet_"+carnetID+"_end").val();
-		
-		
+
+
 		if(start.length != 5)
 		{
-			alert("Seria "+start+' trebuie sa fie de exact 5 cifre');
+			alert("Seria "+start+' trebuie să fie de exact 5 cifre');
 			problem		= true;
 			$("#carnet_"+carnetID+"_start").focus();
 			return false;
 		}
-		
+
 		if(end.length != 5)
 		{
-			alert("Seria "+end+' trebuie sa fie de exact 5 cifre');
+			alert("Seria "+end+' trebuie să fie de exact 5 cifre');
 			problem = true;
 			$("#carnet_"+carnetID+"_end").focus();
 			return false;
-		}		
-		
+		}
+
 		serie1  = ((parseInt(start)-1)+"").substring(0,3);
 		serie2  = ((parseInt(end)-1)+"").substring(0,3);
-		 
+
 		if(serie1 != serie2)
 		{
-			alert("Primul carnet trebuie sa aiba aceeasi serie pentru inceput și sfarsit");
+			alert("Primul carnet trebuie să aibă aceeași serie pentru început și sfârșit");
 			problem = true;
 			$("#carnet_"+carnetID+"_end").focus();
 			return false;
 		}
-		
+
 		if(parseInt(start) > parseInt(end))
 		{
-			alert("Seria pentru primul carnet trebuie sa fie mai mare sau egala decat inceputul");
+			alert("Seria pentru primul carnet trebuie să fie mai mare sau egală decât începutul");
 			problem = true;
 			$("#carnet_"+carnetID+"_end").focus();
 			return false;
 		}
-		
+
 	}
-	
-	
+
+
 	if(!problem)
 	{
 		//submit
-		
+
 		$("#carnete_").val(carnete.data.join("|"));
 		$("#aparate_").val(aparate.join("|"));
-		
+
 		$("#formular_situatie").submit();
-		
+
 	}
 }
 
@@ -179,7 +179,7 @@ function adaugaCarnet()
 	var id = carnete.ID;
 
 	var row = "<tr id='carnet_" + id + "'>" +
-		"<td  style='border:none;width:127px;font-weight:bold;border-left:0px solid white;border-bottom:0px;'><span style='cursor:pointer' class='hide_prt' onclick='stergeCarnet(" + id + ")'>Sterge carnet</span></td>" +
+		"<td  style='border:none;width:127px;font-weight:bold;border-left:0px solid white;border-bottom:0px;'><span style='cursor:pointer' class='hide_prt' onclick='stergeCarnet(" + id + ")'>Șterge carnet</span></td>" +
 		'<td>' + "<input class='completare_bilet' type='text' id='carnet_" + id + "_start' name='carnet_" + id + "_start' /></td>	" +
 		"<td><input class='completare_bilet' type='text' id='carnet_" + id + "_end' name='carnet_" + id + "_end' />" +
 		"</td></tr>";
@@ -240,7 +240,7 @@ $(document).ready(function ()
 	{
 		var tabel = document.getElementById('situatie_data');
 
-		
+
 		totaluri.incasari = 0;
 		totaluri.sertar = 0;
 		totaluri.premii = 0;
@@ -250,7 +250,7 @@ $(document).ready(function ()
 		{
 			dif1	= 0;
 			dif2	= 0;
-			
+
 			start_intrare = ($(tabel.rows[row].cells[2]).text());
 			end_intrare = ($(tabel.rows[row].cells[5]).children()[0].value);
 
@@ -264,14 +264,14 @@ $(document).ready(function ()
 			start_intrare = parseInt(start_intrare);
 			start_iesire = parseInt(start_iesire);
 
-		
-			
+
+
 			if((end_intrare != "") && (start_intrare <= parseInt(end_intrare)))
 			{
 				end_intrare = parseInt(end_intrare);
 				dif1 = parseInt(factor_mecanic * (end_intrare - start_intrare));
 			}
-			
+
 			if((end_iesire != "") && (start_iesire <= parseInt(end_iesire)))
 			{
 				end_iesire = parseInt(end_iesire);
@@ -279,9 +279,9 @@ $(document).ready(function ()
 			}
 
 
-			
 
-			
+
+
 			diferenta = round(dif1 - dif2, 2);;
 
 			total_ = 0;

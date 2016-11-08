@@ -6837,17 +6837,17 @@ function Datepicker() {
 	this._dayOverClass = "ui-datepicker-days-cell-over"; // The name of the day hover marker class
 	this.regional = []; // Available regional settings, indexed by language code
 	this.regional[""] = { // Default regional settings
-		closeText: "Done", // Display text for close link
-		prevText: "Prev", // Display text for previous month link
-		nextText: "Next", // Display text for next month link
-		currentText: "Today", // Display text for current month link
-		monthNames: ["January","February","March","April","May","June",
-			"July","August","September","October","November","December"], // Names of months for drop-down and formatting
-		monthNamesShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], // For formatting
-		dayNames: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], // For formatting
-		dayNamesShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"], // For formatting
-		dayNamesMin: ["Su","Mo","Tu","We","Th","Fr","Sa"], // Column headings for days starting at Sunday
-		weekHeader: "Wk", // Column header for week of the year
+		closeText: "Gata", // Display text for close link
+		prevText: "Precedenta", // Display text for previous month link
+		nextText: "Următoarea", // Display text for next month link
+		currentText: "Astăzi", // Display text for current month link
+		monthNames: ["Ianuarie","Februarie","Martie","Aprilie","Mai","Iunie",
+			"Iulie","August","Septembrie","Octombrie","Noiembrie","Decembrie"], // Names of months for drop-down and formatting
+		monthNamesShort: ["Ian", "Feb", "Mar", "Apr", "Mai", "Iun", "Iul", "Aug", "Sep", "Oct", "Noi", "Dec"], // For formatting
+		dayNames: ["Duminică", "Luni", "Marți", "Miercuri", "Joi", "Vineri", "Sâmbătă"], // For formatting
+		dayNamesShort: ["Dum", "Lun", "Mar", "Mie", "Joi", "Vin", "Sâm"], // For formatting
+		dayNamesMin: ["Du","Lu","Ma","Mi","Jo","Vi","Sâ"], // Column headings for days starting at Sunday
+		weekHeader: "Săpt.", // Column header for week of the year
 		dateFormat: "mm/dd/yy", // See format options on parseDate
 		firstDay: 0, // The first day of the week, Sun = 0, Mon = 1, ...
 		isRTL: false, // True if right-to-left language, false if left-to-right

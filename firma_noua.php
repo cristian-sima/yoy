@@ -8,7 +8,7 @@ Page::showContent();
 	<tr>
 		<td>
 			<h2 style="color: orange">
-				<img src="img/firme.png" align="absmiddle" />Firmă nouă
+				<img src="img/firme.png" align="absmiddle" />Adaugă firmă
 			</h2>
 		</td>
 		<td style="text-align: right">
@@ -18,7 +18,7 @@ Page::showContent();
 </table>
 <div class="content">
 	<div id="dialog"></div>
-	<div id="form_wrapper" class="form_wrapper" style="width: 550px; height: 496px; display: block;">
+	<div id="form_wrapper" class="form_wrapper" style="width: 550px; display: block;">
 		<form id="f1" class="register active" style="" action="firma_noua_POST.php" method="POST">
 			<h3>
 				<cufon class="cufon cufon-canvas" alt="Register"
@@ -26,7 +26,7 @@ Page::showContent();
 				<canvas width="122"
 				height="28"
 				style="width: 122px; height: 28px; top: -2px; left: 0px;"></canvas>
-				<cufontext> Creați firmă</cufontext>
+				<cufontext>Adaugă firmă</cufontext>
 			</cufon>
 		</h3>
 		<div class="column">
@@ -58,15 +58,13 @@ Page::showContent();
 						<label>Date de contact:</label>
 						<textarea check="true" check="true" criteria='{type:"string",  maxSize:"30"}' id="date_contact" name="date_contact" type="text"></textarea>
 						<span class="error">Exista o eroare</span>
+						<i><small>Info: Vei putea adăuga administratorii ulterior.</small></i>
 					</div>
 				</div>
 				<div class="column"></div>
 				<div class="bottom">
-					<div class="remember"></div>
-					<input type="button" class="submit" onclick="checkForm('f1')" value="Firmă nouă">
-					<a href="#" rel="login" class="linkform">Administratori
-						se realizeaza ulterior</a>
-						<div class="clear"></div>
+					<input type="button" class="submit" onclick="checkForm('f1')" value="Firmă nouă" />
+					<div class="clear"></div>
 					</div>
 				</form>
 			</div>

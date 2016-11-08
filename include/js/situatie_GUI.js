@@ -63,7 +63,7 @@ function checkValue(v1,v2,where,noShow){
 			});
 
 
-			$(where).tooltip({ items: where, content: "Trebuie sa fie mai mare sau egal decat cel anterior "});
+			$(where).tooltip({ items: where, content: "Trebuie să fie mai mare sau egal decât cel anterior "});
 			$(where).tooltip("open");
 
 			$(where).tooltip({
@@ -78,11 +78,11 @@ function checkValue(v1,v2,where,noShow){
 			});
 
 		}
-		$(".mod").attr({"disabled":'disabled'});    
+		$(".mod").attr({"disabled":'disabled'});
 		$(".mod").addClass('disabled');
 
 	}else
-	{	
+	{
 		if(noShow!=1){
 			$(where).css({
 				"border":"1px solid green",
@@ -97,7 +97,7 @@ function checkValue(v1,v2,where,noShow){
 
 		$(where).tooltip({ hide: { effect: "fade", duration: 1000 } });
 
-		$(where).tooltip("disable"); 
+		$(where).tooltip("disable");
 		//	$(where).remove();
 
 		$(".mod").removeClass('disabled');
@@ -120,13 +120,13 @@ function checkBilet(b1,b2,where, noShow){
 			});
 
 
-			$(where).tooltip({ items: where, content: "Completati seria de bilete"});
+			$(where).tooltip({ items: where, content: "Completați seria de bilete"});
 			$(where).tooltip("open");
 
 		}
 
 
-		$(".mod").attr({"disabled":'disabled'});    
+		$(".mod").attr({"disabled":'disabled'});
 		$(".mod").addClass('disabled');
 		$(where).tooltip('disable');
 
@@ -149,14 +149,14 @@ function checkBilet(b1,b2,where, noShow){
 			});
 
 
-			$(where).tooltip({ items: where, content: "Seria trebuie să conțină cel putin 5 caractere"});
+			$(where).tooltip({ items: where, content: "Seria trebuie să conțină cel puțin 5 caractere"});
 			$(where).tooltip("open");
 
 
 
 		}
 
-		$(".mod").attr({"disabled":'disabled'});    
+		$(".mod").attr({"disabled":'disabled'});
 		$(".mod").addClass('disabled');
 
 		return;
@@ -176,16 +176,16 @@ function checkBilet(b1,b2,where, noShow){
 				});
 
 
-				$(where).tooltip({ items: where, content: "Seria de astazi mai mare decat cea de ieri "});
+				$(where).tooltip({ items: where, content: "Seria de astăzi este mai mare decât cea de ieri "});
 				$(where).tooltip("open");
 
-				$(".mod").attr({"disabled":'disabled'});    
+				$(".mod").attr({"disabled":'disabled'});
 				$(".mod").addClass('disabled');
 
 			}
 
 
-			$(".mod").attr({"disabled":'disabled'});    
+			$(".mod").attr({"disabled":'disabled'});
 			$(".mod").addClass('disabled');
 
 		}
@@ -234,7 +234,7 @@ function checkBilet(b1,b2,where, noShow){
 function getValueAt(row,c)
 {
 
-	var el = $($("#v_"+c+"_"+row)[0]);		
+	var el = $($("#v_"+c+"_"+row)[0]);
 
 	//	console.log("De la randul "+row+" cu index "+c+" este ")
 	//	console.log(el);
@@ -245,7 +245,7 @@ function getValueAt(row,c)
 	}
 	else{
 
-		return el.text();					
+		return el.text();
 
 	}
 }
@@ -282,7 +282,7 @@ function calculRow(e){
 
 	c[2] 	= parseInt(getValueAt(e, 2));  // inceput mecanic
 	c[2] = (c[2]=='')?0:(c[2]);
-	c[4] 	= getValueAt(e, 4);  // inceput electronic			
+	c[4] 	= getValueAt(e, 4);  // inceput electronic
 	c[5] 	= getValueAt(e, 5);  // sfarsit mecanic
 	c[5] = (c[5]=='')?0:parseInt(c[5]);
 	c[7]  = (getValueAt(e, 7));  // fact Mec inceput
@@ -319,7 +319,7 @@ function  activate(){
 		"color": "white"
 	});
 
-	$(".mod").removeAttr("disabled");   
+	$(".mod").removeAttr("disabled");
 
 
 }
@@ -331,7 +331,7 @@ function newType(row, total){
 
 	calculRow(row);
 
-	//console.log(c);	
+	//console.log(c);
 	if(total)
 		calculTotal();
 }
@@ -410,13 +410,13 @@ var problems = 0;
 function _completeaza(el){
 
 	var rand = $(el).attr("name").charAt(1);
-	var _temp = $(el).parent().attr("id");							
+	var _temp = $(el).parent().attr("id");
 	var split = _temp.split("_");
 	var idCurent = split[1];
 
 	//console.log(rand+' '+idCurent);
 
-	newType(rand, true);	
+	newType(rand, true);
 
 
 
@@ -424,7 +424,7 @@ function _completeaza(el){
 		return;
 	else
 		v = $(el).val();
-	checkValue(getValueAt(rand,idCurent-3),v, $(el));	
+	checkValue(getValueAt(rand,idCurent-3),v, $(el));
 
 }
 
@@ -433,9 +433,9 @@ $(document).ready(function() {
 
 	$(".complete").keydown(function(event) {
 		// Allow: backspace, delete, tab, escape, and enter
-		if ( event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 || 
+		if ( event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 ||
 				// Allow: Ctrl+A
-				(event.keyCode == 65 && event.ctrlKey === true) || 
+				(event.keyCode == 65 && event.ctrlKey === true) ||
 				// Allow: home, end, left, right
 				(event.keyCode >= 35 && event.keyCode <= 39)) {
 			// let it happen, don't do anything
@@ -448,7 +448,7 @@ $(document).ready(function() {
 			// Ensure that it is a number and stop the keypress
 			if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105 )) {
 
-				event.preventDefault(); 
+				event.preventDefault();
 			}
 
 		}
@@ -456,9 +456,9 @@ $(document).ready(function() {
 
 	$(".complete").keyup(function(event) {
 		// Allow: backspace, delete, tab, escape, and enter
-		if ( event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 || 
+		if ( event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 ||
 				// Allow: Ctrl+A
-				(event.keyCode == 65 && event.ctrlKey === true) || 
+				(event.keyCode == 65 && event.ctrlKey === true) ||
 				// Allow: home, end, left, right
 				(event.keyCode >= 35 && event.keyCode <= 39)) {
 			// let it happen, don't do anything
@@ -471,7 +471,7 @@ $(document).ready(function() {
 			// Ensure that it is a number and stop the keypress
 			if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105 )) {
 
-				event.preventDefault(); 
+				event.preventDefault();
 			}
 
 
@@ -481,9 +481,9 @@ $(document).ready(function() {
 
 	$(".complete2").keydown(function(event) {
 		// Allow: backspace, delete, tab, escape, and enter
-		if ( event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 || 
+		if ( event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 ||
 				// Allow: Ctrl+A
-				(event.keyCode == 65 && event.ctrlKey === true) || 
+				(event.keyCode == 65 && event.ctrlKey === true) ||
 				// Allow: home, end, left, right
 				(event.keyCode >= 35 && event.keyCode <= 39)) {
 			// let it happen, don't do anything
@@ -496,21 +496,21 @@ $(document).ready(function() {
 			// Ensure that it is a number and stop the keypress
 			if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105 )) {
 
-				event.preventDefault(); 
+				event.preventDefault();
 			}
 
 		}
 	});
 
 	$('#b2').blur(function(event)
-			{				
+			{
 		checkBilet($('#b1').html(),$('#b2').val(), $('#b2'));
 
 
 			});
 
 	$('#b1').blur(function(event)
-			{				
+			{
 		checkBilet($('#b1').html(),$('#b2').val(), $('#b2'));
 
 
@@ -523,14 +523,14 @@ $(document).ready(function() {
 	$("#b2").keyup(function(event) {
 
 		// Allow: backspace, delete, tab, escape, and enter
-		if ( event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 || 
+		if ( event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 ||
 				// Allow: Ctrl+A
-				(event.keyCode == 65 && event.ctrlKey === true) || 
+				(event.keyCode == 65 && event.ctrlKey === true) ||
 				// Allow: home, end, left, right
 				(event.keyCode >= 35 && event.keyCode <= 39)) {
 			// let it happen, don't do anything
 
-			checkBilet($('#b1').html(),$('#b2').val(), $('#b2'));	
+			checkBilet($('#b1').html(),$('#b2').val(), $('#b2'));
 
 			return;
 		}
@@ -538,10 +538,10 @@ $(document).ready(function() {
 			// Ensure that it is a number and stop the keypress
 			if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105 )) {
 
-				event.preventDefault(); 
+				event.preventDefault();
 			}
 
-			checkBilet($('#b1').html(),$('#b2').val(), $('#b2'))	
+			checkBilet($('#b1').html(),$('#b2').val(), $('#b2'))
 
 		}
 	});
@@ -552,14 +552,14 @@ $(document).ready(function() {
 	$("#b1").keyup(function(event) {
 
 		// Allow: backspace, delete, tab, escape, and enter
-		if ( event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 || 
+		if ( event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 ||
 				// Allow: Ctrl+A
-				(event.keyCode == 65 && event.ctrlKey === true) || 
+				(event.keyCode == 65 && event.ctrlKey === true) ||
 				// Allow: home, end, left, right
 				(event.keyCode >= 35 && event.keyCode <= 39)) {
 			// let it happen, don't do anything
 
-			checkBilet($('#b1').html(),$('#b2').val(), $('#b2'));	
+			checkBilet($('#b1').html(),$('#b2').val(), $('#b2'));
 
 			return;
 		}
@@ -567,34 +567,34 @@ $(document).ready(function() {
 			// Ensure that it is a number and stop the keypress
 			if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105 )) {
 
-				event.preventDefault(); 
+				event.preventDefault();
 			}
 
-			checkBilet($('#b1').html(),$('#b2').val(), $('#b1'))	
+			checkBilet($('#b1').html(),$('#b2').val(), $('#b1'))
 
 		}
 	});
-	
 
 
-	$("#jump_salveaza").focus(function(event) 
+
+	$("#jump_salveaza").focus(function(event)
 			{
 
 		$("#salveaza_modificari").focus();
 	});
-	
+
 });
 
 
 
 
-$(".complete").tooltip({ 
+$(".complete").tooltip({
 
-	position: { 
+	position: {
 
-		my: "left-1 top+20", at: "right top" 
+		my: "left-1 top+20", at: "right top"
 
-	},  
+	},
 
 	open: function( event, ui ) {
 
@@ -618,7 +618,7 @@ function before(){
 	$(inputs).each(function() {
 
 		if(ok && ($(this).val().length == 0)){
-			alert('Completati toate campurile !');
+			alert('Completați toate câmpurile !');
 			ok = false;
 		}
 	});
@@ -631,7 +631,7 @@ function before(){
 	if((change != 0 )&& ($('#b2').val()=='') ){
 
 
-		alert('Va rugam sa completati seria de bilete');
+		alert('Va rugăm să completați seria de bilete');
 		$("#b2").focus();
 
 
@@ -655,7 +655,7 @@ function before(){
 
 
 
-		$(".mod").attr({"disabled":'disabled'});    
+		$(".mod").attr({"disabled":'disabled'});
 		$(".mod").addClass('disabled');
 		$("#b2").focus();
 		return false;
@@ -681,21 +681,11 @@ function before(){
 				});
 
 
-				$(where).tooltip({ items: where, content: "Seria de astazi mai mare decat cea de ieri "});
+				$(where).tooltip({ items: where, content: "Seria de astăzi este mai mare decât cea de ieri "});
 				$(where).tooltip("open");
-
-
-
 			}
-
 			return false;
-
 		}
-
 	}
-
-
-
 	return true;
 }
-

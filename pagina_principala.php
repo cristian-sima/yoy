@@ -14,7 +14,7 @@
 					<img src="img/firme.png" align="absmiddle" />Firme partenere spațiu
 				</h2>
 			</td>
-			<td style="text-align: right"><input type="button" value="Firmă nouă"
+			<td style="text-align: right"><input type="button" value="Adaugă firmă"
 				onclick="document.location='firma_noua.php'" />
 			</td>
 		</tr>

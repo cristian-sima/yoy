@@ -4,7 +4,7 @@ st["dialog"] = "";
 function confirmRequest(msg, address){
 
 	if(confirm(msg))
-		document.location = address;
+	document.location = address;
 
 }
 
@@ -18,11 +18,11 @@ function focus(id){
 
 
 /**
- *
- * 	@description Show a notification message (top). It will be removed after 5 seconds
- * 	@param The obj with all the information: the type of the message ("Error","Succes"), the message, the id of the object that will be focused (maybe where the error occured
- *
- */
+*
+* 	@description Show a notification message (top). It will be removed after 5 seconds
+* 	@param The obj with all the information: the type of the message ("Error","Succes"), the message, the id of the object that will be focused (maybe where the error occured
+*
+*/
 
 function showDialog(data) {
 
@@ -59,10 +59,10 @@ function showDialog(data) {
 
 
 /**
- *
- *	@description It close the dialog.
- *
- */
+*
+*	@description It close the dialog.
+*
+*/
 
 function closeDialog() {
 	clearTimeout(st["dialog"]);
@@ -72,11 +72,11 @@ function closeDialog() {
 
 
 /**
- *
- * @description It checks if a number has only digits
- * @returns True if the number has all the characters digits, otherwise false
- *
- */
+*
+* @description It checks if a number has only digits
+* @returns True if the number has all the characters digits, otherwise false
+*
+*/
 
 function isNumeric(input) {
 	return (input - 0) == input && (input + '').replace(/^\s+|\s+$/g, "").length > 0;
@@ -84,23 +84,23 @@ function isNumeric(input) {
 
 
 /**
- *
- * 	@description It checks a formular to be correct
- * 	@param form The id of the form. For fix size use or minSize or maxSize
- *	Possible
- *  The element should have the check attribute true
- *	The criteria attribute is an object with
- *	- type [numeric, string, date] . [Required]
- *	- fixSize The size of the element [Optional]
- *	- minSize The element should have at least... [Optional]
- *  - maxSize The element should not exceed ... [Optional]
- *  # dateFormat [ANUL/LN]- Required for a date element [Required for date]
- *  # alphaOnly - only for strings. It check if a string has no digits. [Optional]
- */
+*
+* 	@description It checks a formular to be correct
+* 	@param form The id of the form. For fix size use or minSize or maxSize
+*	Possible
+*  The element should have the check attribute true
+*	The criteria attribute is an object with
+*	- type [numeric, string, date] . [Required]
+*	- fixSize The size of the element [Optional]
+*	- minSize The element should have at least... [Optional]
+*  - maxSize The element should not exceed ... [Optional]
+*  # dateFormat [ANUL/LN]- Required for a date element [Required for date]
+*  # alphaOnly - only for strings. It check if a string has no digits. [Optional]
+*/
 
 function checkForm(formID) {
 
-  // close the dialog
+	// close the dialog
 	closeDialog();
 
 
@@ -117,22 +117,22 @@ function checkForm(formID) {
 			// regex
 
 			if(criteria.empty != undefined && valoare=="")
-				return;
+			return;
 
 			if(criteria.reg != undefined){
 
 				var re = /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
-					if(! re.test(valoare)) {
+				if(! re.test(valoare)) {
 
 
-						showDialog({
-							type: "error",
-							message: "Parola trebuie să conțină cel puțin <br />&nbsp;- un caracter majuscul<br /> &nbsp;&nbsp;&nbsp;- o literă mică<br />&nbsp;&nbsp;&nbsp;- un număr sau un caracter special<br />&nbsp;&nbsp;&nbsp;- cel puțin 8 caractere",
-							focus: input.attr("id")
-						});
-						gresealaGasita = true;
-						return false;
-					}
+					showDialog({
+						type: "error",
+						message: "Parola trebuie să conțină cel puțin <br />&nbsp;- un caracter majuscul<br /> &nbsp;&nbsp;&nbsp;- o literă mică<br />&nbsp;&nbsp;&nbsp;- un număr sau un caracter special<br />&nbsp;&nbsp;&nbsp;- cel puțin 8 caractere",
+						focus: input.attr("id")
+					});
+					gresealaGasita = true;
+					return false;
+				}
 
 			}
 
@@ -176,7 +176,7 @@ function checkForm(formID) {
 
 			switch (criteria.type) {
 
-			case "numeric":
+				case "numeric":
 				if (valoare != '' && !isNumeric(valoare)) {
 					showDialog({
 						type: "error",
@@ -188,7 +188,7 @@ function checkForm(formID) {
 				}
 				break;
 
-			case "string":
+				case "string":
 				// maybe no validation
 				if (criteria.alphaOnly != undefined) {
 
@@ -207,7 +207,7 @@ function checkForm(formID) {
 				break;
 
 
-			case "date":
+				case "date":
 				// if it is not provided
 				criteria.dateFormat = input.attr("dateFormat");
 				if (valoare == criteria.dateFormat) {
@@ -222,12 +222,12 @@ function checkForm(formID) {
 
 				// check it is the right one
 				switch (criteria.dateFormat) {
-				case "yyyy/mm":
+					case "yyyy/mm":
 					var date = valoare.split("/");
 					if (date[0].length != 4 || (!isNumeric(date[0])) || (!isNumeric(date[1])) || parseInt(date[0]) < 1900 || parseInt(date[0]) > 2100 || parseInt(date[1]) < 1 || parseInt(date[1]) > 12) {
 						showDialog({
 							type: "error",
-							message: "Câmpul <b>" + input.attr("name") + "</b> nu are un format corect pentru o data. Formatul acceptat este <b> ANUL/LUNA</span>",
+							message: "Câmpul <b>" + input.attr("name") + "</b> nu are un format corect pentru o dată. Formatul acceptat este <b> ANUL/LUNĂ</span>",
 							focus: input.attr("id")
 						});
 						gresealaGasita = true;
@@ -242,8 +242,8 @@ function checkForm(formID) {
 	});
 
 	if (!gresealaGasita)
-		$("#"+formID).submit();
+	$("#"+formID).submit();
 	else
-		return false;
+	return false;
 
 }

@@ -54,7 +54,7 @@
 						</tr>
 					</table>
 				</td>
-				<td width="50%"><a
+				<td width="50%" style="text-align:right"><a
 					onclick="document.location='situatie_mecanica.php?id_firma=<?php echo$firma->getID(); ?>'"
 					class="button green medium">Situație zilnică</a><br /> <span
 					class="smoke" style="font-size: 12px">Ultima completare: <?php echo$ultima_data.' '.$zileTrecute; ?>
