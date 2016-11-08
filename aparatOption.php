@@ -175,7 +175,7 @@ $result = mysql_query($r, $conn);
 ?>
 
 
-<legend>	Muta aparat in depozit</legend>
+<legend>	Muta aparat în depozit</legend>
 	<input type="hidden" name="idAparat" value="<?php echo$_GET['id'];?>" />
 	<input type="hidden" name="idFirma" value="<?php echo$_GET['idFirma'];?>" />
 	Indice mecanic intrare&nbsp;&nbsp;: <input type="text" name="index1" value="<?php echo$aM;?>" placeholder="" /><br />
@@ -183,7 +183,7 @@ $result = mysql_query($r, $conn);
 	Indice electronic intrare: <input type="text" placeholder="" value="<?php echo$aE;?>" name="e1" /><Br />
   Indice electronic eliminare <input type="text" placeholder="" value="<?php echo$bE;?>" name="e2" /><Br />
 		
-			<input type="submit" value="Muta in depozit" onclick="confirmRequest('Esti sigur ca vrei sa muti aparatul in depozit ? ', '$(`'f1`').submit()')" />
+			<input type="submit" value="Muta în depozit" onclick="confirmRequest('Esti sigur ca vrei sa muti aparatul în depozit ? ', '$(`'f1`').submit()')" />
 </fieldset>
 		</form>
 		<br /><br />

@@ -11,7 +11,7 @@
 
 
 
-		Page::showHeading("Vizualizați toate aparate active și inactive",'<input type="button" value="Adaugati aparat in depozit" onclick="document.location='."'".'adauga_aparat.php'."'".'" />');
+		Page::showHeading("Vizualizați toate aparate active și inactive",'<input type="button" value="Adăugați aparat în depozit" onclick="document.location='."'".'adauga_aparat.php'."'".'" />');
 		
 		echo '
 		</td>

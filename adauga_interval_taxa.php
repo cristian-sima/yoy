@@ -29,7 +29,7 @@ Page::showContent();
 					style="width: 106px; height: 25px;"> <canvas width="122"
 					height="28"
 					style="width: 122px; height: 28px; top: -2px; left: 0px;"></canvas>
-				<cufontext style="text-align:center"><center>Adaugati un nou interval pt. <?php echo $_GET['tip'];?></center></cufontext></cufon>
+				<cufontext style="text-align:center"><center>Adăugați un nou interval pt. <?php echo $_GET['tip'];?></center></cufontext></cufon>
 			</h3>
 			<div class="column">
 				<div>

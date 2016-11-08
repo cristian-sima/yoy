@@ -65,7 +65,7 @@ Page::showHeading("Editeaza date firma",'<input	type="button" class="disp" value
 					<span class="error">Exista o eroare</span>
 				</div>
 				<div>
-					<label>Date contact:</label>
+					<label>Date de contact:</label>
 					<textarea check="true" check="true"
 						criteria='{type:"string",  maxSize:"30"}' id="dateContact"
 						name="dateContact" type="text">

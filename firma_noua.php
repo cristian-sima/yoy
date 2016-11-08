@@ -55,7 +55,7 @@ Page::showContent();
 						<span class="error">Exista o eroare</span>
 					</div>
 					<div>
-						<label>Date contact:</label>
+						<label>Date de contact:</label>
 						<textarea check="true" check="true" criteria='{type:"string",  maxSize:"30"}' id="date_contact" name="date_contact" type="text"></textarea>
 						<span class="error">Exista o eroare</span>
 					</div>

@@ -48,17 +48,6 @@ Page::showContent();
 					criteria='{type:"string",  minSize: "5", maxSize:"9"}' id="parola"
 					name="parola" type="password"> <span class="error">Există o eroare</span>
 			</div>
-			<?php if($_GET['type']=='normal'){ ?>
-			<div style="margin-left: 20px;">
-				<label>Tip operator:</label> <label
-					onclick="$('#idFirma').slideDown()" class="hover"><input
-					checked="checked" type="radio" name="tipOperator" value="desktop">
-					Interfață desktop</label> <label onclick="$('#idFirma').slideUp()"
-					class="hover"><input type="radio" name="tipOperator" value="mobile">
-					Interfață mobil</label>
-
-			</div>
-			<?php }?>
 			<?php
 			if($_GET['type']=="admin")
 			{

@@ -165,9 +165,9 @@
 		<table width="100%">
 			<tr>
 				<td><?php if($firma->isActiva()){ ?> <input type="button"
-					value="Administrator nou"
+					value="Adaugă administrator"
 					onclick="document.location='adauga_utilizator.php?type=admin'" /> <input
-					type="button" value="Operator nou"
+					type="button" value="Adaugă operator"
 					onclick="document.location='adauga_utilizator.php?type=normal'" /> <?php } ?>
 				</td>
 				<td style="text-align: right"></td>
@@ -182,7 +182,7 @@
 				<thead>
 					<tr>
 						<th>Utilizator</th>
-						<th>Tip cont</th>
+						<th>Tipul</th>
 						<th>Opțiuni</th>
 					</tr>
 				</thead>
@@ -197,8 +197,8 @@
 					<td >'.$row['nume'].'(<span class="smoke">'.$row['user'].'</span>)</td>
 
 					<td>'.(($row['tipCont']=="admin")?"Administrator":"Operator (".$row['tipOperator'].')').'</td>
-					<td><input type="button" value="Editează date" onclick="document.location='."'".'editare_date_utilizator.php?id_user='.$row['id'].''."'".'"/>';
-					if($firma->isActiva()!='0'){ echo'<input type="button" value="Dezactivează contul" onclick="document.location='."'".'activeaza_utilizator.php?id_user='.$row['id'].'&type=0'."'".'" />'; }
+					<td><input type="button" value="Modifică datele" onclick="document.location='."'".'editare_date_utilizator.php?id_user='.$row['id'].''."'".'"/>';
+					if($firma->isActiva()!='0'){ echo'<input type="button" value="Dezactivează" onclick="document.location='."'".'activeaza_utilizator.php?id_user='.$row['id'].'&type=0'."'".'" />'; }
 					echo'</td>
 					</tr>';
 				}

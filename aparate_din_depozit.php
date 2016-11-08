@@ -17,7 +17,7 @@ echo '
 		</td>
 		<td style="text-align: right">
 		'; 
-		?><input type="button" value="Adaugati aparat in depozit"
+		?><input type="button" value="Adăugați aparat în depozit"
 			onclick="document.location='adauga_aparat.php'" />
 		<?php	 
 		echo '

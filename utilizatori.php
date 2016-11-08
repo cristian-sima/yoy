@@ -16,9 +16,9 @@ echo '
 			</h2>
 		</td>
 		<td style="text-align: right">';?><input type="button"
-			value="Administrator nou"
+			value="Adaugă administrator"
 			onclick="document.location='adauga_utilizator.php?type=admin'" /> <input
-			type="button" value="Operator nou"
+			type="button" value="Adaugă operator"
 			onclick="document.location='adauga_utilizator.php?type=normal'" />
 		<?php echo '
 		</td>
@@ -31,9 +31,8 @@ echo '
 				<tr>
 					<th>Utilizator</th>
 					<th>Firma</th>
-					<th>Tip cont</th>
+					<th>Tipul</th>
 					<th>Opțiuni</th>
-
 				</tr>
 			</thead>
 			<tbody>
@@ -52,10 +51,10 @@ echo '
 					echo'Toate';
 				else
 					echo $utilizator['denumire_firma'];
-				
+
 				echo'</td>
 					<td>'.(($utilizator['tipCont']=="admin")?"Administrator":"Operator (".$utilizator['tipOperator'].')').'</td>
-				<td><input type="button" value="Editează date" onclick="document.location='."'".'editare_date_utilizator.php?id_user='.$utilizator['id'].''."'".'"/><input type="button" value="Dezactivează contul" onclick="document.location='."'".'activeaza_utilizator.php?id_user='.$utilizator['id'].'&type=0'."'".'" /></td>
+				<td><input type="button" value="Modifică datele" onclick="document.location='."'".'editare_date_utilizator.php?id_user='.$utilizator['id'].''."'".'"/><input type="button" value="Dezactivează" onclick="document.location='."'".'activeaza_utilizator.php?id_user='.$utilizator['id'].'&type=0'."'".'" /></td>
 				</tr>';
 			}
 			echo '
@@ -68,13 +67,13 @@ echo '
 				<tr>
 					<th>Utilizator</th>
 					<th>Firma</th>
-					<th>Tip cont</th>
+					<th>Tipul</th>
 					<th>Opțiuni</th>
 
 				</tr>
 			</thead>
 			<tbody>';
-			
+
 			$q = "SELECT utilizator.*,(SELECT f.nume FROM firma AS f WHERE f.id=utilizator.idFirma) AS denumire_firma FROM `utilizator` WHERE activ='0'";;
 			$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL()->getResource());
 			while($utilizator = mysql_fetch_array($result))
@@ -105,12 +104,12 @@ echo '
 $(document).ready(function() {
     $('#example').dataTable({	"bJQueryUI": true,
 					"sPaginationType": "full_numbers"});
-	
+
 	  $('#example2').dataTable({	"bJQueryUI": true,
 					"sPaginationType": "full_numbers"});
-	
+
 } );
 </script>
-<?php 
+<?php
 
 	Page::showFooter();

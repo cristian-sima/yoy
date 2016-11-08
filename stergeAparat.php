@@ -28,7 +28,7 @@
 			
 			
 			<?php 
-			// a fost in depozit
+			// a fost în depozit
 			
 			
 			
