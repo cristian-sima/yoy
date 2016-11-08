@@ -15,8 +15,8 @@ require_once "FirmaOrganizatoare.php";
 class Page
 {
 	public static $version = "2.9";
-	
-	
+
+
 	/**
 	 *
 	 * 		Afiseaza inceputul paginii si incepe headerul <head>. De asemenea, forteaza aplicatia sa inceapa
@@ -25,7 +25,7 @@ class Page
 	public static function showHeader()
 	{
 		$_temp		= Aplicatie::getInstance();
-		
+
 		echo '	<!DOCTYPE>
 				<html xmlns="http://www.w3.org/1999/xhtml">
 				<head>
@@ -44,23 +44,23 @@ class Page
 				<link href="include/css/print.css" rel="stylesheet" type="text/css" media="print" />
 				<link href="include/css/aplicatie.css" rel="stylesheet" type="text/css" />
 				<link href="include/css/t.css" rel="stylesheet" type="text/css"/>';
-		
+
 			// forteaza aplicatia sa inceapa
 	}
 
-	
-	
+
+
 	/**
-	 * 
+	 *
 	 * Afiseaza meniul aplicatiei in functie de utilizator si versiunea de device
-	 * 
+	 *
 	 */
 	private static function showMeniu()
 	{
 
 		echo '<table width="100%" class="hide_prt" style="background:#FBFBFB;border-bottom: 1px solid #D5D5D5;"><tr><td>';
 
-	
+
 		if(Aplicatie::getInstance()->getUtilizator()->isAdministrator())
 		{
 			echo'
@@ -80,10 +80,10 @@ class Page
 							</ul>
 						</li>
 						<li>
-							<a href="selecteaza_situatie.php">Situaţii</a>			
+							<a href="selecteaza_situatie.php">Situaţii</a>
 						</li>
 						<li>
-							<a href="actiuni.php">Acţiuni</a>			
+							<a href="actiuni.php">Acţiuni</a>
 						</li>
 						<li>
 							<a href="vizualizare_dispozitii.php">Dispoziţii</a>
@@ -101,8 +101,8 @@ class Page
 		{
 			echo'<br /><big>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bine ai venit !</big><br >';
 		}
-		
-		
+
+
 		echo'</td>
 			<td style="text-align:right">
 				<input type="button" onclick="document.location='."'".'editare_date_utilizator.php?id_user='.Aplicatie::getInstance()->getUtilizator()->getID()."'".'" value="Modifica date personale" />
@@ -111,7 +111,7 @@ class Page
 		</tr>
 		</table>';
 	}
-	
+
 	/**
 	 * Afiseaza titlul paginii si in partea dreapta afiseaza continutul primit prin parametru
 	 *
@@ -119,7 +119,7 @@ class Page
 	 * @param string $right_side				Continutul din partea dreapta
 	 */
 	public static function showHeading($title, $right_side)
-	{		
+	{
 		echo'
 		<table id="heading" class="hide_prt">
 			<tr>
@@ -130,7 +130,7 @@ class Page
 				</td>
 				<td style="text-align: right; vertical-align:top">'.$right_side.' </td>
 			</tr>
-		</table>';		
+		</table>';
 	}
 
 	/**
@@ -141,10 +141,10 @@ class Page
 	public static function showContent()
 	{
 		echo '</head><body><div id="top">';
-		
+
 		self::showMeniu();
-		
-		echo '</div><div id="container"><div id="content">';	
+
+		echo '</div><div id="container"><div id="content">';
 	}
 
 
@@ -163,13 +163,13 @@ class Page
 				<tr>
 					<td width:30%>yoy.ro '.date('Y').' -  <small>Generat in '.Aplicatie::getInstance()->getTimeOfExecution().' secunde</small></td>
 					<td width="30%;text-align:center"><small> Versiunea '.self::$version.'</small></td>
-					<td style="width:30%;text-align:right">Toate drepturile rezervate &copy; <a target="_blank" href="http://vsh.ro/cristian_sima/">Cristian Sima</a></td>
+					<td style="width:30%;text-align:right">Toate drepturile rezervate</td>
 				</tr>
 			</table>
 		</div>
-		</div>				
+		</div>
 		</body>
-		</html>';			
+		</html>';
 	}
 
 	/**
@@ -177,13 +177,13 @@ class Page
 	 */
 	public static function showCSSLogin()
 	{
-		echo '<link href="include/css/aplicatie.css" rel="stylesheet" type="text/css"/>';				
+		echo '<link href="include/css/aplicatie.css" rel="stylesheet" type="text/css"/>';
 	}
-	
+
 	/**
 	 *
-	 * Afiseaza formularul de conectare. De asemenea, include fisierul CSS respectiv 
-	 * 
+	 * Afiseaza formularul de conectare. De asemenea, include fisierul CSS respectiv
+	 *
 	 */
 	public static function showLoginForm()
 	{
@@ -220,7 +220,7 @@ class Page
 	/**
 	 *
 	 * Afiseaza un mesaj de confirmare
-	 * 
+	 *
 	 * @param string $message			Mesajul care va fi afisat
 	 *
 	 */
@@ -228,8 +228,8 @@ class Page
 	{
 		echo '<div class="aplicatie_success">'.$message.'</div>';
 	}
-	
-	
+
+
 	/**
 	 * Afiseaza un mesaj de eroare si opreste aplicatia
 	 *
@@ -238,9 +238,9 @@ class Page
 	public static function complain($message)
 	{
 		self::showError($message);
-		die();	
+		die();
 	}
-	
+
 	/**
 	 *
 	 * Afiseaza un mesaj de erroare
@@ -258,7 +258,7 @@ class Page
 	 * Afiseaza toate campurile detinute de obiectul primit ca parametru.
 	 *
 	 * @param Object $obj			Obiectul care va fi afisat
-	 * 
+	 *
 	 */
 	public static function representVisual($obj)
 	{

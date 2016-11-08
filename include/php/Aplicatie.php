@@ -17,15 +17,15 @@ require_once "DataCalendaristica.php";
  */
 class Aplicatie
 {
-	
+
 	const version = "2.8";
-	
+
 	private static $_instance		= null;
 	private $mysql					= null;
 	private $firma_organizatoare	= null;
 	private $utilizator				= null;
 	private $time_start				= null;
-		
+
 	/**
 	 *
 	 * @description				Realizeaza aplicatia. Aplicatia are access la baza de date, si verifica conexiunea utilizatorului
@@ -36,16 +36,16 @@ class Aplicatie
 	{
 		try
 		{
-			// error_reporting(0); 
-			
+			// error_reporting(0);
+
 			$this->mysql				=	new MYSQL("localhost",
 														"root",
 														"",
-														"yoy.ro"
+														"yoy_ro_date"
 														);
 			Login::request_access($this->getMYSQL());
 			$this->firma_organizatoare	= 	new FirmaOrganizatoare($this->getMYSQL(), 1);
-			
+
 			$this->time_start 			= microtime(true);
 		}
 		catch(Exception $e)
@@ -56,41 +56,41 @@ class Aplicatie
 			die();
 		}
 	}
-	
-	
+
+
 	/**
-	 * 
+	 *
 	 * Returneaza utilizatorul care este conectat la aplicatie
-	 * 
+	 *
 	 * @return Utilizator		Utilizatorul conectat la aplicatie
 	 */
 	public function getUtilizator()
 	{
 		if($this->utilizator == null)
-			$this->utilizator 			= 	new Utilizator(Login::getUserId());			
-		
+			$this->utilizator 			= 	new Utilizator(Login::getUserId());
+
 		return $this->utilizator;
 	}
-	
-	
-	
+
+
+
 	/**
-	 * 
+	 *
 	 * Returneaza timpul de executie al applicatiei in secunde
-	 * 
+	 *
 	 * @return  			Timpul de executie
 	 *
 	 */
 	public function getTimeOfExecution()
-	{		
-		
+	{
+
 		$time_end = microtime(true);
     	$time = $time_end - $this->time_start;
-    	
-    	return round($time,5);    
+
+    	return round($time,5);
 	}
-	
-	
+
+
 	/**
 	 *
 	 * @description				Creza un obiect aplicatie sau returneaza referinta despre cel creeat
@@ -127,7 +127,7 @@ class Aplicatie
 	{
 		return self::version;
 	}
-	
+
 	/**
 	 *
 	 * Returneaza o referinta spre firma care organizeaza

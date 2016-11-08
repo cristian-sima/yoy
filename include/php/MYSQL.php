@@ -13,10 +13,10 @@ require_once "MYSQL.php";
 class MYSQL
 {
 	private $resource_ 		= null;
-	private $utilizator		= "root";
-	private $parola			= "root";
+	private $utilizator		= "yoy";
+	private $parola			= "";
 	private $host			= "localhost";
-	private $numeDB			= "rapidcas_aplha";
+	private $numeDB			= "yoy_ro_date";
 
 
 	/**
@@ -42,11 +42,14 @@ class MYSQL
 
 		if (!$this->resource_)
 		{
-			throw new Exception ('MYSQL Exception: Conectare nereusita la MySQL');
+			// MYSQL Exception: Conectare nereusita la MySQL
+			echo mysql_error();
+			throw new Exception ('Ceva nu a mers bine');
 		}
 
 		if (!mysql_select_db($this->numeDB, $this->getResource()))
 		{
+			echo mysql_error();
 			throw new Exception ('MYSQL Exception: Baza de date nu a putut fi selectata');
 		}
 
