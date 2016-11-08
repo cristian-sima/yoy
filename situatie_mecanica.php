@@ -234,13 +234,16 @@
 		$GUI->isInteractiva(false);
 		$GUI->isPaper();
 		$html =  $GUI->getHTML();
+		$title = "YOY.ro Situația mecanică ".(($data1.'' !== $data2.'')?("de la ".$data1." la ".$data2):("la data ".$data1))." pentru firma ".$firma->getDenumire();
+
+
 		header("Content-Type", "text/html; charset=utf-8");
 		require_once 'pdf/dompdf_config.inc.php';
 		mb_internal_encoding('UTF-8');
-		$ready =  '<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><link href="include/css/pdf.css" rel="stylesheet" type="text/css"/></head><body>'.$html."</body></html>";
+		$ready =  '<html><head><title>'.$title.'</title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><link href="include/css/pdf.css" rel="stylesheet" type="text/css"/></head><body>'.$html."</body></html>";
 		$dompdf = new DOMPDF();
 		$dompdf->set_paper('a4', 'landscape');
 		$dompdf->load_html($ready, 'UTF-8');
 		$dompdf->render();
-		$dompdf->stream("Situație Mec. ".(($data1.'' !== $data2.'')?("de la ".$data1." la ".$data2):(" la data ".$data1))." pentru ".$firma->getDenumire().".pdf");
+		$dompdf->stream($title.".pdf");
 	}
