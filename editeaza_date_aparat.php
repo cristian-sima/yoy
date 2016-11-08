@@ -10,7 +10,7 @@ $aparat			= new Aparat($_GET['id_aparat']);
 
 Page::showHeader();
 Page::showContent();
-Page::showHeading("Editeaza date aparat",'<input	type="button" class="disp" value="Înapoi la optiuni aparat" onclick="document.location='."'".'optiuni_aparat.php?id_aparat='.$aparat->getID()."'".'" />');
+Page::showHeading("Editează date aparat",'<input	type="button" class="disp" value="Înapoi la optiuni aparat" onclick="document.location='."'".'optiuni_aparat.php?id_aparat='.$aparat->getID()."'".'" />');
 
 
 ?>

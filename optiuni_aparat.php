@@ -9,17 +9,17 @@ Page::showHeader();
 Page::showContent();
 
 
-Page::showHeading("Optiuni aparat", "");
+Page::showHeading("Detalii aparat", "");
 
 $aparat		= new Aparat($_GET['id_aparat']);
 
 
 
 $result = mysql_query("SELECT nume,id,activa
-									FROM firma 
+									FROM firma
 									WHERE id != '".$aparat->getFirmaCurenta()."' AND activa = '1'
 									ORDER BY activa DESC,nume ASC", Aplicatie::getInstance()->getMYSQL()->getResource());
-	
+
 
 
 
@@ -34,7 +34,7 @@ echo '<link href="include/css/fieldset.css" rel="stylesheet" type="text/css"/>
 			<tr>
 				<td class="smoke"> Unitatea</td>
 				<td class="smoke"> De la</td>
-				<td class="smoke"> Pana la</td>
+				<td class="smoke"> Până la</td>
 			</tr>';
 
 while($istoric_aparat = mysql_fetch_array($result2))
@@ -48,11 +48,11 @@ while($istoric_aparat = mysql_fetch_array($result2))
 		$firma2			= new FirmaSpatiu($istoric_aparat['id_firma']);
 		$nume_firma		= $firma2->getDenumire();
 	}
-	
+
 	echo '	<tr>
 				<td class="smoke" style="background: rgb(231, 231, 231);">'.$nume_firma.'</td>
 				<td class="smoke" style="background: rgb(231, 231, 231);">'.$istoric_aparat['from_'].'</td>
-				<td style="background: rgb(231, 231, 231);" class="smoke" style="background: rgb(231, 231, 231);">'.(($istoric_aparat['is_now'] == '1')?("In prezent"):($istoric_aparat['to_'])).'</td>
+				<td style="background: rgb(231, 231, 231);" class="smoke" style="background: rgb(231, 231, 231);">'.(($istoric_aparat['is_now'] == '1')?("În prezent"):($istoric_aparat['to_'])).'</td>
 			</tr>';
 }
 
@@ -65,22 +65,22 @@ echo  '<table width="100%">
 		<tr>
 			<td style="width:50%">
 				<fieldset>
-					<legend>Editeaza date aparat</legend>
+					<legend>Editează date aparat</legend>
 					<form action="editeaza_date_aparat.php">
 						<input type="hidden" value="'.$aparat->getID().'" name="id_aparat" />
-						<input  type="submit" value="Editeaza date aparat" />
+						<input  type="submit" value="Editează date" />
 					</form>
 					<br />
 				</fieldset>
 			</td>
 			<td style="width:50%">
 				<fieldset>
-					<legend> Mutati aparat in depozit </legend>
+					<legend> Mutați aparatul în depozit </legend>
 					<form action="muta_aparat_in_depozit.php">
-					<br />
-					<span title="Mutarea aparatului nu influenteaza situatia de astazi, din firma respectiva. Aceasta situatie poate sa fie completata pana la ora 24 astazi. De maine, aparatul nu mai apare  in firma " style="color:blue;text-decoration:underline">Ce inseamna mutarea in depozit ?</span><br /><br />
-						<input type="hidden" value="'.$aparat->getID().'" name="id_aparat" />						
-						<input '.(($aparat->isActiv())?(""):("disabled")).' '.(($aparat->isInDepozit())?("disabled"):("")).' type="submit" value="Mutati aparat in depozit" />
+					Mutarea aparatului nu influențează situația de astăzi pentru firma respectivă. Această situație poate să fie completată până la orele 24 astăzi. De mâine, aparatul nu mai apare în firmă
+					<br /><br />
+						<input type="hidden" value="'.$aparat->getID().'" name="id_aparat" />
+						<input '.(($aparat->isActiv())?(""):("disabled")).' '.(($aparat->isInDepozit())?("disabled"):("")).' type="submit" value="Mută în depozit" />
 					</form>
 					<br />
 				</fieldset>
@@ -89,45 +89,57 @@ echo  '<table width="100%">
 		<tr>
 			<td style="width:50%">
 				<fieldset>
-					<legend> Scoati aparat din uz </legend>
+					<legend>Scoate aparatul din uz</legend>
 					<br />
-					<span title="Eliminarea aparatului nu influenteaza situatia de astazi, din firma respectiva. Aceasta situatie poate sa fie completata pana la ora 24 astazi. De maine, aparatul nu mai apare  in firma " style="color:blue;text-decoration:underline">Ce inseamna eliminarea ?</span><br />
 					<br />
 					<form action="scoate_aparat_din_uz.php">
+						Eliminarea aparatului nu influențează situația de astăzi pentru firma respectivă. Această situație poate să fie completată până la orele 24 astăzi. De mâine, aparatul nu mai apare în firmă
+						<br />
+						<br />
 						<input type="hidden" value="'.$aparat->getID().'" name="id_aparat" />
-						<input '.(($aparat->isActiv())?(""):("disabled")).' type="submit" value="Scoateti aparat din uz" />
-					</form> 
+						<input '.(($aparat->isActiv())?(""):("disabled")).' type="submit" value="Scoate din uz" />
+					</form>
 					<br />
 				</fieldset>
 			</td>
 			<td style="width:50%">';
-			
+
 
 			if(mysql_num_rows($result) === 0)
 			{
-				echo "Nu exista alte firme active la care sa fie mutat";
+				echo "Nu există alte firme active la care să fie mutat";
 			}
-			else 
+			else
 			{
 			echo '
 				<form action="muta_aparat_la_firma.php" method="POST">
 					<fieldset>
-						<legend>Muta aparat</legend>
+						<legend>Mută aparat</legend>
 						<br />
-						<span title="Mutarea aparatului nu influenteaza situatia de astazi de la firma veche. Aceasta situatie poate sa fie completata pana la ora 24 astazi. De maine, aparatul nu mai apare  in firma. Insa, pentru Firmă nouă, se va crea o noua situatie (sau se modifica cea actuala) și se adauga aparatul" style="color:blue;text-decoration:underline">Ce inseamna mutarea intre 2 firme ?</span><br />
+						Mutarea aparatului nu influențează situația de astăzi de la firma veche. Această situație poate să fie completată până la ora 24 astăzi. De mâine, aparatul nu mai apare în firmă. Însă, pentru firma nouă, se va crea o nouă situație (sau se modifica cea actuală) și se adaugă aparatul.
 						<br />
-						<input type="hidden" value="'.$aparat->getID().'" name="id_aparat" />						
+						<br />
+						Mută aparatul la firma: <select name="id_firma_noua">';
+						while($firma = mysql_fetch_array($result))
+						{
+							echo'<option value="'.$firma['id'].'"  >'.($firma['nume'])."</option>";
+						}
+					echo'
+					</select>
+					<br>
+					<br>
+					<div>
+					<b>Contoare:</b>
+					<br>
+					Index intrări: <input type="text"  name="mecanic_intrare" placeholder="Index intrări" />
+					<br>
+					Index ieșiri: <input type="text"  name="mecanic_iesire" placeholder="Index ieșiri" /><br />
+					<br>
+					</div>
+						<input type="hidden" value="'.$aparat->getID().'" name="id_aparat" />
 						<input type="hidden" name="id_aparat" value="'.$aparat->getID().'" />
-						<input type="text"  name="mecanic_intrare" placeholder="Index intrari" />
-						<input type="text"  name="mecanic_iesire" placeholder="Index iesiri" /><br />
-							<select name="id_firma_noua">';
-							while($firma = mysql_fetch_array($result))
-							{
-								echo'<option value="'.$firma['id'].'"  >'.($firma['nume'])."</option>";
-							}
-						echo' 
-						</select>
-						<input '.(($aparat->isActiv())?(""):("disabled")).' type="submit" value="Mutati aparat la alta firma" />
+
+						<input '.(($aparat->isActiv())?(""):("disabled")).' type="submit" value="Mutați aparatul" />
 					</fieldset>
 				</form>';
 			}
@@ -158,6 +170,6 @@ echo  '<table width="100%">
 		}
 	});
 	</script>';
-		
-		
+
+
 Page::showFooter();

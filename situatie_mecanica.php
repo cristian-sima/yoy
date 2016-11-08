@@ -175,7 +175,7 @@
 				<tr>
 				<td width="80%">
 			De la <input type="text" id="from" class="datepicker" value="'.$data1.'" placeholder="De la"/>
-			la <input type="text" id="to" class="datepicker" value="'.$data2.'" placeholder="Pana la"/> 
+			la <input type="text" id="to" class="datepicker" value="'.$data2.'" placeholder="Până la"/> 
 			 doresc
 			
 			<select id="_type">

@@ -79,7 +79,7 @@ console("<span style='weight:bold;background:green;color:white'> Totul este ok a
 		<br />
 		<form id="my_form" method="POST">
 		De la inclusiv: <input type="text" id="from" name="from" class="datepicker" value="'.$_GET['data'].'" placeholder="Alegeti data"><br />
-		Pana la inclusiv: <input type="text" id="to" name="to" class="datepicker" value="'.$_GET['data'].'" placeholder="Alegeti data"><br />
+		Până la inclusiv: <input type="text" id="to" name="to" class="datepicker" value="'.$_GET['data'].'" placeholder="Alegeti data"><br />
 		';
 		echo'Pentru Firma:
 			<input type="hidden" name="an" value="'.$_GET['an'].'" />

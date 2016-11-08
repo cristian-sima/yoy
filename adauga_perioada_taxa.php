@@ -49,7 +49,7 @@
 								<span class="error">Exista o eroare</span>
 							</div>
 							<div>
-								<label>Pana la :</label>
+								<label>Până la :</label>
 								<input class="alege" id="to" name="to" check="true" criteria='{type:"string"}' type="text">
 								<span class="error">Exista o eroare</span>
 							</div>

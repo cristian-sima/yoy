@@ -85,7 +85,7 @@
 			</td>
 			</tr>
 			</table>
-		<big><b>Optiuni aparat <span style="color:orange"><?php echo$aparat['seria'];?></span></b></big>
+		<big><b>Detalii aparat <span style="color:orange"><?php echo$aparat['seria'];?></span></b></big>
 		
 		<br /><Br />
 		
@@ -99,7 +99,7 @@
 						 ?>
 	
 	
-	<input type="button" value="Editeaza date aparat" onclick="document.location = 'editAparat.php?<?php echo$a;?>idFirma=<?php echo$_GET['idFirma'];?>&idAparat=<?php echo$aparat['id'];?>'" />
+	<input type="button" value="Editează date aparat" onclick="document.location = 'editAparat.php?<?php echo$a;?>idFirma=<?php echo$_GET['idFirma'];?>&idAparat=<?php echo$aparat['id'];?>'" />
 	
 	<?php if(!$isOff) {
 	
