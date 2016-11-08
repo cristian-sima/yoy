@@ -31,4 +31,31 @@
  * @license     MIT License https://github.com/serbanghita/Mobile-Detect/blob/master/LICENSE.txt
  *
  */
-  phpinfo();
+
+require_once 'Mobile_Detect.php';
+require_once 'include/php/Aplicatie.php';
+
+$detect = new Mobile_Detect;
+$deviceType = ($detect->isMobile() ? ($detect->isTablet() ? 'tablet' : 'phone') : 'computer');
+$scriptVersion = $detect->getScriptVersion();
+
+
+Login::permiteOperator();
+
+
+if(Aplicatie::getInstance()->getUtilizator()->isAdministrator())
+{
+	if(Aplicatie::getInstance()->getUtilizator()->isDesktop())
+	{
+		header("Location: pagina_principala.php");
+	}
+	else
+	{
+		header("Location: mobile.php");
+
+	}
+}
+else
+{
+	header("Location: situatie_mecanica_operator.php");
+}
