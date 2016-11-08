@@ -1,8 +1,0 @@
-Author:
-	Cristian Sima
-	
-Version:
-	2.8
-	
-Realised date: 
-	10 Octomber 2014	
