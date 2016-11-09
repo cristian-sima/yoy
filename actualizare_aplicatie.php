@@ -20,10 +20,10 @@ function console($message)
 
 
 function stop($m)
-{	
+{
 	console("A aparut o eroare");
 	console($m);
-	die();	
+	die();
 }
 
 
@@ -33,7 +33,11 @@ console("Operatiunea poate dura cateva minute. Va rugam sa nu inchideti fereastr
 console("Prelucrez baza de date");
 console("Schimb structura bazei de date... ");
 
-mysql_query("ALTER TABLE `completare_mecanica` ADD `total_premii` FLOAT NOT NULL , ADD `total_incasari` FLOAT NOT NULL ;") or stop(mysql_error());
+$q = "ALTER TABLE `completare_mecanica` ADD `total_premii` FLOAT NOT NULL , ADD `total_incasari` FLOAT NOT NULL ;";
+
+$safeQuery = mysql_real_escape_string($q);
+
+mysql_query($safeQuery) or stop(mysql_error());
 
 console("Structura schimbata cu succes");
 
@@ -42,26 +46,31 @@ console("Incep procesarea datelor...");
 
 
 $sql = "SELECT * FROM `completare_mecanica`";
-$result = mysql_query($sql) or die(musql_error());
+
+$safeQuery = mysql_real_escape_string($sql);
+
+$result = mysql_query($safeQuery) or die(musql_error());
 
 
 while($situatie = mysql_fetch_array($result))
-{	
+{
 	//  ACTUALIZEZ SITUATIE
-	
+
 	$data_situatie = new DataCalendaristica($situatie['data_']);
 	$firma = new FirmaSpatiu($situatie['id_firma']);
-		
+
 		// in felul asta se verifica daca avem situatie
 	$situatie_rezultata =  new SituatieMecanica($data_situatie, $data_situatie, $firma);
-		
-	$mysql	= "UPDATE `completare_mecanica` 
+
+	$mysql	= "UPDATE `completare_mecanica`
 					SET 	`total_incasari` = '".$situatie_rezultata->getTotalIncasari()."',
 						 	`total_premii` = '".$situatie_rezultata->getTotalPremii()."'
-					WHERE `id` = '".$situatie['id']."' ";	
+					WHERE `id` = '".$situatie['id']."' ";
 
-	mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
-	
+	$safeQuery = mysql_real_escape_string($mysql);
+
+	mysql_query($safeQuery, Aplicatie::getInstance()->getMYSQL()->getResource());
+
 	console('Am actualizat situatia nr <b> '.$situatie['id'].'</b> din data de <b>'.$data_situatie.'</b> pentru firma <b>'.$firma->getDenumire().'</b>');
 }
 

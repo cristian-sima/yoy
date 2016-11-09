@@ -3,10 +3,10 @@
 	require_once "include/php/Aparat.php";
 	require_once "include/php/Aplicatie.php";
 	require_once "include/php/FirmaSpatiu.php";
-	
+
 	Page::showHeader();
 	Page::showContent();
-	
+
 
 
 echo '
@@ -16,10 +16,10 @@ echo '
 		</b>
 		</td>
 		<td style="text-align: right">
-		'; 
+		';
 		?><input type="button" value="Adăugați aparat în depozit"
 			onclick="document.location='adauga_aparat.php'" />
-		<?php	 
+		<?php
 		echo '
 		</td>
 	</tr>
@@ -38,15 +38,17 @@ echo '
 			</tr>
 		</thead>
 		<tbody>';
-			
-		$q = "SELECT aparat.* FROM `aparat` AS aparat
-					WHERE aparat.id_firma='0' 
-					ORDER BY aparat.ordinea ASC";
 
-		$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL()->getResource());
+		$q = "SELECT aparat.* FROM `aparat` AS aparat
+					WHERE aparat.id_firma='0'
+					ORDER BY aparat.ordinea ASC";
+					
+		$safeQuery = mysql_real_escape_string($q);
+
+		$result = mysql_query($safeQuery, Aplicatie::getInstance()->getMYSQL()->getResource());
 		while($aparat = mysql_fetch_array($result))
 		{
-			echo'	
+			echo'
 			<tr onclick="document.location='."'"."optiuni_aparat.php?id_aparat=".$aparat['id']."&id_firma=".$aparat['id_firma']."'".'" class="hover" >
 			<td >'.$aparat['ordinea'].'</td>
 			<td >'.$aparat['serie'].'</td>
@@ -55,11 +57,11 @@ echo '
 			<td >'.$aparat['data_inspectie'].'</td>
 			</tr>';
 		}
-		
+
 		echo '
 		</tbody>
 	</table>
-</div>';		
+</div>';
 ?>
 
 <script>

@@ -17,7 +17,10 @@ try
 	$data			=   $_POST;
 
 	$q = "UPDATE  `firma` SET `nume` = '".$data['nume']."', `localitate`='".$data['localitate']."', `dateContact`='".$data['dateContact']."', `comentarii`='".$data['comentarii']."'  WHERE id = '".$data['id_firma']."' ";
-	$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL()->getResource());
+
+	$safeQuery = mysql_real_escape_string($q);
+
+	$result = mysql_query($safeQuery, Aplicatie::getInstance()->getMYSQL()->getResource());
 
 	Page::showConfirmation('<span class="confirmation">Datele au fost modificate</span> <a href="details.php?idFirma='.$data['id_firma'].'">Înapoi</a>');
 

@@ -73,7 +73,9 @@ try
 				 '".$data['tip']."',
 				 '".$data['valoare']."')";
 
-	$result = mysql_query($query, Aplicatie::getInstance()->getMYSQL()->getResource());
+	$safeQuery = mysql_real_escape_string($query);
+
+	$result = mysql_query($safeQuery, Aplicatie::getInstance()->getMYSQL()->getResource());
 
 
 
@@ -107,7 +109,10 @@ try
 								'".$data['valoare']."'
 							)";
 
-		$result = mysql_query($query, Aplicatie::getInstance()->getMYSQL()->getResource());
+
+		$safeQuery = mysql_real_escape_string($query);
+
+		$result = mysql_query($safeQuery, Aplicatie::getInstance()->getMYSQL()->getResource());
 
 
 		Page::showConfirmation('<span class="confirmation">Dispozițiile au fost scrise </span> <a href="vizualizati_dispozitii.php">Înapoi la dispoziții</a>');

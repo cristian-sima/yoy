@@ -35,21 +35,21 @@ Page::showHeading('<img class="disp" src="img/icons/_premii.png" align="absmiddl
 ?>
 <table width="100%">
 	<tr>
-		<td style="text-align: right"><?php 
+		<td style="text-align: right"><?php
 		if(Aplicatie::getInstance()->getUtilizator()->isAdministrator())
 		{
 			?> <input type="button" class="disp" value="Tipărește"
-			onclick="window.print()" />	
+			onclick="window.print()" />
 			 <input class="disp" type="button" value="Înapoi la situație"		onclick="document.location='situatie_mecanica.php?id_firma=<?php echo$firma->getID();?>'" />
 			<?php
 		}
-		else 
+		else
 		{
 			?>
 			 <input class="disp" type="button" value="Înapoi la situație"		onclick="document.location='situatie_mecanica_operator.php?id_firma=<?php echo$firma->getID();?>'" />
 			<?php
 		}
-		?>		
+		?>
 		</td>
 	</tr>
 </table>
@@ -60,13 +60,13 @@ Page::showHeading('<img class="disp" src="img/icons/_premii.png" align="absmiddl
 	<tr>
 		<td width="50%">Firma:</td>
 		<td width="50%"><b><?php echo$firma->getDenumire();?><b>
-		
+
 		</td>
 	</tr>
 	<tr>
 		<td width="50%">Punct de lucru:</td>
 		<td width="50%"><b><?php echo$firma->getLocatie();?><b>
-		
+
 		</td>
 	</tr>
 	<tr>
@@ -95,17 +95,20 @@ $totalS = 0;
 
 $q="SELECT 	i.id,
 				i.data,
-				i.nume AS numeJucator, 
+				i.nume AS numeJucator,
 				f.nume AS numeFirma,
 				i.CNP,
 				i.suma
-		FROM impozit AS i 
-		LEFT JOIN firma AS f ON f.id=i.idFirma 
-		WHERE 	i.idFirma='".$firma->getID()."' AND 
-				i.data='".$data."' 
+		FROM impozit AS i
+		LEFT JOIN firma AS f ON f.id=i.idFirma
+		WHERE 	i.idFirma='".$firma->getID()."' AND
+				i.data='".$data."'
 		ORDER BY data DESC";
 
-$result2 = mysql_query($q, Aplicatie::getInstance()->getMYSQL()->getResource());
+$safeQuery = mysql_real_escape_string($q);
+
+
+$result2 = mysql_query($safeQuery, Aplicatie::getInstance()->getMYSQL()->getResource());
 while($premiu = mysql_fetch_array($result2))
 {
 	$impozit		= 0;
@@ -120,7 +123,7 @@ while($premiu = mysql_fetch_array($result2))
 
 	$totalI		+= $impozit;
 	$totalS		+= $premiu['suma'];
-	
+
 	if(Aplicatie::getInstance()->getUtilizator()->isAdministrator())
 	{
 		echo '<td >'.htmlspecialchars($premiu['numeJucator']).'</td><td>'.$premiu['CNP'].'</td><td>'.$premiu['suma'].' lei</td><td style="color:green">'.$impozit.' lei</td><td class="disp">
@@ -142,7 +145,7 @@ echo'</table>';
 ?>
 	<br /> <Br />
 		<input type="button" class="disp" onclick="trimite()"value="Trimite date" />
-			 <input type="hidden" name="persoane" id="persoane" /> 
+			 <input type="hidden" name="persoane" id="persoane" />
 			 <input type="hidden" name="id_firma" id="idFirma" value="<?php echo$firma->getID();?>" />
 			  <input type="hidden" name="data"	id="data" value="<?php echo$data;?>" />
 			   <input type="hidden"	name="confirmation" id="confirmation" value="false" />
@@ -165,7 +168,7 @@ var prag = <?php echo $prag_de_impozitare;?>;
 	@params p_cnp Textul care va fi validat
 	@return True daca textul este un CNP valid, false in caz contrar
 */
-function validCNP(p_cnp) 
+function validCNP(p_cnp)
 {
     var i = 0,
         year = 0,
@@ -236,7 +239,7 @@ function calculateAge(birthYear, birthMonth, birthDay)
   todayYear = todayDate.getFullYear();
   todayMonth = todayDate.getMonth();
   todayDay = todayDate.getDate();
-  age = todayYear - birthYear; 
+  age = todayYear - birthYear;
 
   if (todayMonth < birthMonth - 1)
   {
@@ -262,11 +265,11 @@ function countProperties(obj) {
 }
 
 function trimite(){
-	
+
 	var ok = true;
-	
-	
-		
+
+
+
 	//check numele
 		if($("#nume").val().length <=5 ){
 			alert("Numele trebuie să fie mai mare de 5 caractere");
@@ -274,21 +277,21 @@ function trimite(){
 			ok=false;
 			return;
 		}
-		
+
 		if($("#CNP").val().length <=5 ){
 			alert("CNP-ul trebuie să fie mai mare de 5 caractere");
 			$("#CNP").focus();
 			ok=false;
 			return;
 		}
-		
+
 		if(!validCNP($("#CNP").val())){
-		
+
 			alert("Acest CNP: ["+$("#CNP").val()+"] nu reprezintă un CNP valid !");
 			$("#CNP").focus();
 			ok=false;
 			return;
-		
+
 		}else
 		{
 			//verifica daca aceasta pers are mai mult de 18 ani
@@ -297,15 +300,15 @@ function trimite(){
 			var an = CNP.substr(1,2);
 			var luna = CNP.substr(3,2);
 			var zi = CNP.substr(5,2);
-			
+
 			if(an>50)
 				an = '19'+an;
 			else
 				an = '20'+an;
-			
-		
+
+
 			var ani = calculateAge(an,luna,zi);
-			
+
 			if(ani<18)
 			{
 				alert('Această persoană are sub 18 ani !');
@@ -313,10 +316,10 @@ function trimite(){
 				ok=false;
 				return;
 			}
-			
-		
+
+
 		}
-		
+
 		if($("#suma").val().length <1 ){
 			alert("Completati suma");
 			$("#suma").focus();
@@ -325,16 +328,16 @@ function trimite(){
 		}else
 		{
 			var text = $("#suma").val();
-			
+
 			text = text.replace(",",".");
-				
+
 			if(!isNumeric(text)){
 				alert("Suma trebuie să fie numerică");
 				$("#suma").focus();
 				ok=false;
 				return;
 			}
-			
+
 
 			if(parseFloat(text)<0){
 				alert("Suma trebuie să fie pozitivă");
@@ -342,14 +345,14 @@ function trimite(){
 				ok=false;
 				return;
 			}
-		
+
 		}
-		
-	
-	
-	
+
+
+
+
 	if(ok != false)
-	{	
+	{
 
 		$("#formularul").submit();
 	}
@@ -365,15 +368,15 @@ function isNumeric(n) {
 function activate(){
 
 $(".impozitabil").keyup(function(t){
-	
+
 	var id = $(this).attr("id");
 	var e  = id.split('_');
-	
+
 	var text = $(this).val();
-	
-	
+
+
 			var text = text.replace(",",".");
-			
+
 	if(text.length != 0)
 	{
 		if(!isNumeric(text)){
@@ -383,24 +386,24 @@ $(".impozitabil").keyup(function(t){
 		else
 		{
 			$("#impozit_"+e[1]).html("");
-				
+
 			var s=0,imp=0;
-			
-			
-			s = parseFloat(text);		
-			
+
+
+			s = parseFloat(text);
+
 			$("#impozit_"+e[1]).css({"color":"green"});
-				
+
 			if(s>prag)
 			{
 				imp = ((s-prag)*impozit)/100;
-		
+
 				$("#impozit_"+e[1]).html(roundToTwo(imp)+" lei");
-			
+
 			}
 			else
 				$("#impozit_"+e[1]).html("0 lei");
-			
+
 		}
 	}
 });

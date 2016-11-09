@@ -43,7 +43,9 @@ $mysql = "SELECT 	data,
 		FROM depunere_numerar
 		WHERE data >= '".$data->getFirstDayOfMonth()."' AND data <= '".$data->getLastDayOfMonth()."'";
 
-$eliberari 		= mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
+$safeQuery = mysql_real_escape_string($mysql);
+
+$eliberari 		= mysql_query($safeQuery, Aplicatie::getInstance()->getMYSQL()->getResource());
 $nr_crt			= 1;
 
 if(mysql_num_rows($eliberari) == 0)

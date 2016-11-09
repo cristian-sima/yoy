@@ -46,10 +46,16 @@
 									  '".$data['in_depozit']."'
 									  )";
 
-		$result = mysql_query($query, Aplicatie::getInstance()->getMYSQL()->getResource());
+
+		$safeQuery = mysql_real_escape_string($query);
+
+		$result = mysql_query($safeQuery, Aplicatie::getInstance()->getMYSQL()->getResource());
 
 		$q = "SELECT id FROM aparat ORDER BY id DESC LIMIT 0,1";
-		$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL()->getResource());
+
+		$safeQuery = mysql_real_escape_string($q);
+
+		$result = mysql_query($safeQuery, Aplicatie::getInstance()->getMYSQL()->getResource());
 		while($aparat = mysql_fetch_array($result))
 		{
 			$id = $aparat['id'];
@@ -76,7 +82,9 @@
 									  '1'
 									  )";
 
-			$result = mysql_query($query, Aplicatie::getInstance()->getMYSQL()->getResource());
+			$safeQuery = mysql_real_escape_string($query);
+
+			$result = mysql_query($safeQuery, Aplicatie::getInstance()->getMYSQL()->getResource());
 
 		/*
 		 * Daca se adauga in depozit nu e nevoie de nicio situatie
@@ -119,7 +127,9 @@
 									`end_iesiri`)
 									VALUES ('".$aparat_->getID()."','".$id_completare."', '".$data['mecanic_intrare']."', '".$data['mecanic_intrare']."', '".$data['mecanic_iesire']."', '".$data['mecanic_iesire']."' );";
 
-				$result = mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
+				$safeQuery = mysql_real_escape_string($mysql);
+
+				$result = mysql_query($safeQuery, Aplicatie::getInstance()->getMYSQL()->getResource());
 
 
 			}
@@ -140,13 +150,18 @@
 										  '".Aplicatie::getInstance()->getUtilizator()->getID()."'
 										  )";
 
-				$result = mysql_query($query, Aplicatie::getInstance()->getMYSQL()->getResource());
+				$safeQuery = mysql_real_escape_string($query);
+
+				$result = mysql_query($safeQuery, Aplicatie::getInstance()->getMYSQL()->getResource());
 
 
 				/*-------------------- Obtine ID-ul completarii -----------------*/
 
 				$q = "SELECT id FROM completare_mecanica WHERE id_firma= '".$data['firma_id']."' AND data_='".$data_."' AND autor='".Aplicatie::getInstance()->getUtilizator()->getID()."' ";
-				$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL()->getResource());
+
+				$safeQuery = mysql_real_escape_string($q);
+
+				$result = mysql_query($safeQuery, Aplicatie::getInstance()->getMYSQL()->getResource());
 
 				$id_completare = null;
 
@@ -169,9 +184,9 @@
 
 				$mysql = rtrim($mysql, ",").';';
 
-				$result = mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
+				$safeQuery = mysql_real_escape_string($mysql);
 
-
+				$result = mysql_query($safeQuery, Aplicatie::getInstance()->getMYSQL()->getResource());
 			}
 
 			if($data['firma_id'] != "0")
