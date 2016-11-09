@@ -161,7 +161,7 @@ class Page
 		<div class="aplicatie_footer center hide_prt">
 			<table width="100%">
 				<tr>
-					<td width:30%>&copy; Sima Cristian - YOY.ro '.date('Y').'</td>
+					<td width:30%>&copy; YOY.ro '.date('Y').'</td>
 					<td width="70%" style="text-align:right"><small> V'.self::$version.'</small></td>
 				</tr>
 			</table>
