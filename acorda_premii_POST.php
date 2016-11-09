@@ -12,8 +12,6 @@ Page::showHeader();
 Page::showContent();
 
 
-
-
 // functia care valideaza datele primite și returneaza erorile daca sunt
 function is_cnp_valid($cnp_primit)
     {

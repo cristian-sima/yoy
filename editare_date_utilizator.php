@@ -47,7 +47,7 @@ echo '
 	<div class="content">
 		<div id="dialog"></div>
 		<div id="form_wrapper" class="form_wrapper"
-			style="width: 550px; height: 496px; display: block;">
+			style="width: 550px; display: block;">
 			<form id="f1" class="register active" style=""
 				action="
 					editare_date_utilizator_POST.php" method="POST">
@@ -74,10 +74,10 @@ echo '
 
 	</div>
 	<div>
-		<label>Parolă:</label> <input check="true"
-			criteria='{type:"string", reg:"(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$",  minSize: "8", empty:"true"}'
-			id="parola" value="" name="parola" type="password"> Lăsă câmpul gol dacă nu vrei să modifici parola
+		<label>Parolă:</label>
+		<input check="true" criteria='{type:"string", reg:"(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$",  minSize: "8", empty:"true"}' id="parola" value="" name="parola" type="password">
 
+		<small><i>Lăsă câmpul gol dacă nu vrei să modifici parola</i></small>
 	</div>
 	<?php
 
