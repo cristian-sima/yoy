@@ -171,7 +171,7 @@
 		$title = "YOY.ro Situația mecanică din ".$data1." pentru firma  ".$firma->getDenumire();
 
 		header("Content-Type", "text/html; charset=utf-8");
-		require_once 'pdf/dompdf_config.inc.php';
+		require_once 'vendor/pdf/dompdf_config.inc.php';
 		mb_internal_encoding('UTF-8');
 		$ready =  '<html><head><title>'.$title.'</title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><link href="include/css/pdf.css" rel="stylesheet" type="text/css"/></head><body>'.$html."</body></html>";
 
