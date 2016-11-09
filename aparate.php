@@ -50,10 +50,8 @@ echo '
 		$q = "SELECT aparat.*,(SELECT `nume` FROM `firma` WHERE firma.id=aparat.id_firma ) AS denumire_firma FROM `aparat` AS aparat
 					WHERE aparat.activ='1' AND aparat.id_firma = '".$firma->getID()."'
 					ORDER BY aparat.ordinea ASC";
-					
-		$safeQuery = mysql_real_escape_string($q);
 
-		$result = mysql_query($safeQuery, Aplicatie::getInstance()->getMYSQL()->getResource());
+		$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL()->getResource());
 		while($aparat = mysql_fetch_array($result))
 		{
 			echo'

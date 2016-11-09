@@ -25,7 +25,7 @@ $selector_GUI->setTypeOfDocument("Deconturi");
 
 
 Page::showHeading("Vizualizați deconturi", '
-			<input class="disp" type="button" value="Tipărește" class="disp" onclick="window.print();" />
+			<input class="disp" type="button" value="Tipărește" class="disp" onclick="window.print();" /> 
 			<input	class="disp" type="button" value="Înapoi actiuni" class="disp" onclick="document.location='."'".'actiuni.php?data='.$data."'".'" />
 			<input	class="disp" type="button" value="Decont nou" class="disp" onclick="document.location='."'".'decont_nou.php?data='.$data."'".'" />');
 
@@ -38,12 +38,10 @@ $mysql = "SELECT 	data,
 				suma,
 				document,
 				explicatie
-		FROM decont
+		FROM decont 
 		WHERE data >= '".$data->getFirstDayOfMonth()."' AND data <= '".$data->getLastDayOfMonth()."'";
 
-$safeQuery = mysql_real_escape_string($mysql);
-
-$eliberari 		= mysql_query($safeQuery, Aplicatie::getInstance()->getMYSQL()->getResource());
+$eliberari 		= mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
 $nr_crt			= 1;
 
 if(mysql_num_rows($eliberari) == 0)
@@ -75,7 +73,7 @@ else
 			';
 		$total += $decont['suma'];
 	}
-
+	
 	echo'
 			<tr class="pad">
 				<td class="bold" > Total</td>
@@ -105,7 +103,7 @@ Page::showFooter();
 
 #example td
 {
-	border:		1px solid #dfdfdf;
+	border:		1px solid #dfdfdf;	
 }
 
 #example tr:hover {

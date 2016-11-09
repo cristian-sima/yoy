@@ -164,11 +164,7 @@ try
 			  WHERE 	`CNP`='".$data['CNP']."' AND
 			  		 	`idFirma`='".$data['id_firma']."' AND
 			  		 	`data`='".$data['data']."'";
-
-  $safeQuery = mysql_real_escape_string($mysql);
-
-	$result = mysql_query($safeQuery, Aplicatie::getInstance()->getMYSQL()->getResource());
-
+	$result = mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
 	while($premiu = mysql_fetch_array($result))
 	{
 		$suma_premiu = $premiu['suma'];
@@ -267,27 +263,18 @@ try
 
 
 		$mysql = "SELECT suma from impozit WHERE `CNP`='".$data['CNP']."' AND `idFirma`='".$data['id_firma']."' AND `data`='".$data['data']."'";
-
-    $safeQuery = mysql_real_escape_string($mysql);
-
-		$result = mysql_query($safeQuery, Aplicatie::getInstance()->getMYSQL()->getResource());
+		$result = mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
 
 
 		if(mysql_num_rows($result) != 0)
 		{
 			$mysql = "UPDATE impozit SET suma=suma+".$data['suma']." WHERE `CNP`='".$data['CNP']."' AND `idFirma`='".$data['id_firma']."' AND `data`='".$data['data']."'";
-
-      $safeQuery = mysql_real_escape_string($mysql);
-
-			$result = mysql_query($safeQuery, Aplicatie::getInstance()->getMYSQL()->getResource());
+			$result = mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
 		}
 		else
 		{
 			$mysql = "INSERT into impozit(`data`,`idFirma`,`CNP`,`nume`,`suma`) VALUES('".$data['data']."', '".$data['id_firma']."','".$_POST['CNP']."','".$_POST['nume']."','".$_POST['suma']."')";
-
-      $safeQuery = mysql_real_escape_string($mysql);
-
-			$result = mysql_query($safeQuery, Aplicatie::getInstance()->getMYSQL()->getResource());
+			$result = mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
 		}
 
 

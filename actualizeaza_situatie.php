@@ -56,9 +56,7 @@ $_data = new DataCalendaristica(addslashes($_POST['from']));
 						 	`total_premii` = '".$situatie->getTotalPremii()."'
 					WHERE `id` = '".$situatie->getId()."' ";
 
-				$safeQuery = mysql_real_escape_string($mysql);
-
-				 mysql_query($safeQuery, Aplicatie::getInstance()->getMYSQL()->getResource());
+				 mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
 
 				console('Am actualizat situația nr <b> '.$situatie->getId().'</b> din data de <b>'.$_OBJ_data.'</b> pentru firma <b>'.$firma->getDenumire().'</b>');
 
@@ -89,13 +87,10 @@ console("<span style='weight:bold;background:green;color:white'> Totul este ok a
 			<select name="id_firma_do" id="firma">
 			';
 
-			$mysql = "SELECT nume,id,activa
-								FROM firma
-								ORDER BY activa DESC,nume ASC";
-			
-			$safeQuery = mysql_real_escape_string($mysql);
 
-			$result = mysql_query($safeQuery,
+			$result = mysql_query("SELECT nume,id,activa
+								FROM firma
+								ORDER BY activa DESC,nume ASC",
 			Aplicatie::getInstance()->getMYSQL()->getResource());
 
 			while($firma = mysql_fetch_array($result))

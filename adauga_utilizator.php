@@ -55,7 +55,7 @@ Page::showContent();
 			{
 				?>
 
-				<input type="hidden" name="idFirma" value="0" />
+				<input type="hidden" name="idFirma" value="0" /> 
 
 				<?php
 
@@ -68,14 +68,7 @@ Page::showContent();
 				<div id="idFirma">
 					<label>Firma</label> <select name="idFirma">
 					<?php
-
-					$query = "SELECT id,nume from firma WHERE activa='1'";
-					
-					$safeQuery = mysql_real_escape_string($query);
-
-					$result = mysql_query($safeQuery, Aplicatie::getInstance()->getMYSQL()->getResource());
-
-
+					$result = mysql_query("SELECT id,nume from firma WHERE activa='1'", Aplicatie::getInstance()->getMYSQL()->getResource());
 					while($row2 = mysql_fetch_array($result))
 					{
 						?>
