@@ -32,7 +32,6 @@
 							<a onclick="goTo('."'".'inchide_situatie_luna.php'."'".')" href="#" class="button blue medium bold">Închidere situație lună</a>	<br /><br />
 							<a onclick="goTo('."'".'administreaza_depuneri_de_numerar.php'."'".')" href="#" class="button orange medium bold">Adm. depunerile de numerar</a>	<br /><br />
 							<a onclick="goTo('."'".'administreaza_deconturi.php'."'".')" href="#" class="button gray medium bold">Adm. deconturile </a>	<br /><br />
-							<a onclick="goTo('."'".'actualizeaza_situatie.php'."'".')" href="#" class="button gray medium bold">Actualizează situații <span style="color:red">(numai în cazul în care este una din trecut modificată)</span> </a>	<br /><br />	
 						</fieldset>
 					</td>
 				</tr>
