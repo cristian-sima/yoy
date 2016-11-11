@@ -12,7 +12,7 @@ try
 
 
 
-	Procesare::checkRequestedData(array('data','suma', 'document','explicatie'),$data,'administreaza_depuneri_de_numerar.php');
+	Procesare::checkRequestedData(array('data','suma', 'document','explicatie'),$data,'depuneri.php');
 
 
 	$mysql = "INSERT INTO `depunere_numerar`
@@ -30,7 +30,7 @@ try
 	$result = mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
 
 
-	Page::showConfirmation('<span class="confirmation">Depunerea a fost adaugată cu succes !</span> <a href="administreaza_depuneri_de_numerar.php ">Înapoi la depuneri</a>');
+	Page::showConfirmation('<span class="confirmation">Depunerea a fost adaugată cu succes !</span> <a href="depuneri.php ">Înapoi la depuneri</a>');
 
 }
 catch(Exception $e)

@@ -89,6 +89,9 @@ class Page
 							<a href="vizualizare_dispozitii.php">Dispoziții</a>
 						</li>
 						<li>
+							<a href="depuneri.php">Depuneri</a>
+						</li>
+						<li>
 							<a href="setari.php">Setări</a>
 						</li>
 					</ul>

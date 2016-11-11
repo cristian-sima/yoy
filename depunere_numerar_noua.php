@@ -16,7 +16,7 @@ $_criterii_MYSQL	= (($_GET['id_firma'] != '')?("AND i.idFirma='".$_GET['id_firma
 
 Page::showHeading("Adaugă depunere", '
 
-			<input	class="disp" type="button" value="Înapoi la depuneri" class="disp" onclick="document.location='."'".'administreaza_depuneri_de_numerar.php'."'".'" />');
+			<input	class="disp" type="button" value="Înapoi la depuneri" class="disp" onclick="document.location='."'".'depuneri.php'."'".'" />');
 /* ---------------- content ---------------------*/
 ?>
 

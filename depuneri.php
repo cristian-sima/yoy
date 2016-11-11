@@ -20,7 +20,7 @@ $data				= $selector_GUI->getDataCurenta();
 
 $selector_GUI->afiseazaButon(true);
 $selector_GUI->afiseazaFirme(false);
-$selector_GUI->setAdresaButon("administreaza_depuneri_de_numerar.php");
+$selector_GUI->setAdresaButon("depuneri.php");
 $selector_GUI->setTypeOfDocument("Depuneri de numerar");
 
 
