@@ -89,9 +89,6 @@ class Page
 							<a href="vizualizare_dispozitii.php">Dispoziții</a>
 						</li>
 						<li>
-							<a href="istoric.php">Impozit</a>
-						</li>
-						<li>
 							<a href="setari.php">Setări</a>
 						</li>
 					</ul>
