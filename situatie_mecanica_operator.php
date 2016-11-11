@@ -134,6 +134,10 @@
 
 	$GUI->display();
 
+	echo '	<script>
+			situatie.nrDeAparate = '.$numar_de_randuri.';
+			</script>';
+
 		Page::showFooter();
 
 	}

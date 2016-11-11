@@ -9,10 +9,7 @@ function beforeSubmit()
 	var tabel = document.getElementById('situatie_data');
 
 
-	var problem			= true;
-
-	console.log('situatie.nrDeAparate', situatie.nrDeAparate);
-
+	var problem			= false;
 
 	for (row = 3; row <= situatie.nrDeAparate + 2; row++)
 	{
