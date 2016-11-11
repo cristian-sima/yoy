@@ -72,7 +72,7 @@
 			}
 			else
 			{
-				$GUI		= new Situatie_GUI($situatie, null, $firma);
+				$GUI		= new Situatie_GUI($situatie, $firma);
 				$GUI->displayAutor(false);
 			}
 
@@ -91,7 +91,7 @@
 
 
 			$situatie			= new SituatieMecanicaGrafica($data1, $data2, $firma);
-			$GUI				= new Situatie_GUI($situatie, null, $firma);
+			$GUI				= new Situatie_GUI($situatie, $firma);
 			$numar_de_randuri	= $situatie->getNumarulDeAparate();
 
 			$GUI->isInteractiva(false);
