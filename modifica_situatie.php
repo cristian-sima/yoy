@@ -27,79 +27,19 @@
 	try
 	{
 		$data			=   $_POST;
-		Procesare::checkRequestedData(array('aparate_','carnete_','from','id_firma'),$data,'situatie_mecanica.php?id='.$_POST['id_firma']);
+		Procesare::checkRequestedData(array('aparate_','from','id_firma'),$data,'situatie_mecanica.php?id='.$_POST['id_firma']);
 
 
 
 		$firma			= new FirmaSpatiu($data['id_firma']);
 		$autor			= Aplicatie::getInstance()->getUtilizator();
 
-		$carnete_		= explode("|", $data['carnete_']);
 		$aparate_		= explode("|", $data['aparate_']);
 
-		$id_old_completare_bilete		= 0;
 		$id_old_completare_mecanica		= 0;
 
 
 		// Page::representVisual($data);
-
-
-		/*
-		 * ------------------------------------------------------------------------
-		 *
-		 * 								Completare bilete
-		 *
-		 * ------------------------------------------------------------------------
-		 */
-
-
-		// sterge orice completare de bilete existenta pentru aceasta firma la aceasta data
-		$q = "SELECT id FROM completare_bilete WHERE data_ = '".$data['from']."' AND id_firma = '".$firma->getID()."' LIMIT 1";
-		$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL()->getResource());
-
-		while($completare = mysql_fetch_array($result))
-		{
-			$id_old_completare_bilete	= $completare['id'];
-		}
-
-		$mysql	= "DELETE FROM `completare_bilete` WHERE id='".$id_old_completare_bilete."' ";
-		mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
-
-
-
-
-		// creare o noua completare bilete
-		$mysql	= "INSERT INTO `completare_bilete`(`id_firma`,`data_`) VALUES ('".$firma->getID()."', '".$data['from']."')";
-		mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
-		$q = "SELECT id FROM completare_bilete WHERE data_ = '".$data['from']."' AND id_firma = '".$firma->getID()."' LIMIT 1";
-		$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL()->getResource());
-		while($completare = mysql_fetch_array($result))
-		{
-			$id_completare_bilete	= $completare['id'];
-		}
-
-
-		// sterge orice index-uri de bilete din aceasta zi și pentru aceasta firma
-		$mysql	= "DELETE FROM `carnete_bilete` WHERE `id_completare` = '".$id_old_completare_bilete."' ";
-		mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
-
-
-
-
-		// introducere bilete
-		$mysql	= "INSERT INTO `carnete_bilete`(`start`,`end`,`id_completare`)
-					VALUES ('".$data['carnet_default_start']."','".$data['carnet_default_end']."', '".$id_completare_bilete."'),";
-		if(count($carnete_) != 0)
-		{
-			foreach ($carnete_ as $carnet)
-			{
-				if($carnet != '')
-					$mysql .= "('".$data['carnet_'.$carnet.'_start']."','".$data['carnet_'.$carnet.'_end']."','".$id_completare_bilete."' ),";
-			}
-		}
-		$mysql = rtrim($mysql, ",").';';
-		mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
-
 
 
 		/*
@@ -125,8 +65,6 @@
 		mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
 
 
-
-
 		// creare o noua completare mecanica
 		$mysql	= "INSERT INTO `completare_mecanica`(`id_firma`,`data_`,`autor`) VALUES ('".$firma->getID()."', '".$data['from']."', '".$autor->getID()."')";
 		mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
@@ -138,14 +76,14 @@
 		}
 
 
-		// sterge orice index-uri de bilete din aceasta zi și pentru aceasta firma
+		// sterge orice index-uri  din aceasta zi și pentru aceasta firma
 		$mysql	= "DELETE FROM `index_mecanic` WHERE `id_completare` = '".$id_old_completare_mecanica."' ";
 		mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
 
 
 
 
-		// introducere bilete
+		// introducere aparate
 		$mysql	= "INSERT INTO `index_mecanic`(
 											`id_aparat`,
 											`id_completare`,

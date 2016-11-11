@@ -38,18 +38,6 @@
 
 		/**
 		 *
-		 * Returneaza pretul unui bilet, impus de guvern in luna pentru care se ofera data
-		 * @param DataCalendaristica $data		O zi calendaristica de tip DataCalendaristica
-		 * @return								Pretul unui bilet in aceea luna
-		 *
-		 */
-		public static function getPretBilet(DataCalendaristica $data)
-		{
-			return (self::_doWork('bilet', $data));
-		}
-
-		/**
-		 *
 		 * @description						Returneaza pragul de impozitare impus de guvern in luna pentru care se ofera data
 		 * @param DataCalendaristica $data	O zi calendaristica de tip DataCalendaristica
 		 * @return							Pragul de impozitare
@@ -64,7 +52,7 @@
 		/**
 		 *
 		 * Returneaza o anumita taxa/impozit din baza de date sau opreste executia programuui daca nu exista accea taxa stabilita
-		 * @param string $type					bilet, aparat, suma, procent
+		 * @param string $type					aparat, suma, procent
 		 * @param DataCalendaristica $data		Data calendaristica
 		 * @return 								Depinde de parametrii
 		 *

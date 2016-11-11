@@ -39,7 +39,7 @@
 .situatie_info
 {
 	padding: 			0px;
-	margin: 			0px;	
+	margin: 			0px;
 	border-collapse: 	collapse;
 	border-top:			none;
 	width:				400px;
@@ -53,15 +53,15 @@
 }
 
 .situatie_info tr td
-{	
-	border:				1px solid black; 
+{
+	border:				1px solid black;
 	font-size: 			10pt;
 	font-weight: 		400;
 	padding-left:		5px;
 }
 
 .situatie_info_first_column
-{	
+{
 	max-width:			80px;
 }
 
@@ -90,17 +90,17 @@
 {
 	width:				100%;
 	padding: 			0px;
-	margin: 			0px;	
+	margin: 			0px;
 	border-collapse: 	collapse;
 	margin-top:			-1px;
 	margin-left:		-1px;
 	padding-right:		1px;
-	
+
 }
 
 .situatie_data thead tr th, .situatie_data tbody tr td
-{	
-	border:				1px solid black; 
+{
+	border:				1px solid black;
 	font-weight: 		400;
 	text-align:			center;
 	text-decoration: 	none;
@@ -113,7 +113,7 @@
 }
 
 .situatie_data thead tr th
-{	
+{
 	font-weight:		bold;
 }
 
@@ -124,90 +124,90 @@
 
 .situatie_data_col_1
 {
-	width:				30px;		
+	width:				30px;
 }
 
 .situatie_data_col_2
 {
-	width:				86px;		
+	width:				86px;
 }
 
 .situatie_data_col_3
 {
-	width:				90px;		
+	width:				90px;
 }
 
 .situatie_data_col_4
 {
-	width:				20px;		
+	width:				20px;
 }
 
 .situatie_data_col_5
 {
-	width:				90px;		
+	width:				90px;
 }
 
 .situatie_data_col_6
 {
-	width:				86px;		
+	width:				86px;
 }
 
 .situatie_data_col_7
 {
-	width:				16px;		
+	width:				16px;
 }
 
 .situatie_data_col_8
 {
-	width:				85px;		
+	width:				85px;
 }
 
 .situatie_data_col_9
 {
-	width:				37px;		
+	width:				37px;
 }
 
 .situatie_data_col_10
 {
-	width:				16px;		
+	width:				16px;
 }
 
 .situatie_data_col_11
 {
-	width:				37px;		
+	width:				37px;
 }
 
 .situatie_data_col_12
 {
-	width:				78px;		
+	width:				78px;
 }
 
 .situatie_data_col_13
 {
-	width:				21px;		
+	width:				21px;
 }
 
 .situatie_data_col_14
 {
-	width:				68px;		
+	width:				68px;
 }
 
 .situatie_data_col_15
 {
-	width:				82px;		
+	width:				82px;
 }
 
 .situatie_data_col_16
 {
-	width:				50px;		
+	width:				50px;
 }
 
 .situatie_data_col_17
 {
-	width:				107px;		
+	width:				107px;
 }
 
-.situatie_data tbody tr td input, .situatie_bilete tr td input[type=text]
+.situatie_data tbody tr td input
 {
 	border: 			none;
 	height: 			15px;
@@ -227,7 +227,7 @@
 	padding: 			1px;
 }
 
-.situatie_data tbody tr td input:disabled, .situatie_bilete tr td input[type=text]:disabled
+.situatie_data tbody tr td input:disabled
 {
 	margin:				-2px;
 	width:				100%;
@@ -237,7 +237,7 @@
 	border:				none;
 	cursor:				default;
 }
-.situatie_data tbody tr td input:focus,.situatie_bilete tr td input[type=text]:focus
+.situatie_data tbody tr td input:focus
 {
 	background:			#FFFBD6;
 	border: 			1px solid #FFB200;
@@ -277,13 +277,12 @@
 {
 	width:					306px;
 	padding: 				0px;
-	margin: 				0px;	
+	margin: 				0px;
 	border-collapse: 		collapse;
 	margin-right:			-2px;
-	margin-left: 			87px;	
-	
-}
+	margin-left: 			87px;
 
+}
 
 .situatie_totaluri tr td
 {
@@ -291,51 +290,3 @@
 	border:					1px solid black;
 	font-size: 				10pt;
 }
-
-
-
-.situatie_bilete
-{
-	width:					327px;
-	padding: 				0px;
-	border-collapse: 		collapse;
-	margin-right:			-2px;
-}
-
-
-.situatie_bilete tr td
-{
-	border:					1px solid black;
-	font-size: 				10pt;
-	padding:				2px;
-}
-
-.situatie_carnet
-{
-	width:					327px;
-	padding: 				0px;
-	margin: 				0px;	
-	border-collapse: 		collapse;
-	margin-right:			-2px;	
-}
-
-.situatie_carnet tr td
-{
-	border:					none;
-	font-size: 				10pt;
-}
-
-.situatie_bilete_div
-{
-	margin-top:				10px;
-}
-
-.situatie_bilete tr td input[type=text]
-{
-	width:					100%;
-	padding:				none;
-}
-
-.situatie_bilete tr:hover:not(:first-child)
-{
-	background:				#CEF6FF;

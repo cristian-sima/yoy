@@ -36,8 +36,8 @@
 					<td width="50%" style="vertical-align: top">
 					<fieldset>
 						<legend>Alte situații</legend>
-						<a onclick="goTo('."'".'situatie_bilete_lunara.php'."'".')" href="#"
-							class="button orange medium bold">Situație bilete</a> <br /> <br />
+						<a onclick="goTo('."'".'situatie_lunara.php'."'".')" href="#"
+							class="button orange medium bold">Situație lunară</a> <br /> <br />
 						<a onclick="goTo('."'".'afisare_decont_firma.php'."'".')" href="#"
 							class="button medium green bold">Decont firmă</a> <br /> <br />
 					</fieldset>

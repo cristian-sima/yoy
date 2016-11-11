@@ -1,7 +1,6 @@
 <?php
 
 require_once "include/php/Total.php";
-require_once "include/php/Bilete.php";
 require_once "include/php/Guvern.php";
 require_once "include/php/Romanian.php";
 require_once "include/php/FirmaSpatiu.php";
@@ -36,7 +35,7 @@ class RegistruGraficCentral extends RegistruGrafic
 
 	/**
 	 *
-	 * Proceseaza datele pentru situatia registru grafica pentru toate firmele intr-o luna. Datele sunt formate din incasari, plati și bilete.
+	 * Proceseaza datele pentru situatia registru grafica pentru toate firmele intr-o luna. Datele sunt formate din incasari, plati.
 	 *
 	 * @see RegistruGrafic::_processData()
 	 */

@@ -1,7 +1,6 @@
 <?php
 
 require_once "include/php/Total.php";
-require_once "include/php/Bilete.php";
 require_once "include/php/Guvern.php";
 require_once "include/php/Romanian.php";
 require_once "include/php/FirmaSpatiu.php";
@@ -49,7 +48,7 @@ class RegistruGraficFirma extends RegistruGrafic
 
 	/**
 	 *
-	 * Proceseaza datele pentru situatia registru grafica pentru o firma intr-o luna. Datele sunt formate din incasari, plati și bilete.
+	 * Proceseaza datele pentru situatia registru grafica pentru o firma intr-o luna. Datele sunt formate din incasari, plati.
 	 *
 	 * @see RegistruGrafic::_processData()
 	 */
@@ -81,14 +80,12 @@ class RegistruGraficFirma extends RegistruGrafic
 									"width"		=>	"200px"
 									)
 									);
-		$pret_taxa_pe_bilet		= Guvern::getPretBilet($this->getFrom());
 		$prag_de_impozitare 	= Guvern::getPragDeImpozitare($this->getFrom());
 		$procent_impozitare 	= Guvern::getProcentDeImpozitare($this->getFrom());
 		$data_curenta 			= $this->getFrom();
 
 		$incasari		= new Total("Încasări");
 		$plati			= new Total("Plăți");
-		$bilete			= new Total("Bilete");
 		$total			= new Total("General");
 		$impozit		= new Total("Impozit");
 		$dispoziții		= new Total("Dispoziții");
@@ -128,22 +125,6 @@ class RegistruGraficFirma extends RegistruGrafic
 
 				$incasari->actualizeazaIncasari($situatie->getTotalIncasari());
 
-				/* ------------------------ BILETE ---------------------- */
-
-
-				$calcul_bilete = new Bilete($data_curenta, $data_curenta, $this->firma);
-
-				foreach ($calcul_bilete->getCarnete() as $carnet)
-				{
-					$numar_de_bilete  = $carnet->getNumarulDeBilete();
-
-					if($numar_de_bilete != 0)
-					{
-						$_suma = $numar_de_bilete * $pret_taxa_pe_bilet;
-						$this->addRow(array($this->getIndexNewRow(), "<span class='tabel_page_bilete_big'>".$carnet.'</span>', $data_curenta->romanianFormat(), "BILETE",  $_suma, 0));
-						$bilete->actualizeazaIncasari($_suma);
-					}
-				}
 			}
 
 			/* ---------------------------- DISPOZITII -------------------------------*/
@@ -186,14 +167,12 @@ class RegistruGraficFirma extends RegistruGrafic
 
 		$total->actualizeazaIncasari($impozit->getIncasari());
 		$total->actualizeazaIncasari($incasari->getIncasari());
-		$total->actualizeazaIncasari($bilete->getIncasari());
 		$total->actualizeazaIncasari($dispoziții->getIncasari());
 		$total->actualizeazaPlati($dispoziții->getPlati());
 		$total->actualizeazaPlati($plati->getIncasari());
 
 		$this->addTotal($plati);
 		$this->addTotal($incasari);
-		$this->addTotal($bilete);
 		$this->addTotal($impozit);
 		$this->addTotal($dispoziții);
 		$this->addTotal($total);

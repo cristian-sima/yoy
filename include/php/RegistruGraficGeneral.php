@@ -1,7 +1,6 @@
 <?php
 
 require_once "include/php/Total.php";
-require_once "include/php/Bilete.php";
 require_once "include/php/Guvern.php";
 require_once "include/php/Romanian.php";
 require_once "include/php/FirmaSpatiu.php";
@@ -37,7 +36,7 @@ class RegistruGraficGeneral extends RegistruGrafic
 
 	/**
 	 *
-	 * Proceseaza datele pentru situatia registru grafica pentru toate firmele intr-o luna. Datele sunt formate din incasari, plati și bilete.
+	 * Proceseaza datele pentru situatia registru grafica pentru toate firmele intr-o luna. Datele sunt formate din incasari, plati.
 	 *
 	 * @see RegistruGrafic::_processData()
 	 */
@@ -70,14 +69,12 @@ class RegistruGraficGeneral extends RegistruGrafic
 									)
 									);
 
-		$pret_taxa_pe_bilet		= Guvern::getPretBilet($this->getFrom());
 		$prag_de_impozitare 	= Guvern::getPragDeImpozitare($this->getFrom());
 		$procent_impozitare 	= Guvern::getProcentDeImpozitare($this->getFrom());
 		$data_curenta 			= $this->getFrom();
 
 		$incasari		= new Total("Încasări");
 		$plati			= new Total("Plăți");
-		$bilete			= new Total("Bilete");
 		$total			= new Total("General");
 		$impozit		= new Total("Impozit");
 		$dispoziții		= new Total("Dispoziții");
@@ -104,7 +101,6 @@ class RegistruGraficGeneral extends RegistruGrafic
 		while(strtotime($data_curenta) <= strtotime($this->getTo()))
 		{
 			$_aparate_mecanice		= new Total("Temporar");
-			$_bilete				= new Total("Temporar");
 			$_impozit				= new Total("Temporar");
 			$_dispozitii			= new Total("Temporar");
 
@@ -130,32 +126,13 @@ class RegistruGraficGeneral extends RegistruGrafic
 
 					$_aparate_mecanice->actualizeazaIncasari($situatie->getTotalIncasari());
 
-					/* ------------------------ BILETE ---------------------- */
 
-					$calcul_bilete = new Bilete($data_curenta, $data_curenta, $firma);
-
-					foreach ($calcul_bilete->getCarnete() as $carnet)
-					{
-						$numar_de_bilete  = $carnet->getNumarulDeBilete();
-
-						if($numar_de_bilete != 0)
-						{
-							$_suma = $numar_de_bilete * $pret_taxa_pe_bilet;
-							$_bilete->actualizeazaIncasari($_suma);
-						}
-					}
 				}
 			}
 
 			if($_aparate_mecanice->getIncasari() != 0)
 			{
 				$this->addRow(array($this->getIndexNewRow(), "", $data_curenta->romanianFormat(), "ÎNCASĂRI",  $_aparate_mecanice->getIncasari(), 0));
-			}
-
-			if($_bilete->getTotal() != 0)
-			{
-				$this->addRow(array($this->getIndexNewRow(), "", $data_curenta->romanianFormat(), "BILETE",  $_bilete->getTotal(), 0));
-				$bilete->actualizeazaIncasari($_bilete->getTotal());
 			}
 
 			$plati->actualizeazaIncasari($_aparate_mecanice->getPlati());
@@ -203,14 +180,12 @@ class RegistruGraficGeneral extends RegistruGrafic
 
 		$total->actualizeazaIncasari($impozit->getIncasari());
 		$total->actualizeazaIncasari($incasari->getIncasari());
-		$total->actualizeazaIncasari($bilete->getIncasari());
 		$total->actualizeazaIncasari($dispoziții->getIncasari());
 		$total->actualizeazaPlati($dispoziții->getPlati());
 		$total->actualizeazaPlati($plati->getIncasari());
 
 		$this->addTotal($plati);
 		$this->addTotal($incasari);
-		$this->addTotal($bilete);
 		$this->addTotal($impozit);
 		$this->addTotal($dispoziții);
 		$this->addTotal($total);

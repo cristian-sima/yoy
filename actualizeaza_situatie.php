@@ -72,7 +72,7 @@ console("<span style='weight:bold;background:green;color:white'> Totul este ok a
 
 }else {
 	echo '
-		Această opțiune se poate folosi după ce modificați date în situațiile din trecut (atât carnete de bilete cât și indexi). Se pot modifica și în baza de date situațiile
+		Această opțiune se poate folosi după ce modificați date în situațiile din trecut (indexi). Se pot modifica și în baza de date situațiile
 
 		<br/>
 		<br />
