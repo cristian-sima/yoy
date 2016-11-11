@@ -69,8 +69,6 @@ class RegistruGraficGeneral extends RegistruGrafic
 									)
 									);
 
-		$prag_de_impozitare 	= Guvern::getPragDeImpozitare($this->getFrom());
-		$procent_impozitare 	= Guvern::getProcentDeImpozitare($this->getFrom());
 		$data_curenta 			= $this->getFrom();
 
 		$incasari		= new Total("Încasări");

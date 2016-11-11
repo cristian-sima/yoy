@@ -24,34 +24,10 @@
 			return (self::_doWork("aparat", $data));
 		}
 
-		/**
-		 *
-		 * Returneaza procentul de impozitarea pentru care se ofera data
-		 * @param DataCalendaristica $data		O zi calendaristica de tip DataCalendaristica
-		 * @return								Procentul de impozitare
-		 *
-		 */
-		public static function getProcentDeImpozitare(DataCalendaristica $data)
-		{
-			return (self::_doWork('procent', $data));
-		}
 
 		/**
 		 *
-		 * @description						Returneaza pragul de impozitare impus de guvern in luna pentru care se ofera data
-		 * @param DataCalendaristica $data	O zi calendaristica de tip DataCalendaristica
-		 * @return							Pragul de impozitare
-		 *
-		 */
-		public static function getPragDeImpozitare(DataCalendaristica $data)
-		{
-			return (self::_doWork('suma', $data));
-		}
-
-
-		/**
-		 *
-		 * Returneaza o anumita taxa/impozit din baza de date sau opreste executia programuui daca nu exista accea taxa stabilita
+		 * Returneaza o anumita valoare din baza de date sau opreste executia programuui daca nu exista accea taxa stabilita
 		 * @param string $type					aparat, suma, procent
 		 * @param DataCalendaristica $data		Data calendaristica
 		 * @return 								Depinde de parametrii

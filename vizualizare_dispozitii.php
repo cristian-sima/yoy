@@ -90,8 +90,6 @@
 	if(isset($_GET['extinde']))
 	{
 
-		$prag_de_impozitare 	= Guvern::getPragDeImpozitare($selector_GUI->getDataCurenta());
-
 		$query = "SELECT
 					d.id,
 					d.data,

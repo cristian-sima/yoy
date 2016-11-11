@@ -66,8 +66,6 @@ class Dispozitii
 
 		$this->data = array();
 
-		$prag_de_impozitare 	= Guvern::getPragDeImpozitare($this->getFrom());
-
 		$query = "SELECT
 					d.id,
 					d.data,
@@ -77,8 +75,8 @@ class Dispozitii
 					d.document,
 					d.explicatie,
 					(SELECT nume FROM `firma` AS f WHERE f.id = d._to) AS denumire_firma
-				FROM dispozitie AS d 				
-				WHERE  data>='".$this->getFrom()."' AND data <= '".$this->getTo()."' ";					
+				FROM dispozitie AS d
+				WHERE  data>='".$this->getFrom()."' AND data <= '".$this->getTo()."' ";
 
 		$result_zi = mysql_query($query, Aplicatie::getInstance()->getMYSQL()->getResource());
 
@@ -86,7 +84,7 @@ class Dispozitii
 		{
 			push($this->data, $dispozitie['a']);
 		}
-		
-		
+
+
 	}
 }
