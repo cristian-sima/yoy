@@ -25,7 +25,7 @@ echo'<br />
 					<tr><td width="50%">
 					Patron:</td><td width="50%"> <input type="text" name="patron" value="'.Aplicatie::getInstance()->getFirmaOrganizatoare()->getPatron().'"/></td></tr>
 					<tr><td width="50%">
-					Denumire:</td><td width="50%"> <input type="text" name="localitate" value="'.Aplicatie::getInstance()->getFirmaOrganizatoare()->getLocatie().'"/></td></tr>
+					Domiciliu fiscal:</td><td width="50%"> <input type="text" name="localitate" value="'.Aplicatie::getInstance()->getFirmaOrganizatoare()->getLocatie().'"/></td></tr>
 					</table>
 					<center><input type="submit" value="Modifică datele"/></center>
 				</fieldset>
