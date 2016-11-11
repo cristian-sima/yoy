@@ -100,7 +100,6 @@
 
 		<br /> <br /> <a onclick="seeData('istoric')" href="#"
 			class="button blue small bold">Istoric impozit</a> <a
-			onclick="seeData('incasari')" href="#" class="button gray small bold">Încasări</a>
 		<a onclick="seeData('vizualizare_dispozitii')" href="#"
 			class="button blue small bold">Dispoziții</a> <a
 			onclick="seeData('registru_firma_spatiu')" href="#"
