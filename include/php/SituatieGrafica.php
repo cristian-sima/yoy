@@ -26,7 +26,7 @@ abstract class SituatieGrafica extends Situație
 	 * @param DataCalendaristica $from			Data de inceput a situatiei [@DataCalendaristica]
 	 * @param DataCalendaristica $to			Data de sfarsit a situatiei [@DataCalendaristica]
 	 * @param Firma $firma						Referinta spre obiectul firma despre care se face situatia [@Firma]
-	 * @param String $type						Tipul situatie - electronica sau mecanica
+	 * @param String $type						Tipul situatie - mecanica
 	 *
 	 */
 	protected function __construct($from, $to, $firma, $type)
@@ -91,9 +91,9 @@ abstract class SituatieGrafica extends Situație
 	protected function addAparat($object, $situatie)
 	{
 		$exist 	= false;
-	
+
 		foreach ($this->aparate as &$aparat)
-		{		
+		{
 			if($aparat['data']->getID() == $object->getID())
 			{
 				$aparat['situatie'] = $situatie;
@@ -101,11 +101,11 @@ abstract class SituatieGrafica extends Situație
 				return;
 			}
 		}
-		
+
 		if(!$exist)
 		{
 			array_push($this->aparate, array(	 "data"		=> $object,
 												 "situatie" => $situatie));
-		}	
+		}
 	}
 }
