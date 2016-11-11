@@ -129,8 +129,6 @@ class RegistruGraficGeneral extends RegistruGrafic
 				{
 
 					$_aparate_mecanice->actualizeazaIncasari($situatie->getTotalIncasari());
-					$_aparate_mecanice->actualizeazaPlati($situatie->getTotalPremii());
-
 
 					/* ------------------------ BILETE ---------------------- */
 
@@ -154,11 +152,6 @@ class RegistruGraficGeneral extends RegistruGrafic
 				$this->addRow(array($this->getIndexNewRow(), "", $data_curenta->romanianFormat(), "ÎNCASĂRI",  $_aparate_mecanice->getIncasari(), 0));
 			}
 
-			if($_aparate_mecanice->getPlati() != 0)
-			{
-				$this->addRow(array($this->getIndexNewRow(), "", $data_curenta->romanianFormat(), "PREMII",  0, $_aparate_mecanice->getPlati()));
-			}
-
 			if($_bilete->getTotal() != 0)
 			{
 				$this->addRow(array($this->getIndexNewRow(), "", $data_curenta->romanianFormat(), "BILETE",  $_bilete->getTotal(), 0));
@@ -168,35 +161,7 @@ class RegistruGraficGeneral extends RegistruGrafic
 			$plati->actualizeazaIncasari($_aparate_mecanice->getPlati());
 			$incasari->actualizeazaIncasari($_aparate_mecanice->getIncasari());
 
-
-			/* ------------------------ IMPOZIT ------------------------------*/
-
-
-			$q="SELECT 	i.id,
-					i.data,
-					i.suma
-			FROM impozit AS i
-			LEFT JOIN firma AS f ON f.id=i.idFirma
-			WHERE 	i.data='".$data_curenta."'";
-
-			$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL()->getResource());
-			while($premiu = mysql_fetch_array($result))
-			{
-				if($premiu['suma'] > $prag_de_impozitare)
-				{
-					$_impozit->actualizeazaIncasari((($premiu['suma'] - $prag_de_impozitare) * $procent_impozitare / 100));
-				}
-			}
-
-			if($_impozit->getTotal() != 0)
-			{
-				$impozit->actualizeazaIncasari($_impozit->getTotal());
-				$this->addRow(array($this->getIndexNewRow(), "", $data_curenta->romanianFormat(), "IMPOZIT",  $impozit->getTotal(), 0));
-			}
-
 			/* ---------------------------- DISPOZITII -------------------------------*/
-
-
 
 			$query = "SELECT
 						d.id,

@@ -131,8 +131,6 @@
 					<input type="button"   value="Adaugă dispoziție" onclick="document.location='."'".'dispozitie_operator_noua.php?from='.$data1->getAnul().'-'.$data1->getLuna()."'".'" />
 				</td>
 				<td style="text-align:center"> &nbsp;&nbsp;&nbsp;
-					<input type="button" class="bold" value="Premii acordate" onclick="document.location='."'".'acorda_premii.php?id='.$firma->getID()."'".'" />
-					&nbsp;&nbsp;&nbsp;
 					<input type="button" value="Tipărește situație"  onclick="window.print()" />
 				</td>
 				<td>

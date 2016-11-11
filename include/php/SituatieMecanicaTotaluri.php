@@ -1,7 +1,7 @@
-<?php 
-		
+<?php
+
 	require_once "Situatie.php";
-	
+
 	/**
 	 *
 	 * Reprezinta o situatie mecanica doar cu totaluri. Este foarte rapida, dar nu contine detalii despre situatie. Daca doriti sa vedeti una compelta vezi SituatieMecanica.php
@@ -13,7 +13,7 @@
 	class SituatieMecanicaTotaluri extends Situație
 	{
 		private $numarulDeAparate	= 0;
-		
+
 		/**
 		 *
 		 * Realizeaza o noua situatie mecanica cu totaluri, și initializeaza toate variabilele
@@ -24,11 +24,11 @@
 		 */
 		public function __construct(DataCalendaristica $from, DataCalendaristica $to, Firma $firma)
 		{
-			parent::__construct($from, $to, $firma);			
+			parent::__construct($from, $to, $firma);
 		}
-		
-		
-		
+
+
+
 		/**
 		 *
 		 * Preia datele situatiei
@@ -36,28 +36,27 @@
 		 */
 		protected function _processData()
 		{
-			
+
 			$mysql = "	SELECT
-								sum(situatie.total_incasari) as total_incasari,
-								sum(situatie.total_premii) as total_premii
-								
+								sum(situatie.total_incasari) as total_incasari
+
 						FROM  `completare_mecanica` AS situatie
 						WHERE 	id_firma    =  '".$this->getFirma()->getID()."' AND
 								data_		>= '".$this->getFrom()."' 			AND
 								data_		<= '".$this->getTo()."'
-						LIMIT 0,1";				
-		
+						LIMIT 0,1";
+
 			$result = mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource()) or die(mysql_error());
-			
+
 			if(mysql_num_rows($result) != 0)
 			{
 				$this->isCompletata 	=  true;
 			}
-			
-				
+
+
 			while($situatie = mysql_fetch_array($result))
-			{		
-				$this->calculeazaTotal($situatie['total_incasari'], $situatie['total_premii']);
-			}			
+			{
+				$this->calculeazaTotal($situatie['total_incasari']);
+			}
 		}
 	}

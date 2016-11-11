@@ -52,8 +52,7 @@ $_data = new DataCalendaristica(addslashes($_POST['from']));
 				$situatie =  new SituatieMecanica($_OBJ_data, $_OBJ_data, $firma);
 
 				$mysql	= "UPDATE `completare_mecanica`
-					SET 	`total_incasari` = '".$situatie->getTotalIncasari()."',
-						 	`total_premii` = '".$situatie->getTotalPremii()."'
+					SET 	`total_incasari` = '".$situatie->getTotalIncasari()."'
 					WHERE `id` = '".$situatie->getId()."' ";
 
 				 mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());

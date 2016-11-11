@@ -126,14 +126,7 @@ class RegistruGraficFirma extends RegistruGrafic
 					$this->addRow(array($this->getIndexNewRow(), "", $data_curenta->romanianFormat(), "ÎNCASĂRI",  $situatie->getTotalIncasari(), 0));
 				}
 
-				if($situatie->getTotalPremii() != 0)
-				{
-					$this->addRow(array($this->getIndexNewRow(), "", $data_curenta->romanianFormat(), "PREMII",  0, $situatie->getTotalPremii()));
-				}
-
 				$incasari->actualizeazaIncasari($situatie->getTotalIncasari());
-				$plati->actualizeazaIncasari($situatie->getTotalPremii());
-
 
 				/* ------------------------ BILETE ---------------------- */
 
@@ -152,37 +145,6 @@ class RegistruGraficFirma extends RegistruGrafic
 					}
 				}
 			}
-
-
-			/* ------------------------ IMPOZIT ------------------------------*/
-
-			$_suma = 0;
-
-
-			$q="SELECT 	i.id,
-					i.data,
-					i.suma
-			FROM impozit AS i
-			LEFT JOIN firma AS f ON f.id=i.idFirma
-			WHERE 	i.idFirma='".$this->getFirma()->getID()."' AND
-					i.data='".$data_curenta."'";
-
-			$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL()->getResource());
-			while($premiu = mysql_fetch_array($result))
-			{
-				if($premiu['suma'] > $prag_de_impozitare)
-				{
-					$_suma += (($premiu['suma'] - $prag_de_impozitare) * $procent_impozitare / 100);
-				}
-			}
-
-			if($_suma != 0)
-			{
-				$impozit->actualizeazaIncasari($_suma);
-				$this->addRow(array($this->getIndexNewRow(), "", $data_curenta->romanianFormat(), "IMPOZIT",  $_suma, 0));
-			}
-
-
 
 			/* ---------------------------- DISPOZITII -------------------------------*/
 

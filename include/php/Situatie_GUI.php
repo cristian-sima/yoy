@@ -604,10 +604,6 @@ class Situatie_GUI
 		<col class="bold" ></col>
 		</colgroup>
 		<tr>
-		<td> Total premii</td>
-		<td><span id="premii" >'.$t['premii'].'</span> lei</td>
-		</tr>
-		<tr>
 		<td>Total încasări</td>
 		<td><span id="incasari">'.$t['incasari'].'</span> lei</td>
 		</tr>

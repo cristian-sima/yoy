@@ -230,8 +230,7 @@ $(document).ready(function ()
 	function updateTotal(values)
 	{
 		totaluri.incasari += round(values.incasari * values.pret_pe_impuls, 2);
-		totaluri.premii += round(values.premii * values.pret_pe_impuls, 2);
-		totaluri.sertar = parseFloat(totaluri.incasari - totaluri.premii);
+		totaluri.sertar = parseFloat(totaluri.incasari);
 
 	}
 
@@ -243,8 +242,6 @@ $(document).ready(function ()
 
 		totaluri.incasari = 0;
 		totaluri.sertar = 0;
-		totaluri.premii = 0;
-
 
 		for (row = 3; row <= situatie.nrDeAparate + 2; row++)
 		{
@@ -302,18 +299,14 @@ $(document).ready(function ()
 			updateTotal(
 			{
 				"incasari": dif1,
-				"premii": dif2,
 				"pret_pe_impuls": pret_pe_impuls
 			});
-
 
 		}
 
 
 		// arata totalurile
-
-		$("#incasari").text(totaluri.incasari);
-		$("#premii").text(totaluri.premii);
+		$("#incasari").text(totaluri.incasari);		
 		$("#sertar").text(totaluri.sertar);
 
 		$("#total_bani").text(totaluri.sertar);

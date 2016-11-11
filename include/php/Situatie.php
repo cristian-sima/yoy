@@ -38,10 +38,9 @@ abstract class Situație
 		$this->to					= $to;
 		$this->firma				= $firma;
 		$this->isCompletata		 	= false;
-			
+
 		$this->total				= array();
 		$this->total['incasari']	= 0;
-		$this->total['premii']		= 0;
 		$this->total['sertar']		= 0;
 
 		$this->_processData();
@@ -110,37 +109,24 @@ abstract class Situație
 	 *
 	 * Actualizeaza totalul
 	 * @param int $intrari		Suma pentru incasari
-	 * @param int $iesiri		Suma pentru premii
 	 *
 	 */
-	protected function calculeazaTotal($intrari, $iesiri)
+	protected function calculeazaTotal($intrari)
 	{
 		$this->total['incasari'] 	+= $intrari;
-		$this->total['premii'] 		+= $iesiri;
-		$this->total['sertar'] 		= $this->total['incasari'] - $this->total['premii'];
+		$this->total['sertar'] 		= $this->total['incasari'];
 	}
 
 
 	/**
 	 *
-	 * Returneaza totalul de bani ramasi in sertar (diferenta între incasari și premii)
+	 * Returneaza totalul de bani ramasi in sertar
 	 * @return int				Totalul de bani ramas in sertar
 	 *
 	 */
 	public function getTotalInSertar()
 	{
 		return $this->total['sertar'];
-	}
-
-	/**
-	 *
-	 * Returneaza totalul de premii
-	 * @return int				Totalul de premii
-	 *
-	 */
-	public function getTotalPremii()
-	{
-		return $this->total['premii'];
 	}
 
 	/**

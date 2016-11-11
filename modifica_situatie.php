@@ -185,8 +185,7 @@
 		$situatie =  new SituatieMecanica($data_situatie, $data_situatie, $firma);
 
 		$mysql	= "UPDATE `completare_mecanica`
-					SET 	`total_incasari` = '".$situatie->getTotalIncasari()."',
-						 	`total_premii` = '".$situatie->getTotalPremii()."'
+					SET 	`total_incasari` = '".$situatie->getTotalIncasari()."'
 					WHERE `id` = '".$id_completare_mecanica."' ";
 
 		mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
