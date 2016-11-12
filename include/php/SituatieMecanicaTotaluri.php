@@ -1,62 +1,38 @@
 <?php
+require_once "Situatie.php";
+class SituatieMecanicaTotaluri extends Situație {
+	private $numarulDeAparate = 0;
+	public function __construct(DataCalendaristica $from, DataCalendaristica $to, Firma $firma) {
+		parent::__construct($from, $to, $firma);
+	}
+	protected function _processData() {
+		$db = Aplicatie::getInstance()->Database;
+		$query = (
+			"SELECT	sum(situatie.total_incasari) as total_incasari
+			FROM `completare_mecanica` AS situatie
+			WHERE id_firma = :companyID AND	data_	>= :fromDate AND data_ <= :toDate
+			LIMIT 0,1"
+		);
 
-	require_once "Situatie.php";
+		$stmt = $db->prepare($query);
+		$ok = $stmt->execute([
+			'companyID' => $this->getFirma()->getID(),
+			'fromDate' => $this->getFrom(),
+			'toDate' => $this->getTo()
+		]);
 
-	/**
-	 *
-	 * Reprezinta o situatie mecanica doar cu totaluri. Este foarte rapida, dar nu contine detalii despre situatie. Daca doriti sa vedeti una compelta vezi SituatieMecanica.php
-	 * @author			Cristian Sima
-	 * @data			10.02.2014
-	 * @version			1.1
-	 *
-	 */
-	class SituatieMecanicaTotaluri extends Situație
-	{
-		private $numarulDeAparate	= 0;
-
-		/**
-		 *
-		 * Realizeaza o noua situatie mecanica cu totaluri, și initializeaza toate variabilele
-		 * @param DataCalendaristica $from		Data de inceput a situatiei [@DataCalendaristica]
-		 * @param DataCalendaristica $to		Data de sfarsit a situatiei [@DataCalendaristica]
-		 * @param Firma $firma					Referinta spre obiectul firma despre care se face situatia [@Firma]
-		 *
-		 */
-		public function __construct(DataCalendaristica $from, DataCalendaristica $to, Firma $firma)
-		{
-			parent::__construct($from, $to, $firma);
+		if(!$ok) {
+			throw new Exception("Ceva nu a mers așa cum trebuia");
 		}
 
+		$nrOfResults = $stmt->rowCount();
 
+		if($nrOfResults != 0) {
+			$this->isCompletata = true;
+		}
 
-		/**
-		 *
-		 * Preia datele situatiei
-		 *
-		 */
-		protected function _processData()
-		{
-
-			$mysql = "	SELECT
-								sum(situatie.total_incasari) as total_incasari
-
-						FROM  `completare_mecanica` AS situatie
-						WHERE 	id_firma    =  '".$this->getFirma()->getID()."' AND
-								data_		>= '".$this->getFrom()."' 			AND
-								data_		<= '".$this->getTo()."'
-						LIMIT 0,1";
-
-			$result = mysql_query($mysql, Aplicatie::getInstance()->Database) or die(mysql_error());
-
-			if(mysql_num_rows($result) != 0)
-			{
-				$this->isCompletata 	=  true;
-			}
-
-
-			while($situatie = mysql_fetch_array($result))
-			{
-				$this->calculeazaTotal($situatie['total_incasari']);
-			}
+		foreach($stmt as $situatie) {
+			$this->calculeazaTotal($situatie['total_incasari']);
 		}
 	}
+}

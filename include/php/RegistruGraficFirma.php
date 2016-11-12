@@ -10,12 +10,12 @@ require_once "include/php/DataCalendaristica.php";
 require_once "include/php/SituatieMecanicaTotaluri.php";
 
 class RegistruGraficFirma extends RegistruGrafic {
-  private $firma = null;
-  public function RegistruGraficFirma($firma, $data) {
-    $this->firma = $firma;
+  private $company = null;
+  public function RegistruGraficFirma($company, $data) {
+    $this->firma = $company;
     parent::__construct($data);
     parent::setTitle("REGISTRU DE CASĂ");
-    parent::setPrimulRand($firma->getDenumire() . ' din ' . $firma->getLocatie());
+    parent::setPrimulRand($company->getDenumire() . ' din ' . $company->getLocatie());
   }
   public function getFirma() {
     return $this->firma;
@@ -85,38 +85,48 @@ class RegistruGraficFirma extends RegistruGrafic {
         }
         $incasari->actualizeazaIncasari($situatie->getTotalIncasari());
       }
-      $query     = "SELECT
-						d.id,
-						d.data,
-						d._to,
-						d.tip,
-						d.valoare,
-						d.document,
-						d.explicatie,
-						(SELECT nume FROM `firma` AS f WHERE f.id = d._to) AS denumire_firma
-					FROM dispozitie AS d
-					WHERE  data='" . $data_curenta . "'  AND _to='" . $this->getFirma()->getID() . "' ";
-      $result_zi = mysql_query($query, Aplicatie::getInstance()->Database);
-      while ($dispozitie = mysql_fetch_array($result_zi)) {
+
+      $db = Aplicatie::getInstance()->Database;
+
+      $query     = (
+        "SELECT d.id, d.data, d._to, d.tip, d.valoare, d.document, d.explicatie,
+        (
+          SELECT nume FROM `firma` AS f WHERE f.id = d._to
+        ) AS denumire_firma
+        FROM dispozitie AS d
+        WHERE  data=:date  AND _to=:to "
+      );
+
+      $stmt = $db->prepare($query);
+      $ok = $stmt->execute([
+        'date' => $data_curenta,
+        'to' => $this->getFirma()->getID()
+      ]);
+
+      if(!$ok) {
+        throw new Exception("Ceva nu a mers așa cum trebuia");
+      }
+
+      foreach($stmt as $dispozitie) {
         if ($dispozitie['tip'] == "plata") {
-          $this->addRow(array(
+          $this->addRow([
             $this->getIndexNewRow(),
             htmlspecialchars($dispozitie['document']),
             $data_curenta->romanianFormat(),
             "DISPOZIȚIE ÎNCASARE",
             $dispozitie['valoare'],
             0
-          ));
+          ]);
           $dispoziții->actualizeazaIncasari($dispozitie['valoare']);
         } else {
-          $this->addRow(array(
+          $this->addRow([
             $this->getIndexNewRow(),
             htmlspecialchars($dispozitie['document']),
             $data_curenta->romanianFormat(),
             "DISPOZIȚIE PLATĂ",
             0,
             $dispozitie['valoare']
-          ));
+          ]);
           $dispoziții->actualizeazaPlati($dispozitie['valoare']);
         }
       }
@@ -135,14 +145,31 @@ class RegistruGraficFirma extends RegistruGrafic {
     $this->actualizeazaIncasari($total->getIncasari());
     $this->actualizeazaPlati($total->getPlati());
   }
-  public static function getSoldTotalLunar(Firma $firma, DataCalendaristica $data) {
+  public static function getSoldTotalLunar(Firma $company, DataCalendaristica $data) {
     $_total = 0;
-    $q      = "SELECT 	valoare
-		FROM sold_inchidere_luna
-		 WHERE data_>='" . $data->getFirstDayOfMonth() . "' AND data_<= '" . $data->getLastDayOfMonth() . "' AND idFirma = '" . $firma->getID() . "'";
-    $result = mysql_query($q, Aplicatie::getInstance()->Database);
-    while ($db = mysql_fetch_array($result)) {
-      $_total += intval($db['valoare']);
+
+    $db = Aplicatie::getInstance()->Database;
+
+    $query = (
+      "SELECT valoare
+      FROM sold_inchidere_luna
+      WHERE
+      data_>=:firstDayOfMonth AND data_<= :lastDayOfMonth AND idFirma = :companyID"
+    );
+
+    $stmt = $db->prepare($query);
+    $ok = $stmt->execute([
+      'firstDayOfMonth' => $data->getFirstDayOfMonth(),
+      'lastDayOfMonth' => $data->getLastDayOfMonth(),
+      'companyID' => $company->getID()
+    ]);
+
+    if(!$ok) {
+      throw new Exception("Ceva nu a mers așa cum trebuia");
+    }
+
+    foreach($stmt as $row) {
+      $_total += intval($row['valoare']);
     }
     return $_total;
   }

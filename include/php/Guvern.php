@@ -1,59 +1,45 @@
 <?php
+require_once "DataCalendaristica.php";
+class Guvern {
+  public static function getTaxaDeAutorizareAparat(DataCalendaristica $data) {
+    return (self::_doWork("aparat", $data));
+  }
+  private static function _doWork($type, DataCalendaristica $data) {
+    $valoare = 0;
+    $exist   = false;
 
-	require_once "DataCalendaristica.php";
+    $db = Aplicatie::getInstance()->Database;
 
-	/**
-	 *	Reprezinta obiectul cu toate taxele și darile spre stat
-	 *
-	 *  @author					Cristian Sima
-	 *  @date					10.02.2014
-	 *  @version				1.1
-	 *
-	 */
-	class Guvern
-	{
-		/**
-		 *
-		 * Returneaza taxa de autorizare pentru un aparat, impusa de guvern in luna pentru care se ofera data
-		 * @param DataCalendaristica $data		O zi calendaristica de tip DataCalendaristica
-		 * @return								Taxa de autorizare pentru un aparat
-		 *
-		 */
-		public static function getTaxaDeAutorizareAparat(DataCalendaristica $data)
-		{
-			return (self::_doWork("aparat", $data));
-		}
+    $query       = (
+      "SELECT valoare
+      FROM taxa
+      WHERE
+      tip=:type AND ((
+        isNow='0' AND _from >= :firstDayOfMonth AND _to <= :lastDayOfMonth
+      ) OR (
+        isNow='1' AND :firstDayOfMonth >= _from
+      ))
+      LIMIT 1"
+    );
 
+    $stmt = $db->prepare($query);
+    $ok = $stmt->execute(array(
+      "firstDayOfMonth" => $data->getFirstDayOfMonth(),
+      "lastDayOfMonth" => $data->getLastDayOfMonth(),
+      "type" => $type
+    ));
 
-		/**
-		 *
-		 * Returneaza o anumita valoare din baza de date sau opreste executia programuui daca nu exista accea taxa stabilita
-		 * @param string $type					aparat, suma, procent
-		 * @param DataCalendaristica $data		Data calendaristica
-		 * @return 								Depinde de parametrii
-		 *
-		 */
-		private static function _doWork($type, DataCalendaristica $data)
-		{
+    if(!$ok) {
+      throw new Exception("Ceva nu a mers cum trebuia");
+    }
 
-			$valoare 	= 0;
-			$exist 		= false;
-
-
-			$A = "SELECT valoare from taxa WHERE tip='".$type."' AND ( ( isNow='0' AND _from>='".$data->getFirstDayOfMonth()."' AND _to <= '".$data->getLastDayOfMonth()."') OR ( isNow='1' AND '".$data->getFirstDayOfMonth()."'>=_from )) LIMIT 1";
-
-
-			$result = mysql_query($A, Aplicatie::getInstance()->Database) or die(mysql_error());
-			while($taxa = mysql_fetch_array($result))
-			{
-				$valoare = $taxa['valoare'];
-				$exist = true;
-			}
-
-			if(!$exist)
-			{
-				die("Nu există o valoare stabilită pentru [#".$type."#] pentru data: ".$data);
-			}
-			return $valoare;
-		}
-	}
+    foreach($stmt as $taxa) {
+      $valoare = $taxa['valoare'];
+      $exist   = true;
+    }
+    if (!$exist) {
+      die("Nu există o valoare stabilită pentru [#" . $type . "#] pentru data: " . $data);
+    }
+    return $valoare;
+  }
+}

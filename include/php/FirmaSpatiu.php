@@ -79,11 +79,11 @@ class FirmaSpatiu extends Firma {
 			throw new Exception("Ceva nu a mers așa cum trebuia");
 		}
 
-		$nrOfResults = $stmt->rowCount();
-
-		if($nrOfResults == 0) {
-			throw new Exception(sprintf("Firma %d nu are un procent stabilit la data de %s", $id, $data));
-		}
+		// $nrOfResults = $stmt->rowCount();
+		//
+		// if($nrOfResults == 0) {
+		// 	throw new Exception(sprintf("Firma %d nu are un procent stabilit la data de %s", $id, $data));
+		// }
 
 		foreach($stmt as $row) {
 			$valoare = $row['valoare'];

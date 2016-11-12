@@ -51,8 +51,8 @@ class SituatieMecanica extends Situație {
 
 		$stmt = $db->prepare($query);
 		$ok = $stmt->execute(array(
-			"from" => $this->getFrom(),
-			"to" => $this->getTo(),
+			"dateFrom" => $this->getFrom(),
+			"dateTo" => $this->getTo(),
 			"companyID" => $this->getFirma()->getID()
 		));
 
