@@ -7,10 +7,15 @@ require_once "FirmaOrganizatoare.php";
 require_once "DataCalendaristica.php";
 
 function connectToMySQL() {
-  $host         = "localhost";
-  $username     = "root";
-  $password     = "";
-  $databaseName = "yoy_ro_date";
+
+  $string = file_get_contents("config.json");
+  $decodedFile = json_decode($string, true);
+
+  $host         =  $decodedFile["Host"];
+  $username     =  $decodedFile["Username"];
+  $password     = $decodedFile["Password"];
+  $databaseName =  $decodedFile["DatabaseName"];
+
   try {
     $locator = 'mysql:host=' . $host . ';dbname=' . $databaseName . ';charset=utf8mb4';
     return new PDO($locator, $username, $password);
