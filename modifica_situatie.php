@@ -35,25 +35,25 @@
 		 */
 		// sterge orice completare de  index-uri existente pentru aceasta firma la aceasta data
 		$q = "SELECT id FROM completare_mecanica WHERE data_ = '".$data['from']."' AND id_firma = '".$firma->getID()."' LIMIT 1";
-		$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL()->getResource());
+		$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL());
 		while($completare = mysql_fetch_array($result))
 		{
 			$id_old_completare_mecanica	= $completare['id'];
 		}
 		$mysql	= "DELETE FROM `completare_mecanica` WHERE id='".$id_old_completare_mecanica."' ";
-		mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
+		mysql_query($mysql, Aplicatie::getInstance()->getMYSQL());
 		// creare o noua completare mecanica
 		$mysql	= "INSERT INTO `completare_mecanica`(`id_firma`,`data_`,`autor`) VALUES ('".$firma->getID()."', '".$data['from']."', '".$autor->getID()."')";
-		mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
+		mysql_query($mysql, Aplicatie::getInstance()->getMYSQL());
 		$q = "SELECT id FROM completare_mecanica WHERE data_ = '".$data['from']."' AND id_firma = '".$firma->getID()."' LIMIT 1";
-		$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL()->getResource());
+		$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL());
 		while($completare = mysql_fetch_array($result))
 		{
 			$id_completare_mecanica	= $completare['id'];
 		}
 		// sterge orice index-uri de  din aceasta zi și pentru aceasta firma
 		$mysql	= "DELETE FROM `index_mecanic` WHERE `id_completare` = '".$id_old_completare_mecanica."' ";
-		mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
+		mysql_query($mysql, Aplicatie::getInstance()->getMYSQL());
 		// introducere
 		$mysql	= "INSERT INTO `index_mecanic`(
 											`id_aparat`,
@@ -75,7 +75,7 @@
 							),";
 		}
 		$mysql = rtrim($mysql, ",").';';
-		mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
+		mysql_query($mysql, Aplicatie::getInstance()->getMYSQL());
 		/*
 		 *
 		 *	 MODIFICARE TOTALURI SITUATIE MECANICA folosind indexurile din baza de date
@@ -89,7 +89,7 @@
 		$mysql	= "UPDATE `completare_mecanica`
 					SET 	`total_incasari` = '".$situatie->getTotalIncasari()."'
 					WHERE `id` = '".$id_completare_mecanica."' ";
-		mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
+		mysql_query($mysql, Aplicatie::getInstance()->getMYSQL());
 		Page::showConfirmation('<span class="confirmation"> Situația pe data de '.$data['from'].' a fost modificată !</span> <span style="color:orange" class="bold"> Vă rugăm să tipăriți situația acum !</span>  <a href="'.((Aplicatie::getInstance()->getUtilizator()->isOperator())?("situatie_mecanica_operator.php"):("situatie_mecanica.php")).'?id_firma='.$data['id_firma'].'&from='.$data['from'].'&to='.$data['from'].'">Înapoi la situație</a>');
 	}
 	catch(Exception $e)

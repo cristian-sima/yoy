@@ -38,7 +38,7 @@
 					WHERE aparat.id_firma != '0' AND aparat.activ='1' 
 					ORDER BY aparat.ordinea ASC";
 
-		$result = mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
+		$result = mysql_query($mysql, Aplicatie::getInstance()->getMYSQL());
 		while($aparat = mysql_fetch_array($result))
 		{
 			echo'	
@@ -77,7 +77,7 @@
 					WHERE aparat.activ='0' 
 					ORDER BY aparat.ordinea ASC";
 
-		$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL()->getResource());
+		$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL());
 		while($aparat = mysql_fetch_array($result))
 		{
 			echo'	

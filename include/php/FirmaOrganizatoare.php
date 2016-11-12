@@ -1,13 +1,11 @@
 <?php
 require_once "Firma.php";
 class FirmaOrganizatoare extends Firma {
-  private $patron = null;
-  public function FirmaOrganizatoare($MYSQL, $id) {
-
-		$db = $MYSQL->getResource();
+	private $patron = null;
+	public function FirmaOrganizatoare($db, $id) {
 
 		$query = (
-		  "SELECT nume AS denumire, patron, localitate AS locatie
+			"SELECT nume AS denumire, patron, localitate AS locatie
 			FROM `firma_organizatoare`
 			WHERE id=:id
 			LIMIT 0,1"
@@ -15,11 +13,17 @@ class FirmaOrganizatoare extends Firma {
 
 		$stmt = $db->prepare($query);
 		$ok = $stmt->execute(array(
-		  'id' => $id
+			'id' => $id
 		));
 
 		if(!$ok) {
-		  throw new Exception("Această firmă organizatoare nu există");
+			throw new Exception("Ceva nu a mers așa cum trebuia");
+		}
+
+		$nrOfResults = $stmt->rowCount();
+
+		if($nrOfResults == 0) {
+			throw new Exception(sprintf("Firma organizatoare %d nu există", $id));
 		}
 
 		foreach($stmt as $row) {
@@ -28,9 +32,9 @@ class FirmaOrganizatoare extends Firma {
 			$this->patron   = $row['patron'];
 		}
 
-    $this->id = $id;
-  }
-  public function getPatron() {
-    return $this->patron;
-  }
+		$this->id = $id;
+	}
+	public function getPatron() {
+		return $this->patron;
+	}
 }

@@ -32,7 +32,7 @@
 			<tbody>
 			<?php
 			$q = "SELECT * from `firma` WHERE `activa`='1'";
-			$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL()->getResource());
+			$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL());
 			while($row = mysql_fetch_array($result))
 			{
 				echo'
@@ -42,7 +42,7 @@
 				<td>'.$row['localitate'].'</td>
 				<td>';
 				$q2 = "SELECT * from procent WHERE `idFirma`='".$row['id']."' AND isNow='1' limit 0,1";
-				$result2 = mysql_query($q2, Aplicatie::getInstance()->getMYSQL()->getResource());
+				$result2 = mysql_query($q2, Aplicatie::getInstance()->getMYSQL());
 				while($row2 = mysql_fetch_array($result2))
 				{
 					echo $row2['valoare'];
@@ -72,7 +72,7 @@
 			<tbody>
 			<?php
 			$q = "SELECT * from `firma` WHERE `activa`='0'";
-			$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL()->getResource());
+			$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL());
 			while($row = mysql_fetch_array($result))
 			{
 				echo'

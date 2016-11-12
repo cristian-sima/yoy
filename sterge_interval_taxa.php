@@ -15,7 +15,7 @@ try
 
 
 	$q = "DELETE FROM taxa WHERE id='".$data['id']."' ";
-	$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL()->getResource());
+	$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL());
 
 
 	// confirmation

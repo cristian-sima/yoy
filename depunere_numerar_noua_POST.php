@@ -27,7 +27,7 @@ try
 					'".$data['suma']."',
 					'".$data['document']."')";
 
-	$result = mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
+	$result = mysql_query($mysql, Aplicatie::getInstance()->getMYSQL());
 
 
 	Page::showConfirmation('<span class="confirmation">Depunerea a fost adaugată cu succes !</span> <a href="depuneri.php ">Înapoi la depuneri</a>');

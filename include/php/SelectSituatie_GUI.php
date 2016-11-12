@@ -1,6 +1,5 @@
 <?php
 
-require_once "MYSQL.php";
 require_once "Login.php";
 require_once "FirmaOrganizatoare.php";
 
@@ -70,7 +69,7 @@ class SelectSituatie_GUI
 	public function adaugaCampSelect($select)
 	{
 		Procesare::createEmptyFields($_GET, array($select['id']));
-	
+
 		array_push($this->select, $select);
 	}
 
@@ -189,10 +188,10 @@ class SelectSituatie_GUI
 	public function afiseazaFirme($value)
 	{
 		$this->afiseazaFirme	= $value;
-		
+
 		if($value == false)
-		{			
-			$this->id_firma = "";	
+		{
+			$this->id_firma = "";
 		}
 	}
 
@@ -230,22 +229,22 @@ class SelectSituatie_GUI
 	public function display()
 	{
 		try {
-			
-		
+
+
 		echo '
 		<script>
-		
+
 			function goTo(where)
-			{			
-			
+			{
+
 
 				$("#select_options").append('."'".'<input type="hidden" value="'."'".'+$("#an").val()+'."'".'-'."'".'+$("#luna").val()+'."'".'-01" name="data" />'."'".');
-							
-							
+
+
 			var datastring = $("#select_options").serialize();
-			
+
 				document.location = where+"?"+datastring;
-			}	
+			}
 		</script>';
 
 		echo'<div id="control_panel" class="hide_prt"><form id="select_options">';
@@ -272,7 +271,7 @@ class SelectSituatie_GUI
 			echo"</select>";
 		}
 
-		
+
 
 		if($this->afiseazaFirme)
 		{
@@ -298,10 +297,10 @@ class SelectSituatie_GUI
 			}
 
 			$result = mysql_query("SELECT nume,id,activa
-								FROM firma 
+								FROM firma
 								".$preferinte."
-								ORDER BY activa DESC,nume ASC", 
-			Aplicatie::getInstance()->getMYSQL()->getResource());
+								ORDER BY activa DESC,nume ASC",
+			Aplicatie::getInstance()->getMYSQL());
 
 			while($firma = mysql_fetch_array($result))
 			{
@@ -309,21 +308,21 @@ class SelectSituatie_GUI
 			}
 			echo"</select>";
 		}
-		
+
 		foreach ($this->select as $select)
 		{
-			
+
 			echo '&nbsp;&nbsp;'.$select['denumire'].' <select name="'.$select['id'].'">';
-				
+
 			foreach ($select['optiuni'] as $optiune)
 			{
 				echo '<option '.(($_GET[$select['id']] == $optiune['valoare'])?("selected"):"").' value="'.$optiune['valoare'].'" >'.$optiune['denumire'].'</option>';
 			}
-				
+
 			echo '</select>';
 		}
-		
-		
+
+
 		if($this->afiseazaButon)
 		{
 			echo '&nbsp;&nbsp;&nbsp;&nbsp;<input value="Vizualizați" type="button" onclick="goTo('."'".$this->adresaButon.''."'".')" />';
@@ -343,7 +342,7 @@ class SelectSituatie_GUI
 
 			echo '</div>';
 		}
-	
+
 		}
 		catch(Exception $e)
 		{

@@ -31,7 +31,7 @@ try
 
 	//introdu firma
 	$q = "INSERT INTO `taxa`(`tip`, `_from`, `_to`, `valoare`,`isNow`) VALUES ('".$data['tip']."','".$data['from']."','".$data['to']."','".$data['valoare']."','".$isNow."')";
-	$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL()->getResource());
+	$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL());
 
 
 	// confirmation

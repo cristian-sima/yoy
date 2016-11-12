@@ -33,7 +33,7 @@ try
 		$q = "UPDATE  `istoric_aparat` SET `is_now`	= '0',
 											`to_`	= '".$today."'
 											 WHERE id_aparat = '".$data['id_aparat']."' AND is_now ='1' ";
-		$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL()->getResource()) or die(mysql_error());
+		$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL()) or die(mysql_error());
 
 
 
@@ -74,7 +74,7 @@ try
 								`end_iesiri`)
 								VALUES ('".$aparat_->getID()."','".$id_completare."', '".$data['mecanic_intrare']."', '".$data['mecanic_intrare']."', '".$data['mecanic_iesire']."', '".$data['mecanic_iesire']."' );";
 
-			$result = mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
+			$result = mysql_query($mysql, Aplicatie::getInstance()->getMYSQL());
 
 			/*------------- Adauga interval aparat -------------*/
 
@@ -93,7 +93,7 @@ try
 									  '1'
 									  )";
 
-			$result = mysql_query($query, Aplicatie::getInstance()->getMYSQL()->getResource());
+			$result = mysql_query($query, Aplicatie::getInstance()->getMYSQL());
 		}
 		else
 		{
@@ -111,13 +111,13 @@ try
 									  '".Aplicatie::getInstance()->getUtilizator()->getID()."'
 									  )";
 
-			$result = mysql_query($query, Aplicatie::getInstance()->getMYSQL()->getResource());
+			$result = mysql_query($query, Aplicatie::getInstance()->getMYSQL());
 
 
 			/*-------------------- Obtine ID-ul completarii -----------------*/
 
 			$q = "SELECT id FROM completare_mecanica WHERE id_firma= '".$firma->getID()."' AND data_='".$data_."' AND autor='".Aplicatie::getInstance()->getUtilizator()->getID()."' ";
-			$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL()->getResource());
+			$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL());
 
 
 			while($completare = mysql_fetch_array($result))
@@ -139,7 +139,7 @@ try
 
 			$mysql = rtrim($mysql, ",").';';
 
-			$result = mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
+			$result = mysql_query($mysql, Aplicatie::getInstance()->getMYSQL());
 
 			/*------------- Adauga interval aparat -------------*/
 
@@ -158,12 +158,12 @@ try
 									  '1'
 									  )";
 
-			$result = mysql_query($query, Aplicatie::getInstance()->getMYSQL()->getResource());
+			$result = mysql_query($query, Aplicatie::getInstance()->getMYSQL());
 		}
 
 
 		$q = "UPDATE  `aparat` SET `id_firma`	= '".$firma->getID()."' WHERE id = '".$data['id_aparat']."'  ";
-		$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL()->getResource()) or die(mysql_error());
+		$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL()) or die(mysql_error());
 
 
 		/*
@@ -184,7 +184,7 @@ try
 		$mysql	= "UPDATE `completare_mecanica`
 					SET 	`total_incasari` = '".$situatie_mecanica->getTotalIncasari()."'
 					WHERE `id` = '".$id_completare_situatie."' ";
-		mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
+		mysql_query($mysql, Aplicatie::getInstance()->getMYSQL());
 
 
 

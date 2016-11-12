@@ -5,15 +5,13 @@ class Login {
 	private static $mysql = null;
 	private static $id_user = null;
 	private static $allowOperator = false;
-	public static function request_access(MYSQL $mysql) {
-		self::$mysql = $mysql;
+	public static function request_access(PDO $db) {
+		self::$mysql = $db;
 		if (isset($_COOKIE['cookuser']) && isset($_COOKIE['cookpass'])) {
 			$_SESSION['user']   = $_COOKIE['cookuser'];
 			$_SESSION['parola'] = $_COOKIE['cookpass'];
 		}
 		if (isset($_SESSION['user']) && isset($_SESSION['parola'])) {
-
-			$db = $mysql->getResource();
 
 			$query = (
 				"SELECT _temp, tipCont
@@ -60,7 +58,9 @@ class Login {
 					throw new Exception("Ceva nu a mers cum trebuia");
 				}
 			}
+
 			$return = self::confirmUser($_SESSION['user'], $_SESSION['parola']);
+
 			if ($return != 0) {
 				unset($_SESSION['user']);
 				unset($_SESSION['parola']);
@@ -83,6 +83,8 @@ class Login {
 				if(!$ok) {
 					throw new Exception("Ceva nu a mers cum trebuia");
 				}
+
+				return self::$id_user;
 			}
 		} else {
 			if (isset($_POST['sublogin']) && isset($_POST['user']) && isset($_POST['pass'])) {
@@ -150,7 +152,7 @@ class Login {
 	}
 	private static function confirmUser($clientUser, $clientPassword) {
 
-		$db = self::$mysql->getResource();
+		$db = self::$mysql;
 
 		$query = (
 			"SELECT parola, id, tipCont
@@ -171,8 +173,10 @@ class Login {
 
 		foreach($stmt as $row) {
 			$currentPassword = $row['parola'];
-			$currentID = $row["id"];
 			$currentType = $row["tipCont"];
+			$currentID = $row["id"];
+
+			self::$id_user = $currentID;
 
 			// check the type of user
 			if (!self::$allowOperator && $currentType !== "admin") {
@@ -184,7 +188,6 @@ class Login {
 			}
 
 			// save id
-			self::$id_user = $currentID;
 
 			return 2;
 		}

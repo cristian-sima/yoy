@@ -14,7 +14,7 @@
 		Procesare::checkRequestedData(array('nume','patron','localitate'),$data,'setari.php');	
 
 		$q = "UPDATE  `firma_organizatoare` SET `nume` = '".$data['nume']."', `localitate`='".$data['localitate']."', `patron`='".$data['patron']."' WHERE id='1'";
-		$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL()->getResource());
+		$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL());
 	
 		Page::showConfirmation('<span class="confirmation">Datele au fost modificate</span> <a href="setari.php ">Înapoi</a>');
 

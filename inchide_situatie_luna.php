@@ -42,7 +42,7 @@ $mysql = "
 	FROM 	firma AS f
 	WHERE 	f.activa='1' OR ( f.dataIncetare>'".$data->getLastDayOfMonth()."')
 	";
-$result = mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
+$result = mysql_query($mysql, Aplicatie::getInstance()->getMYSQL());
 
 while($firma = mysql_fetch_array($result))
 {
@@ -53,7 +53,7 @@ while($firma = mysql_fetch_array($result))
 					FROM 	sold_inchidere_luna
 					WHERE (idFirma='".$firma['id']."' AND data_>='".$data->getFirstDayOfMonth()."' AND data_<= '".$data->getLastDayOfMonth()."')
 					";
-	$result2 = mysql_query($mysql_2, Aplicatie::getInstance()->getMYSQL()->getResource()) or die(mysql_error());
+	$result2 = mysql_query($mysql_2, Aplicatie::getInstance()->getMYSQL()) or die(mysql_error());
 
 	while($inchisa = mysql_fetch_array($result2))
 	{
@@ -77,7 +77,7 @@ $mysql 		= "
 				FROM 	sold_inchidere_luna
 				WHERE (idFirma='0' AND data_>='".$data->getFirstDayOfMonth()."' AND data_<= '".$data->getLastDayOfMonth()."')
 				";
-$result2 = mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
+$result2 = mysql_query($mysql, Aplicatie::getInstance()->getMYSQL());
 
 while($f2 = mysql_fetch_array($result2))
 {

@@ -1,6 +1,5 @@
 <?php
 
-require_once "MYSQL.php";
 require_once "Login.php";
 require_once "FirmaOrganizatoare.php";
 

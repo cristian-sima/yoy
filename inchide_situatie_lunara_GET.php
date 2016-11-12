@@ -28,7 +28,7 @@ try
 	}
 
 	$mysql = "DELETE FROM `sold_inchidere_luna` WHERE idFirma = '".$data['id_firma']."' AND data_>='".$data_dorita->getFirstDayOfMonth()."' AND data_<='".$data_dorita->getLastDayOfMonth()."'";
-	$result = mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
+	$result = mysql_query($mysql, Aplicatie::getInstance()->getMYSQL());
 
 	$mysql = "INSERT INTO `sold_inchidere_luna`
 					(`valoare`,
@@ -39,7 +39,7 @@ try
 					 '".$data['id_firma']."',
 					 '".$data['data']."'
 					 )";
-	$result = mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
+	$result = mysql_query($mysql, Aplicatie::getInstance()->getMYSQL());
 
 	Page::showConfirmation('
 		<big><span class="confirmation">Situația lunară a fost închisă</span></big>

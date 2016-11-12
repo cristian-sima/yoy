@@ -36,7 +36,7 @@
 			
 			$q = "SELECT in_depozit As inDepozit, ordinea,observatii,serie,nume,factor_mecanic,pret_impuls,id_firma,data_inspectie,data_autorizatie,activ  FROM `aparat` WHERE `id`='".$id."'";
 			
-			$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL()->getResource());
+			$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL());
 			
 			if(mysql_num_rows($result) == 0)
 			{

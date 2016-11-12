@@ -39,7 +39,7 @@ echo '
 			';
 			$q = "SELECT utilizator.*,(SELECT f.nume FROM firma AS f WHERE f.id=utilizator.idFirma) AS denumire_firma FROM `utilizator` WHERE activ='1'";
 
-			$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL()->getResource());
+			$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL());
 			while($utilizator = mysql_fetch_array($result))
 			{
 				echo'
@@ -75,7 +75,7 @@ echo '
 			<tbody>';
 
 			$q = "SELECT utilizator.*,(SELECT f.nume FROM firma AS f WHERE f.id=utilizator.idFirma) AS denumire_firma FROM `utilizator` WHERE activ='0'";;
-			$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL()->getResource());
+			$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL());
 			while($utilizator = mysql_fetch_array($result))
 			{
 				echo'

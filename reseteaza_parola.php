@@ -7,8 +7,9 @@
 	Page::showHeader();
 	Page::showContent();
 
+	$db = Aplicatie::getInstance()->getMYSQL();
 
-	$utilizator		= new Utilizator($_GET['id_user']);
+	$utilizator		= new Utilizator($db, $_GET['id_user']);
 
 
 	function generateStrongPassword($length = 9, $add_dashes = false, $available_sets = 'luds')
@@ -59,7 +60,7 @@
 	$q = "UPDATE  `utilizator`
 			SET `parola` = '".md5($parola_noua)."'
 			WHERE id='".$utilizator->getID()."'";
-	$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL()->getResource());
+	$result = mysql_query($q, $db);
 
 
 	Page::showConfirmation('<span class="confirmation">Parola a fost resetată ! Noua parolă este </span><mark>'.$parola_noua.'</mark>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="utilizatori.php ">Înapoi</a>');

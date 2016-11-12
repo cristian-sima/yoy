@@ -27,7 +27,7 @@
 		{
 
 			$q = "SELECT dateContact, comentarii, nume AS denumire,localitate AS locatie,activa from `firma` WHERE `id`='".$id."'";
-			$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL()->getResource());
+			$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL());
 
 			if(mysql_num_rows($result) == 0)
 				throw new Exception("Nu exista aceasta companie cu id-ul [".$id.']');
@@ -94,7 +94,7 @@
 
 
 			$A2 = "SELECT valoare from procent WHERE idFirma='".$this->id."' AND  (( isNow='0' AND '".$data->getFirstDayOfMonth()."'>=_from AND  '".$data->getLastDayOfMonth()."<=_to ') OR ( isNow='1' AND '".$data->getFirstDayOfMonth()."'>=_from))  LIMIT 1";
-			$result = mysql_query($A2, Aplicatie::getInstance()->getMYSQL()->getResource()) or die(mysql_error());
+			$result = mysql_query($A2, Aplicatie::getInstance()->getMYSQL()) or die(mysql_error());
 			if(mysql_num_rows($result)==0)
 			{
 				echo'<br /><span style="color:red">Eroare: !!!! Firma nu are un procent stabilit !</span><br />';

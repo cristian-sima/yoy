@@ -146,7 +146,7 @@ onclick="seeData('afisare_decont_firma')" href="#" class="button blue small bold
 			<?php
 			$q = "SELECT * FROM `aparat` WHERE activ='1' AND id_firma='".$firma->getID()."' order by ordinea ASC";
 
-			$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL()->getResource());
+			$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL());
 			while($row = mysql_fetch_array($result)){
 				echo'<tr onclick="document.location='."'"."optiuni_aparat.php?situatie=true&id_aparat=".$row['id']."&id_firma=".$row['id_firma']."'".'" class="hover" >
 				<td >'.$row['ordinea'].'</td>
@@ -193,7 +193,7 @@ onclick="seeData('afisare_decont_firma')" href="#" class="button blue small bold
 		<tbody>
 			<?php
 			$q = "SELECT * FROM `utilizator` WHERE activ='1' AND idFirma = '".$_GET['idFirma']."'";
-			$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL()->getResource());
+			$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL());
 			while($row = mysql_fetch_array($result))
 			{
 				echo'
