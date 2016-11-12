@@ -51,20 +51,45 @@ class FirmaSpatiu extends Firma {
 		return $this->comentarii;
 	}
 	public function getProcentFirma(DataCalendaristica $data) {
-		$valoare = 0;
+
+		$db = Aplicatie::getInstance()->Database;
 		$exista  = false;
-		$A2      = "SELECT valoare from procent WHERE idFirma='" . $this->id . "' AND  (( isNow='0' AND '" . $data->getFirstDayOfMonth() . "'>=_from AND  '" . $data->getLastDayOfMonth() . "<=_to ') OR ( isNow='1' AND '" . $data->getFirstDayOfMonth() . "'>=_from))  LIMIT 1";
-		$result = mysql_query($A2, Aplicatie::getInstance()->Database) or die(mysql_error());
-		if (mysql_num_rows($result) == 0) {
-			echo '<br /><span style="color:red">Eroare: !!!! Firma nu are un procent stabilit !</span><br />';
-			die();
+		$valoare = 0;
+
+		$query      = (
+			"SELECT valoare
+			FROM procent
+			WHERE
+			idFirma=:companyID AND ((
+				isNow='0' AND :firstDayOfMonth >= _from AND :lastDayOfMonth <= _to
+			) OR (
+				isNow='1' AND :firstDayOfMonth>=_from
+			))
+			LIMIT 1"
+		);
+
+		$stmt = $db->prepare($query);
+		$ok = $stmt->execute(array(
+			'companyID' => $this->id,
+			'firstDayOfMonth' => $data->getFirstDayOfMonth(),
+			'lastDayOfMonth' => $data->getLastDayOfMonth()
+		));
+
+		if(!$ok) {
+			throw new Exception("Ceva nu a mers așa cum trebuia");
 		}
-		while ($p = mysql_fetch_array($result)) {
-			$valoare = $p['valoare'];
+
+		$nrOfResults = $stmt->rowCount();
+
+		if($nrOfResults == 0) {
+			throw new Exception(sprintf("Firma %d nu are un procent stabilit la data de %s", $id, $data));
+		}
+
+		foreach($stmt as $row) {
+			$valoare = $row['valoare'];
 			$exista  = true;
 		}
-		if (!$exista)
-		throw new Exception("Nu exista procent impus pentru " . $this . ' la data ' . $data);
+
 		return $valoare;
 	}
 }
