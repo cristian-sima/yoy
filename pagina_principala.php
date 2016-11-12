@@ -53,7 +53,6 @@ $db = Aplicatie::getInstance()->getMYSQL();
 
 			foreach($stmt as $company) {
 
-
 				$query2 = (
 					"SELECT *
 					FROM `procent`
@@ -74,14 +73,14 @@ $db = Aplicatie::getInstance()->getMYSQL();
 				$currentProcent = 'Neprecizat';
 
 				foreach($stmt2 as $procent) {
-					echo $procent['valoare'];
+					$currentProcent = $procent["valoare"];
 				}
 
 				$result = $engine->render(
 					'<tr onClick=document.location="{url}" class="hover">
 					<td>{name}</td>
 					<td>{address}</td>
-					<td>{currentProcent}</td>
+					<td>{currentProcent}%</td>
 					</tr>
 					',
 					[
@@ -93,6 +92,7 @@ $db = Aplicatie::getInstance()->getMYSQL();
 				);
 
 				echo $result;
+
 			}
 			?>
 		</tbody>
@@ -112,17 +112,40 @@ $db = Aplicatie::getInstance()->getMYSQL();
 		</thead>
 		<tbody>
 			<?php
+			$query = (
+				"SELECT *
+				FROM `firma`
+				WHERE `activa`= :active"
+			);
 
-			$q      = "SELECT * from `firma` WHERE `activa`='0'";
-			$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL());
+			$stmt = $db->prepare($query);
+			$ok = $stmt->execute(array(
+				'active' => "0"
+			));
 
-			while ($row = mysql_fetch_array($result)) {
-				echo '
-				<tr onclick="document.location=' . "'" . "details.php?idFirma=" . $row['id'] . "'" . '" class="hover">
-				<td >' . $row['nume'] . '</td>
-				<td>' . $row['localitate'] . '</td>
-				<td>' . $row['dataIncetare'] . '</td>
-				</tr>';
+			if(!$ok) {
+				throw new Exception("Ceva nu a mers cum trebuia");
+			}
+
+			foreach($stmt as $company) {
+
+				$result = $engine->render(
+					'<tr onClick=document.location="{url}" class="hover">
+					<td>{name}</td>
+					<td>{address}</td>
+					<td>{endDate}</td>
+					</tr>
+					',
+					[
+						"url" => 'details.php?idFirma='.$company['id'],
+						"name" => $company['nume'],
+						"address" => $company['localitate'],
+						"endDate" => $company['dataIncetare']
+					]
+				);
+
+				echo $result;
+
 			}
 			?>
 		</tbody>
