@@ -50,9 +50,6 @@ class Aplicatie {
     }
     return self::$_instance;
   }
-  public function getVersion() {
-    return self::version;
-  }
   public function getFirmaOrganizatoare() {
     return $this->firma_organizatoare;
   }
