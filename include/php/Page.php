@@ -5,8 +5,6 @@ require_once "FirmaOrganizatoare.php";
 
 class Page {
 
-	public static $version = "3.0";
-
 	public static function showHeader() {
 		$_temp = Aplicatie::getInstance();
 		echo '	<!DOCTYPE>
@@ -98,13 +96,16 @@ class Page {
 	}
 
 	public static function showFooter() {
+
+		$version = "3.0";
+
 		echo '
 		</div>
 		<div class="aplicatie_footer center hide_prt">
 		<table width="100%">
 		<tr>
 		<td width:30%>&copy; YOY.ro ' . date('Y') . '</td>
-		<td width="70%" style="text-align:right"><small> V' . self::$version . '</small></td>
+		<td width="70%" style="text-align:right"><small> V' . $version . '</small></td>
 		</tr>
 		</table>
 		</div>

@@ -26,7 +26,6 @@ function connectToMySQL() {
 }
 
 class Aplicatie {
-  const version = "2.8";
   private static $_instance = null;
   public $Database = null;
   private $firma_organizatoare = null;
