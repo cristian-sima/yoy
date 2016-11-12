@@ -8,10 +8,10 @@ class Login {
 	public static function request_access(PDO $db) {
 		self::$db = $db;
 
-
-		if (isset($_COOKIE['cookuser']) && isset($_COOKIE['cookpass'])) {
-			$_SESSION['user']   = $_COOKIE['cookuser'];
-			$_SESSION['parola'] = $_COOKIE['cookpass'];
+		/* verifica daca utilizatorul este memorat in cookie */
+		if(isset($_COOKIE['cookuser']) && isset($_COOKIE['cookpass'])) {
+			$_SESSION['user'] 		= $_COOKIE['cookuser'];
+			$_SESSION['parola'] 	= $_COOKIE['cookpass'];
 		}
 
 		$isConnected = (
@@ -94,12 +94,14 @@ class Login {
 				}
 			}
 
-			$return = self::confirmUser($_SESSION['user'], $_SESSION['parola']);
+			$isConfirmed = self::confirmUser($_SESSION['user'], $_SESSION['parola']);
 
-			if ($return != 0) {
+			if (!$isConfirmed) {
 				unset($_SESSION['user']);
 				unset($_SESSION['parola']);
-				throw new Exception("A intervenit o problemă cu conectarea. Vă sfătuim să mai încercați încă o dată conectarea.");
+
+
+				throw new Exception("Datele furnizate nu vă pot conecta");
 			} else {
 
 				$query = (
@@ -122,6 +124,7 @@ class Login {
 				return self::$id_user;
 			}
 		} else {
+
 			$isUserTrying = (
 				isset($_POST['sublogin']) &&
 				isset($_POST['user']) &&
@@ -129,8 +132,6 @@ class Login {
 			);
 
 			if ($isUserTrying) {
-
-				echo "user is trying to connect";
 
 				$errorMessage = "Datele furnizate nu vă pot conecta";
 
@@ -145,23 +146,15 @@ class Login {
 
 				if ($ok) {
 
-					echo "first ok passed";
-
 					$resultExceeded = self::hasUserExceededNrAllowedTries($_POST['user']);
 
 					if ($resultExceeded == 'NOT_EXCEEDED') {
 
 						$parola  = $_POST['pass'];
 						$md5pass = md5($_POST['pass']);
-						$result  = self::confirmUser($_POST['user'], $md5pass);
+						$isConfirmed  = self::confirmUser($_POST['user'], $md5pass);
 
-						$resultIsOk = (
-							($result != 1) &&
-							($result != 2) &&
-							($result != 3)
-						);
-
-						if ($resultIsOk) {
+						if ($isConfirmed) {
 
 							$timeToBeConnected = time() + 60 * 60 * 24 * 100;
 
@@ -195,6 +188,9 @@ class Login {
 								Aplicația se încarcă...
 								<meta http-equiv="Refresh" content="0;url=index.php">
 								');
+								die();
+							} else {
+								throw new Exception($errorMessage);
 							}
 						} else {
 							$whenToRetry = floor($resultExceeded / 60) . ' minute, ' . ($resultExceeded % 60) . ' secunde';
@@ -240,7 +236,13 @@ class Login {
 			));
 
 			if(!$ok) {
-				return 1;
+				return false;
+			}
+
+			$nrOfResults = $stmt->rowCount();
+
+			if($nrOfResults == 0) {
+				return false;
 			}
 
 			foreach($stmt as $row) {
@@ -251,20 +253,18 @@ class Login {
 				self::$id_user = $currentID;
 
 				// check the type of user
-				if (!self::$allowOperator && $currentType !== "admin") {
-					return 1;
+				if (!self::$allowOperator && $currentType == "normal") {
+					return false;
 				}
 
 				if ($clientPassword == $currentPassword) {
-					return 0;
+					return true;
 				}
 
-				// save id
-
-				return 2;
+				return false;
 			}
 
-			return 1;
+			return userHasProblems;
 		}
 		public static function disconnect() {
 			if (isset($_COOKIE['cookuser']) && isset($_COOKIE['cookpass'])) {
@@ -310,7 +310,7 @@ class Login {
 			$query = (
 				"SELECT `user`, `incercari`, `data`
 				FROM user_temp
-				WHERE user <:user"
+				WHERE user=:user"
 			);
 
 			$stmt = $db->prepare($query);
@@ -322,9 +322,9 @@ class Login {
 				throw new Exception("Ceva nu a mers cum trebuia");
 			}
 
-			$affectedRows = $stmt->rowCount();
+			$nrOfRows = $stmt->rowCount();
 
-			if ($affectedRows == 0) {
+			if ($nrOfRows == 0) {
 
 				$query2 = (
 					"INSERT INTO `user_temp` (user, ip, data)
@@ -333,17 +333,11 @@ class Login {
 
 				$stmt2 = $db->prepare($query2);
 
-
 				$ok2 = $stmt2->execute(array(
 					'user' => $user,
 					'ip' => $ip,
 					'data' => $data
 				));
-
-
-				echo $stmt2->errorInfo()[2];
-				die();
-
 
 				if(!$ok2) {
 					throw new Exception("Ceva nu a mers cum trebuia");
@@ -353,9 +347,11 @@ class Login {
 			} else {
 
 				$incercari = 5;
+				$lastDate = 0;
 
 				foreach($stmt as $row) {
 					$incercari = $row['incercari'];
+					$lastDate = $row["data"];
 				}
 
 				if ($incercari < 5) {
@@ -381,7 +377,7 @@ class Login {
 
 					return 'NOT_EXCEEDED';
 				} else if ($incercari >= 3) {
-					$timp = 600 - ($data - $tbarray['data']);
+					$timp = 600 - ($data - $lastDate);
 
 					return $timp;
 				}

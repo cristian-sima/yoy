@@ -38,7 +38,6 @@ class Aplicatie {
       $this->firma_organizatoare = new FirmaOrganizatoare($this->getMYSQL(), 1);
     }
     catch (Exception $e) {
-			echo $e;
       PAGE::showCSSLogin();
       PAGE::showError($e->getMessage());
       Page::showLoginForm();
