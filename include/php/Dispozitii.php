@@ -78,7 +78,7 @@ class Dispozitii
 				FROM dispozitie AS d
 				WHERE  data>='".$this->getFrom()."' AND data <= '".$this->getTo()."' ";
 
-		$result_zi = mysql_query($query, Aplicatie::getInstance()->getMYSQL());
+		$result_zi = mysql_query($query, Aplicatie::getInstance()->Database);
 
 		while($dispozitie = mysql_fetch_array($result_zi))
 		{

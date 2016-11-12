@@ -8,7 +8,7 @@ require_once 'include/php/Aplicatie.php';
 Page::showHeader();
 Page::showContent();
 
-$db = Aplicatie::getInstance()->getMYSQL();
+$db = Aplicatie::getInstance()->Database;
 
 ?>
 

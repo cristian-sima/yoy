@@ -46,7 +46,7 @@
 								data_		<= '".$this->getTo()."'
 						LIMIT 0,1";
 
-			$result = mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()) or die(mysql_error());
+			$result = mysql_query($mysql, Aplicatie::getInstance()->Database) or die(mysql_error());
 
 			if(mysql_num_rows($result) != 0)
 			{

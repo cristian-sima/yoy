@@ -300,7 +300,7 @@ class SelectSituatie_GUI
 								FROM firma
 								".$preferinte."
 								ORDER BY activa DESC,nume ASC",
-			Aplicatie::getInstance()->getMYSQL());
+			Aplicatie::getInstance()->Database);
 
 			while($firma = mysql_fetch_array($result))
 			{

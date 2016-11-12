@@ -8,7 +8,7 @@ Login::permiteOperator();
 Page::showHeader();
 Page::showContent();
 
-$db = Aplicatie::getInstance()->getMYSQL();
+$db = Aplicatie::getInstance()->Database;
 
 if (Aplicatie::getInstance()->getUtilizator()->isOperator()) {
   $utilizator = Aplicatie::getInstance()->getUtilizator();

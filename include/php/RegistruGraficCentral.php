@@ -118,7 +118,7 @@ class RegistruGraficCentral extends RegistruGrafic
 					WHERE  data='".$data_curenta."'
 					ORDER by d.id";
 
-			$result_zi = mysql_query($query, Aplicatie::getInstance()->getMYSQL());
+			$result_zi = mysql_query($query, Aplicatie::getInstance()->Database);
 
 			while($dispozitie = mysql_fetch_array($result_zi))
 			{
@@ -147,7 +147,7 @@ class RegistruGraficCentral extends RegistruGrafic
 				FROM depunere_numerar
 				WHERE data = '".$data_curenta."'";
 
-		$result = mysql_query($mysql, Aplicatie::getInstance()->getMYSQL());
+		$result = mysql_query($mysql, Aplicatie::getInstance()->Database);
 
 		while($depunere = mysql_fetch_array($result))
 		{
@@ -165,7 +165,7 @@ class RegistruGraficCentral extends RegistruGrafic
 					FROM decont
 					WHERE data = '".$data_curenta."'";
 
-		$_db = mysql_query($mysql, Aplicatie::getInstance()->getMYSQL());
+		$_db = mysql_query($mysql, Aplicatie::getInstance()->Database);
 
 		while($decont = mysql_fetch_array($_db))
 		{
@@ -217,7 +217,7 @@ class RegistruGraficCentral extends RegistruGrafic
 		FROM sold_inchidere_luna
 		 WHERE idFirma = '0' AND data_>='".$data->getFirstDayOfMonth()."' AND data_<= '".$data->getLastDayOfMonth()."'";
 
-		$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL());
+		$result = mysql_query($q, Aplicatie::getInstance()->Database);
 		while($db = mysql_fetch_array($result))
 		{
 			$_total += intval($db['valoare']);

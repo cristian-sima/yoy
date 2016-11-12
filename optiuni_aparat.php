@@ -18,14 +18,14 @@ $aparat		= new Aparat($_GET['id_aparat']);
 $result = mysql_query("SELECT nume,id,activa
 									FROM firma
 									WHERE id != '".$aparat->getFirmaCurenta()."' AND activa = '1'
-									ORDER BY activa DESC,nume ASC", Aplicatie::getInstance()->getMYSQL());
+									ORDER BY activa DESC,nume ASC", Aplicatie::getInstance()->Database);
 
 
 
 
 
 $q="SELECT * FROM istoric_aparat WHERE id_aparat='".$aparat->getID()."' ORDER BY id";
-$result2 = mysql_query($q,Aplicatie::getInstance()->getMYSQL());
+$result2 = mysql_query($q,Aplicatie::getInstance()->Database);
 
 echo '<link href="include/css/fieldset.css" rel="stylesheet" type="text/css"/>
 		<fieldset>

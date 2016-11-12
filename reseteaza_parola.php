@@ -7,7 +7,7 @@
 	Page::showHeader();
 	Page::showContent();
 
-	$db = Aplicatie::getInstance()->getMYSQL();
+	$db = Aplicatie::getInstance()->Database;
 
 	$utilizator		= new Utilizator($db, $_GET['id_user']);
 

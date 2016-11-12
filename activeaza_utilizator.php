@@ -15,7 +15,7 @@
 							$data,
 							'utilizatori.php');
 
-							$db = Aplicatie::getInstance()->getMYSQL();
+							$db = Aplicatie::getInstance()->Database;
 
 		$utilizator		= new Utilizator($db, $data['id_user']);
 

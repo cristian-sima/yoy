@@ -112,7 +112,7 @@ class RegistruGraficGeneral extends RegistruGrafic
 			FROM completare_mecanica
 			 WHERE data_= '".$data_curenta."'
 			 GROUP BY id_firma";
-			$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL());
+			$result = mysql_query($q, Aplicatie::getInstance()->Database);
 			while($db = mysql_fetch_array($result))
 			{
 				$firma = new FirmaSpatiu($db['id_firma']);
@@ -151,7 +151,7 @@ class RegistruGraficGeneral extends RegistruGrafic
 					WHERE  data='".$data_curenta."'
 					ORDER by d.id";
 
-			$result_zi = mysql_query($query, Aplicatie::getInstance()->getMYSQL());
+			$result_zi = mysql_query($query, Aplicatie::getInstance()->Database);
 
 			while($dispozitie = mysql_fetch_array($result_zi))
 			{
@@ -207,7 +207,7 @@ class RegistruGraficGeneral extends RegistruGrafic
 		FROM sold_inchidere_luna
 		 WHERE data_>='".$data->getFirstDayOfMonth()."' AND data_<= '".$data->getLastDayOfMonth()."'";
 
-		$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL());
+		$result = mysql_query($q, Aplicatie::getInstance()->Database);
 		while($db = mysql_fetch_array($result))
 		{
 			$_total += intval($db['valoare']);

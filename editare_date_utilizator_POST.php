@@ -27,7 +27,7 @@
 
 		Procesare::checkRequestedData(array('user','nume','parola','idFirma', 'id_user'),$data,'editare_date_utilizator.php?id_user='.$_POST['id_user']);	
 
-		$db = Aplicatie::getInstance()->getMYSQL();
+		$db = Aplicatie::getInstance()->Database;
 
 		if(Aplicatie::getInstance()->getUtilizator()->isOperator())
 		{

@@ -42,7 +42,7 @@ $id=0;
 $q="SELECT valoare from taxa WHERE tip='aparat' AND isNow='1' limit 0,1";
 
 
-$result2 = mysql_query($q,Aplicatie::getInstance()->getMYSQL());
+$result2 = mysql_query($q,Aplicatie::getInstance()->Database);
 
 if(mysql_num_rows($result2) == 0){
 
@@ -67,7 +67,7 @@ echo'</br><br /><br />';
 $q="SELECT * from taxa WHERE tip='aparat' order by _from asc";
 
 
-$result = mysql_query($q,Aplicatie::getInstance()->getMYSQL());
+$result = mysql_query($q,Aplicatie::getInstance()->Database);
 
 if(mysql_num_rows($result) == 0){
 	echo'<table width="100%" border="0"><tr><td width="50%"><span style="color:red">Completează o periodă curentă</span></td><td align="right">';

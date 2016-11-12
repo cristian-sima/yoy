@@ -46,10 +46,10 @@
 									  '".$data['in_depozit']."'
 									  )";
 
-		$result = mysql_query($query, Aplicatie::getInstance()->getMYSQL());
+		$result = mysql_query($query, Aplicatie::getInstance()->Database);
 
 		$q = "SELECT id FROM aparat ORDER BY id DESC LIMIT 0,1";
-		$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL());
+		$result = mysql_query($q, Aplicatie::getInstance()->Database);
 		while($aparat = mysql_fetch_array($result))
 		{
 			$id = $aparat['id'];
@@ -76,7 +76,7 @@
 									  '1'
 									  )";
 
-			$result = mysql_query($query, Aplicatie::getInstance()->getMYSQL());
+			$result = mysql_query($query, Aplicatie::getInstance()->Database);
 
 		/*
 		 * Daca se adauga in depozit nu e nevoie de nicio situatie
@@ -119,7 +119,7 @@
 									`end_iesiri`)
 									VALUES ('".$aparat_->getID()."','".$id_completare."', '".$data['mecanic_intrare']."', '".$data['mecanic_intrare']."', '".$data['mecanic_iesire']."', '".$data['mecanic_iesire']."' );";
 
-				$result = mysql_query($mysql, Aplicatie::getInstance()->getMYSQL());
+				$result = mysql_query($mysql, Aplicatie::getInstance()->Database);
 
 
 			}
@@ -140,13 +140,13 @@
 										  '".Aplicatie::getInstance()->getUtilizator()->getID()."'
 										  )";
 
-				$result = mysql_query($query, Aplicatie::getInstance()->getMYSQL());
+				$result = mysql_query($query, Aplicatie::getInstance()->Database);
 
 
 				/*-------------------- Obtine ID-ul completarii -----------------*/
 
 				$q = "SELECT id FROM completare_mecanica WHERE id_firma= '".$data['firma_id']."' AND data_='".$data_."' AND autor='".Aplicatie::getInstance()->getUtilizator()->getID()."' ";
-				$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL());
+				$result = mysql_query($q, Aplicatie::getInstance()->Database);
 
 				$id_completare = null;
 
@@ -169,7 +169,7 @@
 
 				$mysql = rtrim($mysql, ",").';';
 
-				$result = mysql_query($mysql, Aplicatie::getInstance()->getMYSQL());
+				$result = mysql_query($mysql, Aplicatie::getInstance()->Database);
 
 
 			}

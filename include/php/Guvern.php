@@ -43,7 +43,7 @@
 			$A = "SELECT valoare from taxa WHERE tip='".$type."' AND ( ( isNow='0' AND _from>='".$data->getFirstDayOfMonth()."' AND _to <= '".$data->getLastDayOfMonth()."') OR ( isNow='1' AND '".$data->getFirstDayOfMonth()."'>=_from )) LIMIT 1";
 
 
-			$result = mysql_query($A, Aplicatie::getInstance()->getMYSQL()) or die(mysql_error());
+			$result = mysql_query($A, Aplicatie::getInstance()->Database) or die(mysql_error());
 			while($taxa = mysql_fetch_array($result))
 			{
 				$valoare = $taxa['valoare'];

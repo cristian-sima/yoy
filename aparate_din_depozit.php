@@ -43,7 +43,7 @@ echo '
 					WHERE aparat.id_firma='0' 
 					ORDER BY aparat.ordinea ASC";
 
-		$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL());
+		$result = mysql_query($q, Aplicatie::getInstance()->Database);
 		while($aparat = mysql_fetch_array($result))
 		{
 			echo'	

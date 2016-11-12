@@ -43,7 +43,7 @@
 					ORDER by data DESC
 			";
 
-	$result = mysql_query($query, Aplicatie::getInstance()->getMYSQL());
+	$result = mysql_query($query, Aplicatie::getInstance()->Database);
 
 	if(mysql_num_rows($result) == 0)
 	{
@@ -102,7 +102,7 @@
 				FROM dispozitie AS d
 				WHERE  data='".$selector_GUI->getDataCurenta()."' ".$_criterii_MYSQL."";
 
-		$result_zi = mysql_query($query, Aplicatie::getInstance()->getMYSQL());
+		$result_zi = mysql_query($query, Aplicatie::getInstance()->Database);
 
 		if(mysql_num_rows($result_zi) == 0)
 		{

@@ -142,7 +142,7 @@
 						GROUP BY indexi.id_aparat
 						ORDER by completare.data_,aparat.ordinea";
 
-			$db = Aplicatie::getInstance()->getMYSQL();			
+			$db = Aplicatie::getInstance()->Database;			
 
 			$result = mysql_query($mysql, $db) or die(mysql_error());
 

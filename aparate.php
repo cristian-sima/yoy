@@ -51,7 +51,7 @@ echo '
 					WHERE aparat.activ='1' AND aparat.id_firma = '".$firma->getID()."'
 					ORDER BY aparat.ordinea ASC";
 
-		$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL());
+		$result = mysql_query($q, Aplicatie::getInstance()->Database);
 		while($aparat = mysql_fetch_array($result))
 		{
 			echo'
