@@ -156,10 +156,10 @@ if(!$ok) {
 				if ($firma->isActiva()) {
 					?>
 					<a class="btn btn-primary btn-sm" onclick="seeData('inchide_situatie_luna')" href="#" class="button orange small bold">
-						Închidere lună
+						Închide lună
 					</a>
 					<a class="btn btn-primary btn-sm" onclick="seeData('editare_date_firma')" href="#" class="button orange small bold">
-						Modificare date firmă
+						Modifică informatii
 					</a>
 					<?php
 				}
