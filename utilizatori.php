@@ -10,20 +10,18 @@ Page::showContent();
 $db = Aplicatie::getInstance()->Database;
 
 ?>
-<table id="heading">
-	<tr>
-		<td>
-			<h2 style="color: orange">
-				<img src="img/user.png" align="absmiddle" />Utilizatori
-			</h2>
-		</td>
-		<td style="text-align: right">
-			<input type="button" value="Adaugă administrator"	onclick="document.location='adauga_utilizator.php?type=admin'" />
-			<input type="button" value="Adaugă operator" onclick="document.location='adauga_utilizator.php?type=normal'" />
-		</td>
-	</tr>
-</table>
-<div style="width: 958px; margin-left: 13px;">
+<div class="container">
+	<div class="row">
+		<div class="col-xs-8">
+			<h1><img src="img/user.png" align="absmiddle" />Utilizatori</h1>
+		</div>
+		<div class="col-xs-4 text-xs-right">
+			<input class="btn btn-success btn-sm" type="button" value="Adaugă administrator"	onclick="document.location='adauga_utilizator.php?type=admin'" />
+			<input class="btn btn-success btn-sm" type="button" value="Adaugă operator" onclick="document.location='adauga_utilizator.php?type=normal'" />
+		</div>
+	</div>
+</div>
+<div>
 	<table cellpadding="0" cellspacing="0" border="0" class="display"	id="activeAccounts" style="">
 		<thead>
 			<tr>
@@ -67,7 +65,11 @@ $db = Aplicatie::getInstance()->Database;
 				}
 				echo '</td>
 				<td>' . (($account['tipCont'] == "admin") ? "Administrator" : "Operator (" . $account['tipOperator'] . ')') . '</td>
-				<td><input type="button" value="Modifică datele" onclick="document.location=' . "'" . 'editare_date_utilizator.php?id_user=' . $account['id'] . '' . "'" . '"/><input type="button" value="Dezactivează" onclick="document.location=' . "'" . 'activeaza_utilizator.php?id_user=' . $account['id'] . '&type=0' . "'" . '" /></td>
+				<td>
+				<input class="btn btn-sm btn-info" type="button" value="Modifică datele" onclick="document.location=' . "'" . 'editare_date_utilizator.php?id_user=' . $account['id'] . '' . "'" . '"/>
+
+				<input class="btn btn-sm btn-danger" type="button" value="Dezactivează" onclick="document.location=' . "'" . 'activeaza_utilizator.php?id_user=' . $account['id'] . '&type=0' . "'" . '" />
+				</td>
 				</tr>';
 			}
 			?>
@@ -122,7 +124,9 @@ $db = Aplicatie::getInstance()->Database;
 				}
 				echo '</td>
 				<td>' . (($account['tipCont'] == "admin") ? "Administrator" : "Operator (" . $account['tipOperator'] . ')') . '</td>
-				<td><input type="button" value="Activează cont" onclick="document.location = ' . "'" . 'activeaza_utilizator.php?id_user=' . $account['id'] . '&type=1' . "'" . '" /></td>
+				<td>
+				<input class="btn btn-sm btn-danger" type="button" value="Activează cont" onclick="document.location = ' . "'" . 'activeaza_utilizator.php?id_user=' . $account['id'] . '&type=1' . "'" . '" />
+				</td>
 				</tr>';
 			}
 			?>

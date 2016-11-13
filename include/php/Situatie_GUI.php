@@ -495,7 +495,7 @@ class Situatie_GUI
 	*/
 	private function displayEnd()
 	{
-		$this->html.= '<a id="jump_salveaza" class="hide_prt" href="" style="color:white">Salvează</a></form>';
+		$this->html.= '<a id="jump_salveaza" class="hidden-print" href="" style="color:white">Salvează</a></form>';
 		$this->html.= '</div>';
 	}
 }

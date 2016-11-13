@@ -35,6 +35,12 @@ $noActiveCompanies = ($stmt->rowCount() == 0)
 ?>
 
 <link href="include/css/fieldset.css" rel="stylesheet" type="text/css"/>
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="toate_aparatele.php">Aparate</a></li>
+  <li class="breadcrumb-item active"><?php echo $aparat->getNume()." ".$aparat->getSerie(); ?></li>
+</ol>
+
 <fieldset>
 	<legend>Istoric aparat</legend>
 	<table width="100%">
@@ -59,7 +65,7 @@ $noActiveCompanies = ($stmt->rowCount() == 0)
 		if (!$ok) {
 			throw new Exception("Ceva nu a mers cum trebuia");
 		}
-		
+
 		foreach ($stmt2 as $deviceHistory) {
 			if ($deviceHistory['id_firma'] == '0') {
 				$nume_firma = "Depozit";

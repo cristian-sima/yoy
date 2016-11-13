@@ -59,7 +59,6 @@ try {
 	Page::showFooter();
 
 } catch (Exception $e) {
-	PAGE::showCSSLogin();
 	PAGE::showError($e->getMessage());
 }
 

@@ -12,18 +12,17 @@ $db = Aplicatie::getInstance()->Database;
 
 ?>
 
-<table id="heading">
-	<tr>
-		<td>
-			<h2 style="color: orange">
-				<img src="img/firme.png" align="absmiddle" />Firme partenere spațiu
-			</h2>
-		</td>
-		<td style="text-align: right">
-			<input type="button" value="Adaugă firmă"	onclick="document.location='firma_noua.php'" />
-		</td>
-	</tr>
-</table>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-10">
+				<h1><img src="img/firme.png" align="absmiddle" /> Firme spațiu</h1>
+		</div>
+		<div class="col-xs-2 text-xs-right">
+			<input class="btn btn-success" type="button" value="Adaugă firmă"	onclick="document.location='firma_noua.php'" />
+		</div>
+	</div>
+</div>
+
 <div class="big_table">
 	<table cellpadding="0" cellspacing="0" border="0" class="display"	id="active_companies" style="">
 		<thead>

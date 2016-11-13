@@ -65,68 +65,87 @@ if(!$ok) {
 
 ?>
 
-<link href="include/css/butoane_pacanele.css" rel="stylesheet" type="text/css" />
 <link href="include/css/fieldset.css" rel="stylesheet" type="text/css"/>
-<fieldset>
-	<legend>
-		<?php
-		echo '<span class="bold" style="color:orange">' . $firma->getDenumire() . '</span>';
-		?>
-	</legend>
-	<table width="100%">
-		<tr>
-			<td width="50%">
-				<table width="300px">
-					<tr>
-						<td width="50%" class="smoke">Localitate</td>
-						<td width="50%">
-							<?php
-							echo '<span class="bold" style="color:gray">' . $firma->getLocatie() . '</span>';
-							?>
-						</td>
-					</tr>
-					<tr>
-						<td width="50%" class="smoke">Statut firmă</td>
-						<td width="50%">
-							<?php
-							$color = (($firma->isActiva()) ? "green" : "red");
-							echo '<span style="color:' . $color . '">' . (($firma->isActiva()) ? "contract activ" : "contract încetat") . "
-							</span>";
-							?>
-						</td>
-					</tr>
-					<tr>
-						<td width="50%" class="smoke">Procent</td>
-						<td width="50%">
-							<?php	echo $firma->getProcentFirma($data); ?> %
-						</td>
-					</tr>
-				</table>
-			</td>
-			<td width="50%" style="text-align:right">
-				<a onclick="document.location='situatie_mecanica.php?id_firma=<?php	echo $firma->getID();	?>'" class="button green medium">
-					Situație zilnică
-				</a>
-				<br />
-				<span	class="smoke" style="font-size: 12px">
-					Ultima completare: <?php echo $ultima_data . ' ' . $zileTrecute; ?>
-				</span>
-			</td>
-		</tr>
-	</table>
-</fieldset>
+
+<ol class="breadcrumb">
+	<li class="breadcrumb-item"><a href="space_companies.php">Firme spațiu</a></li>
+	<li class="breadcrumb-item active"><?php echo $firma->getDenumire(); ?></li>
+</ol>
+
+<div class="card">
+	<div class="card-block">
+		<h4 class="card-title">Date generale</h4>
+	</div>
+	<div class="card-block">
+		<div class="card-text">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-xs-4">
+						<div class="container-fluid">
+						  <div class="row">
+						    <div class="col-xs-6">
+						      Denumire
+						    </div>
+						    <div class="col-xs-6">
+						      	<?php echo $firma->getDenumire(); ?>
+						    </div>
+						  </div>
+						  <div class="row">
+						    <div class="col-xs-6">
+						      	Localitate
+						    </div>
+						    <div class="col-xs-6">
+						      	<?php echo $firma->getLocatie(); ?>
+						    </div>
+						  </div>
+						  <div class="row">
+						    <div class="col-xs-6">
+						      	Statut firmă
+						    </div>
+						    <div class="col-xs-6">
+						      <?php
+						      $color = (($firma->isActiva()) ? "success" : "danger");
+						      echo '<span class="tag tag-' . $color . '">' . (($firma->isActiva()) ? "contract activ" : "contract încetat") . "
+						      </span>";
+						      ?>
+						    </div>
+						  </div>
+						  <div class="row">
+						    <div class="col-xs-6">
+						      	Procent
+						    </div>
+						    <div class="col-xs-6">
+						      		<?php	echo $firma->getProcentFirma($data); ?> %
+						    </div>
+						  </div>
+						</div>
+					</div>
+					<div class="col-xs-8 text-xs-right">
+						<button type="button" class="btn btn-info btn-lg" onclick="document.location='situatie_mecanica.php?id_firma=<?php	echo $firma->getID();	?>'" >
+							Situație zilnică
+						</button>
+						<br />
+						<span	class="text-muted small">
+							Ultima completare: <?php echo $ultima_data . ' ' . $zileTrecute; ?>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 <fieldset>
 	<legend class="bold">Situații</legend>
 	<table width="100%">
 		<tr>
 			<td width="50%" class="smoke">
 				<?php
-				echo 'Anul <select id="an">';
+				echo 'Anul <select class="custom-select" id="an">';
 				for ($i = 2013; $i <= 2020; $i++) {
 					echo '<option value="' . $i . '" ' . (($i == $data->getAnul()) ? ("selected") : "") . '>' . $i . "</option>";
 				}
 				echo "</select>";
-				echo '&nbsp;&nbsp;&nbsp;&nbsp;Luna <select id="luna">';
+				echo '&nbsp;&nbsp;&nbsp;&nbsp;Luna <select class="custom-select" id="luna">';
 				for ($luna = 1; $luna <= 12; $luna++) {
 					echo '<option value="' . $luna . '" ' . (($luna == $data->getLuna()) ? ("selected") : "") . ' >' . DataCalendaristica::getNumeleLunii($luna) . "</option>";
 				}
@@ -137,10 +156,10 @@ if(!$ok) {
 				<?php
 				if ($firma->isActiva()) {
 					?>
-					<a onclick="seeData('inchide_situatie_luna')" href="#" class="button orange small bold">
+					<a class="btn btn-primary btn-sm" onclick="seeData('inchide_situatie_luna')" href="#" class="button orange small bold">
 						Închidere lună
 					</a>
-					<a onclick="seeData('editare_date_firma')" href="#" class="button orange small bold">
+					<a class="btn btn-primary btn-sm" onclick="seeData('editare_date_firma')" href="#" class="button orange small bold">
 						Modificare date firmă
 					</a>
 					<?php
@@ -153,9 +172,9 @@ if(!$ok) {
 	<br />
 	<br />
 
-	<a onclick="seeData('vizualizare_dispozitii')" href="#" class="button blue small bold">Dispoziții</a>
-	<a onclick="seeData('registru_firma_spatiu')" href="#" class="button gray small bold">Registru firmă</a>
-	<a onclick="seeData('afisare_decont_firma')" href="#" class="button blue small bold">Decont</a>
+	<a class="btn btn-primary btn-sm" onclick="seeData('vizualizare_dispozitii')" href="#" class="button blue small bold">Dispoziții</a>
+	<a class="btn btn-primary btn-sm" onclick="seeData('registru_firma_spatiu')" href="#" class="button gray small bold">Registru firmă</a>
+	<a class="btn btn-primary btn-sm" onclick="seeData('afisare_decont_firma')" href="#" class="button blue small bold">Decont</a>
 
 </fieldset>
 
@@ -169,7 +188,7 @@ if(!$ok) {
 				<?php
 				if ($firma->isActiva() != '0') {
 					?>
-					<input type="button" value="Adaugă aparat" onclick="document.location='adauga_aparat.php?id_firma=<?php	echo $firma->getID();	?>'" />
+					<input class="btn btn-success btn-sm" type="button" value="Adaugă aparat" onclick="document.location='adauga_aparat.php?id_firma=<?php	echo $firma->getID();	?>'" />
 					<?php
 				}
 				?>
@@ -224,11 +243,9 @@ if(!$ok) {
 		<tr>
 			<td><?php
 			if ($firma->isActiva()) {
-				?> <input type="button"
-				value="Adaugă administrator"
-				onclick="document.location='adauga_utilizator.php?type=admin'" /> <input
-				type="button" value="Adaugă operator"
-				onclick="document.location='adauga_utilizator.php?type=normal'" /> <?php
+				?>
+				<input class="btn btn-success btn-sm" type="button" value="Adaugă administrator"	onclick="document.location='adauga_utilizator.php?type=admin'" />
+				<input class="btn btn-success btn-sm" type="button" value="Adaugă operator" onclick="document.location='adauga_utilizator.php?type=normal'" /> <?php
 			}
 			?>
 		</td>
@@ -255,8 +272,8 @@ if(!$ok) {
 					<td>{username}</td>
 					<td>{type}</td>
 					<td>
-						<input type="button" value="Modifică datele" onclick="document.location=' . "'" . 'editare_date_utilizator.php?id_user={userID}' . "'" . '"/>
-						<input type="button" value="Dezactivează" onclick="document.location=' . "'" . 'activeaza_utilizator.php?id_user={userID}&type=0' . "'" . '" />
+					<input type="button" value="Modifică datele" onclick="document.location=' . "'" . 'editare_date_utilizator.php?id_user={userID}' . "'" . '"/>
+					<input type="button" value="Dezactivează" onclick="document.location=' . "'" . 'activeaza_utilizator.php?id_user={userID}&type=0' . "'" . '" />
 					</td>
 					</tr>',
 					[

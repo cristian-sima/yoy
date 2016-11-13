@@ -91,7 +91,7 @@ class SelectSituatie_GUI {
 				document.location = where+"?"+datastring;
 			}
 			</script>';
-			echo '<div id="control_panel" class="hide_prt"><form id="select_options">';
+			echo '<div id="control_panel" class="hidden-print"><form id="select_options">';
 			if ($this->afiseazaAni) {
 				echo 'Anul <select id="an" name="an">';
 				for ($an = 2013; $an <= 2020; $an++) {

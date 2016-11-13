@@ -94,7 +94,7 @@
 	</script>';
 
 	echo '
-	<div id="control_panel" class="hide_prt">
+	<div id="control_panel" class="hidden-print">
 		<table width="100%" style="border-bottom:1px solid #dfdfdf;">
 			<tr>
 
