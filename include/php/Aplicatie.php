@@ -8,8 +8,13 @@ require_once "DataCalendaristica.php";
 
 function connectToMySQL() {
 
-  $string = file_get_contents("config.json");
-  $decodedFile = json_decode($string, true);
+  try {
+    $string = file_get_contents("config.json");
+    $decodedFile = json_decode($string, true);
+  } catch (Exception $e) {
+    throw new Exception("Contactează administratorul - cod CONFIG_FILE_NOT_SET");
+  }
+
 
   $host         =  $decodedFile["Host"];
   $username     =  $decodedFile["Username"];

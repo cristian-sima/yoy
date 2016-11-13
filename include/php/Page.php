@@ -97,7 +97,17 @@ class Page {
 
 	public static function showFooter() {
 
-		$version = "3.0";
+		$version = "";
+
+	  try {
+	    $string = file_get_contents("package.json");
+	    $decodedFile = json_decode($string, true);
+
+			$version = $decodedFile["version"];
+
+	  } catch (Exception $e) {
+	    throw new Exception("Contactează administratorul - cod PACKAGE_JS_NOT_SET");
+	  }
 
 		echo '
 		</div>
