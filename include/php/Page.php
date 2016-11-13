@@ -24,8 +24,12 @@ class Page {
 		<script type="text/javascript" src="include/js/extra.js" ></script>
 		<script type="text/javascript" src="include/js/jquery-1.9.1.js" ></script>
 		<script type="text/javascript" src="include/js/jquery-ui-1.10.3.custom.min.js" ></script>
-		<script type="text/javascript" src="include/js/jquery.dataTables.js" ></script>';
+		<script type="text/javascript" src="include/js/jquery.dataTables.js" ></script>
+		';
 	}
+
+	// <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+	// <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
 
 	private static function showMeniu() {
 		echo '<table width="100%" class="hide_prt" style="background:#FBFBFB;border-bottom: 1px solid #D5D5D5;"><tr><td>';
@@ -99,15 +103,15 @@ class Page {
 
 		$version = "";
 
-	  try {
-	    $string = file_get_contents("package.json");
-	    $decodedFile = json_decode($string, true);
+		try {
+			$string = file_get_contents("package.json");
+			$decodedFile = json_decode($string, true);
 
 			$version = $decodedFile["version"];
 
-	  } catch (Exception $e) {
-	    throw new Exception("Contactează administratorul - cod PACKAGE_JS_NOT_SET");
-	  }
+		} catch (Exception $e) {
+			throw new Exception("Contactează administratorul - cod PACKAGE_JS_NOT_SET");
+		}
 
 		echo '
 		</div>
