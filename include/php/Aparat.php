@@ -16,7 +16,7 @@ class Aparat {
   public function Aparat($id) {
 
 		$db = Aplicatie::getInstance()->Database;
-		
+
 		$query = (
 			"SELECT in_depozit As inDepozit, ordinea, observatii, serie, nume, factor_mecanic, pret_impuls, id_firma, data_inspectie, data_autorizatie, activ
 			FROM `aparat`
@@ -36,7 +36,7 @@ class Aparat {
 		$nrOfResults = $stmt->rowCount();
 
 		if($nrOfResults == 0) {
-			throw new Exception(sprintf("Aparatul %d nu există", $id));
+			throw new Exception(sprintf("Aparatul %d nu există", htmlspecialchars($id)));
 		}
 
 		foreach($stmt as $row) {

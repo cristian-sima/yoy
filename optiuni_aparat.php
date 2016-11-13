@@ -59,6 +59,7 @@ $noActiveCompanies = ($stmt->rowCount() == 0)
 		if (!$ok) {
 			throw new Exception("Ceva nu a mers cum trebuia");
 		}
+		
 		foreach ($stmt2 as $deviceHistory) {
 			if ($deviceHistory['id_firma'] == '0') {
 				$nume_firma = "Depozit";

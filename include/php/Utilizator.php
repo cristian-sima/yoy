@@ -28,7 +28,7 @@ class Utilizator {
 		$nrOfResults = $stmt->rowCount();
 
 		if($nrOfResults == 0) {
-			throw new Exception(sprintf("Utilizatorul %d nu există", $id));
+			throw new Exception(sprintf("Utilizatorul %d nu există", htmlspecialchars($id)));
 		}
 
 		foreach($stmt as $row) {

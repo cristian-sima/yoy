@@ -27,7 +27,7 @@ class FirmaSpatiu extends Firma {
 		$nrOfResults = $stmt->rowCount();
 
 		if($nrOfResults == 0) {
-			throw new Exception(sprintf("Firma parteneră %d nu există", $id));
+			throw new Exception(sprintf("Firma parteneră %d nu există", htmlspecialchars($id)));
 		}
 
 		foreach($stmt as $row) {
