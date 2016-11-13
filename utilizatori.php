@@ -21,7 +21,8 @@ $db = Aplicatie::getInstance()->Database;
 		</div>
 	</div>
 </div>
-<div>
+<div class="mt-2">
+	<h4>Conturi active</h4>
 	<table cellpadding="0" cellspacing="0" border="0" class="display"	id="activeAccounts" style="">
 		<thead>
 			<tr>
@@ -75,11 +76,9 @@ $db = Aplicatie::getInstance()->Database;
 			?>
 		</tbody>
 	</table>
-	<br />
-	<br />
-	<Br />
-	Conturi dezactivate
-	<br />
+</div>
+<div class="mt-2">
+	<h4>Conturi inactive</h4>
 	<table cellpadding="0" cellspacing="0" border="0" class="display"	id="inactiveAccounts" style="">
 		<thead>
 			<tr>

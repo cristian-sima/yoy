@@ -16,7 +16,7 @@ $db = Aplicatie::getInstance()->Database;
 			Vizualizați aparatele din depozit
 		</td>
 		<td style="text-align: right">
-			<input type="button" value="Adăugați aparat în depozit"	onclick="document.location='adauga_aparat.php'" />
+			<input type="button" value="Adaugă aparat în depozit"	onclick="document.location='adauga_aparat.php'" />
 		</td>
 	</tr>
 </table>

@@ -6,12 +6,24 @@ require_once "include/php/FirmaSpatiu.php";
 
 Page::showHeader();
 Page::showContent();
-Page::showHeading("Vizualizați toate aparate active și inactive", '<input type="button" value="Adăugați aparat în depozit" onclick="document.location=' . "'" . 'adauga_aparat.php' . "'" . '" />');
 
 $db = Aplicatie::getInstance()->Database;
 
 ?>
-<div style="width: 958px;margin-top:20px; margin-left: 13px;">
+<div class="container">
+	<div class="row">
+		<div class="col-xs-8">
+			<h1>Toate aparatele</h1>
+		</div>
+		<div class="col-xs-4 text-xs-right">
+			<?php
+			echo '<input class="btn btn-success" type="button" value="Adaugă aparat în depozit" onclick="document.location=' . "'" . 'adauga_aparat.php' . "'" . '" />';
+			?>
+		</div>
+	</div>
+</div>
+<div class="mt-2">
+	<h4>Aparate în uz</h4>
 	<table cellpadding="0" cellspacing="0" border="0" class="display" id="example1" style="">
 		<thead>
 			<tr>
@@ -59,9 +71,8 @@ $db = Aplicatie::getInstance()->Database;
 		</tbody>
 	</table>
 </div>
-<br />
-Aparate inactive:
-<div style="width: 958px;margin-top:20px; margin-left: 13px;">
+<div class="mt-2">
+	<h4>Aparate inactive</h4>
 	<table cellpadding="0" cellspacing="0" border="0" class="display"	id="example2" style="">
 		<thead>
 			<tr>

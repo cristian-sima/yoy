@@ -75,8 +75,7 @@ if(!$ok) {
 <div class="card">
 	<div class="card-block">
 		<h4 class="card-title">Date generale</h4>
-	</div>
-	<div class="card-block">
+		<hr>
 		<div class="card-text">
 			<div class="container-fluid">
 				<div class="row">

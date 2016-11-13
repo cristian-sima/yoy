@@ -23,7 +23,8 @@ $db = Aplicatie::getInstance()->Database;
 	</div>
 </div>
 
-<div class="big_table">
+<div class="mt-2">
+	<h4>Firme active</h4>
 	<table cellpadding="0" cellspacing="0" border="0" class="display"	id="active_companies" style="">
 		<thead>
 			<tr>
@@ -96,11 +97,9 @@ $db = Aplicatie::getInstance()->Database;
 			?>
 		</tbody>
 	</table>
-	<br />
-	<br />
-	Firme inactive (contracte terminate)
-	<br />
-	<br />
+</div>
+<div class="mt-2">
+	<h4>Firme inactive (contracte terminate)</h4>
 	<table cellpadding="0" cellspacing="0" border="0" class="display" id="inactive_companies" style="">
 		<thead>
 			<tr>

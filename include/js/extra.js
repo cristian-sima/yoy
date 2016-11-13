@@ -3,7 +3,7 @@ st["dialog"] = "";
 
 $(document).ready(function() {
 	$("#disconnectButton").click(function() {
-		 if(confirm("Ești sigur că vrei să te deconectezi ?")) {
+		 if(confirm("Vrei să te deconectezi ?")) {
 			 document.location = "paraseste_aplicatia.php";
 		 }
 	})

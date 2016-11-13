@@ -73,10 +73,10 @@ class Page {
 			<form class="form-inline float-xs-right">
 				<?php
 				echo '
-				<button type="button" class="btn btn-sm btn-secondary" onclick="document.location=' . "'" . 'editare_date_utilizator.php?id_user=' . Aplicatie::getInstance()->getUtilizator()->getID() . "'" . '">
-					Modifică datele personale
+				<button type="button" class="btn btn-sm btn-secondary-outline" onclick="document.location=' . "'" . 'editare_date_utilizator.php?id_user=' . Aplicatie::getInstance()->getUtilizator()->getID() . "'" . '">
+					Modifică datele
 				</button>
-				<button type="button" class="btn btn-sm btn-secondary" id="disconnectButton" >
+				<button type="button" class="btn btn-sm btn-secondary-outline" id="disconnectButton" >
 					Deconectează-mă
 				</button>
 				';

@@ -41,7 +41,7 @@
 				<div id="form_wrapper" class="form_wrapper" style="width: 550px; height: 496px; display: block;">
 					<form id="f1" class="register active" style="" action="adaugaPerioadaPOST.php" method="POST">
 						<input type="hidden" name="idFirma" value="<?php echo$_GET['idFirma'];?>" />
-						<h3><cufon class="cufon cufon-canvas" alt="Register" style="width: 106px; height: 25px;"><canvas width="122" height="28" style="width: 122px; height: 28px; top: -2px; left: 0px;"></canvas><cufontext>	Adăugați o perioda noua</cufontext></cufon></h3>
+						<h3><cufon class="cufon cufon-canvas" alt="Register" style="width: 106px; height: 25px;"><canvas width="122" height="28" style="width: 122px; height: 28px; top: -2px; left: 0px;"></canvas><cufontext>	Adaugă o perioda noua</cufontext></cufon></h3>
 						<div class="column">
 							<div>
 								<label>De la :</label>
