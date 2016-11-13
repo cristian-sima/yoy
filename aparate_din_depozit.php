@@ -1,33 +1,28 @@
 <?php
 
-	require_once "include/php/Aparat.php";
-	require_once "include/php/Aplicatie.php";
-	require_once "include/php/FirmaSpatiu.php";
-	
-	Page::showHeader();
-	Page::showContent();
-	
+require_once "include/php/Aparat.php";
+require_once "include/php/Aplicatie.php";
+require_once "include/php/FirmaSpatiu.php";
 
+Page::showHeader();
+Page::showContent();
 
-echo '
+$db = Aplicatie::getInstance()->Database;
+
+?>
 <table id="heading">
 	<tr>
-		<td>Vizualizați aparatele din depozit
-		</b>
+		<td>
+			Vizualizați aparatele din depozit
 		</td>
 		<td style="text-align: right">
-		'; 
-		?><input type="button" value="Adăugați aparat în depozit"
-			onclick="document.location='adauga_aparat.php'" />
-		<?php	 
-		echo '
+			<input type="button" value="Adăugați aparat în depozit"	onclick="document.location='adauga_aparat.php'" />
 		</td>
 	</tr>
 </table>
 
 <div style="width: 958px;margin-top:20px; margin-left: 13px;">
-	<table cellpadding="0" cellspacing="0" border="0" class="display"
-		id="example" style="">
+	<table cellpadding="0" cellspacing="0" border="0" class="display" id="example" style="">
 		<thead>
 			<tr>
 				<th>Nr</th>
@@ -37,37 +32,47 @@ echo '
 				<th>Exp. insp. tech.</th>
 			</tr>
 		</thead>
-		<tbody>';
-			
-		$q = "SELECT aparat.* FROM `aparat` AS aparat
-					WHERE aparat.id_firma='0' 
-					ORDER BY aparat.ordinea ASC";
+		<tbody>
+			<?php
 
-		$result = mysql_query($q, Aplicatie::getInstance()->Database);
-		while($aparat = mysql_fetch_array($result))
-		{
-			echo'	
-			<tr onclick="document.location='."'"."optiuni_aparat.php?id_aparat=".$aparat['id']."&id_firma=".$aparat['id_firma']."'".'" class="hover" >
-			<td >'.$aparat['ordinea'].'</td>
-			<td >'.$aparat['serie'].'</td>
-			<td>'.$aparat['nume'].'</td>
-			<td >'.$aparat['data_autorizatie'].'</td>
-			<td >'.$aparat['data_inspectie'].'</td>
-			</tr>';
-		}
-		
-		echo '
+			$query = (
+				"SELECT aparat.*
+				FROM `aparat` AS aparat
+				WHERE aparat.id_firma='0'
+				ORDER BY aparat.ordinea ASC"
+			);
+
+			$stmt = $db->prepare($query);
+			$ok = $stmt->execute();
+
+			if (!$ok) {
+				throw new Exception("Ceva nu a mers cum trebuia");
+			}
+
+			foreach ($stmt as $device) {
+				echo'
+				<tr onclick="document.location='."'"."optiuni_aparat.php?id_aparat=".$device['id']."&id_firma=".$device['id_firma']."'".'" class="hover" >
+				<td >'.$device['ordinea'].'</td>
+				<td >'.$device['serie'].'</td>
+				<td>'.$device['nume'].'</td>
+				<td >'.$device['data_autorizatie'].'</td>
+				<td >'.$device['data_inspectie'].'</td>
+				</tr>';
+			}
+
+			?>
 		</tbody>
 	</table>
-</div>';		
-?>
-
+</div>
 <script>
 $(document).ready(function() {
-    $('#example').dataTable({	"bJQueryUI": true,
-			"sPaginationType": "full_numbers"});
-} );
+	$('#example').dataTable({
+		"bJQueryUI": true,
+		"sPaginationType": "full_numbers"
+	});
+});
 </script>
+
 <?php
 
-		Page::showFooter();
+Page::showFooter();

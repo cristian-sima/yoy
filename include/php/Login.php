@@ -30,9 +30,9 @@ class Login {
 			);
 
 			$stmt = $db->prepare($query);
-			$ok = $stmt->execute(array(
+			$ok = $stmt->execute([
 				'user' => $_SESSION['user']
-			));
+			]);
 
 			if(!$ok) {
 				throw new Exception("Ceva nu a mers cum trebuia");
@@ -84,10 +84,10 @@ class Login {
 				);
 
 				$stmt = $db->prepare($query);
-				$ok = $stmt->execute(array(
+				$ok = $stmt->execute([
 					'temp' => "0",
 					'user' => $_SESSION['user']
-				));
+				]);
 
 				if(!$ok) {
 					throw new Exception("Ceva nu a mers cum trebuia");
@@ -112,10 +112,10 @@ class Login {
 				);
 
 				$stmt = $db->prepare($query);
-				$ok = $stmt->execute(array(
+				$ok = $stmt->execute([
 					'temp' =>  time(),
 					'user' => $_SESSION['user']
-				));
+				]);
 
 				if(!$ok) {
 					throw new Exception("Ceva nu a mers cum trebuia");
@@ -166,10 +166,10 @@ class Login {
 							);
 
 							$stmt = $db->prepare($query);
-							$ok = $stmt->execute(array(
+							$ok = $stmt->execute([
 								'temp' => 0,
 								'user' => $_POST['user']
-							));
+							]);
 
 							if(!$ok) {
 								throw new Exception("Ceva nu a mers cum trebuia");
@@ -230,10 +230,10 @@ class Login {
 			);
 
 			$stmt = $db->prepare($query);
-			$ok = $stmt->execute(array(
+			$ok = $stmt->execute([
 				'user' => $clientUser,
 				'active' => '1'
-			));
+			]);
 
 			if(!$ok) {
 				return false;
@@ -297,9 +297,9 @@ class Login {
 			);
 
 			$stmt = $db->prepare($query);
-			$ok = $stmt->execute(array(
+			$ok = $stmt->execute([
 				'data' => $data_expir
-			));
+			]);
 
 			if(!$ok) {
 				throw new Exception("Ceva nu a mers cum trebuia");
@@ -314,9 +314,9 @@ class Login {
 			);
 
 			$stmt = $db->prepare($query);
-			$ok = $stmt->execute(array(
+			$ok = $stmt->execute([
 				'user' => $user
-			));
+			]);
 
 			if(!$ok) {
 				throw new Exception("Ceva nu a mers cum trebuia");
@@ -333,11 +333,11 @@ class Login {
 
 				$stmt2 = $db->prepare($query2);
 
-				$ok2 = $stmt2->execute(array(
+				$ok2 = $stmt2->execute([
 					'user' => $user,
 					'ip' => $ip,
 					'data' => $data
-				));
+				]);
 
 				if(!$ok2) {
 					throw new Exception("Ceva nu a mers cum trebuia");
@@ -365,11 +365,11 @@ class Login {
 					);
 
 					$stmt = $db->prepare($query);
-					$ok = $stmt->execute(array(
+					$ok = $stmt->execute([
 						'incercari' => $incercari,
 						'data' => $data,
 						'user' => $user
-					));
+					]);
 
 					if(!$ok) {
 						throw new Exception("Ceva nu a mers cum trebuia");
