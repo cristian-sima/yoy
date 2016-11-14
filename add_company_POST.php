@@ -77,7 +77,7 @@ try {
 			<div class="text-success my-3">
 				<h1>Firma a fost adăugată</h1>
 			</div>
-			<a class="btn btn-primary btn-lg" href="companies.php ">
+			<a id="back-button" class="btn btn-primary btn-lg" href="companies.php ">
 				Înapoi
 			</a>
 		</div>
@@ -87,7 +87,7 @@ try {
 
 	<script type="text/javascript">
 	(function(){
-
+		$("#back-button").focus();
 	})()
 	</script>
 
