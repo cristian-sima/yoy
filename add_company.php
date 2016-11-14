@@ -9,7 +9,7 @@ try {
 	?>
 	<div class="container">
 		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="companies.php">Firme spațiu</a></li>
+			<li class="breadcrumb-item"><a href="companies.php">Firme partenere</a></li>
 			<li class="breadcrumb-item active">Adaugă firmă</li>
 		</ol>
 		<div class="row">

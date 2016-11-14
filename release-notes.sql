@@ -18,3 +18,13 @@ DROP TABLE platataxa;
 
 DELETE FROM `taxa` WHERE `taxa`.`tip` = "suma";
 DELETE FROM `taxa` WHERE `taxa`.`id` = "procent";
+
+
+-- v3.0
+
+ALTER TABLE `firma` ENGINE = InnoDB;
+ALTER TABLE `procent` ENGINE = InnoDB;
+
+ALTER TABLE `firma` ADD UNIQUE(`id`);
+ALTER TABLE `procent` ADD INDEX(`idFirma`);
+ALTER TABLE `procent` ADD FOREIGN KEY (`idFirma`) REFERENCES firma(`id`);

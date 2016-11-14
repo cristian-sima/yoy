@@ -60,16 +60,16 @@ try {
 	?>
 	<div class="container">
 		<div class="row">
-			<div class="col-xs-10 h1">
-				<span class="hidden-md-down">
-					<img src="public/images/firme.png" alt="Firme spațiu" />
+			<div class="col-xs-9 col-sm-10 col-md-8 h2">
+				<span class="hidden-sm-down">
+					<img src="public/images/firme.png" alt="Firme partenere" />
 				</span>
-				Firme spațiu
+				Firme partenere
 			</div>
-			<div class="col-xs-2 text-xs-right">
+			<div class="col-xs-3 col-sm-2 col-md-4 text-xs-right">
 				<a class="btn btn-success" href="add_company.php"	>
 					<i class="fa fa-plus"></i>
-					<span class="hidden-md-down">
+					<span class="hidden-sm-down">
 						Adaugă firmă
 					</span>
 				</a>

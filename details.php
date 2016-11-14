@@ -68,7 +68,7 @@ if(!$ok) {
 <link href="public/css/fieldset.css" rel="stylesheet" type="text/css"/>
 
 <ol class="breadcrumb">
-	<li class="breadcrumb-item"><a href="companies.php">Firme spațiu</a></li>
+	<li class="breadcrumb-item"><a href="companies.php">Firme partenere</a></li>
 	<li class="breadcrumb-item active"><?php echo $firma->getDenumire(); ?></li>
 </ol>
 

@@ -169,24 +169,38 @@ class Design {
 					<?php
 				}
 
-				public static function showLoginForm() {
+				public static function showLoginForm($message) {
 					self::showHeaderHTML(false, false);
 					?>
 					<body>
-						<div class="container">
-							<form class="form-signin" action="request_access.php" method="POST">
-								<h2 class="form-signin-heading">Te rog să te conectezi</h2>
-								<label for="user" class="sr-only">Cont de utilizator</label>
-								<input type="text" id="user" name="user" class="form-control" placeholder="Cont de utilizator" required autofocus size="7" maxlength="30" >
-								<label for="pass" class="sr-only">Parolă</label>
-								<input type="password" id="pass" name="pass" class="form-control" placeholder="Parolă" required size="7" maxlength="30" >
-								<div class="checkbox">
-									<label>
-										<input type="checkbox" name="remember"> Ține-mă minte
-									</label>
+						<div class="container mt-3">
+							<div class="row">
+								<div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-xl-6 offset-xl-3">
+									<?php
+									if(isset($message))
+									{
+										?>
+										<div class="alert alert-warning">
+											<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <?= $message ?>
+										</div>
+										<?php
+									}
+									?>
+									<form class="mt-3" action="request_access.php" method="POST">
+										<h2 class="form-signin-heading">Te rog să te conectezi</h2>
+										<label for="user" class="sr-only">Cont de utilizator</label>
+										<input type="text" id="user" name="user" class="form-control" placeholder="Cont de utilizator" required autofocus size="7" maxlength="30" >
+										<label for="pass" class="sr-only">Parolă</label>
+										<input type="password" id="pass" name="pass" class="form-control" placeholder="Parolă" required size="7" maxlength="30" >
+										<div class="checkbox">
+											<label>
+												<input type="checkbox" checked name="remember"> Ține-mă minte
+											</label>
+										</div>
+										<input class="btn btn-lg btn-primary btn-block" type="submit" onclick="beforeSubmit()" name="sublogin" value="Conectează-mă" />
+									</form>
 								</div>
-								<input class="btn btn-lg btn-primary btn-block" type="submit" onclick="beforeSubmit()" name="sublogin" value="Conectează-mă" />
-							</form>
+							</div>
 						</div>
 						<?php
 					}

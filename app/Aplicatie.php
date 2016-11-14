@@ -44,8 +44,7 @@ class Aplicatie {
       $this->firma_organizatoare = new FirmaOrganizatoare($this->Database, 1);
     }
     catch (Exception $e) {
-      DESIGN::showError($e->getMessage());
-      Design::showLoginForm();
+      Design::showLoginForm($e->getMessage());
       die();
     }
   }
