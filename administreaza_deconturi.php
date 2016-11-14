@@ -1,5 +1,11 @@
 <?php
 
+require_once "app/Guvern.php";
+require_once "app/Romanian.php";
+require_once "app/Aplicatie.php";
+require_once "app/Procesare.php";
+require_once "app/FirmaSpatiu.php";
+require_once "app/SelectSituatie_GUI.php";
 
 Page::showHeader();
 Page::showContent();
