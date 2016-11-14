@@ -7,10 +7,12 @@ class Design {
 
 	public static function showHeader() {
 		$_temp = Aplicatie::getInstance();
-		self::showHeaderHTML();
+		$isAccountAdministrator = Aplicatie::getInstance()->getUtilizator()->isAdministrator();
+
+		self::showHeaderHTML(true, $isAccountAdministrator);
 	}
 
-	public static function showHeaderHTML() {
+	public static function showHeaderHTML($showMenu, $isAccountAdministrator) {
 		?>
 		<!DOCTYPE html>
 		<html lang="ro">
@@ -26,63 +28,65 @@ class Design {
 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
 		</head>
 		<body>
-			<div class="container-fluid">
+			<div class="container">
+				<?php if($showMenu) { ?>
 				<nav class="navbar navbar-light bg-faded mb-1">
-					<?php
-					if (Aplicatie::getInstance()->getUtilizator()->isAdministrator()) {
-						?>
-						<ul class="nav navbar-nav">
-							<li class="nav-item">
-								<a class="nav-link" href="space_companies.php">Firme</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="utilizatori.php">Utilizatori</a>
-							</li>
-							<li class="nav-item dropdown">
-								<a class="nav-link dropdown-toggle" href="toate_aparatele.php" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aparate</a>
-								<div class="dropdown-menu" aria-labelledby="supportedContentDropdown">
-									<a class="dropdown-item" href="toate_aparatele.php">Toate aparatele</a>
-									<a class="dropdown-item" href="aparate_din_depozit.php">Depozit</a>
-								</div>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="selecteaza_situatie.php">Situații</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="actiuni.php">Acțiuni</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="vizualizare_dispozitii.php">Dispoziții</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="depuneri.php">Depuneri</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="setari.php">Setări</a>
-							</li>
-						</ul>
-						<form class="form-inline float-xs-right">
-							<?php
-							echo '
-							<a class="btn btn-sm btn-secondary" href="editare_date_utilizator.php?id_user=' . Aplicatie::getInstance()->getUtilizator()->getID() . '">
-							<i class="fa fa-user" aria-hidden="true"></i>
-							<span class="hidden-md-down">
-							Modifică datele
-							</span>
-							</a>
-							<button class="btn btn-sm btn-secondary" id="disconnectButton" >
-							<i class="fa fa-sign-out" aria-hidden="true"></i>
-							<span class="hidden-md-down">
-							Deconectează-mă
-							</span>
-							</button>
-							';
+					<button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"></button>
+					<div class="collapse navbar-toggleable-md" id="navbarResponsive">
+
+						<?php
+						if ($isAccountAdministrator) {
 							?>
-						</form>
-						<?php } else { ?>
-							<a class="navbar-brand" href="#">YOY.ro</a>
-							<?php } ?>
+							<ul class="nav navbar-nav">
+								<li class="nav-item">
+									<a class="nav-link" href="space_companies.php">Firme</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="utilizatori.php">Utilizatori</a>
+								</li>
+								<li class="nav-item dropdown">
+									<a class="nav-link dropdown-toggle" href="toate_aparatele.php" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aparate</a>
+									<div class="dropdown-menu" aria-labelledby="supportedContentDropdown">
+										<a class="dropdown-item" href="toate_aparatele.php">Toate aparatele</a>
+										<a class="dropdown-item" href="aparate_din_depozit.php">Depozit</a>
+									</div>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="selecteaza_situatie.php">Situații</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="actiuni.php">Acțiuni</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="vizualizare_dispozitii.php">Dispoziții</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="depuneri.php">Depuneri</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="setari.php">Setări</a>
+								</li>
+							</ul>
+							<form class="form-inline float-xs-right">
+								<?php
+								echo '
+								<a class="btn btn-sm btn-secondary" href="editare_date_utilizator.php?id_user=' . Aplicatie::getInstance()->getUtilizator()->getID() . '">
+								<i class="fa fa-user" aria-hidden="true"></i>
+								Modifică datele
+								</a>
+								<button class="btn btn-sm btn-secondary" id="disconnectButton" >
+								<i class="fa fa-sign-out" aria-hidden="true"></i>
+								Deconectează-mă
+								</button>
+								';
+								?>
+							</form>
+							<?php } else { ?>
+								<a class="navbar-brand" href="#">YOY.ro</a>
+								<?php } ?>
+							</div>
 						</nav>
+						<?php } ?>
 					</div>
 					<?php
 				}
@@ -136,6 +140,7 @@ class Design {
 			<script type="text/javascript" src="public/js/datatables.min.js"></script>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
 			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+			<script type="text/javascript" src="public/js/extra.js"></script>
 			<script>
 			$.extend(
 				true,
@@ -166,7 +171,7 @@ class Design {
 	}
 
 	public static function showLoginForm() {
-		self::showHeaderHTML();
+		self::showHeaderHTML(false, false);
 		?>
 		<body>
 			<div class="container">

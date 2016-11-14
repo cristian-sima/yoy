@@ -138,14 +138,17 @@ $db = Aplicatie::getInstance()->Database;
 				foreach($stmt as $company) {
 
 					$result = $engine->render(
-						'<tr onClick=document.location="{url}" class="hover">
-						<td>{name}</td>
+						'<tr>
+						<td>
+						<a href="details.php?idFirma={id}">
+						{name}
+						</td>
 						<td>{address}</td>
 						<td>{endDate}</td>
 						</tr>
 						',
 						[
-							"url" => 'details.php?idFirma='.$company['id'],
+							"id" => $company['id'],
 							"name" => $company['nume'],
 							"address" => $company['localitate'],
 							"endDate" => $company['dataIncetare']

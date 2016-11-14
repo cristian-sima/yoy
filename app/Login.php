@@ -2,7 +2,7 @@
 require_once "Utilizator.php";
 
 function showLoading () {
-	DESIGN::showHeaderHTML();
+	DESIGN::showHeaderHTML(false, false);
 	echo '
 	<body>
 	<div class="text-xs-center mt-3">
@@ -274,7 +274,7 @@ class Login {
 		return userHasProblems;
 	}
 	public static function disconnect() {
-		showLoading();
+
 		if (isset($_COOKIE['cookuser']) && isset($_COOKIE['cookpass'])) {
 			setcookie("cookuser", "", time() - 60 * 60 * 24 * 100, "/");
 			setcookie("cookpass", "", time() - 60 * 60 * 24 * 100, "/");
@@ -284,7 +284,9 @@ class Login {
 			unset($_SESSION['parola']);
 			$_SESSION = array();
 			@session_destroy();
+			showLoading();
 		} else {
+			showLoading();
 			echo " <meta http-equiv='Refresh' content='0;url=index.php'>";
 		}
 	}
