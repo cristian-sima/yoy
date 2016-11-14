@@ -13,7 +13,7 @@ $db = Aplicatie::getInstance()->Database;
 <div class="container">
 	<div class="row">
 		<div class="col-xs-8">
-			<h1><img src="public/images/user.png" align="absmiddle" />Utilizatori</h1>
+			<h1><img src="public/images/user.png"  />Utilizatori</h1>
 		</div>
 		<div class="col-xs-4 text-xs-right">
 			<input class="btn btn-success btn-sm" type="button" value="Adaugă administrator"	onclick="document.location='adauga_utilizator.php?type=admin'" />

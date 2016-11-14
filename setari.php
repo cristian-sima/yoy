@@ -6,7 +6,7 @@ Design::showHeader();
 
 
 
-Design::showHeading('<img src="public/images/setari.png" align="absmiddle" /> Setări', "");
+Design::showHeading('<img src="public/images/setari.png"  /> Setări', "");
 
 echo'<br />
 

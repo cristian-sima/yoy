@@ -8,7 +8,7 @@ Design::showHeader();
 	<tr>
 		<td>
 			<h2 style="color: orange">
-				<img src="public/images/firme.png" align="absmiddle" />Adaugă firmă
+				<img src="public/images/firme.png"  />Adaugă firmă
 			</h2>
 		</td>
 		<td style="text-align: right">

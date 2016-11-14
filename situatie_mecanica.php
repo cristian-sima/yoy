@@ -138,7 +138,7 @@
 
 
 
-		Design::showHeading('<img src="public/images/results.png" width="64px" height="64px" align="absmiddle"/>  Situație firma '.$firma->getDenumire().'</b>', "");
+		Design::showHeading('<img src="public/images/results.png" width="64px" height="64px" />  Situație firma '.$firma->getDenumire().'</b>', "");
 
 
 		echo '

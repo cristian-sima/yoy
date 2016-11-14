@@ -1,8 +1,5 @@
 <?php
 
-require_once "vendor/StringTemplate/Engine.php";
-$engine = new Engine();
-
 require_once 'app/Aplicatie.php';
 
 Design::showHeader();
@@ -15,7 +12,7 @@ $db = Aplicatie::getInstance()->Database;
 	<div class="row">
 		<div class="col-xs-10 h1">
 			<span class="hidden-md-down">
-				<img src="public/images/firme.png" align="absmiddle" />
+				<img src="public/images/firme.png" alt="Firme spațiu" />
 			</span>
 			Firme spațiu
 		</div>
@@ -32,7 +29,7 @@ $db = Aplicatie::getInstance()->Database;
 
 	<div class="mt-2">
 		<h4>Firme active</h4>
-		<table cellpadding="0" cellspacing="0" border="0" class="display"	id="active_companies" style="">
+		<table class="display"	id="active_companies">
 			<thead>
 				<tr>
 					<th>Denumire</th>
@@ -58,7 +55,7 @@ $db = Aplicatie::getInstance()->Database;
 					throw new Exception("Ceva nu a mers cum trebuia");
 				}
 
-				foreach($stmt as $company) {
+				foreach($stmt as $activeCompany) {
 
 					$query2 = (
 						"SELECT *
@@ -69,7 +66,7 @@ $db = Aplicatie::getInstance()->Database;
 
 					$stmt2 = $db->prepare($query2);
 					$ok2 = $stmt2->execute(array(
-						'companyID' => $company['id'],
+						'companyID' => $activeCompany['id'],
 						'isNow' => 1
 					));
 
@@ -83,25 +80,17 @@ $db = Aplicatie::getInstance()->Database;
 						$currentProcent = $procent["valoare"];
 					}
 
-					$result = $engine->render(
-						'<tr class="hover">
+					?>
+					<tr>
 						<td>
-						<a href="details.php?idFirma={id}">{name}</a>
+							<a href="details.php?idFirma=<?= $activeCompany["id"]; ?>">
+								<?= $activeCompany["nume"]; ?>
+							</a>
 						</td>
-						<td>{address}</td>
-						<td>{currentProcent}%</td>
-						</tr>
-						',
-						[
-							"id" => $company['id'],
-							"name" => $company['nume'],
-							"address" => $company['localitate'],
-							"currentProcent" => $currentProcent
-						]
-					);
-
-					echo $result;
-
+						<td><?= $activeCompany["localitate"]; ?></td>
+						<td><?= $currentProcent; ?>% </td>
+					</tr>
+					<?php
 				}
 				?>
 			</tbody>
@@ -110,7 +99,7 @@ $db = Aplicatie::getInstance()->Database;
 	<hr>
 	<div class="mt-2">
 		<h4>Firme inactive (contracte terminate)</h4>
-		<table cellpadding="0" cellspacing="0" border="0" class="display" id="inactive_companies" style="">
+		<table class="display" id="inactive_companies">
 			<thead>
 				<tr>
 					<th>Denumire</th>
@@ -123,40 +112,28 @@ $db = Aplicatie::getInstance()->Database;
 				$query = (
 					"SELECT *
 					FROM `firma`
-					WHERE `activa`= :active"
+					WHERE `activa`= '0'"
 				);
 
 				$stmt = $db->prepare($query);
-				$ok = $stmt->execute(array(
-					'active' => "0"
-				));
+				$ok = $stmt->execute();
 
 				if(!$ok) {
 					throw new Exception("Ceva nu a mers cum trebuia");
 				}
 
 				foreach($stmt as $company) {
-
-					$result = $engine->render(
-						'<tr>
+					?>
+					<tr>
 						<td>
-						<a href="details.php?idFirma={id}">
-						{name}
+							<a href="details.php?idFirma=<?= $company["id"]; ?>">
+								<?= $company["nume"]; ?>
+							</a>
 						</td>
-						<td>{address}</td>
-						<td>{endDate}</td>
-						</tr>
-						',
-						[
-							"id" => $company['id'],
-							"name" => $company['nume'],
-							"address" => $company['localitate'],
-							"endDate" => $company['dataIncetare']
-						]
-					);
-
-					echo $result;
-
+						<td><?= $company["localitate"]; ?></td>
+						<td><?= $company["dataIncetare"]; ?></td>
+					</tr>
+					<?php
 				}
 				?>
 			</tbody>
@@ -168,9 +145,8 @@ $db = Aplicatie::getInstance()->Database;
 DESIGN::showFooter();
 ?>
 
-<script>
+<script type="text/javascript">
 (function() {
 	$('#inactive_companies, #active_companies').dataTable();
 })();
-
 </script>
