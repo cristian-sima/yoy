@@ -4,7 +4,7 @@ require_once "app/Procesare.php";
 require_once 'app/Aplicatie.php';
 
 function verifyCompany ($data) {
-	function isWrongName($value) {
+	function checkName($value) {
 		$length = strlen($value);
 
 		$isWrong = (
@@ -12,10 +12,12 @@ function verifyCompany ($data) {
 			$length > 30
 		);
 
-		return $isWrong;
+		if($isWrong) {
+			throw new Exception("Denumirea are între 5 și 30 de caractere");
+		}
 	}
 
-	function isWrongAddress($value) {
+	function checkAddress($value) {
 		$length = strlen($value);
 
 		$isWrong = (
@@ -23,10 +25,12 @@ function verifyCompany ($data) {
 			$length > 30
 		);
 
-		return $isWrong;
+		if($isWrong) {
+			throw new Exception("Adresa are între 5 și 30 de caractere");
+		}
 	}
 
-	function isWrongCurrentPercent($raw) {
+	function checkCurrentPercent($raw) {
 		$value = intval($raw);
 
 		$isWrong = (
@@ -35,40 +39,40 @@ function verifyCompany ($data) {
 			$value > 100
 		);
 
-		return $isWrong;
+		if($isWrong) {
+			throw new Exception("Procentul este între 0 și 100%");
+		}
 	}
 
-	function isWrongComments($value) {
+	function checkComments($value) {
 		$length = strlen($value);
 
 		$isWrong = (
 			$length > 30
 		);
 
-		return $isWrong;
+		if($isWrong) {
+			throw new Exception("Comentariile au maxim 30 de caractere");
+		}
 	}
 
-	function isWrongContactDetails($value) {
+	function checkContactDetails($value) {
 		$length = strlen($value);
 
 		$isWrong = (
 			$length > 30
 		);
 
-		return $isWrong;
+		if($isWrong) {
+			throw new Exception("Datele de contact au maxim 30 de caractere");
+		}
 	}
 
-	$somethingWrong = (
-		isWrongName($data["nume"]) ||
-		isWrongAddress($data["localitate"]) ||
-		isWrongCurrentPercent($data["procent"]) ||
-		isWrongComments($data["comentarii"]) ||
-		isWrongContactDetails($data["date_contact"])
-	);
-
-	if($somethingWrong) {
-		throw new Exception("Date furnizate nu sunt complete sau corecte");
-	}
+	checkName($data["nume"]);
+	checkAddress($data["localitate"]);
+	checkCurrentPercent($data["procent"]);
+	checkComments($data["comentarii"]);
+	checkContactDetails($data["date_contact"]);
 }
 
 function insertPercent($db, $data, $companyID) {

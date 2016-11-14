@@ -102,9 +102,12 @@ try {
 					<hr>
 					<div id="wrong-data-message" class="alert alert-warning" role="alert" style="display:none">
 						<strong>
+							<i class="fa fa-exclamation-circle" aria-hidden="true"></i>
 							Nu am putut trimite formularul
 						</strong>
-						Completează corect toate câmpurile
+						<div id="current-problem">
+
+						</div>
 					</div>
 					<div class="text-xs-center">
 						<button aria-label="Adaugă" class="btn btn-primary" type="submit">
@@ -124,90 +127,82 @@ try {
 
 		$("#company_form").submit(function(event) {
 
-			const hasProblems = function () {
-				var isWrongName = function () {
-					var element = $("#nume"),
-					value = element.val(),
-					isWrong = (
-						value.length < 5 ||
-						value.length > 30
-					);
-
-					if (isWrong) {
-						element.focus();
-					}
-
-					return isWrong;
-				},
-				isWrongAddress = function () {
-					var element = $("#localitate"),
-					value = element.val(),
-					isWrong = (
-						value.length < 5 ||
-						value.length > 30
-					);
-
-					if (isWrong) {
-						element.focus();
-					}
-
-					return isWrong;
-				},
-				isWrongCurrentPercent = function () {
-					var element = $("#procent"),
-					raw = element.val(),
-					value = Number(raw),
-					isWrong = (
-						raw === "" ||
-						isNaN(value) ||
-						value < 0 ||
-						value > 100
-					);
-
-					if (isWrong) {
-						element.focus();
-					}
-
-					return isWrong;
-				},
-				isWrongComments = function () {
-					var element = $("#comentarii"),
-					value = element.val(),
-					isWrong = (
-						value.length > 30
-					);
-
-					if (isWrong) {
-						element.focus();
-					}
-
-					return isWrong;
-				},
-				isWrongContactDetails = function () {
-					var element = $("#date_contact"),
-					value = element.val(),
-					isWrong = (
-						value.length > 30
-					);
-
-					if (isWrong) {
-						element.focus();
-					}
-
-					return isWrong;
-				};
-
-				return (
-					isWrongName() ||
-					isWrongAddress() ||
-					isWrongCurrentPercent() ||
-					isWrongComments() ||
-					isWrongContactDetails()
+			var checkName = function () {
+				var element = $("#nume"),
+				value = element.val(),
+				isWrong = (
+					value.length < 5 ||
+					value.length > 30
 				);
+
+				if (isWrong) {
+					element.focus();
+					throw "Denumirea are între 5 și 30 de caractere";
+				}
+			},
+			checkAddress = function () {
+				var element = $("#localitate"),
+				value = element.val(),
+				isWrong = (
+					value.length < 5 ||
+					value.length > 30
+				);
+
+				if (isWrong) {
+					element.focus();
+					throw "Adresa are între 5 și 30 de caractere"
+				}
+			},
+			checkCurrentPercent = function () {
+				var element = $("#procent"),
+				raw = element.val(),
+				value = Number(raw),
+				isWrong = (
+					raw === "" ||
+					isNaN(value) ||
+					value < 0 ||
+					value > 100
+				);
+
+				if (isWrong) {
+					element.focus();
+					throw "Procentul este între 0 și 100%";
+				}
+			},
+			checkComments = function () {
+				var element = $("#comentarii"),
+				value = element.val(),
+				isWrong = (
+					value.length > 30
+				);
+
+				if (isWrong) {
+					element.focus();
+					throw "Comentariile au maxim 30 de caractere";
+				}
+			},
+			checkContactDetails = function () {
+				var element = $("#date_contact"),
+				value = element.val(),
+				isWrong = (
+					value.length > 30
+				);
+
+				if (isWrong) {
+					element.focus();
+					throw "Datele de contact au maxim 30 de caractere";
+				}
 			};
 
-			if (hasProblems()) {
+			try {
+				checkName()
+				checkAddress()
+				checkCurrentPercent()
+				checkComments()
+				checkContactDetails()
+			} catch (e) {
 				$("#wrong-data-message").fadeIn();
+				$("#current-problem").html(e);
 				event.preventDefault();
 
 				return false;
