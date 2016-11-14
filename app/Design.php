@@ -39,7 +39,7 @@ class Design {
 								?>
 								<ul class="nav navbar-nav">
 									<li class="nav-item">
-										<a class="nav-link" href="space_companies.php">Firme</a>
+										<a class="nav-link" href="companies.php">Firme</a>
 									</li>
 									<li class="nav-item">
 										<a class="nav-link" href="utilizatori.php">Utilizatori</a>

@@ -146,7 +146,7 @@ $noActiveCompanies = ($stmt->rowCount() == 0)
 						<br />
 						<br />
 						<?php echo '
-						Mută aparatul la firma: <select name="id_firma_noua">';
+						Mută aparatul la firma: <select name="id_add_company">';
 						foreach ($stmt as $company) {
 							echo'<option value="'.$company['id'].'"  >'.($company['nume'])."</option>";
 						}

@@ -13,7 +13,7 @@
 		Procesare::checkRequestedData(
 							array('nume','localitate','procent'),
 							$data,
-							'firma_noua.php');
+							'add_company.php');
 		Procesare::createEmptyFields($data, array("comentarii","date_contact"));
 
 
@@ -38,7 +38,7 @@
 		// $mysql = "INSERT INTO completare(`idFirma`,`_when`) VALUES('".$id."','".date('Y-m-d')."')";
 		// $result3 = mysql_query($mysql, Aplicatie::getInstance()->Database) or die(mysql_error());
 
-		Design::showConfirmation('<span class="confirmation">Firma a fost adăugată</span> <a href="space_companies.php ">Înapoi</a>');	
+		Design::showConfirmation('<span class="confirmation">Firma a fost adăugată</span> <a href="companies.php ">Înapoi</a>');	
 
 	}
 	catch(Exception $e)

@@ -63,7 +63,7 @@ try {
 				Firme spațiu
 			</div>
 			<div class="col-xs-2 text-xs-right">
-				<a class="btn btn-success" href="firma_noua.php"	>
+				<a class="btn btn-success" href="add_company.php"	>
 					<i class="fa fa-plus"></i>
 					<span class="hidden-md-down">
 						Adaugă firmă

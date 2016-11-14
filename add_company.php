@@ -12,14 +12,14 @@ Design::showHeader();
 			</h2>
 		</td>
 		<td style="text-align: right">
-			<input type="button" value="Înapoi la firme" onclick="document.location='space_companies.php'" />
+			<input type="button" value="Înapoi la firme" onclick="document.location='companies.php'" />
 		</td>
 	</tr>
 </table>
 <div class="content">
 	<div id="dialog"></div>
 	<div id="form_wrapper" class="form_wrapper" style="width: 550px; display: block;">
-		<form id="f1" class="register active" style="" action="firma_noua_POST.php" method="POST">
+		<form id="f1" class="register active" style="" action="add_company_POST.php" method="POST">
 			<h3>
 				<cufon class="cufon cufon-canvas" alt="Register"
 				style="width: 106px; height: 25px;">

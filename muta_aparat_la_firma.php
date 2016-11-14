@@ -44,7 +44,7 @@ try
 		 */
 
 
-		$firma		= new FirmaSpatiu($data['id_firma_noua']);
+		$firma		= new FirmaSpatiu($data['id_add_company']);
 		$data_		= new DataCalendaristica(date("Y-m-d"));
 		$situatie 	= new SituatieMecanicaGraficaCompletaAparatNou($firma, $aparat_, $data['mecanic_intrare'], $data['mecanic_iesire']);
 
@@ -188,7 +188,7 @@ try
 
 
 
-		Design::showConfirmation("Aparatul a fost mutatat la noua firma ! <a href='situatie_mecanica.php?id_firma=".$data['id_firma_noua']."'>Înapoi la Firmă nouă</a>");
+		Design::showConfirmation("Aparatul a fost mutatat la noua firma ! <a href='situatie_mecanica.php?id_firma=".$data['id_add_company']."'>Înapoi la Firmă nouă</a>");
 
 
 	}
