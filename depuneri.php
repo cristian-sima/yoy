@@ -7,8 +7,8 @@ require_once "app/Procesare.php";
 require_once "app/FirmaSpatiu.php";
 require_once "app/SelectSituatie_GUI.php";
 
-Page::showHeader();
-Page::showContent();
+Design::showHeader();
+
 
 
 Procesare::createEmptyFields($_GET, array ('id_firma', 'data'));
@@ -24,7 +24,7 @@ $selector_GUI->setAdresaButon("depuneri.php");
 $selector_GUI->setTypeOfDocument("Depuneri de numerar");
 
 
-Page::showHeading("Vizualizați depuneri de numerar", '
+Design::showHeading("Vizualizați depuneri de numerar", '
 			<input class="disp" type="button" value="Tipărește" class="disp" onclick="window.print();" />
 			<input	class="disp" type="button" value="Înapoi acțiuni" class="disp" onclick="document.location='."'".'actiuni.php?data='.$data."'".'" />
 			<input	class="disp" type="button" value="Adaugă depunere" class="disp" onclick="document.location='."'".'depunere_numerar_noua.php?data='.$data."'".'" />
@@ -94,7 +94,7 @@ else
 
 
 
-Page::showFooter();
+Design::showFooter();
 ?>
 
 <style>

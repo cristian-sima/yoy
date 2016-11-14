@@ -1,6 +1,6 @@
 <?php
 
-	$infoPage = array(
+	$infoDesign = array(
 			"currentMenu" 		=> "1",
 			"connection" 		=> "true",
 			"type" 				=> "admin",
@@ -102,4 +102,4 @@ $(document).ready(function() {
 					"sPaginationType": "full_numbers"});
 } );
 </script>
-<?php endOfPage();?>
+<?php endOfDesign();?>

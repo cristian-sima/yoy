@@ -2,8 +2,8 @@
 
 require_once "app/Aplicatie.php";
 
-Page::showHeader();
-Page::showContent();
+Design::showHeader();
+
 
 
 
@@ -79,4 +79,4 @@ Page::showContent();
 </script>
 <?php
 
-Page::showFooter();
+Design::showFooter();

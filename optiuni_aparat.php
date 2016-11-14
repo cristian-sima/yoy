@@ -5,12 +5,12 @@ require_once 'app/Aplicatie.php';
 require_once 'app/FirmaSpatiu.php';
 require_once "app/SelectSituatie_GUI.php";
 
-Page::showHeader();
-Page::showContent();
+Design::showHeader();
+
 
 $db = Aplicatie::getInstance()->Database;
 
-Page::showHeading("Detalii aparat", "");
+Design::showHeading("Detalii aparat", "");
 
 $aparat = new Aparat($_GET['id_aparat']);
 
@@ -203,4 +203,4 @@ $(document).tooltip({
 </script>';
 
 <?php
-Page::showFooter();
+Design::showFooter();

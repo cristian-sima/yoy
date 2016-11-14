@@ -2,7 +2,7 @@
 require_once "Utilizator.php";
 
 function showLoading () {
-	PAGE::showHeaderHTML();
+	DESIGN::showHeaderHTML();
 	echo '
 	<body>
 	<div class="text-xs-center mt-3">

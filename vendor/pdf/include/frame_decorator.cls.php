@@ -482,7 +482,7 @@ abstract class Frame_Decorator extends Frame {
   }
   
   /**
-   * @return Page_Frame_Decorator
+   * @return Design_Frame_Decorator
    */
   function get_root() {
     return $this->_root;

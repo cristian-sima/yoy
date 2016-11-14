@@ -4,7 +4,7 @@
 	
 	Login::permiteOperator();
 	
-	Page::showHeader();
+	Design::showHeader();
 	
 	// nothing
 	

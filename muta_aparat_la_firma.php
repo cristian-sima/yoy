@@ -7,8 +7,8 @@ require_once "app/SituatieMecanicaTotaluri.php";
 require_once "app/SituatieMecanicaGraficaCompletaAparatNou.php";
 
 
-Page::showHeader();
-Page::showContent();
+Design::showHeader();
+
 
 try
 {
@@ -20,7 +20,7 @@ try
 	 */
 	if(!$aparat_->isActiv())
 	{
-		Page::complain("Aparatul a fost deja scos din uz !");
+		Design::complain("Aparatul a fost deja scos din uz !");
 	}
 	else
 	{
@@ -188,14 +188,14 @@ try
 
 
 
-		Page::showConfirmation("Aparatul a fost mutatat la noua firma ! <a href='situatie_mecanica.php?id_firma=".$data['id_firma_noua']."'>Înapoi la Firmă nouă</a>");
+		Design::showConfirmation("Aparatul a fost mutatat la noua firma ! <a href='situatie_mecanica.php?id_firma=".$data['id_firma_noua']."'>Înapoi la Firmă nouă</a>");
 
 
 	}
 }
 catch(Exception $e)
 {
-	Page::showError($e->getMessage());
+	Design::showError($e->getMessage());
 }
 
-Page::showFooter();
+Design::showFooter();

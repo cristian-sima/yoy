@@ -198,7 +198,7 @@ class CPDF_Adapter implements Canvas {
     $this->_page_number = $this->_page_count = 1;
     $this->_page_text = array();
 
-    $this->_pages = array($this->_pdf->getFirstPageId());
+    $this->_pages = array($this->_pdf->getFirstDesignId());
 
     $this->_image_cache = array();
   }
@@ -794,7 +794,7 @@ class CPDF_Adapter implements Canvas {
     $this->_page_number++;
     $this->_page_count++;
 
-    $ret = $this->_pdf->newPage();
+    $ret = $this->_pdf->newDesign();
     $this->_pages[] = $ret;
     return $ret;
   }

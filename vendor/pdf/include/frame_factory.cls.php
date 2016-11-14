@@ -24,11 +24,11 @@ class Frame_Factory {
    * 
    * @param $root Frame The frame to decorate
    * @param $dompdf DOMPDF The dompdf instance
-   * @return Page_Frame_Decorator
+   * @return Design_Frame_Decorator
    */
   static function decorate_root(Frame $root, DOMPDF $dompdf) {
-    $frame = new Page_Frame_Decorator($root, $dompdf);
-    $frame->set_reflower( new Page_Frame_Reflower($frame) );
+    $frame = new Design_Frame_Decorator($root, $dompdf);
+    $frame->set_reflower( new Design_Frame_Reflower($frame) );
     $root->set_decorator($frame);
     return $frame;
   }

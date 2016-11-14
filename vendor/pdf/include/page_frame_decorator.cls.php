@@ -12,7 +12,7 @@
  * @access private
  * @package dompdf
  */
-class Page_Frame_Decorator extends Frame_Decorator {
+class Design_Frame_Decorator extends Frame_Decorator {
 
   /**
    * y value of bottom page margin

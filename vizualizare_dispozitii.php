@@ -7,8 +7,8 @@
 	require_once "app/FirmaSpatiu.php";
 	require_once "app/SelectSituatie_GUI.php";
 
-	Page::showHeader();
-	Page::showContent();
+	Design::showHeader();
+	
 
 
 	Procesare::createEmptyFields($_GET, array ('id_firma', 'data'));
@@ -22,7 +22,7 @@
 	$selector_GUI->setAdresaButon("vizualizare_dispozitii.php");
 	$selector_GUI->setTypeOfDocument("Dispoziții");
 
-	Page::showHeading("Vizualizați dispoziții", '
+	Design::showHeading("Vizualizați dispoziții", '
 			<input class="disp" type="button" value="Tipărește" class="disp" onclick="window.print();" />
 			<input	class="disp" type="button" value="Adaugă dispoziție" class="disp" onclick="document.location='."'".'dispozitie_operator_noua.php'."'".';" />
 		');
@@ -144,7 +144,7 @@
 
 
 
-	Page::showFooter();
+	Design::showFooter();
 	?>
 
 	<style>

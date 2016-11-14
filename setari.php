@@ -2,11 +2,11 @@
 
 require_once "app/Aplicatie.php";
 
-Page::showHeader();
-Page::showContent();
+Design::showHeader();
 
 
-Page::showHeading('<img src="public/images/setari.png" align="absmiddle" /> Setări', "");
+
+Design::showHeading('<img src="public/images/setari.png" align="absmiddle" /> Setări', "");
 
 echo'<br />
 
@@ -112,4 +112,4 @@ $(document).ready(function() {
 </script>
 <?php
 
-	Page::showFooter();
+	Design::showFooter();

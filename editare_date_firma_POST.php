@@ -7,8 +7,8 @@ require_once "app/Utilizator.php";
 
 Login::permiteOperator();
 
-Page::showHeader();
-Page::showContent();
+Design::showHeader();
+
 
 try
 {
@@ -19,14 +19,14 @@ try
 	$q = "UPDATE  `firma` SET `nume` = '".$data['nume']."', `localitate`='".$data['localitate']."', `dateContact`='".$data['dateContact']."', `comentarii`='".$data['comentarii']."'  WHERE id = '".$data['id_firma']."' ";
 	$result = mysql_query($q, Aplicatie::getInstance()->Database);
 
-	Page::showConfirmation('<span class="confirmation">Datele au fost modificate</span> <a href="details.php?idFirma='.$data['id_firma'].'">Înapoi</a>');
+	Design::showConfirmation('<span class="confirmation">Datele au fost modificate</span> <a href="details.php?idFirma='.$data['id_firma'].'">Înapoi</a>');
 
 
 }
 catch(Exception $e)
 {
-	Page::showError($e->getMessage());
+	Design::showError($e->getMessage());
 }
 
-Page::showFooter();
+Design::showFooter();
 ?>

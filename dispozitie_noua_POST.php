@@ -4,8 +4,8 @@ require_once "app/Procesare.php";
 require_once "app/Aplicatie.php";
 
 Login::permiteOperator();
-Page::showHeader();
-Page::showContent();
+Design::showHeader();
+
 
 
 // for sql_injection for POST
@@ -110,13 +110,13 @@ try
 		$result = mysql_query($query, Aplicatie::getInstance()->Database);
 
 
-		Page::showConfirmation('<span class="confirmation">Dispozițiile au fost scrise </span> <a href="vizualizati_dispozitii.php">Înapoi la dispoziții</a>');
+		Design::showConfirmation('<span class="confirmation">Dispozițiile au fost scrise </span> <a href="vizualizati_dispozitii.php">Înapoi la dispoziții</a>');
 	}
 	else
 	{
 		if(Aplicatie::getInstance()->getUtilizator()->isAdministrator())
 		{
-			Page::showConfirmation('
+			Design::showConfirmation('
 			<big><span class="confirmation">Dispoziția a fost scrisă </span></big>
 			<div style="margin-left:50px;">
 				<ul >
@@ -128,14 +128,14 @@ try
 		}
 		else
 		{
-			Page::showConfirmation("Dispoziția a fost realizată cu suscces. <a href='situatie_mecanica_operator.php'>Înapoi la situație</a>");
+			Design::showConfirmation("Dispoziția a fost realizată cu suscces. <a href='situatie_mecanica_operator.php'>Înapoi la situație</a>");
 		}
 	}
 
 }
 catch(Exception $e)
 {
-	Page::showError($e->getMessage());
+	Design::showError($e->getMessage());
 }
 
-Page::showFooter();
+Design::showFooter();

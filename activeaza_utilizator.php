@@ -3,8 +3,8 @@
 require_once "app/Procesare.php";
 require_once "app/Aplicatie.php";
 
-Page::showHeader();
-Page::showContent();
+Design::showHeader();
+
 
 try {
 	$data = $_GET;
@@ -32,11 +32,11 @@ try {
 	if(!$ok) {
 		throw new Exception("Ceva nu a mers cum trebuia");
 	}
-		
-	Page::showConfirmation('<span class="confirmation">Datele au fost modificate</span> <a href="utilizatori.php ">Înapoi la utilizatori</a>');
+
+	Design::showConfirmation('<span class="confirmation">Datele au fost modificate</span> <a href="utilizatori.php ">Înapoi la utilizatori</a>');
 }
 catch (Exception $e) {
-	Page::showError($e->getMessage());
+	Design::showError($e->getMessage());
 }
-Page::showFooter();
+Design::showFooter();
 ?>

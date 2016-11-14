@@ -8,9 +8,9 @@ require_once "app/SelectSituatie_GUI.php";
 
 $firma			= new FirmaSpatiu($_GET['id_firma']);
 
-Page::showHeader();
-Page::showContent();
-Page::showHeading("Editeaza date firma",'<input	type="button" class="disp" value="Înapoi la date firma" onclick="document.location='."'".'details.php?idFirma='.$firma->getID()."'".'" />');
+Design::showHeader();
+
+Design::showHeading("Editeaza date firma",'<input	type="button" class="disp" value="Înapoi la date firma" onclick="document.location='."'".'details.php?idFirma='.$firma->getID()."'".'" />');
 
 
 ?>
@@ -89,4 +89,4 @@ Page::showHeading("Editeaza date firma",'<input	type="button" class="disp" value
 
 <?php
 
-	Page::showFooter();
+	Design::showFooter();

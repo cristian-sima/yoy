@@ -6,8 +6,8 @@ require_once "app/FirmaSpatiu.php";
 require_once "app/RegistruGraficCentral.php";
 require_once "app/RegistruGraficFirma.php";
 
-Page::showHeader();
-Page::showContent();
+Design::showHeader();
+
 
 try
 {
@@ -41,13 +41,13 @@ try
 					 )";
 	$result = mysql_query($mysql, Aplicatie::getInstance()->Database);
 
-	Page::showConfirmation('
+	Design::showConfirmation('
 		<big><span class="confirmation">Situația lunară a fost închisă</span></big>
 		<a href="inchide_situatie_luna.php?data='.$data['data'].'">Înapoi la închideri</a>');
 }
 catch(Exception $e)
 {
-	Page::showError($e->getMessage());
+	Design::showError($e->getMessage());
 }
 
-Page::showFooter();
+Design::showFooter();

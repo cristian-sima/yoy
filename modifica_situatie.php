@@ -4,8 +4,8 @@
 	require_once "app/FirmaSpatiu.php";
 	require_once "app/SituatieMecanica.php";
 	Login::permiteOperator();
-	Page::showHeader();
-	Page::showContent();
+	Design::showHeader();
+	
 	// for sql_injection for POST
 	foreach ($_POST as $index => $value)
 	{
@@ -24,7 +24,7 @@
 		$autor			= Aplicatie::getInstance()->getUtilizator();
 		$aparate_		= explode("|", $data['aparate_']);
 		$id_old_completare_mecanica		= 0;
-		// Page::representVisual($data);
+		// Design::representVisual($data);
 
 		/*
 		 * ------------------------------------------------------------------------
@@ -90,10 +90,10 @@
 					SET 	`total_incasari` = '".$situatie->getTotalIncasari()."'
 					WHERE `id` = '".$id_completare_mecanica."' ";
 		mysql_query($mysql, Aplicatie::getInstance()->Database);
-		Page::showConfirmation('<span class="confirmation"> Situația pe data de '.$data['from'].' a fost modificată !</span> <span style="color:orange" class="bold"> Vă rugăm să tipăriți situația acum !</span>  <a href="'.((Aplicatie::getInstance()->getUtilizator()->isOperator())?("situatie_mecanica_operator.php"):("situatie_mecanica.php")).'?id_firma='.$data['id_firma'].'&from='.$data['from'].'&to='.$data['from'].'">Înapoi la situație</a>');
+		Design::showConfirmation('<span class="confirmation"> Situația pe data de '.$data['from'].' a fost modificată !</span> <span style="color:orange" class="bold"> Vă rugăm să tipăriți situația acum !</span>  <a href="'.((Aplicatie::getInstance()->getUtilizator()->isOperator())?("situatie_mecanica_operator.php"):("situatie_mecanica.php")).'?id_firma='.$data['id_firma'].'&from='.$data['from'].'&to='.$data['from'].'">Înapoi la situație</a>');
 	}
 	catch(Exception $e)
 	{
-		Page::showError($e->getMessage());
+		Design::showError($e->getMessage());
 	}
-	Page::showFooter();
+	Design::showFooter();

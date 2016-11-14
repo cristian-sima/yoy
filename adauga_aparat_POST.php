@@ -6,8 +6,8 @@ require_once "app/Aplicatie.php";
 require_once "app/FirmaSpatiu.php";
 require_once "app/SituatieMecanicaGraficaCompletaAparatNou.php";
 
-Page::showHeader();
-Page::showContent();
+Design::showHeader();
+
 
 $db = Aplicatie::getInstance()->Database;
 $db->beginTransaction();
@@ -134,7 +134,7 @@ try {
 
 		$db->commit();
 
-		Page::showConfirmation(
+		Design::showConfirmation(
 			'<span class="confirmation">
 			Aparatul a fost adăugat în depozit
 			</span>
@@ -271,7 +271,7 @@ try {
 		$db->commit();
 
 		if ($data['firma_id'] != "0") {
-			Page::showConfirmation('<span class="confirmation">Aparatul a fost adaugăt la firmă !</span> <a href="aparate.php?id=' . $_POST['firma_id'] . ' ">Înapoi</a>');
+			Design::showConfirmation('<span class="confirmation">Aparatul a fost adaugăt la firmă !</span> <a href="aparate.php?id=' . $_POST['firma_id'] . ' ">Înapoi</a>');
 		}
 	}
 }
@@ -279,7 +279,7 @@ catch (Exception $e) {
 
 	$db->rollBack();
 
-	Page::showError($e->getMessage());
+	Design::showError($e->getMessage());
 }
-Page::showFooter();
+Design::showFooter();
 ?>

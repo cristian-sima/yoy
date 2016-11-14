@@ -1,6 +1,6 @@
 <?php
 
-require_once "Page.php";
+require_once "Design.php";
 require_once "Login.php";
 require_once "Utilizator.php";
 require_once "FirmaOrganizatoare.php";
@@ -44,8 +44,8 @@ class Aplicatie {
       $this->firma_organizatoare = new FirmaOrganizatoare($this->Database, 1);
     }
     catch (Exception $e) {
-      PAGE::showError($e->getMessage());
-      Page::showLoginForm();
+      DESIGN::showError($e->getMessage());
+      Design::showLoginForm();
       die();
     }
   }

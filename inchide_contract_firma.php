@@ -4,8 +4,8 @@ require_once "app/FirmaSpatiu.php";
 require_once "app/Procesare.php";
 require_once "app/Aplicatie.php";
 
-Page::showHeader();
-Page::showContent();
+Design::showHeader();
+
 
 try
 {
@@ -24,14 +24,14 @@ try
 	$result = mysql_query($q, Aplicatie::getInstance()->Database);
 
 
-	Page::showConfirmation('<span class="confirmation">Contractul a fost încheiat</span> <a href="details.php?idFirma='.$_GET['id_firma'].'">Înapoi</a>');
+	Design::showConfirmation('<span class="confirmation">Contractul a fost încheiat</span> <a href="details.php?idFirma='.$_GET['id_firma'].'">Înapoi</a>');
 
 
 }
 catch(Exception $e)
 {
-	Page::showError($e->getMessage());
+	Design::showError($e->getMessage());
 }
 
-Page::showFooter();
+Design::showFooter();
 ?>

@@ -24,7 +24,7 @@ class SelectSituatie_GUI {
 			$this->data = new DataCalendaristica($data);
 		}
 		catch (Exception $e) {
-			Page::complain($e->getMessage());
+			Design::complain($e->getMessage());
 		}
 		$this->id_firma = $id_firma;
 		$this->select   = array();
@@ -158,7 +158,7 @@ class SelectSituatie_GUI {
 			}
 		}
 		catch (Exception $e) {
-			Page::complain($e->getMessage());
+			Design::complain($e->getMessage());
 			die();
 		}
 	}

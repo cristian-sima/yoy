@@ -54,7 +54,7 @@ var cssSandpaper = new function(){
     
     me.init = function(reinit){
    
-        if (EventHelpers.hasPageLoadHappened(arguments) && !reinit) {
+        if (EventHelpers.hasDesignLoadHappened(arguments) && !reinit) {
             return;
         }
 		
@@ -2391,5 +2391,5 @@ document.write('<style type="text/css">.cssSandpaper-initiallyHidden { visibilit
 
 
 
-EventHelpers.addPageLoadEvent('cssSandpaper.init')
+EventHelpers.addDesignLoadEvent('cssSandpaper.init')
 

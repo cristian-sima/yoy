@@ -7,8 +7,8 @@ require_once "app/FirmaSpatiu.php";
 require_once "app/SituatieMecanica.php";
 require_once "app/SelectSituatie_GUI.php";
 
-Page::showHeader();
-Page::showContent();
+Design::showHeader();
+
 
 
 $firma 					= new FirmaSpatiu($_GET['id_firma']);
@@ -29,7 +29,7 @@ $selector_GUI->setAdresaButon("afisare_decont_firma.php");
 $selector_GUI->afiseazaDescriere(false);
 $selector_GUI->afiseazaToateFirmele(false);
 
-Page::showHeading("Decont ", "");
+Design::showHeading("Decont ", "");
 
 $selector_GUI->display();
 ?>
@@ -467,4 +467,4 @@ function nice($text){
 </center>
 <?php
 
-	Page::showFooter();
+	Design::showFooter();

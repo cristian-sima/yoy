@@ -5,8 +5,8 @@
 	require_once "app/Aplicatie.php";
 	require_once "app/FirmaSpatiu.php";
 
-	Page::showHeader();
-	Page::showContent();
+	Design::showHeader();
+	
 
 
 	if(isset($_GET['id_firma']))
@@ -163,5 +163,5 @@ $( ".alegeData" ).datepicker({
 </script>
 
 <?php
-Page::showFooter();
+Design::showFooter();
 ?>

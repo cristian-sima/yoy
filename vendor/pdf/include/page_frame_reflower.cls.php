@@ -13,7 +13,7 @@
  * @access private
  * @package dompdf
  */
-class Page_Frame_Reflower extends Frame_Reflower {
+class Design_Frame_Reflower extends Frame_Reflower {
 
   /**
    * Cache of the callbacks array
@@ -29,7 +29,7 @@ class Page_Frame_Reflower extends Frame_Reflower {
    */
   private $_canvas;
 
-  function __construct(Page_Frame_Decorator $frame) { parent::__construct($frame); }
+  function __construct(Design_Frame_Decorator $frame) { parent::__construct($frame); }
   
   function apply_page_style(Frame $frame, $page_number){
     $style = $frame->get_style();
@@ -71,7 +71,7 @@ class Page_Frame_Reflower extends Frame_Reflower {
   //........................................................................
 
   /**
-   * Paged layout:
+   * Designd layout:
    * http://www.w3.org/TR/CSS21/page.html
    */
   function reflow(Block_Frame_Decorator $block = null) {
@@ -85,7 +85,7 @@ class Page_Frame_Reflower extends Frame_Reflower {
       
       $style = $this->_frame->get_style();
   
-      // Pages are only concerned with margins
+      // Designs are only concerned with margins
       $cb = $this->_frame->get_containing_block();
       $left   = $style->length_in_pt($style->margin_left,   $cb["w"]);
       $right  = $style->length_in_pt($style->margin_right,  $cb["w"]);

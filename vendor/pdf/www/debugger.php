@@ -43,7 +43,7 @@ $files = glob("test/*.{html,htm,php}", GLOB_BRACE);
       console.scrollTop(console[0].scrollHeight);
     }
     
-    function resizePage(){
+    function resizeDesign(){
       var page = $("#page");
       var height = $(window).height() - page.offset().top - 40;
       $("iframe, #console").height(height);
@@ -63,8 +63,8 @@ $files = glob("test/*.{html,htm,php}", GLOB_BRACE);
     }
 
     $(function(){
-      resizePage();
-      $(window).resize(resizePage);
+      resizeDesign();
+      $(window).resize(resizeDesign);
     
       $('#preview').load(function(){
         if (this.src == "about:blank") return;

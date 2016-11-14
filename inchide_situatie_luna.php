@@ -6,8 +6,8 @@ require_once "app/Procesare.php";
 require_once "app/FirmaSpatiu.php";
 require_once "app/SelectSituatie_GUI.php";
 
-Page::showHeader();
-Page::showContent();
+Design::showHeader();
+
 
 
 Procesare::createEmptyFields($_GET, array ('data', 'id_firma'));
@@ -22,7 +22,7 @@ $selector_GUI->setAdresaButon("inchide_situatie_luna.php");
 $selector_GUI->afiseazaDescriere(false);
 
 
-Page::showHeading("Vizualizați închiderile de situații", '
+Design::showHeading("Vizualizați închiderile de situații", '
 			<input	class="disp" type="button" value="Înapoi acțiuni" class="disp" onclick="document.location='."'".'actiuni.php?data='.$data."'".'" />
 			');
 
@@ -87,7 +87,7 @@ while($f2 = mysql_fetch_array($result2))
 
 echo'<tr></tr><tr></tr><tr></tr><tr><td class="bold" width="30%">'.Aplicatie::getInstance()->getFirmaOrganizatoare()->getDenumire().'</td><td width="20%"><input type="button" onclick="document.location=\'inchide_situatie_lunara_GET.php?id_firma=0&data='.$data.'\'" value="Închidere lună" /></td><td width="50%">'.(($inchisa != 0)?Romanian::currency($valoare):"<span style='color:red'>Neînchis</span>").'</td></tr></table>';
 
-Page::showFooter();
+Design::showFooter();
 ?>
 
 

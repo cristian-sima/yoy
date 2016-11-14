@@ -5,8 +5,8 @@ require_once "app/Aplicatie.php";
 require_once "app/FirmaSpatiu.php";
 
 Login::permiteOperator();
-Page::showHeader();
-Page::showContent();
+Design::showHeader();
+
 
 $db = Aplicatie::getInstance()->Database;
 
@@ -108,4 +108,4 @@ echo '
 ?>
 	<div class="clear"></div>
 <?php
-Page::showFooter();
+Design::showFooter();

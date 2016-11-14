@@ -128,7 +128,7 @@ class TCPDF_Adapter implements Canvas {
     $this->_pdf = new TCPDF("P", "pt", array($this->_width, $this->_height));
     $this->_pdf->Setcreator("DOMPDF Converter");
 
-    $this->_pdf->AddPage();
+    $this->_pdf->AddDesign();
 
     $this->_page_number = $this->_page_count = 1;
     $this->_page_text = array();

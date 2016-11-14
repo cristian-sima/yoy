@@ -18,7 +18,7 @@ var EventHelpers = new function(){
     var globalEvent;
 	
 	me.init = function () {
-		if (me.hasPageLoadHappened(arguments)) {
+		if (me.hasDesignLoadHappened(arguments)) {
 			return;	
 		}
 		
@@ -261,13 +261,13 @@ var EventHelpers = new function(){
      *
      *  Usage:
      *
-     *  EventHelpers.addPageLoadEvent('init');
+     *  EventHelpers.addDesignLoadEvent('init');
      *
      *  where the function init() has this code at the beginning:
      *
      *  function init() {
      *
-     *  if (EventHelpers.hasPageLoadHappened(arguments)) return;
+     *  if (EventHelpers.hasDesignLoadHappened(arguments)) return;
      *
      *	// rest of code
      *   ....
@@ -278,7 +278,7 @@ var EventHelpers = new function(){
      *
      * @param {String} funcName - a string containing the function to be called.
      */
-    me.addPageLoadEvent = function(funcName){
+    me.addDesignLoadEvent = function(funcName){
     
         var func = eval(funcName);
         
@@ -301,7 +301,7 @@ var EventHelpers = new function(){
                          * call the onload handler
                          * func();
                          */
-                        me.runPageLoadEvents();
+                        me.runDesignLoadEvents();
                         return;
                     }
                     set = true;
@@ -319,7 +319,7 @@ var EventHelpers = new function(){
     
     var pageLoadEventArray = new Array();
     
-    me.runPageLoadEvents = function(e){
+    me.runDesignLoadEvents = function(e){
         if (isSafari || e.srcElement.readyState == "complete") {
         
             for (var i = 0; i < pageLoadEventArray.length; i++) {
@@ -328,13 +328,13 @@ var EventHelpers = new function(){
         }
     }
     /**
-     * Determines if either addPageLoadEvent('funcName') or addEvent(window, 'load', funcName)
+     * Determines if either addDesignLoadEvent('funcName') or addEvent(window, 'load', funcName)
      * has been executed.
      *
-     * @see addPageLoadEvent
+     * @see addDesignLoadEvent
      * @param {Function} funcArgs - the arguments of the containing. function
      */
-    me.hasPageLoadHappened = function(funcArgs){
+    me.hasDesignLoadHappened = function(funcArgs){
         // If the function already been called, return true;
         if (funcArgs.callee.done) 
             return true;
@@ -429,7 +429,7 @@ var EventHelpers = new function(){
         
          var script = document.getElementById("__ie_onload");
         
-         me.addEvent(script, 'readystatechange', me.runPageLoadEvents);
+         me.addEvent(script, 'readystatechange', me.runDesignLoadEvents);
         
          /*@end @*/
         
@@ -438,4 +438,4 @@ var EventHelpers = new function(){
     init();
 }
 
-EventHelpers.addPageLoadEvent('EventHelpers.init');
+EventHelpers.addDesignLoadEvent('EventHelpers.init');

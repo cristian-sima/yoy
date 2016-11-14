@@ -1,6 +1,6 @@
 <?php 
-	$infoPage = array();
-	$infoPage = array(
+	$infoDesign = array();
+	$infoDesign = array(
 			"currentMenu" 		=> "1",
 			"connection" 		=> "true",
 			"type" 				=> "admin",
@@ -91,4 +91,4 @@
       $( ".alege" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
     });
 </script>
-<?php endOfPage();?>
+<?php endOfDesign();?>

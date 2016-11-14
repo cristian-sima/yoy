@@ -4,8 +4,8 @@ require_once "app/Aparat.php";
 require_once "app/Aplicatie.php";
 
 
-Page::showHeader();
-Page::showContent();
+Design::showHeader();
+
 
 try
 {
@@ -14,7 +14,7 @@ try
 
 	if(!$aparat->isActiv())
 	{
-		Page::complain("Aparatul a fost deja scos din uz !");
+		Design::complain("Aparatul a fost deja scos din uz !");
 	}
 	else
 	{
@@ -31,12 +31,12 @@ try
 		$q = "UPDATE  `aparat` SET `activ`	= '0' WHERE id = '".$data['id_aparat']."'  ";
 		$result = mysql_query($q, Aplicatie::getInstance()->Database) or die(mysql_error());
 			
-		Page::showConfirmation('<span class="confirmation">Aparatul a fost scos din uz</span> <a href="optiuni_aparat.php?id_aparat='.$data['id_aparat'].'">Înapoi la optiuni aparat</a>');
+		Design::showConfirmation('<span class="confirmation">Aparatul a fost scos din uz</span> <a href="optiuni_aparat.php?id_aparat='.$data['id_aparat'].'">Înapoi la optiuni aparat</a>');
 	}
 }
 catch(Exception $e)
 {
-	Page::showError($e->getMessage());
+	Design::showError($e->getMessage());
 }
 
-Page::showFooter();
+Design::showFooter();

@@ -196,7 +196,7 @@ class Situatie_GUI
 
 		<script type="text/javascript" src="public/js/situatie_GUI.js" ></script>
 
-		<div class="situatie_div privatePage_prt">
+		<div class="situatie_div privateDesign_prt">
 		<form id="formular_situatie" action="modifica_situatie.php" method="POST">
 
 		<input type="hidden" name="aparate_" value="" id="aparate_" />

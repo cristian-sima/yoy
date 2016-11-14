@@ -4,8 +4,8 @@
 	require_once "app/Procesare.php";
 	require_once "app/SelectSituatie_GUI.php";
 
-	Page::showHeader();
-	Page::showContent();
+	Design::showHeader();
+	
 
 
 	try {
@@ -15,7 +15,7 @@
 		$selector_GUI->afiseazaDescriere(false);
 		$selector_GUI->afiseazaButon(false);
 
-		Page::showHeading("Selectează o situație", "");
+		Design::showHeading("Selectează o situație", "");
 
 		$selector_GUI->display();
 
@@ -47,9 +47,9 @@
 			</table>
 		';
 
-		Page::showFooter();
+		Design::showFooter();
 	} catch (Exception $e) {
-		PAGE::showError($e->getMessage());
+		DESIGN::showError($e->getMessage());
 	}
 
 ?>

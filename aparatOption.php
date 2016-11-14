@@ -1,6 +1,6 @@
 <?php
-$infoPage = array();
-$infoPage = array(
+$infoDesign = array();
+$infoDesign = array(
 	"currentMenu" 		=> "1",
 	"connection" 		=> "true",
 	"type" 				=> "admin",
@@ -226,4 +226,4 @@ $isInDepozit = ($aparat['idFirma']=="0")?true:false;
 								});
 							} );
 						</script>
-						<?php endOfPage();?>
+						<?php endOfDesign();?>

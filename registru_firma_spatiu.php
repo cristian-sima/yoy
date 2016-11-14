@@ -9,9 +9,9 @@ require_once "app/SelectSituatie_GUI.php";
 require_once "app/RegistruGraficFirma.php";
 
 Login::permiteOperator();
-Page::showHeader();
-Page::showContent();
-Page::showHeading("Registru de casă firmă", '<input type="button" class="disp" value="Tipărește" onclick="window.print()">&nbsp;
+Design::showHeader();
+
+Design::showHeading("Registru de casă firmă", '<input type="button" class="disp" value="Tipărește" onclick="window.print()">&nbsp;
 '.((Aplicatie::getInstance()->getUtilizator()->isAdministrator())?('<a onclick="goTo('."'".'selecteaza_situatie.php'."'".')" href="#"><input type="button" value="Înapoi la situații" /></a>
 '):('<a onclick="document.location = '."'".'situatie_mecanica_operator.php'."'".'" href="#"><input type="button" value="Înapoi la situații" /></a>
 ')).'
@@ -56,10 +56,10 @@ try {
 	$registru_gui->afiseaza();
 
 
-	Page::showFooter();
+	Design::showFooter();
 
 } catch (Exception $e) {
-	PAGE::showError($e->getMessage());
+	DESIGN::showError($e->getMessage());
 }
 
 ?>

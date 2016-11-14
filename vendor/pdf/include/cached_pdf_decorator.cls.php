@@ -9,7 +9,7 @@
 /**
  * Caching canvas implementation
  *
- * Each rendered page is serialized and stored in the {@link Page_Cache}.
+ * Each rendered page is serialized and stored in the {@link Design_Cache}.
  * This is useful for static forms/pages that do not need to be re-rendered
  * all the time.
  *
@@ -121,7 +121,7 @@ class Cached_PDF_Decorator extends CPDF_Adapter implements Canvas {
     $this->_pdf->add_object($this->_current_page_id, "add");
     $this->_pdf->new_page();    
 
-    Page_Cache::store_page($this->_cache_id,
+    Design_Cache::store_page($this->_cache_id,
                            $this->_pdf->get_page_number() - 1,
                            $this->_pdf->serialize_object($this->_current_page_id));
 
@@ -134,10 +134,10 @@ class Cached_PDF_Decorator extends CPDF_Adapter implements Canvas {
     if ( !is_null($this->_current_page_id) ) {
       $this->_pdf->close_object();
       $this->_pdf->add_object($this->_current_page_id, "add");
-      Page_Cache::store_page($this->_cache_id,
+      Design_Cache::store_page($this->_cache_id,
                              $this->_pdf->get_page_number(),
                              $this->_pdf->serialize_object($this->_current_page_id));
-      Page_Cache::store_fonts($this->_cache_id, $this->_fonts);
+      Design_Cache::store_fonts($this->_cache_id, $this->_fonts);
       $this->_current_page_id = null;
     }
     
@@ -150,7 +150,7 @@ class Cached_PDF_Decorator extends CPDF_Adapter implements Canvas {
     if ( !is_null($this->_current_page_id) ) {
       $this->_pdf->close_object();
       $this->_pdf->add_object($this->_current_page_id, "add");
-      Page_Cache::store_page($this->_cache_id,
+      Design_Cache::store_page($this->_cache_id,
                              $this->_pdf->get_page_number(),
                              $this->_pdf->serialize_object($this->_current_page_id));
       $this->_current_page_id = null;

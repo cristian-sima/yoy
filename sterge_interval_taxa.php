@@ -3,8 +3,8 @@
 require_once "app/Procesare.php";
 require_once "app/Aplicatie.php";
 
-Page::showHeader();
-Page::showContent();
+Design::showHeader();
+
 
 try
 {
@@ -19,12 +19,12 @@ try
 
 
 	// confirmation
-	Page::showConfirmation('<span class="confirmation">Perioada a fost ștearsă</span> <a href="setari.php">Înapoi la setări</a>');
+	Design::showConfirmation('<span class="confirmation">Perioada a fost ștearsă</span> <a href="setari.php">Înapoi la setări</a>');
 	
 }
 catch(Exception $e)
 {
-	Page::showError($e->getMessage());
+	Design::showError($e->getMessage());
 }
 
-Page::showFooter();
+Design::showFooter();

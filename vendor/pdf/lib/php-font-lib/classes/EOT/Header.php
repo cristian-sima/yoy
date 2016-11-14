@@ -45,8 +45,8 @@ class Header extends \FontLib\Header {
       "UnicodeRange2"      => self::uint32,
       "UnicodeRange3"      => self::uint32,
       "UnicodeRange4"      => self::uint32,
-      "CodePageRange1"     => self::uint32,
-      "CodePageRange2"     => self::uint32,
+      "CodeDesignRange1"     => self::uint32,
+      "CodeDesignRange2"     => self::uint32,
       "CheckSumAdjustment" => self::uint32,
       "Reserved1"          => self::uint32,
       "Reserved2"          => self::uint32,
@@ -84,7 +84,7 @@ class Header extends \FontLib\Header {
         $this->readString("RootString");
 
         $this->data["RootStringCheckSum"] = $font->readUInt32();
-        $this->data["EUDCCodePage"]       = $font->readUInt32();
+        $this->data["EUDCCodeDesign"]       = $font->readUInt32();
 
         $this->data["Padding6"] = $font->readUInt16();
         $this->readString("Signature");

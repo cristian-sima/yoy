@@ -15,7 +15,7 @@
  * @package dompdf
  * @static
  */
-class Page_Cache {
+class Design_Cache {
 
   const DB_USER = "dompdf_page_cache";
   const DB_PASS = "some meaningful password";
@@ -35,7 +35,7 @@ class Page_Cache {
     }
   }
   
-  function __construct() { throw new Exception("Can not create instance of Page_Class.  Class is static."); }
+  function __construct() { throw new Exception("Can not create instance of Design_Class.  Class is static."); }
 
   private static function __query($sql) {
     if ( !($res = pg_query(self::$__connection, $sql)) )
@@ -123,4 +123,4 @@ class Page_Cache {
   }
 }
 
-Page_Cache::init();
+Design_Cache::init();

@@ -57,7 +57,7 @@ class RegistruGUI {
   }
   private function afiseazaDIVTotaluri() {
     if ($this->afiseazaTotalurile) {
-      echo '<div class="table_div privatePage_prt">
+      echo '<div class="table_div privateDesign_prt">
 				 <table class="table_div_totaluri"><tr><th width="50%">Denumire total</th><th width="50%">Suma</th></tr>';
       foreach ($this->content->getTotaluri() as $total) {
         if ($total->getTotal() != 0) {
@@ -68,7 +68,7 @@ class RegistruGUI {
     }
   }
   private function afiseazaPagina($i) {
-    echo '<div class="table_page_div privatePage_prt">';
+    echo '<div class="table_page_div privateDesign_prt">';
     $this->afiseazaPaginarea($i);
     $this->afiseazaHeader();
     $this->afiseazaHeaderPagina();

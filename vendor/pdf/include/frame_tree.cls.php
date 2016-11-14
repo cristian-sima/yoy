@@ -84,7 +84,7 @@ class Frame_Tree {
   /**
    * Returns the root frame of the tree
    * 
-   * @return Page_Frame_Decorator
+   * @return Design_Frame_Decorator
    */
   function get_root() {
     return $this->_root;

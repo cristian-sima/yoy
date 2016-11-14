@@ -4,8 +4,8 @@
 	require_once "app/Aplicatie.php";
 	require_once "app/FirmaSpatiu.php";
 
-	Page::showHeader();
-	Page::showContent();
+	Design::showHeader();
+	
 
 	$db = Aplicatie::getInstance()->Database;
 
@@ -63,7 +63,7 @@
 	$result = mysql_query($q, $db);
 
 
-	Page::showConfirmation('<span class="confirmation">Parola a fost resetată ! Noua parolă este </span><mark>'.$parola_noua.'</mark>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="utilizatori.php ">Înapoi</a>');
+	Design::showConfirmation('<span class="confirmation">Parola a fost resetată ! Noua parolă este </span><mark>'.$parola_noua.'</mark>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="utilizatori.php ">Înapoi</a>');
 
 
-	Page::showFooter();
+	Design::showFooter();

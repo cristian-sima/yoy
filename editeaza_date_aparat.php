@@ -8,9 +8,9 @@ require_once "app/SelectSituatie_GUI.php";
 
 $aparat			= new Aparat($_GET['id_aparat']);
 
-Page::showHeader();
-Page::showContent();
-Page::showHeading("Editează date aparat",'<input	type="button" class="disp" value="Înapoi la optiuni aparat" onclick="document.location='."'".'optiuni_aparat.php?id_aparat='.$aparat->getID()."'".'" />');
+Design::showHeader();
+
+Design::showHeading("Editează date aparat",'<input	type="button" class="disp" value="Înapoi la optiuni aparat" onclick="document.location='."'".'optiuni_aparat.php?id_aparat='.$aparat->getID()."'".'" />');
 
 
 ?>
@@ -109,5 +109,5 @@ Page::showHeading("Editează date aparat",'<input	type="button" class="disp" val
 	
 <script> $(".alegeData").datepicker({});$(".alegeData").change(function(){$(".alegeData").datepicker("option","dateFormat","yy-mm-dd")}) </script>
 <?php 
-		Page::showFooter();
+		Design::showFooter();
 ?>

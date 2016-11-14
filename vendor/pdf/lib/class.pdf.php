@@ -67,7 +67,7 @@ class Cpdf {
   /**
    * @var integer Object number of the current page
    */
-  public $currentPage;
+  public $currentDesign;
 
   /**
    * @var integer Object number of the currently active contents block
@@ -124,7 +124,7 @@ class Cpdf {
   /**
    * @var integer Number of page objects within the document
    */
-  public $numPages = 0;
+  public $numDesigns = 0;
 
   /**
    * @var array Object Id storage stack
@@ -167,7 +167,7 @@ class Cpdf {
   /**
    * @var integer The objectId of the first page of the document
    */
-  public $firstPageId;
+  public $firstDesignId;
 
   /**
    * @var float Used to track the last used value of the inter-word spacing, this is so that it is known
@@ -298,7 +298,7 @@ class Cpdf {
   /**
    * @var array Current page size
    */
-  protected $currentPageSize = array("width" => 0, "height" => 0);
+  protected $currentDesignSize = array("width" => 0, "height" => 0);
 
   /**
    * @var array All the chars that will be required in the font subsets
@@ -418,7 +418,7 @@ class Cpdf {
           case 'HideWindowUI':
           case 'FitWindow':
           case 'CenterWindow':
-          case 'NonFullScreenPageMode':
+          case 'NonFullScreenDesignMode':
           case 'Direction':
             $o['info'][$k] = $v;
             break;
@@ -479,7 +479,7 @@ class Cpdf {
               break;
 
             case 'pages':
-              $res.= "\n/Pages $v 0 R";
+              $res.= "\n/Designs $v 0 R";
               break;
 
             case 'viewerPreferences':
@@ -562,7 +562,7 @@ class Cpdf {
     case 'mediaBox':
       $o['info']['mediaBox'] = $options;
       // which should be an array of 4 numbers
-      $this->currentPageSize = array('width' => $options[2], 'height' => $options[3]);
+      $this->currentDesignSize = array('width' => $options[2], 'height' => $options[3]);
       break;
 
     case 'font':
@@ -579,7 +579,7 @@ class Cpdf {
 
     case 'out':
       if (count($o['info']['pages'])) {
-        $res = "\n$id 0 obj\n<< /Type /Pages\n/Kids [";
+        $res = "\n$id 0 obj\n<< /Type /Designs\n/Kids [";
         foreach ($o['info']['pages'] as $v) {
           $res.= "$v 0 R\n";
         }
@@ -629,7 +629,7 @@ class Cpdf {
         $res.= "\n >>\nendobj";
       }
       else {
-        $res = "\n$id 0 obj\n<< /Type /Pages\n/Count 0\n>>\nendobj";
+        $res = "\n$id 0 obj\n<< /Type /Designs\n/Count 0\n>>\nendobj";
       }
 
       return $res;
@@ -1225,7 +1225,7 @@ EOT;
     switch ($action) {
       case 'new':
         // add the annotation to the current page
-        $pageId = $this->currentPage;
+        $pageId = $this->currentDesign;
         $this->o_page($pageId, 'annot', $id);
 
         // and add the action object which is going to be required
@@ -1281,8 +1281,8 @@ EOT;
 
     switch ($action) {
     case 'new':
-      $this->numPages++;
-      $this->objects[$id] = array('t' => 'page', 'info' => array('parent' => $this->currentNode, 'pageNum' => $this->numPages));
+      $this->numDesigns++;
+      $this->objects[$id] = array('t' => 'page', 'info' => array('parent' => $this->currentNode, 'pageNum' => $this->numDesigns));
 
       if (is_array($options)) {
         // then this must be a page insertion, array should contain 'rid','pos'=[before|after]
@@ -1292,7 +1292,7 @@ EOT;
         $this->o_pages($this->currentNode, 'page', $id);
       }
 
-      $this->currentPage = $id;
+      $this->currentDesign = $id;
       //make a contents object to go with this page
       $this->numObj++;
       $this->o_contents($this->numObj, 'new', $id);
@@ -1300,7 +1300,7 @@ EOT;
       $this->objects[$id]['info']['contents'] = array();
       $this->objects[$id]['info']['contents'][] = $this->numObj;
 
-      $match = ($this->numPages%2 ? 'odd' : 'even');
+      $match = ($this->numDesigns%2 ? 'odd' : 'even');
       foreach ($this->addLooseObjects as $oId => $target) {
         if ($target === 'all' || $match === $target) {
           $this->objects[$id]['info']['contents'][] = $oId;
@@ -1323,7 +1323,7 @@ EOT;
       break;
 
     case 'out':
-      $res = "\n$id 0 obj\n<< /Type /Page";
+      $res = "\n$id 0 obj\n<< /Type /Design";
       $res.= "\n/Parent ".$o['info']['parent']." 0 R";
 
       if (isset($o['info']['annot'])) {
@@ -1367,7 +1367,7 @@ EOT;
       $this->objects[$id] = array('t' => 'contents', 'c' => '', 'info' => array());
       if (mb_strlen($options, '8bit') && intval($options)) {
         // then this contents is the primary for a page
-        $this->objects[$id]['onPage'] = $options;
+        $this->objects[$id]['onDesign'] = $options;
       } else if ($options === 'raw') {
         // then this page contains some other type of system object
         $this->objects[$id]['raw'] = 1;
@@ -1936,7 +1936,7 @@ EOT;
 
     // need to store the first page id as there is no way to get it to the user during
     // startup
-    $this->firstPageId = $this->currentContents;
+    $this->firstDesignId = $this->currentContents;
   }
 
   /**
@@ -2554,8 +2554,8 @@ EOT;
    * function for the user to find out what the ID is of the first page that was created during
    * startup - useful if they wish to add something to it later.
    */
-  function getFirstPageId() {
-    return $this->firstPageId;
+  function getFirstDesignId() {
+    return $this->firstDesignId;
   }
 
   /**
@@ -2960,7 +2960,7 @@ EOT;
    * @param float $y Origin ordinate
    */
   function scale($s_x, $s_y, $x, $y) {
-    $y = $this->currentPageSize["height"] - $y;
+    $y = $this->currentDesignSize["height"] - $y;
 
     $tm = array(
       $s_x,        0,
@@ -2993,7 +2993,7 @@ EOT;
    * @param float $y Origin ordinate
    */
   function rotate($angle, $x, $y) {
-    $y = $this->currentPageSize["height"] - $y;
+    $y = $this->currentDesignSize["height"] - $y;
 
     $a = deg2rad($angle);
     $cos_a = cos($a);
@@ -3016,7 +3016,7 @@ EOT;
    * @param float $y Origin ordinate
    */
   function skew($angle_x, $angle_y, $x, $y) {
-    $y = $this->currentPageSize["height"] - $y;
+    $y = $this->currentDesignSize["height"] - $y;
 
     $tan_x = tan(deg2rad($angle_x));
     $tan_y = tan(deg2rad($angle_y));
@@ -3042,7 +3042,7 @@ EOT;
    * add a new page to the document
    * this also makes the new page the current active object
    */
-  function newPage($insert = 0, $id = 0, $pos = 'after') {
+  function newDesign($insert = 0, $id = 0, $pos = 'after') {
     // if there is a state saved, then go up the stack closing them
     // then on the new page, re-open them with the right setings
 
@@ -3057,7 +3057,7 @@ EOT;
     if ($insert) {
       // the id from the ezPdf class is the id of the contents of the page, not the page object itself
       // query that object to find the parent
-      $rid = $this->objects[$id]['onPage'];
+      $rid = $this->objects[$id]['onDesign'];
       $opt = array('rid' => $rid, 'pos' => $pos);
       $this->o_page($this->numObj, 'new', $opt);
     } else {
@@ -3650,7 +3650,7 @@ EOT;
    */
   function openObject() {
     $this->nStack++;
-    $this->stack[$this->nStack] = array('c' => $this->currentContents, 'p' => $this->currentPage);
+    $this->stack[$this->nStack] = array('c' => $this->currentContents, 'p' => $this->currentDesign);
     // add a new object of the content type, to hold the data flow
     $this->numObj++;
     $this->o_contents($this->numObj, 'new');
@@ -3665,12 +3665,12 @@ EOT;
    */
   function reopenObject($id) {
     $this->nStack++;
-    $this->stack[$this->nStack] = array('c' => $this->currentContents, 'p' => $this->currentPage);
+    $this->stack[$this->nStack] = array('c' => $this->currentContents, 'p' => $this->currentDesign);
     $this->currentContents = $id;
 
     // also if this object is the primary contents for a page, then set the current page to its parent
-    if (isset($this->objects[$id]['onPage'])) {
-      $this->currentPage = $this->objects[$id]['onPage'];
+    if (isset($this->objects[$id]['onDesign'])) {
+      $this->currentDesign = $this->objects[$id]['onDesign'];
     }
   }
 
@@ -3682,7 +3682,7 @@ EOT;
     // an objectId on the stack.
     if ($this->nStack > 0) {
       $this->currentContents = $this->stack[$this->nStack]['c'];
-      $this->currentPage = $this->stack[$this->nStack]['p'];
+      $this->currentDesign = $this->stack[$this->nStack]['p'];
       $this->nStack--;
       // easier to probably not worry about removing the old entries, they will be overwritten
       // if there are new ones.
@@ -3714,16 +3714,16 @@ EOT;
         $this->addLooseObjects[$id] = 'all';
 
       case 'add':
-        if (isset($this->objects[$this->currentContents]['onPage'])) {
+        if (isset($this->objects[$this->currentContents]['onDesign'])) {
           // then the destination contents is the primary for the page
           // (though this object is actually added to that page)
-          $this->o_page($this->objects[$this->currentContents]['onPage'], 'content', $id);
+          $this->o_page($this->objects[$this->currentContents]['onDesign'], 'content', $id);
         }
         break;
 
       case 'even':
         $this->addLooseObjects[$id] = 'even';
-        $pageObjectId = $this->objects[$this->currentContents]['onPage'];
+        $pageObjectId = $this->objects[$this->currentContents]['onDesign'];
         if ($this->objects[$pageObjectId]['info']['pageNum']%2 == 0) {
           $this->addObject($id);
           // hacky huh :)
@@ -3732,7 +3732,7 @@ EOT;
 
       case 'odd':
         $this->addLooseObjects[$id] = 'odd';
-        $pageObjectId = $this->objects[$this->currentContents]['onPage'];
+        $pageObjectId = $this->objects[$this->currentContents]['onDesign'];
         if ($this->objects[$pageObjectId]['info']['pageNum']%2 == 1) {
           $this->addObject($id);
           // hacky huh :)
@@ -4483,7 +4483,7 @@ EOT;
     // 'FitBH' top
     // 'FitBV' left
     $this->numObj++;
-    $this->o_destination($this->numObj, 'new', array('page' => $this->currentPage, 'type' => $style, 'p1' => $a, 'p2' => $b, 'p3' => $c));
+    $this->o_destination($this->numObj, 'new', array('page' => $this->currentDesign, 'type' => $style, 'p1' => $a, 'p2' => $b, 'p3' => $c));
     $id = $this->catalogId;
     $this->o_catalog($id, 'openHere', $this->numObj);
   }
@@ -4506,7 +4506,7 @@ EOT;
     // it has been linked to
     // styles are the same as the 'openHere' function
     $this->numObj++;
-    $this->o_destination($this->numObj, 'new', array('page' => $this->currentPage, 'type' => $style, 'p1' => $a, 'p2' => $b, 'p3' => $c));
+    $this->o_destination($this->numObj, 'new', array('page' => $this->currentDesign, 'type' => $style, 'p1' => $a, 'p2' => $b, 'p3' => $c));
     $id = $this->numObj;
 
     // store the label->idf relationship, note that this means that labels can be used only once

@@ -8,8 +8,8 @@ require_once "vendor/StringTemplate/Engine.php";
 $engine = new Engine();
 
 
-Page::showHeader();
-Page::showContent();
+Design::showHeader();
+
 
 $db =  Aplicatie::getInstance()->Database;
 
@@ -314,4 +314,4 @@ function seeData(where) {
 </script>
 
 <?php
-Page::showFooter();
+Design::showFooter();

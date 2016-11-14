@@ -48,7 +48,7 @@
 	}
 	catch(Exception $e)
 	{
-		Page::complain($e->getMessage());
+		Design::complain($e->getMessage());
 	}
 
 
@@ -80,11 +80,11 @@
 
 	if(!isset($_GET['type']) || (isset($_GET['type']) && $_GET['type'] != "PDF")){
 
-	Page::showHeader();
-	Page::showContent();
+	Design::showHeader();
+	
 
 
-	Page::showHeading('<img src="public/images/results.png" width="64px" height="64px" align="absmiddle"/>  Situație firma '.$firma->getDenumire().'</b>', "");
+	Design::showHeading('<img src="public/images/results.png" width="64px" height="64px" align="absmiddle"/>  Situație firma '.$firma->getDenumire().'</b>', "");
 
 
 	echo '
@@ -138,7 +138,7 @@
 			situatie.nrDeAparate = '.$numar_de_randuri.';
 			</script>';
 
-		Page::showFooter();
+		Design::showFooter();
 
 	}
 	else {

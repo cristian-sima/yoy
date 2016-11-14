@@ -3,8 +3,8 @@
 require_once "app/Procesare.php";
 require_once "app/Aplicatie.php";
 
-Page::showHeader();
-Page::showContent();
+Design::showHeader();
+
 
 try
 {
@@ -30,13 +30,13 @@ try
 	$result = mysql_query($mysql, Aplicatie::getInstance()->Database);
 
 
-	Page::showConfirmation('<span class="confirmation">Decontul a fost adăugat cu succes !</span> <a href="administreaza_deconturi.php ">Înapoi la deconturi</a>');
+	Design::showConfirmation('<span class="confirmation">Decontul a fost adăugat cu succes !</span> <a href="administreaza_deconturi.php ">Înapoi la deconturi</a>');
 
 }
 catch(Exception $e)
 {
-	Page::showError($e->getMessage());
+	Design::showError($e->getMessage());
 }
 
-Page::showFooter();
+Design::showFooter();
 ?>

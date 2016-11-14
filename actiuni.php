@@ -4,15 +4,15 @@
 	require_once "app/Procesare.php";
 	require_once "app/SelectSituatie_GUI.php";
 
-	Page::showHeader();
-	Page::showContent();
+	Design::showHeader();
+	
 
 
 	Procesare::createEmptyFields($_GET, array ('id_firma', 'data'));
 	$selector_GUI		= new SelectSituatie_GUI($_GET['data'], $_GET['id_firma']);
 
 
-	Page::showHeading("Întreprinde acțiuni firmă", "");
+	Design::showHeading("Întreprinde acțiuni firmă", "");
 
 
 	$selector_GUI->afiseazaButon(false);
@@ -38,5 +38,5 @@
 		</table>
 	';
 
-	Page::showFooter();
+	Design::showFooter();
 ?>

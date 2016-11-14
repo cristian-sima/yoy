@@ -4,8 +4,8 @@ require_once "app/Aparat.php";
 require_once "app/Aplicatie.php";
 require_once "app/FirmaSpatiu.php";
 
-Page::showHeader();
-Page::showContent();
+Design::showHeader();
+
 
 
 ?>
@@ -97,4 +97,4 @@ Page::showContent();
 
 <?php
 
-	Page::showFooter();
+	Design::showFooter();

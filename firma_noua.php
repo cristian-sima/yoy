@@ -1,7 +1,7 @@
 <?php
 require 'app/Aplicatie.php';
-Page::showHeader();
-Page::showContent();
+Design::showHeader();
+
 ?>
 
 <table width="100%" id="heading">
@@ -70,4 +70,4 @@ Page::showContent();
 			</div>
 			<div class="clear"></div>
 		</div>
-		<?php Page::showFooter(); ?>
+		<?php Design::showFooter(); ?>

@@ -4,8 +4,8 @@ require_once "app/Aparat.php";
 require_once "app/Aplicatie.php";
 
 
-Page::showHeader();
-Page::showContent();
+Design::showHeader();
+
 
 try
 {
@@ -14,7 +14,7 @@ try
 
 	if(!$aparat->isActiv())
 	{
-		Page::complain("Aparatul a fost deja scos din uz !");
+		Design::complain("Aparatul a fost deja scos din uz !");
 	}
 	else
 	{
@@ -56,12 +56,12 @@ try
 	}
 
 
-	Page::showConfirmation('<span class="confirmation">Aparatul a fost mutat în depozit</span> <a href="optiuni_aparat.php?id_aparat='.$data['id_aparat'].'">Înapoi la optiuni aparat</a>');
+	Design::showConfirmation('<span class="confirmation">Aparatul a fost mutat în depozit</span> <a href="optiuni_aparat.php?id_aparat='.$data['id_aparat'].'">Înapoi la optiuni aparat</a>');
 
 }
 catch(Exception $e)
 {
-	Page::showError($e->getMessage());
+	Design::showError($e->getMessage());
 }
 
-Page::showFooter();
+Design::showFooter();

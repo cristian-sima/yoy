@@ -1690,7 +1690,7 @@ td.note_indent {
   color: black;
 }
 
-/* Pages
+/* Designs
 -----------------------------------------------------------------------*/
 .page>*>p, .page>p { 
   font-size: 1.5em;
@@ -1741,7 +1741,7 @@ tr.list_row>td {
   background-color: #eee;
 }
 
-/* Pages
+/* Designs
 -----------------------------------------------------------------------*/
 .page { 
   font-size: 1em;
@@ -1853,8 +1853,8 @@ if ( isset($pdf) ) {
     $pdf->add_object($watermark, "all");
   }
 
-  $text = "Page {PAGE_NUM} of {PAGE_COUNT}";  
-  $width = Font_Metrics::get_text_width("Page 1 of 2", $font, $size);
+  $text = "Design {PAGE_NUM} of {PAGE_COUNT}";  
+  $width = Font_Metrics::get_text_width("Design 1 of 2", $font, $size);
 
   $pdf->page_text($w / 2 - $width / 2, $y, $text, $font, $size, $color);
   

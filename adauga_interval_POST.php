@@ -3,8 +3,8 @@
 require_once "app/Procesare.php";
 require_once "app/Aplicatie.php";
 
-Page::showHeader();
-Page::showContent();
+Design::showHeader();
+
 
 $db = Aplicatie::getInstance()->Database;
 
@@ -48,7 +48,7 @@ try {
 		throw new Exception("Ceva nu a mers cum trebuia");
 	}
 
-	Page::showConfirmation(
+	Design::showConfirmation(
 		'<span class="confirmation">Taxa a fost adaugată</span>
 		<a href="setari.php">Înapoi</a>
 		'
@@ -56,7 +56,7 @@ try {
 }
 
 catch (Exception $e) {
-	Page::showError($e->getMessage());
+	Design::showError($e->getMessage());
 }
 
-Page::showFooter();
+Design::showFooter();

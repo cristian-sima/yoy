@@ -88,11 +88,11 @@ class Line_Box {
   /**
    * Returns the floating elements inside the first floating parent
    *
-   * @param Page_Frame_Decorator $root
+   * @param Design_Frame_Decorator $root
    *
    * @return Frame[]
    */
-  function get_floats_inside(Page_Frame_Decorator $root) {
+  function get_floats_inside(Design_Frame_Decorator $root) {
     $floating_frames = $root->get_floating_frames();
     
     if ( count($floating_frames) == 0 ) {

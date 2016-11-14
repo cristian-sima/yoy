@@ -6,15 +6,15 @@ require_once "app/Procesare.php";
 require_once "app/FirmaSpatiu.php";
 require_once "app/SelectSituatie_GUI.php";
 
-Page::showHeader();
-Page::showContent();
+Design::showHeader();
+
 
 
 Procesare::createEmptyFields($_GET, array ('id_firma', 'data'));
 
 $_criterii_MYSQL	= (($_GET['id_firma'] != '')?("AND i.idFirma='".$_GET['id_firma']."'"):(""));
 
-Page::showHeading("Adaugă depunere", '
+Design::showHeading("Adaugă depunere", '
 
 			<input	class="disp" type="button" value="Înapoi la depuneri" class="disp" onclick="document.location='."'".'depuneri.php'."'".'" />');
 /* ---------------- content ---------------------*/
@@ -93,4 +93,4 @@ $( ".alegeData" ).datepicker({
     });
 </script>
 
-<?php Page::showFooter();
+<?php Design::showFooter();

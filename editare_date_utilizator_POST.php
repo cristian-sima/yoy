@@ -68,23 +68,23 @@
 			setcookie("cookpass", md5($data['parola']), time()+60*60*24*100, "/");
 		}
 
-		Page::showHeader();
-		Page::showContent();
+		Design::showHeader();
+		
 
 		// confirmation
 		if(Aplicatie::getInstance()->getUtilizator()->isOperator())
-			Page::showConfirmation('<span class="confirmation">Modificarile au fost realizate.</span> <a href="index.php ">Înapoi</a>');
+			Design::showConfirmation('<span class="confirmation">Modificarile au fost realizate.</span> <a href="index.php ">Înapoi</a>');
 		else
-			Page::showConfirmation('<span class="confirmation">Modificarile au fost realizate.</span> <a href="utilizatori.php ">Înapoi</a>');
+			Design::showConfirmation('<span class="confirmation">Modificarile au fost realizate.</span> <a href="utilizatori.php ">Înapoi</a>');
 
 	}
 	catch(Exception $e)
 	{
-		Page::showHeader();
-		Page::showContent();
+		Design::showHeader();
+		
 
-		Page::showError($e->getMessage());
+		Design::showError($e->getMessage());
 	}
 
-	Page::showFooter();
+	Design::showFooter();
 ?>

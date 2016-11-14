@@ -9,9 +9,9 @@ Login::permiteOperator();
 
 Procesare::createEmptyFields($_GET, array ('id_firma'));
 
-Page::showHeader();
-Page::showContent();
-Page::showHeading("Adaugă dispoziție", ((Aplicatie::getInstance()->getUtilizator()->isAdministrator())?('<input type="button" value="Înapoi la dispoziții" onclick="document.location='."'".'vizualizare_dispozitii.php?id_firma='.$_GET['id_firma']."'".'" />'):('<input	type="button" class="disp" value="Înapoi la situație" onclick="document.location='."'".'situatie_mecanica_operator.php'."'".'" />')));
+Design::showHeader();
+
+Design::showHeading("Adaugă dispoziție", ((Aplicatie::getInstance()->getUtilizator()->isAdministrator())?('<input type="button" value="Înapoi la dispoziții" onclick="document.location='."'".'vizualizare_dispozitii.php?id_firma='.$_GET['id_firma']."'".'" />'):('<input	type="button" class="disp" value="Înapoi la situație" onclick="document.location='."'".'situatie_mecanica_operator.php'."'".'" />')));
 
 
 
@@ -85,4 +85,4 @@ echo '
 $(".alegeData").datepicker({});$(".alegeData").change(function(){$(".alegeData").datepicker("option","dateFormat","yy-mm-dd")});$(function(){$(document).tooltip()})
 </script>';
 
-Page::showFooter();
+Design::showFooter();
