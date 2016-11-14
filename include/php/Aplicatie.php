@@ -9,7 +9,7 @@ require_once "DataCalendaristica.php";
 function connectToMySQL() {
 
   try {
-    $string = file_get_contents("config.json");
+    $string = file_get_contents("config/db.json");
     $decodedFile = json_decode($string, true);
   } catch (Exception $e) {
     throw new Exception("Contactează administratorul - cod CONFIG_FILE_NOT_SET");

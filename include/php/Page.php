@@ -119,7 +119,7 @@ class Page {
 		$version = "";
 
 		try {
-			$string = file_get_contents("package.json");
+			$string = file_get_contents("config/package.json");
 			$decodedFile = json_decode($string, true);
 
 			$version = $decodedFile["version"];

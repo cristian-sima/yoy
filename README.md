@@ -2,7 +2,7 @@
 
 # How to install
 
-Create a file called `config.json` in the main folder. Enter the following details:
+Create a file called `config/db.json` in the main folder. Enter the following details:
 
 ```json
 
