@@ -155,10 +155,13 @@ try {
 				},
 				isWrongCurrentPercent = function () {
 					var element = $("#procent"),
-					value = element.val(),
+					raw = element.val(),
+					value = Number(raw),
 					isWrong = (
-						value === "" ||
-						isNaN(value)
+						raw === "" ||
+						isNaN(value) ||
+						value < 0 ||
+						value > 100
 					);
 
 					if (isWrong) {
@@ -192,7 +195,7 @@ try {
 					}
 
 					return isWrong;
-				}
+				};
 
 				return (
 					isWrongName() ||
@@ -200,7 +203,7 @@ try {
 					isWrongCurrentPercent() ||
 					isWrongComments() ||
 					isWrongContactDetails()
-				)
+				);
 			};
 
 			if (hasProblems()) {

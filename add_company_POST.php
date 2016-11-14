@@ -3,6 +3,74 @@
 require_once "app/Procesare.php";
 require_once 'app/Aplicatie.php';
 
+function verifyCompany ($data) {
+	function isWrongName($value) {
+		$length = strlen($value);
+
+		$isWrong = (
+			$length < 5 ||
+			$length > 30
+		);
+
+		return $isWrong;
+	}
+
+	function isWrongAddress($value) {
+		$length = strlen($value);
+
+		$isWrong = (
+			$length < 5 ||
+			$length > 30
+		);
+
+		return $isWrong;
+	}
+
+	function isWrongCurrentPercent($raw) {
+		$value = intval($raw);
+
+		$isWrong = (
+			!is_numeric($raw) ||
+			$value < 0 ||
+			$value > 100
+		);
+
+		return $isWrong;
+	}
+
+	function isWrongComments($value) {
+		$length = strlen($value);
+
+		$isWrong = (
+			$length > 30
+		);
+
+		return $isWrong;
+	}
+
+	function isWrongContactDetails($value) {
+		$length = strlen($value);
+
+		$isWrong = (
+			$length > 30
+		);
+
+		return $isWrong;
+	}
+
+	$somethingWrong = (
+		isWrongName($data["nume"]) ||
+		isWrongAddress($data["localitate"]) ||
+		isWrongCurrentPercent($data["procent"]) ||
+		isWrongComments($data["comentarii"]) ||
+		isWrongContactDetails($data["date_contact"])
+	);
+
+	if($somethingWrong) {
+		throw new Exception("Date furnizate nu sunt complete sau corecte");
+	}
+}
+
 function insertPercent($db, $data, $companyID) {
 
 	$query = (
@@ -11,6 +79,12 @@ function insertPercent($db, $data, $companyID) {
 		VALUES
 		(:companyID, :value, :fromDate, :toDate, :isNow)"
 	);
+
+	$value = intval($data['procent']);
+
+	if($value < 0 || $value > 100) {
+		throw new Exception("Procentul este cuprins între 1 și 100");
+	}
 
 	$stmt = $db->prepare($query);
 	$ok = $stmt->execute([
@@ -65,6 +139,8 @@ try {
 		'add_company.php'
 	);
 	Procesare::createEmptyFields($data, array("comentarii","date_contact"));
+
+	verifyCompany($data);
 
 	$companyID = insertCompany($db, $data);
 	insertPercent($db, $data, $companyID);
