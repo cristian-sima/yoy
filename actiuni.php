@@ -1,8 +1,8 @@
 <?php
 
-	require_once "include/php/Aplicatie.php";
-	require_once "include/php/Procesare.php";
-	require_once "include/php/SelectSituatie_GUI.php";
+	require_once "app/Aplicatie.php";
+	require_once "app/Procesare.php";
+	require_once "app/SelectSituatie_GUI.php";
 
 	Page::showHeader();
 	Page::showContent();
@@ -23,7 +23,7 @@
 	$selector_GUI->display();
 
 	echo '
-			<link href="include/css/fieldset.css" rel="stylesheet" type="text/css"/>
+			<link href="public/css/fieldset.css" rel="stylesheet" type="text/css"/>
 			<table width="50%">
 				 <tr>
 					 <td>

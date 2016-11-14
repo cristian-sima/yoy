@@ -1,7 +1,7 @@
 <?php
 
-require_once "include/php/Total.php";
-require_once "include/php/DataCalendaristica.php";
+require_once "app/Total.php";
+require_once "app/DataCalendaristica.php";
 
 abstract class Registru extends Total {
   private $from = null;

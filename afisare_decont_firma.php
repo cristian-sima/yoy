@@ -1,11 +1,11 @@
 <?php
 
-require_once "include/php/Guvern.php";
-require_once "include/php/Aplicatie.php";
-require_once "include/php/Procesare.php";
-require_once "include/php/FirmaSpatiu.php";
-require_once "include/php/SituatieMecanica.php";
-require_once "include/php/SelectSituatie_GUI.php";
+require_once "app/Guvern.php";
+require_once "app/Aplicatie.php";
+require_once "app/Procesare.php";
+require_once "app/FirmaSpatiu.php";
+require_once "app/SituatieMecanica.php";
+require_once "app/SelectSituatie_GUI.php";
 
 Page::showHeader();
 Page::showContent();
@@ -34,7 +34,7 @@ Page::showHeading("Decont ", "");
 $selector_GUI->display();
 ?>
 <link
-	rel="stylesheet" type="text/css" href="include/css/decont.css">
+	rel="stylesheet" type="text/css" href="public/css/decont.css">
 <table width="100%">
 	<tr>
 		<td width="100%" style="text-align: right"><input type="button"

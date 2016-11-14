@@ -1,8 +1,8 @@
 <?php
 
-require_once "include/php/Aplicatie.php";
-require_once "include/php/FirmaSpatiu.php";
-require_once "include/php/SituatieMecanica.php";
+require_once "app/Aplicatie.php";
+require_once "app/FirmaSpatiu.php";
+require_once "app/SituatieMecanica.php";
 
 require_once "vendor/StringTemplate/Engine.php";
 $engine = new Engine();
@@ -65,7 +65,7 @@ if(!$ok) {
 
 ?>
 
-<link href="include/css/fieldset.css" rel="stylesheet" type="text/css"/>
+<link href="public/css/fieldset.css" rel="stylesheet" type="text/css"/>
 
 <ol class="breadcrumb">
 	<li class="breadcrumb-item"><a href="space_companies.php">Firme spațiu</a></li>

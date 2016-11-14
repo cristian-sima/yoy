@@ -1,8 +1,8 @@
 <?php
 
-require_once "include/php/Romanian.php";
-require_once "include/php/RegistruGrafic.php";
-require_once "include/php/DataCalendaristica.php";
+require_once "app/Romanian.php";
+require_once "app/RegistruGrafic.php";
+require_once "app/DataCalendaristica.php";
 
 class RegistruGUI {
   private $content = null;
@@ -42,7 +42,7 @@ class RegistruGUI {
     }
   }
   private function afiseazaInceput() {
-    echo '<link href="include/css/tabel_GUI.css" rel="stylesheet" type="text/css"/>';
+    echo '<link href="public/css/tabel_GUI.css" rel="stylesheet" type="text/css"/>';
   }
   private function afiseazaHeader() {
     echo '<table class="tabel_header"><tr>';

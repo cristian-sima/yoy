@@ -49,7 +49,7 @@ function showDialog(data) {
 			"background": "rgb(255, 176, 31)",
 			"border": "1px solid rgb(189, 122, 0)"
 		});
-		dialogDIV.html("<img src='img/icons/alert.png' align='left'/> " + data.message);
+		dialogDIV.html("<img src='public/images/icons/alert.png' align='left'/> " + data.message);
 		if (data.focus != undefined) $("#" + data.focus).focus();
 	} else {
 
@@ -58,7 +58,7 @@ function showDialog(data) {
 				"background": "rgb(161, 241, 154)",
 				"border": "1px solid rgb(57, 160, 42)"
 			});
-			dialogDIV.html("<img src='img/icons/succes.png' align='left'/> " + data.message);
+			dialogDIV.html("<img src='public/images/icons/succes.png' align='left'/> " + data.message);
 			if (data.focus != undefined) $("#" + data.focus).focus();
 
 		}

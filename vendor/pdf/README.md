@@ -16,7 +16,7 @@ on the [Google Groups](http://groups.google.com/group/dompdf)**
 ----
 
 [![Follow us on Twitter](http://twitter-badges.s3.amazonaws.com/twitter-a.png)](http://www.twitter.com/dompdf)
-[![Follow us on Google+](https://ssl.gstatic.com/images/icons/gplus-32.png)](https://plus.google.com/108710008521858993320?prsrc=3)
+[![Follow us on Google+](https://ssl.gstatic.com/img//icons/gplus-32.png)](https://plus.google.com/108710008521858993320?prsrc=3)
 
 Features
 ========

@@ -1,6 +1,6 @@
 <?php
 
-require_once "include/php/Total.php";
+require_once "app/Total.php";
 
 abstract class Romanian {
   public static function currency($money) {

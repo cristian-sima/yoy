@@ -7,7 +7,7 @@
 			"focus" 			=> "nume"
 		);
 	
-	require 'include/php/functions.php';
+	require 'app/functions.php';
 	require_once('login/bazadb.php');
 	require_once('login/login.php');
 	

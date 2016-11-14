@@ -1,5 +1,5 @@
 <?php
-require_once "include/php/Registru.php";
+require_once "app/Registru.php";
 abstract class RegistruGrafic extends Registru {
   private $rows = null;
   private $title = "";

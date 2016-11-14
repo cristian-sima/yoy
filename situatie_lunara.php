@@ -1,12 +1,12 @@
 <?php
 
-	require_once "include/php/Procesare.php";
-	require_once "include/php/Aplicatie.php";
-	require_once "include/php/FirmaSpatiu.php";
-	require_once "include/php/RegistruGUI.php";
-	require_once "include/php/RegistruGrafic.php";
-	require_once "include/php/DataCalendaristica.php";
-	require_once "include/php/SelectSituatie_GUI.php";
+	require_once "app/Procesare.php";
+	require_once "app/Aplicatie.php";
+	require_once "app/FirmaSpatiu.php";
+	require_once "app/RegistruGUI.php";
+	require_once "app/RegistruGrafic.php";
+	require_once "app/DataCalendaristica.php";
+	require_once "app/SelectSituatie_GUI.php";
 
 	Page::showHeader();
 	Page::showContent();

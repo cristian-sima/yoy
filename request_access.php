@@ -1,6 +1,6 @@
 <?php 
 
-	require_once 'include/php/Aplicatie.php';
+	require_once 'app/Aplicatie.php';
 	
 	Login::permiteOperator();
 	

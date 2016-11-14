@@ -7,7 +7,7 @@ $infoPage = array(
 	"focus" 			=> "seria"
 );
 
-require 'include/php/functions.php';
+require 'app/functions.php';
 include('login/bazadb.php');
 include('login/login.php');
 
@@ -153,7 +153,7 @@ $isInDepozit = ($aparat['idFirma']=="0")?true:false;
 
 							<form action ="mutaAparatInDepozit.php" method="GET" id="f1">
 
-								<img src="img/firme.png" /><img src="img/spre.png" /><img src="img/depozit.png" />
+								<img src="public/images/firme.png" /><img src="public/images/spre.png" /><img src="public/images/depozit.png" />
 
 								<fieldset>
 									
@@ -175,7 +175,7 @@ $isInDepozit = ($aparat['idFirma']=="0")?true:false;
 
 
 
-								<img src="img/firme.png" /><img src="img/spre.png" /><img src="img/firme.png" />
+								<img src="public/images/firme.png" /><img src="public/images/spre.png" /><img src="public/images/firme.png" />
 
 
 

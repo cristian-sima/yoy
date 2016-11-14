@@ -194,7 +194,7 @@ class Situatie_GUI
 
 		$this->html.= '
 
-		<script type="text/javascript" src="include/js/situatie_GUI.js" ></script>
+		<script type="text/javascript" src="public/js/situatie_GUI.js" ></script>
 
 		<div class="situatie_div privatePage_prt">
 		<form id="formular_situatie" action="modifica_situatie.php" method="POST">
@@ -204,7 +204,7 @@ class Situatie_GUI
 		<input type="hidden" value="'.$this->getSituație()->getFrom().'" 	name="from" />
 
 
-		<link href="include/css/situatie_GUI_'.(($this->isPaper) ? 'paper' : 'web') .'.css" rel="stylesheet" type="text/css"/>
+		<link href="public/css/situatie_GUI_'.(($this->isPaper) ? 'paper' : 'web') .'.css" rel="stylesheet" type="text/css"/>
 		';
 	}
 

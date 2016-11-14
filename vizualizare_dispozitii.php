@@ -1,11 +1,11 @@
 
 	<?php
 
-	require_once "include/php/Guvern.php";
-	require_once "include/php/Aplicatie.php";
-	require_once "include/php/Procesare.php";
-	require_once "include/php/FirmaSpatiu.php";
-	require_once "include/php/SelectSituatie_GUI.php";
+	require_once "app/Guvern.php";
+	require_once "app/Aplicatie.php";
+	require_once "app/Procesare.php";
+	require_once "app/FirmaSpatiu.php";
+	require_once "app/SelectSituatie_GUI.php";
 
 	Page::showHeader();
 	Page::showContent();
@@ -127,7 +127,7 @@
 				<tr class="pad">
 					<td  class="smoke">'.$dispozitie['data'].'</td>
 					<td  class="smoke">'.$dispozitie['denumire_firma'].'</td>
-					<td> <img src="img/'.$dispozitie['tip'].'.png" > '.($dispozitie['tip'] == "incasare" ? "încasare" : "plată").'</td>
+					<td> <img src="public/images/'.$dispozitie['tip'].'.png" > '.($dispozitie['tip'] == "incasare" ? "încasare" : "plată").'</td>
 					<td style="'.(($dispozitie['tip']=='plata')?"color:red":"color:green").'">'.$dispozitie['valoare'].' lei</td>
 					<td class="smoke" style="">'.htmlspecialchars($dispozitie['document']).'</td>
 					<td class="smoke" style="">'.htmlspecialchars($dispozitie['explicatie']).'</td>

@@ -1,12 +1,12 @@
 <?php
 
-require_once "include/php/Total.php";
-require_once "include/php/Guvern.php";
-require_once "include/php/Romanian.php";
-require_once "include/php/FirmaSpatiu.php";
-require_once "include/php/RegistruGrafic.php";
-require_once "include/php/SituatieMecanica.php";
-require_once "include/php/DataCalendaristica.php";
+require_once "app/Total.php";
+require_once "app/Guvern.php";
+require_once "app/Romanian.php";
+require_once "app/FirmaSpatiu.php";
+require_once "app/RegistruGrafic.php";
+require_once "app/SituatieMecanica.php";
+require_once "app/DataCalendaristica.php";
 
 class RegistruGraficCentral extends RegistruGrafic {
   public function RegistruGraficCentral($data) {

@@ -1,7 +1,7 @@
 <?php 
 
-	require_once 'include/php/Aplicatie.php';
-	require_once 'include/php/Page.php';
+	require_once 'app/Aplicatie.php';
+	require_once 'app/Page.php';
 	
 	Login::permiteOperator();
 	Login::disconnect();

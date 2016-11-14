@@ -3,7 +3,7 @@
 require_once "vendor/StringTemplate/Engine.php";
 $engine = new Engine();
 
-require_once 'include/php/Aplicatie.php';
+require_once 'app/Aplicatie.php';
 
 Page::showHeader();
 Page::showContent();
@@ -15,7 +15,7 @@ $db = Aplicatie::getInstance()->Database;
 <div class="container">
 	<div class="row">
 		<div class="col-xs-10">
-				<h1><img src="img/firme.png" align="absmiddle" /> Firme spațiu</h1>
+				<h1><img src="public/images/firme.png" align="absmiddle" /> Firme spațiu</h1>
 		</div>
 		<div class="col-xs-2 text-xs-right">
 			<input class="btn btn-success" type="button" value="Adaugă firmă"	onclick="document.location='firma_noua.php'" />

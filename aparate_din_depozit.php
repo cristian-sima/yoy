@@ -1,8 +1,8 @@
 <?php
 
-require_once "include/php/Aparat.php";
-require_once "include/php/Aplicatie.php";
-require_once "include/php/FirmaSpatiu.php";
+require_once "app/Aparat.php";
+require_once "app/Aplicatie.php";
+require_once "app/FirmaSpatiu.php";
 
 Page::showHeader();
 Page::showContent();

@@ -1,10 +1,10 @@
 <?php
 
-require_once "include/php/Aparat.php";
-require_once "include/php/Aplicatie.php";
-require_once "include/php/Procesare.php";
-require_once "include/php/FirmaSpatiu.php";
-require_once "include/php/SelectSituatie_GUI.php";
+require_once "app/Aparat.php";
+require_once "app/Aplicatie.php";
+require_once "app/Procesare.php";
+require_once "app/FirmaSpatiu.php";
+require_once "app/SelectSituatie_GUI.php";
 
 $firma			= new FirmaSpatiu($_GET['id_firma']);
 

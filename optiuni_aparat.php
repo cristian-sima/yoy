@@ -1,9 +1,9 @@
 <?php
 
-require_once "include/php/Aparat.php";
-require_once 'include/php/Aplicatie.php';
-require_once 'include/php/FirmaSpatiu.php';
-require_once "include/php/SelectSituatie_GUI.php";
+require_once "app/Aparat.php";
+require_once 'app/Aplicatie.php';
+require_once 'app/FirmaSpatiu.php';
+require_once "app/SelectSituatie_GUI.php";
 
 Page::showHeader();
 Page::showContent();
@@ -34,7 +34,7 @@ $noActiveCompanies = ($stmt->rowCount() == 0)
 
 ?>
 
-<link href="include/css/fieldset.css" rel="stylesheet" type="text/css"/>
+<link href="public/css/fieldset.css" rel="stylesheet" type="text/css"/>
 
 <ol class="breadcrumb">
   <li class="breadcrumb-item"><a href="toate_aparatele.php">Aparate</a></li>

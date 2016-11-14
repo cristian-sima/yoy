@@ -1,5 +1,5 @@
 <?php
-require 'include/php/Aplicatie.php';
+require 'app/Aplicatie.php';
 Page::showHeader();
 Page::showContent();
 ?>
@@ -8,7 +8,7 @@ Page::showContent();
 	<tr>
 		<td>
 			<h2 style="color: orange">
-				<img src="img/firme.png" align="absmiddle" />Adaugă firmă
+				<img src="public/images/firme.png" align="absmiddle" />Adaugă firmă
 			</h2>
 		</td>
 		<td style="text-align: right">

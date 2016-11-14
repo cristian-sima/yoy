@@ -2,13 +2,13 @@
 	<?php
 
 
-	require_once "include/php/Procesare.php";
-	require_once "include/php/FirmaSpatiu.php";
-	require_once "include/php/Aplicatie.php";
-	require_once "include/php/Guvern.php";
-	require_once "include/php/Utilizator.php";
-	require_once "include/php/Situatie_GUI.php";
-	require_once "include/php/SituatieMecanicaGraficaCompletaAzi.php";
+	require_once "app/Procesare.php";
+	require_once "app/FirmaSpatiu.php";
+	require_once "app/Aplicatie.php";
+	require_once "app/Guvern.php";
+	require_once "app/Utilizator.php";
+	require_once "app/Situatie_GUI.php";
+	require_once "app/SituatieMecanicaGraficaCompletaAzi.php";
 
 
 	$html = "";
@@ -84,11 +84,11 @@
 	Page::showContent();
 
 
-	Page::showHeading('<img src="img/results.png" width="64px" height="64px" align="absmiddle"/>  Situație firma '.$firma->getDenumire().'</b>', "");
+	Page::showHeading('<img src="public/images/results.png" width="64px" height="64px" align="absmiddle"/>  Situație firma '.$firma->getDenumire().'</b>', "");
 
 
 	echo '
-	<script src="include/js/situatie.js"></script>
+	<script src="public/js/situatie.js"></script>
 	<script>
 				situatie.firma = '.$firma->getID().';
 	</script>';
@@ -151,7 +151,7 @@
 		header("Content-Type", "text/html; charset=utf-8");
 		require_once 'vendor/pdf/dompdf_config.inc.php';
 		mb_internal_encoding('UTF-8');
-		$ready =  '<html><head><title>'.$title.'</title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><link href="include/css/pdf.css" rel="stylesheet" type="text/css"/></head><body>'.$html."</body></html>";
+		$ready =  '<html><head><title>'.$title.'</title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><link href="public/css/pdf.css" rel="stylesheet" type="text/css"/></head><body>'.$html."</body></html>";
 
 		$dompdf = new DOMPDF();
 		$dompdf->set_paper('a4', 'landscape');

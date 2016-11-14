@@ -1,11 +1,5 @@
 <?php
 
-require_once "include/php/Guvern.php";
-require_once "include/php/Romanian.php";
-require_once "include/php/Aplicatie.php";
-require_once "include/php/Procesare.php";
-require_once "include/php/FirmaSpatiu.php";
-require_once "include/php/SelectSituatie_GUI.php";
 
 Page::showHeader();
 Page::showContent();

@@ -1,12 +1,12 @@
 <?php
 
-require_once "include/php/Aplicatie.php";
+require_once "app/Aplicatie.php";
 
 Page::showHeader();
 Page::showContent();
 
 
-Page::showHeading('<img src="img/setari.png" align="absmiddle" /> Setări', "");
+Page::showHeading('<img src="public/images/setari.png" align="absmiddle" /> Setări', "");
 
 echo'<br />
 
@@ -14,7 +14,7 @@ echo'<br />
 <br />
 
 
-<link href="include/css/fieldset.css" rel="stylesheet" type="text/css"/>
+<link href="public/css/fieldset.css" rel="stylesheet" type="text/css"/>
 		<form action="setari_POST.php" method="POST">
 				<fieldset>
 				<legend>Date firmă</legend>

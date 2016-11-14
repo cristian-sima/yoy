@@ -1,8 +1,8 @@
 <?php
 
-require_once "include/php/Aparat.php";
-require_once "include/php/Aplicatie.php";
-require_once "include/php/FirmaSpatiu.php";
+require_once "app/Aparat.php";
+require_once "app/Aplicatie.php";
+require_once "app/FirmaSpatiu.php";
 
 Page::showHeader();
 Page::showContent();
@@ -13,7 +13,7 @@ $db = Aplicatie::getInstance()->Database;
 <div class="container">
 	<div class="row">
 		<div class="col-xs-8">
-			<h1><img src="img/user.png" align="absmiddle" />Utilizatori</h1>
+			<h1><img src="public/images/user.png" align="absmiddle" />Utilizatori</h1>
 		</div>
 		<div class="col-xs-4 text-xs-right">
 			<input class="btn btn-success btn-sm" type="button" value="Adaugă administrator"	onclick="document.location='adauga_utilizator.php?type=admin'" />

@@ -1,8 +1,8 @@
 <?php
 
-require_once "include/php/Utilizator.php";
-require_once "include/php/Aplicatie.php";
-require_once "include/php/FirmaSpatiu.php";
+require_once "app/Utilizator.php";
+require_once "app/Aplicatie.php";
+require_once "app/FirmaSpatiu.php";
 
 Login::permiteOperator();
 Page::showHeader();
