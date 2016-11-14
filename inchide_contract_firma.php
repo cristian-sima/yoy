@@ -18,10 +18,10 @@ try
 							'editare_date_firma.php?id_firma='.$_GET['id_firma']);
 
 	$q = "UPDATE `firma` SET activa='0',dataIncetare='".date("Y-m-d")."' WHERE id='".$data['id_firma']."'";
-	$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL()->getResource());
+	$result = mysql_query($q, Aplicatie::getInstance()->Database);
 
 	$q = "UPDATE `utilizator` SET activ='1' WHERE idFirma='".$data['id_firma']."'";
-	$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL()->getResource());
+	$result = mysql_query($q, Aplicatie::getInstance()->Database);
 
 
 	Page::showConfirmation('<span class="confirmation">Contractul a fost încheiat</span> <a href="details.php?idFirma='.$_GET['id_firma'].'">Înapoi</a>');

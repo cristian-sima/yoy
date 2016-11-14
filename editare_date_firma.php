@@ -19,7 +19,7 @@ Page::showHeading("Editeaza date firma",'<input	type="button" class="disp" value
 		<td></td>
 		<td style="text-align: right"><?php if($firma->isActiva())
 		{?> <input type="button" value="Închide contract"
-			onclick="confirmRequest('Ești sigur că vrei să închei contractul ?', 'inchide_contract_firma.php?id_firma=<?php echo$firma->getID();?>')" />
+			onclick="confirmRequest('Vrei să închei contractul ?', 'inchide_contract_firma.php?id_firma=<?php echo$firma->getID();?>')" />
 			<?php
 		} ?>
 		</td>

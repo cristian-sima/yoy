@@ -12,7 +12,7 @@ Page::showContent();
 			</h2>
 		</td>
 		<td style="text-align: right">
-			<input type="button" value="Înapoi la firme" onclick="document.location='pagina_principala.php'" />
+			<input type="button" value="Înapoi la firme" onclick="document.location='space_companies.php'" />
 		</td>
 	</tr>
 </table>

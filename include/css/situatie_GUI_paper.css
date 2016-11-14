@@ -207,7 +207,7 @@
 	width:				107px;
 }
 
-.situatie_data tbody tr td input, .situatie_bilete tr td input[type=text]
+.situatie_data tbody tr td input
 {
 	border: 			none;
 	height: 			15px;
@@ -227,7 +227,7 @@
 	padding: 			1px;
 }
 
-.situatie_data tbody tr td input:disabled, .situatie_bilete tr td input[type=text]:disabled
+.situatie_data tbody tr td input:disabled
 {
 	margin:				-2px;
 	width:				100%;
@@ -237,7 +237,7 @@
 	border:				none;
 	cursor:				default;
 }
-.situatie_data tbody tr td input:focus,.situatie_bilete tr td input[type=text]:focus
+.situatie_data tbody tr td input:focus
 {
 	background:			#FFFBD6;
 	border: 			1px solid #FFB200;
@@ -291,51 +291,3 @@
 	border:					1px solid black;
 	font-size: 				10px;
 }
-
-
-
-.situatie_bilete
-{
-	width:					327px;
-	padding: 				0px;
-	border-collapse: 		collapse;
-	margin-right:			-2px;
-}
-
-
-.situatie_bilete tr td
-{
-	border:					1px solid black;
-	font-size: 				10px;
-	padding:				2px;
-}
-
-.situatie_carnet
-{
-	width:					327px;
-	padding: 				0px;
-	margin: 				0px;
-	border-collapse: 		collapse;
-	margin-right:			-2px;
-}
-
-.situatie_carnet tr td
-{
-	border:					none;
-	font-size: 				10px;
-}
-
-.situatie_bilete_div
-{
-	margin-top:				10px;
-}
-
-.situatie_bilete tr td input[type=text]
-{
-	width:					100%;
-	padding:				none;
-}
-
-.situatie_bilete tr:hover:not(:first-child)
-{
-	background:				#CEF6FF;

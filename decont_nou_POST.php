@@ -27,7 +27,7 @@ try
 					'".$data['suma']."',
 					'".$data['document']."')";
 
-	$result = mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
+	$result = mysql_query($mysql, Aplicatie::getInstance()->Database);
 
 
 	Page::showConfirmation('<span class="confirmation">Decontul a fost adăugat cu succes !</span> <a href="administreaza_deconturi.php ">Înapoi la deconturi</a>');

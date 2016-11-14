@@ -177,18 +177,6 @@ function nice($text){
 		<tr height=17 style='height: 12.75pt'>
 			<td height=17 class=xl675063 style='height: 12.75pt'>&nbsp;</td>
 			<td class=xl645063 width=62 style='border-top: none; width: 47pt'>2</td>
-			<td class=xl635063 style='border-top: none; border-left: none'>462</td>
-			<td class=xl635063 style='border-top: none; border-left: none'>Premii
-				jucători</td>
-			<td class=xl765063 style='border-top: none; border-left: none'><?php echo $situatie->getTotalPremii();?>
-			</td>
-			<td class=xl855063 width=60 style='width: 45pt'></td>
-			<td class=xl855063 width=64 style='width: 48pt'></td>
-			<td class=xl795063>&nbsp;</td>
-		</tr>
-		<tr height=17 style='height: 12.75pt'>
-			<td height=17 class=xl675063 style='height: 12.75pt'>&nbsp;</td>
-			<td class=xl645063 width=62 style='border-top: none; width: 47pt'>3</td>
 			<td class=xl635063 style='border-top: none; border-left: none'>446</td>
 			<td class=xl635063 style='border-top: none; border-left: none'>Taxa<span
 				style='mso-spacerun: yes'>  </span>autorizare</td>

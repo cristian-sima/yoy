@@ -73,7 +73,7 @@ try
 				 '".$data['tip']."',
 				 '".$data['valoare']."')";
 
-	$result = mysql_query($query, Aplicatie::getInstance()->getMYSQL()->getResource());
+	$result = mysql_query($query, Aplicatie::getInstance()->Database);
 
 
 
@@ -107,7 +107,7 @@ try
 								'".$data['valoare']."'
 							)";
 
-		$result = mysql_query($query, Aplicatie::getInstance()->getMYSQL()->getResource());
+		$result = mysql_query($query, Aplicatie::getInstance()->Database);
 
 
 		Page::showConfirmation('<span class="confirmation">Dispozițiile au fost scrise </span> <a href="vizualizati_dispozitii.php">Înapoi la dispoziții</a>');

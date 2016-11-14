@@ -1,5 +1,5 @@
 
-#dispare1,#dispare2,.mod,.disp,.hide_prt, #dispare3 {display:none;opacity:0;}
+#dispare1,#dispare2,.mod,.disp,.hidden-print, #dispare3 {display:none;opacity:0;}
 @page {size: landscape}
 #container, #content, .noBorder_prt,.noBorder_prt:disabled {border:none;}
 
@@ -27,7 +27,7 @@
   border: 1px solid #FFF;
 }
 
-.situatie_data tbody tr td input:focus, .situatie_data tbody tr td input, .situatie_bilete tr td, .situatie_data tbody tr td input:hover, .situatie_data tbody tr td input, .situatie_bilete tr td , .transparent_prt, .transparent_prt:disabled, .completare_index transparent_prt, .situatie_data tbody tr td input, .situatie_bilete tr td input[type=text]
+.situatie_data tbody tr td input:focus, .situatie_data tbody tr td input, .situatie_data tbody tr td input:hover, .situatie_data tbody tr td input, .transparent_prt, .transparent_prt:disabled, .completare_index transparent_prt, .situatie_data tbody tr td input
 {
   background: transparent;
 }

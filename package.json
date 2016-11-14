@@ -1,0 +1,19 @@
+{
+  "name": "yoy",
+  "version": "3.0.0",
+  "description": "Create a file called `config.json` in the main folder. Enter the following details:",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cristian-sima/yoy.git"
+  },
+  "author": "Cristian Sima",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cristian-sima/yoy/issues"
+  },
+  "homepage": "https://github.com/cristian-sima/yoy#readme"
+}

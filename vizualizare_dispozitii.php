@@ -43,7 +43,7 @@
 					ORDER by data DESC
 			";
 
-	$result = mysql_query($query, Aplicatie::getInstance()->getMYSQL()->getResource());
+	$result = mysql_query($query, Aplicatie::getInstance()->Database);
 
 	if(mysql_num_rows($result) == 0)
 	{
@@ -90,8 +90,6 @@
 	if(isset($_GET['extinde']))
 	{
 
-		$prag_de_impozitare 	= Guvern::getPragDeImpozitare($selector_GUI->getDataCurenta());
-
 		$query = "SELECT
 					d.id,
 					d.data,
@@ -104,7 +102,7 @@
 				FROM dispozitie AS d
 				WHERE  data='".$selector_GUI->getDataCurenta()."' ".$_criterii_MYSQL."";
 
-		$result_zi = mysql_query($query, Aplicatie::getInstance()->getMYSQL()->getResource());
+		$result_zi = mysql_query($query, Aplicatie::getInstance()->Database);
 
 		if(mysql_num_rows($result_zi) == 0)
 		{

@@ -24,7 +24,7 @@ try
 											`to_`	= '".$today."'
 											 WHERE id_aparat = '".$data['id_aparat']."' AND is_now ='1' ";
 		
-		$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL()->getResource()) or die(mysql_error());
+		$result = mysql_query($q, Aplicatie::getInstance()->Database) or die(mysql_error());
 		
 		
 		
@@ -32,7 +32,7 @@ try
 		
 		
 			
-		$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL()->getResource()) or die(mysql_error());
+		$result = mysql_query($q, Aplicatie::getInstance()->Database) or die(mysql_error());
 		
 		
 		
@@ -51,7 +51,7 @@ try
 							)";
 	
 		
-		$result = mysql_query($query, Aplicatie::getInstance()->getMYSQL()->getResource());
+		$result = mysql_query($query, Aplicatie::getInstance()->Database);
 		
 	}
 

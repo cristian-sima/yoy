@@ -68,7 +68,7 @@ Page::showContent();
 				<div id="idFirma">
 					<label>Firma</label> <select name="idFirma">
 					<?php
-					$result = mysql_query("SELECT id,nume from firma WHERE activa='1'", Aplicatie::getInstance()->getMYSQL()->getResource());
+					$result = mysql_query("SELECT id,nume from firma WHERE activa='1'", Aplicatie::getInstance()->Database);
 					while($row2 = mysql_fetch_array($result))
 					{
 						?>

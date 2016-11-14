@@ -953,7 +953,7 @@ class DOMPDF {
 
     global $_dompdf_warnings, $_dompdf_show_warnings;
     if ( $_dompdf_show_warnings ) {
-      echo '<b>DOMPDF Warnings</b><br><pre>';
+      echo '<b>DOMPDF Warnings</b><br /><pre>';
       foreach ($_dompdf_warnings as $msg) {
         echo $msg . "\n";
       }

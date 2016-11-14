@@ -1,7 +1,6 @@
 <?php
 
 require_once "Firma.php";
-require_once "BileteGrafice.php";
 require_once "SituatieGrafica.php";
 
 
@@ -18,16 +17,12 @@ class Situatie_GUI
 {
 	// referinte
 	private $situatie;
-	private	$bilete;
 	private $firma;
 
 	private $html = '';
 
 	// grafic settings
 	private $displayAutor 			= true;
-	private $displayBilete 			= true;
-	private $displayDefaultBilete 	= true;
-	private $displayAddCarnet		= true;
 	private $isInteractive			= true;
 	private $isPaper			= false;
 
@@ -39,16 +34,14 @@ class Situatie_GUI
 
 
 	/**
-	* Afișează o situatie grafica pentru o firma intr-o anumita perioada. Aceasta situatie este compusa din situatia index-urilor și a biletelor care au fost vandute in aceea zi sau perioada
+	* Afișează o situatie grafica pentru o firma intr-o anumita perioada. Aceasta situatie este compusa din situatia index-urilor
 	*
 	* @param SituatieGrafica $situatie				Situatia grafica pentru firma respectiva
-	* @param object $bilete						Situatia biletelor pentru firma respectiva
 	* @param Firma $firma							Referinta spre obiectul firmei de spatiu
 	*/
-	public function __construct(SituatieGrafica $situatie, $bilete, Firma $firma)
+	public function __construct(SituatieGrafica $situatie, Firma $firma)
 	{
 		$this->situatie					= $situatie;
-		$this->bilete					= $bilete;
 		$this->firma					= $firma;
 
 		if($situatie->getFrom() == $situatie->getTo())
@@ -80,43 +73,9 @@ class Situatie_GUI
 	}
 
 
-	/**
-	*
-	* Seteaza daca butonul de adaugat bilete se va afișa sau nu
-	* @param $boolean			True daca butonul de adaugat bilete se afiseaza false daca nu
-	*
-	*/
-	public function displayAddCarnet($boolean)
-	{
-		$this->displayAddCarnet = $boolean;
-	}
-
-	/**
-	*
-	* Seteaza daca biletele default se va afișa sau nu
-	* @param $boolean			True daca biletele default se afiseaza false daca nu
-	*
-	*/
-	public function displayDefaultBilete($boolean)
-	{
-		$this->displayDefaultBilete = $boolean;
-	}
-
 	public function isPaper()
 	{
 		$this->isPaper = true;
-	}
-
-
-	/**
-	*
-	* Seteaza daca biletele se va afișa sau nu
-	* @param $boolean			True daca biletele se afiseaza false daca nu
-	*
-	*/
-	public function displayBilete($boolean)
-	{
-		$this->displayBilete = $boolean;
 	}
 
 	/**
@@ -162,17 +121,6 @@ class Situatie_GUI
 	public function getFirma()
 	{
 		return $this->firma;
-	}
-
-	/**
-	*
-	* Returneaza referinta spre biletele
-	* @return					Biletele
-	*
-	*/
-	public function getBilete()
-	{
-		return $this->bilete;
 	}
 
 	/**
@@ -252,7 +200,6 @@ class Situatie_GUI
 		<form id="formular_situatie" action="modifica_situatie.php" method="POST">
 
 		<input type="hidden" name="aparate_" value="" id="aparate_" />
-		<input type="hidden" name="carnete_" value="" id="carnete_" />
 		<input type="hidden" value="'.$this->getFirma()->getID().'" 		name="id_firma" />
 		<input type="hidden" value="'.$this->getSituație()->getFrom().'" 	name="from" />
 
@@ -487,7 +434,6 @@ class Situatie_GUI
 		$this->html.= '</td>';
 
 		$this->html.= '<td style="text-align:center;width:33%">';
-		$this->_displayBilete();
 		$this->html.= '</td>';
 
 
@@ -516,79 +462,6 @@ class Situatie_GUI
 		}
 	}
 
-
-	/**
-	*
-	* Afișează situatia de bilete pentru situatie
-	*
-	*/
-	private function _displayBilete()
-	{
-		if($this->displayBilete && $this->getBilete() != null)
-		{
-
-			$bilete = $this->getBilete();
-
-
-			$this->html.= '
-			<div class="situatie_bilete_div">
-
-			<table class="situatie_bilete">
-			<colgroup>
-			<col style="width:127px" ></col>
-			<col style="width:100px" ></col>
-			<col style="width:100px" ></col>
-			</colgroup>
-			<tr>
-			<td style="font-weight:bold;" >SERII BILETE</td>
-			<td class="yellow white_prt">ÎNCEPUT</td>
-			<td class="yellow white_prt" >SFÂRȘIT</td>
-			</tr>
-			</table>
-			';
-
-			$this->html.= '<table class="situatie_bilete" id="carnete" style="margin-top:-1px">
-			<colgroup>
-			<col style="width:127px" ></col>
-			<col style="width:100px" ></col>
-			<col style="width:100px" ></col>
-			</colgroup>';
-
-			if($this->displayDefaultBilete)
-			{
-				$default = $bilete->getDefault();
-				$this->html.= '
-				<tr>
-				<td style="border:none;width:127px;font-weight:bold;border-left:1px solid white;border-bottom:0px;" >
-				'.((($this->displayAddCarnet) == true)?'<span onclick="adaugaCarnet()" style="color:green;cursor:pointer"  class="hide_prt">Adaugă carnet</span>':'').'
-				<td>'."<input class='completare_bilet' id='carnet_default_start' name='carnet_default_start' type='text' ".(($bilete->getEnableFirst())?"":"disabled")." ".(($this->isInteractive)?(""):("disabled"))."  value='".$default[0]."' />". (($bilete->getEnableFirst())?"":"<input class='completare_bilet' id='carnet_default_start' name='carnet_default_start' type='hidden'  value='".$default[0]."' />").'</td>
-				<td>'."<input class='completare_bilet' id='carnet_default_end' name='carnet_default_end' type='text' ".(($this->isInteractive)?(""):("disabled"))."  value='".$default[1]."' />".'</td>
-				</tr>';
-			}
-
-			$carnete = $bilete->getCarnete();
-
-			$nr = 0;
-
-			foreach($carnete as $carnet)
-			{
-				$this->html.= '
-				<tr id="carnet_'.$nr.'" >
-				<td style="border:none;width:127px;font-weight:bold;border-left:0px solid white;border-bottom:0px;" >
-				<a class="hide_prt" '.(($this->isInteractive)?(""):("style='display:none'")).' onclick="stergeCarnet('.$nr.')" tabindex="-1">Șterge carnet</a>
-				<td>'."<input class='completare_bilet' id='carnet_".$nr."_start' name='carnet_".$nr."_start' type='text' ".(($this->isInteractive)?(""):("disabled"))."  value='".$carnet->getStart()."' />".'</td>
-				<td>'."<input class='completare_bilet' id='carnet_".$nr."_end' name='carnet_".$nr."_end' type='text' ".(($this->isInteractive)?(""):("disabled"))."  value='".$carnet->getEnd()."' />".'</td>
-				</tr>';
-
-				$nr++;
-			}
-
-			$this->html.= '</table></div>';
-
-		}
-	}
-
-
 	/**
 	*
 	* Afișează tabelul cu totaluri. Acesta include totalul de incasari, de plati și ceea ce ramane in sertar
@@ -603,10 +476,6 @@ class Situatie_GUI
 		<col class="yellow white_prt" ></col>
 		<col class="bold" ></col>
 		</colgroup>
-		<tr>
-		<td> Total premii</td>
-		<td><span id="premii" >'.$t['premii'].'</span> lei</td>
-		</tr>
 		<tr>
 		<td>Total încasări</td>
 		<td><span id="incasari">'.$t['incasari'].'</span> lei</td>
@@ -626,7 +495,7 @@ class Situatie_GUI
 	*/
 	private function displayEnd()
 	{
-		$this->html.= '<a id="jump_salveaza" class="hide_prt" href="" style="color:white">Salvează</a></form>';
+		$this->html.= '<a id="jump_salveaza" class="hidden-print" href="" style="color:white">Salvează</a></form>';
 		$this->html.= '</div>';
 	}
 }

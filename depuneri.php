@@ -20,7 +20,7 @@ $data				= $selector_GUI->getDataCurenta();
 
 $selector_GUI->afiseazaButon(true);
 $selector_GUI->afiseazaFirme(false);
-$selector_GUI->setAdresaButon("administreaza_depuneri_de_numerar.php");
+$selector_GUI->setAdresaButon("depuneri.php");
 $selector_GUI->setTypeOfDocument("Depuneri de numerar");
 
 
@@ -43,7 +43,7 @@ $mysql = "SELECT 	data,
 		FROM depunere_numerar
 		WHERE data >= '".$data->getFirstDayOfMonth()."' AND data <= '".$data->getLastDayOfMonth()."'";
 
-$eliberari 		= mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
+$eliberari 		= mysql_query($mysql, Aplicatie::getInstance()->Database);
 $nr_crt			= 1;
 
 if(mysql_num_rows($eliberari) == 0)

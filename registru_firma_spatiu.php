@@ -1,21 +1,23 @@
 <?php
 
-	require_once "include/php/Aplicatie.php";
-	require_once "include/php/Procesare.php";
-	require_once "include/php/FirmaSpatiu.php";
-	require_once "include/php/RegistruGUI.php";
-	require_once "include/php/DataCalendaristica.php";
-	require_once "include/php/SelectSituatie_GUI.php";
-	require_once "include/php/RegistruGraficFirma.php";
+require_once "include/php/Aplicatie.php";
+require_once "include/php/Procesare.php";
+require_once "include/php/FirmaSpatiu.php";
+require_once "include/php/RegistruGUI.php";
+require_once "include/php/DataCalendaristica.php";
+require_once "include/php/SelectSituatie_GUI.php";
+require_once "include/php/RegistruGraficFirma.php";
 
-	Login::permiteOperator();
-	Page::showHeader();
-	Page::showContent();
-	Page::showHeading("Registru de casă firmă", '<input type="button" class="disp" value="Tipărește" onclick="window.print()">&nbsp;
-	'.((Aplicatie::getInstance()->getUtilizator()->isAdministrator())?('<a onclick="goTo('."'".'selecteaza_situatie.php'."'".')" href="#"><input type="button" value="Înapoi la situații" /></a>
-	'):('<a onclick="document.location = '."'".'situatie_mecanica_operator.php'."'".'" href="#"><input type="button" value="Înapoi la situații" /></a>
-	')).'
-	');
+Login::permiteOperator();
+Page::showHeader();
+Page::showContent();
+Page::showHeading("Registru de casă firmă", '<input type="button" class="disp" value="Tipărește" onclick="window.print()">&nbsp;
+'.((Aplicatie::getInstance()->getUtilizator()->isAdministrator())?('<a onclick="goTo('."'".'selecteaza_situatie.php'."'".')" href="#"><input type="button" value="Înapoi la situații" /></a>
+'):('<a onclick="document.location = '."'".'situatie_mecanica_operator.php'."'".'" href="#"><input type="button" value="Înapoi la situații" /></a>
+')).'
+');
+
+try {
 
 	Procesare::createEmptyFields($_GET, array("data", "id_firma"));
 
@@ -33,17 +35,17 @@
 	$selector->setAdresaButon("registru_firma_spatiu.php");
 	$selector->afiseazaDescriere(false);
 	$selector->adaugaCampSelect(array(	"denumire" 	=> "",
-									  	"id"		=> "afiseaza_totaluri",
-										"optiuni"	=> array(
-															array(
-																"denumire" => "Afișează totaluri",
-																"valoare" => ""
-															),
-															array(
-																"denumire" => "Nu afișa totaluri",
-																"valoare" => "false"
-															)
-											)));
+	"id"		=> "afiseaza_totaluri",
+	"optiuni"	=> array(
+		array(
+			"denumire" => "Afișează totaluri",
+			"valoare" => ""
+		),
+		array(
+			"denumire" => "Nu afișa totaluri",
+			"valoare" => "false"
+		)
+	)));
 	$registru_gui->afiseazaTotalurile(!$selector->getValoareOptiune('afiseaza_totaluri'));
 
 	if(Aplicatie::getInstance()->getUtilizator()->isAdministrator())
@@ -55,4 +57,9 @@
 
 
 	Page::showFooter();
+
+} catch (Exception $e) {
+	PAGE::showError($e->getMessage());
+}
+
 ?>

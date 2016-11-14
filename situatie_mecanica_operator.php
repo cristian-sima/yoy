@@ -8,7 +8,6 @@
 	require_once "include/php/Guvern.php";
 	require_once "include/php/Utilizator.php";
 	require_once "include/php/Situatie_GUI.php";
-	require_once "include/php/BileteGrafice.php";
 	require_once "include/php/SituatieMecanicaGraficaCompletaAzi.php";
 
 
@@ -26,7 +25,6 @@
 
 
 	$numar_de_randuri		= 0;
-	$numar_de_carnete		= 0;
 
 	$_GET['id_firma'] = Aplicatie::getInstance()->getUtilizator()->getIdFirma();
 
@@ -57,23 +55,15 @@
 
 
 
-	$bilete 	= new BileteGrafice($data1, $data1, $firma);
-
-
 
 	/*---------------------- Totalizare o data diferita de azi ---------------*/
 
 	if($data1.'' != $today.'')
 	{
 		$situatie	= new SituatieMecanicaGraficaCompleta($data1, $firma);
-		$bilete 	= new BileteGrafice($data1, $data1, $firma);
-		$numar_de_carnete	= count($bilete->getCarnete());
 		$numar_de_randuri	= $situatie->getNumarulDeAparate();
-		$GUI		= new Situatie_GUI($situatie, $bilete, $firma);
+		$GUI		= new Situatie_GUI($situatie, $firma);
 		$GUI->isInteractiva(false);
-		$GUI->displayAddCarnet(false);
-
-
 	}
 	else
 	{
@@ -81,11 +71,9 @@
 	/*---------------------- Totalizare astazi ---------------*/
 
 		$situatie	= new SituatieMecanicaGraficaCompletaAzi($firma);
-		$bilete 	= new BileteGrafice($data1, $data1, $firma);
-		$numar_de_carnete	= count($bilete->getCarnete());
 		$numar_de_randuri	= $situatie->getNumarulDeAparate();
 
-		$GUI		= new Situatie_GUI($situatie, $bilete, $firma);
+		$GUI		= new Situatie_GUI($situatie, $firma);
 
 	}
 
@@ -106,7 +94,7 @@
 	</script>';
 
 	echo '
-	<div id="control_panel" class="hide_prt">
+	<div id="control_panel" class="hidden-print">
 		<table width="100%" style="border-bottom:1px solid #dfdfdf;">
 			<tr>
 
@@ -131,8 +119,6 @@
 					<input type="button"   value="Adaugă dispoziție" onclick="document.location='."'".'dispozitie_operator_noua.php?from='.$data1->getAnul().'-'.$data1->getLuna()."'".'" />
 				</td>
 				<td style="text-align:center"> &nbsp;&nbsp;&nbsp;
-					<input type="button" class="bold" value="Premii acordate" onclick="document.location='."'".'acorda_premii.php?id='.$firma->getID()."'".'" />
-					&nbsp;&nbsp;&nbsp;
 					<input type="button" value="Tipărește situație"  onclick="window.print()" />
 				</td>
 				<td>
@@ -149,16 +135,8 @@
 	$GUI->display();
 
 	echo '	<script>
-
-			carnete.ID = carnete.numarDeCarnete = '.$numar_de_carnete.'
 			situatie.nrDeAparate = '.$numar_de_randuri.';
-			for(i=0;i<carnete.numarDeCarnete;i++)
-			{
-				carnete.data.push(i);
-			}
 			</script>';
-
-
 
 		Page::showFooter();
 

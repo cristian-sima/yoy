@@ -1,8 +1,6 @@
 var situatie = {};
 var totaluri = {};
-var carnete = {};
 var aparate 		= new Array();
-carnete.data 		= new Array();
 
 function beforeSubmit()
 {
@@ -70,135 +68,15 @@ function beforeSubmit()
 		aparate.push(id_aparat);
 	}
 
-	// check carnet default
-
-
-	var start	= $("#carnet_default_start").val();
-	var end		= $("#carnet_default_end").val();
-
-
-	if(start.length != 5)
-	{
-		alert("Seria pentru primul carnet trebuie să aibă exact 5 cifre");
-		problem		= true;
-		$("#carnet_default_start").focus();
-		return false;
-	}
-
-	if(end.length != 5)
-	{
-		alert("Seria pentru primul carnet trebuie să aibă exact 5 cifre");
-		problem = true;
-		$("#carnet_default_end").focus();
-		return false;
-	}
-
-	serie1  = ((parseInt(start)-1)+"").substring(0,3);
-	serie2  = ((parseInt(end)-1)+"").substring(0,3);
-
-	if(serie1 != serie2)
-	{
-		alert("Primul carnet trebuie să aibă aceeași serie pentru început și sfârșit");
-		problem = true;
-		$("#carnet_default_end").focus();
-		return false;
-	}
-
-	if(parseInt(start) > parseInt(end))
-	{
-		alert("Seria pentru primul carnet trebuie să fie mai mare sau egală decât începutul");
-		problem = true;
-		$("#carnet_default_end").focus();
-		return false;
-	}
-
-	// carnete
-
-	for (var index in carnete.data)
-	{
-		carnetID = carnete.data[index];
-
-		console.log(carnetID);
-
-		start	= $("#carnet_"+carnetID+"_start").val();
-		end		= $("#carnet_"+carnetID+"_end").val();
-
-
-		if(start.length != 5)
-		{
-			alert("Seria "+start+' trebuie să fie de exact 5 cifre');
-			problem		= true;
-			$("#carnet_"+carnetID+"_start").focus();
-			return false;
-		}
-
-		if(end.length != 5)
-		{
-			alert("Seria "+end+' trebuie să fie de exact 5 cifre');
-			problem = true;
-			$("#carnet_"+carnetID+"_end").focus();
-			return false;
-		}
-
-		serie1  = ((parseInt(start)-1)+"").substring(0,3);
-		serie2  = ((parseInt(end)-1)+"").substring(0,3);
-
-		if(serie1 != serie2)
-		{
-			alert("Primul carnet trebuie să aibă aceeași serie pentru început și sfârșit");
-			problem = true;
-			$("#carnet_"+carnetID+"_end").focus();
-			return false;
-		}
-
-		if(parseInt(start) > parseInt(end))
-		{
-			alert("Seria pentru primul carnet trebuie să fie mai mare sau egală decât începutul");
-			problem = true;
-			$("#carnet_"+carnetID+"_end").focus();
-			return false;
-		}
-
-	}
-
-
 	if(!problem)
 	{
 		//submit
 
-		$("#carnete_").val(carnete.data.join("|"));
 		$("#aparate_").val(aparate.join("|"));
 
 		$("#formular_situatie").submit();
 
 	}
-}
-
-function adaugaCarnet()
-{
-	var id = carnete.ID;
-
-	var row = "<tr id='carnet_" + id + "'>" +
-		"<td  style='border:none;width:127px;font-weight:bold;border-left:0px solid white;border-bottom:0px;'><span style='cursor:pointer' class='hide_prt' onclick='stergeCarnet(" + id + ")'>Șterge carnet</span></td>" +
-		'<td>' + "<input class='completare_bilet' type='text' id='carnet_" + id + "_start' name='carnet_" + id + "_start' /></td>	" +
-		"<td><input class='completare_bilet' type='text' id='carnet_" + id + "_end' name='carnet_" + id + "_end' />" +
-		"</td></tr>";
-
-	carnete.data.push(id);
-
-	$("#carnete").append(row);
-
-	$("#carnet_" + id + "_start").focus();
-	carnete.numarDeCarnete++;
-	carnete.ID++;
-}
-
-
-function stergeCarnet(id)
-{
-	carnete.data.splice(carnete.data.indexOf(id), 1);
-	$("#carnet_" + id).remove();
-	carnete.numarDeCarnete--;
 }
 
 
@@ -230,8 +108,7 @@ $(document).ready(function ()
 	function updateTotal(values)
 	{
 		totaluri.incasari += round(values.incasari * values.pret_pe_impuls, 2);
-		totaluri.premii += round(values.premii * values.pret_pe_impuls, 2);
-		totaluri.sertar = parseFloat(totaluri.incasari - totaluri.premii);
+		totaluri.sertar = parseFloat(totaluri.incasari);
 
 	}
 
@@ -243,8 +120,6 @@ $(document).ready(function ()
 
 		totaluri.incasari = 0;
 		totaluri.sertar = 0;
-		totaluri.premii = 0;
-
 
 		for (row = 3; row <= situatie.nrDeAparate + 2; row++)
 		{
@@ -302,25 +177,21 @@ $(document).ready(function ()
 			updateTotal(
 			{
 				"incasari": dif1,
-				"premii": dif2,
 				"pret_pe_impuls": pret_pe_impuls
 			});
-
 
 		}
 
 
 		// arata totalurile
-
 		$("#incasari").text(totaluri.incasari);
-		$("#premii").text(totaluri.premii);
 		$("#sertar").text(totaluri.sertar);
 
 		$("#total_bani").text(totaluri.sertar);
 	}
 
 
-	$(".completare_index, .completare_bilet").keydown(function (event)
+	$(".completare_index").keydown(function (event)
 	{
 		// Allow: backspace, delete, tab, escape, enter and .
 		if ($.inArray(event.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||

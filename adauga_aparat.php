@@ -125,20 +125,6 @@
 								<input check="true" check="true" value="" criteria='{type:"string",  maxSize:"3"}'id="ordinea" name="ordinea" value="100" type="text" style="width:247px;" />
 								<span class="error">Există o eroare</span>
 							</div>
-							<?php if(isset($_GET['id_firma']))
-							{ ?>
-								<div>
-									<label>Index electronic <b>intrare</b>:</label>
-									<input check="true" check="true" value="" criteria='{type:"string",  maxSize:"30"}'id="electronic_intrare" name="electronic_intrare" type="text" style="width:247px;" />
-									<span class="error">Există o eroare</span>
-								</div>
-								<div>
-									<label>Index electronic <b>ieșire</b>:</label>
-									<input check="true" check="true" value="" criteria='{type:"string",  maxSize:"30"}'id="electronic_iesire" name="electronic_iesire" value="100" type="text" style="width:247px;" />
-									<span class="error">Există o eroare</span>
-								</div>
-								<?php
-							} ?>
 						</div>
 
 

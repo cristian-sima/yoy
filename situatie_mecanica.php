@@ -7,7 +7,6 @@
 	require_once "include/php/Guvern.php";
 	require_once "include/php/Utilizator.php";
 	require_once "include/php/Situatie_GUI.php";
-	require_once "include/php/BileteGrafice.php";
 	require_once "include/php/SituatieMecanicaGraficaCompletaAzi.php";
 
 	$GUI = "";
@@ -23,7 +22,6 @@
 	Procesare::createEmptyFields($_GET, array("id_firma","from","to"));
 
 	$numar_de_randuri		= 0;
-	$numar_de_carnete		= 0;
 
 
 	if($_GET['from'] == '')
@@ -70,19 +68,15 @@
 
 			if(!$situatie->isFake())
 			{
-				$bilete 	= new BileteGrafice($data1, $data1, $firma);
-				$GUI		= new Situatie_GUI($situatie, $bilete, $firma);
+				$GUI		= new Situatie_GUI($situatie, $firma);
 			}
 			else
 			{
-				$GUI		= new Situatie_GUI($situatie, null, $firma);
-				$GUI->displayBilete(false);
+				$GUI		= new Situatie_GUI($situatie, $firma);
 				$GUI->displayAutor(false);
 			}
 
 			$GUI->isInteractiva(false);
-			$GUI->displayAddCarnet(false);
-
 
 			$data1 = new DataCalendaristica(DataCalendaristica::getZiuaUrmatoare($data1));
 		}
@@ -97,38 +91,26 @@
 
 
 			$situatie			= new SituatieMecanicaGrafica($data1, $data2, $firma);
-			$GUI				= new Situatie_GUI($situatie, null, $firma);
+			$GUI				= new Situatie_GUI($situatie, $firma);
 			$numar_de_randuri	= $situatie->getNumarulDeAparate();
 
-			$GUI->displayBilete(false);
 			$GUI->isInteractiva(false);
 			$GUI->displayAutor(false);
-
-
-
 		}
 		else
 		{
-			$bilete 	= new BileteGrafice($data1, $data1, $firma);
-
 			/*---------------------- Totalizare o data diferita de azi ---------------*/
 
 			if($data1.'' != $today.'')
 			{
 				$situatie				= new SituatieMecanicaGraficaCompleta($data1, $firma);
-				$bilete 				= new BileteGrafice($data1, $data1, $firma);
-				$numar_de_carnete	= count($bilete->getCarnete());
 				$numar_de_randuri		= $situatie->getNumarulDeAparate();
-				$GUI					= new Situatie_GUI($situatie, $bilete, $firma);
+				$GUI					= new Situatie_GUI($situatie, $firma);
 
 				if($situatie->isFake())
 				{
 					$GUI->isInteractiva(false);
-					$GUI->displayAddCarnet(false);
 				}
-
-
-
 
 			}
 			else
@@ -137,10 +119,8 @@
 			/*---------------------- Totalizare astazi ---------------*/
 
 				$situatie			= new SituatieMecanicaGraficaCompletaAzi($firma);
-				$bilete 			= new BileteGrafice($data1, $data1, $firma);
-				$numar_de_carnete	= count($bilete->getCarnete());
 				$numar_de_randuri	= $situatie->getNumarulDeAparate();
-				$GUI				= new Situatie_GUI($situatie, $bilete, $firma);
+				$GUI				= new Situatie_GUI($situatie, $firma);
 
 
 				$numar_de_randuri	= $situatie->getNumarulDeAparate();
@@ -210,22 +190,11 @@
 		echo '<input type="button" class="mod bold" id="salveaza_modificari" value="Salvează modificările !" onclick="beforeSubmit()" />';
 		echo '</td></tr></table></div><br />';
 
-
-
-
+		$GUI->display();
 
 		echo '	<script>
-
-				carnete.ID = carnete.numarDeCarnete = '.$numar_de_carnete.'
 				situatie.nrDeAparate = '.$numar_de_randuri.';
-				for(i=0;i<carnete.numarDeCarnete;i++)
-				{
-					carnete.data.push(i);
-				}
 				</script>';
-
-
-		$GUI->display();
 
 		Page::showFooter();
 	}

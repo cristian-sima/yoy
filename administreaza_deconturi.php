@@ -41,7 +41,7 @@ $mysql = "SELECT 	data,
 		FROM decont 
 		WHERE data >= '".$data->getFirstDayOfMonth()."' AND data <= '".$data->getLastDayOfMonth()."'";
 
-$eliberari 		= mysql_query($mysql, Aplicatie::getInstance()->getMYSQL()->getResource());
+$eliberari 		= mysql_query($mysql, Aplicatie::getInstance()->Database);
 $nr_crt			= 1;
 
 if(mysql_num_rows($eliberari) == 0)

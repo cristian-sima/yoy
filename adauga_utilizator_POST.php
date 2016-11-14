@@ -1,37 +1,84 @@
 <?php
 
-	require_once "include/php/Procesare.php";
-	require_once "include/php/Aplicatie.php";
+require_once "include/php/Procesare.php";
+require_once "include/php/Aplicatie.php";
 
-	Page::showHeader();
-	Page::showContent();
+Page::showHeader();
+Page::showContent();
 
-	try
-	{
-		$data			=   $_POST;
+$db = Aplicatie::getInstance()->Database;
 
+try {
+	$data = $_POST;
 
-		Procesare::checkRequestedData(
-							array('tipOperator','nume','user','parola','idFirma','tipCont'),
-							$data,
-							'utilizatori.php');
+	Procesare::checkRequestedData(array(
+		'tipOperator',
+		'nume',
+		'user',
+		'parola',
+		'idFirma',
+		'tipCont'
+	), $data, 'utilizatori.php');
 
+	$query = (
+		"SELECT user
+		FROM utilizator
+		WHERE user=:user "
+	);
 
-		$r = mysql_query("SELECT user from utilizator WHERE user='".$data['user']."'", Aplicatie::getInstance()->getMYSQL()->getResource());
-		if(mysql_num_rows($r) != 0)
-			throw new Exception ("Mai exista un utilizator cu acest username. Alegeti altul ! <a href='utilizatori.php'>Înapoi</a>");
+	$stmt = $db->prepare($query);
+	$ok    = $stmt->execute([
+		'user' => $data['user'],
+	]);
 
-		$q = "INSERT INTO `utilizator`(`tipOperator`,`nume`, `user`, `parola`, `tipCont`,`idFirma`) VALUES ('".$data['tipOperator']."','".$data['nume']."','".$data['user']."','".md5($data['parola'])."','".$data['tipCont']."','".$data['idFirma']."')";
-		$result = mysql_query($q, Aplicatie::getInstance()->getMYSQL()->getResource());
-
-
-		Page::showConfirmation('<span class="confirmation">Utilizatorul a fost adăugat cu succes !</span> <a href="utilizatori.php ">Înapoi</a>');	
-
+	if (!$ok) {
+		throw new Exception("Ceva nu a mers cum trebuia");
 	}
-	catch(Exception $e)
-	{
-		Page::showError($e->getMessage());
+
+	$usernameUsed = $stmt->rowCount() != 0;
+
+	if ($usernameUsed) {
+		throw new Exception(
+			sprintf("Numele de utilizator %s este deja folosit. Te rog să alegi alt
+			nume de utilizator <a href='utilizatori.php'>Înapoi</a>", $data['user']
+			)
+		);
 	}
 
-	Page::showFooter();
+	$query = (
+		"INSERT INTO `utilizator` (`tipOperator`,`nume`, `user`, `parola`, `tipCont`,`idFirma`)
+
+		VALUES (
+			:operatorType,
+			:fullName,
+			:username,
+			:hasedPassword,
+			:userType,
+			:companyID
+		)"
+	);
+
+	$stmt = $db->prepare($query);
+	$ok    = $stmt->execute([
+		'operatorType' => $data['tipOperator'],
+		'fullName' => $data['nume'],
+		'username' => $data['user'],
+		'hasedPassword' => md5($data['parola']),
+		'userType' => $data['tipCont'],
+		'companyID' => $data['idFirma']
+	]);
+
+	if (!$ok) {
+		throw new Exception("Ceva nu a mers cum trebuia");
+	}
+
+	Page::showConfirmation(
+		'<span class="confirmation">Utilizatorul a fost adăugat cu succes !</span>
+		<a href="utilizatori.php ">Înapoi</a>'
+	);
+}
+catch (Exception $e) {
+	Page::showError($e->getMessage());
+}
+Page::showFooter();
 ?>
