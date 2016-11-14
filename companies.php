@@ -4,7 +4,11 @@ require_once 'app/Aplicatie.php';
 
 function getActiveCompanies($db) {
 	$query = (
-		"SELECT *, 'null' as currentPercent
+		"SELECT *, (
+			SELECT valoare
+			FROM `procent`
+			WHERE `idFirma` = firma.id AND `isNow`= '1'
+		) AS currentPercent
 		FROM `firma`
 		WHERE `activa`= :active"
 	);
@@ -39,11 +43,11 @@ function getInactiveCompanies($db) {
 }
 
 function getPercent($percent) {
-	if($percent === "null") {
-		return'Neprecizat';
+	if(isset($percent)) {
+		return $percent.'%';
 	}
 
-	return $percent.'%';
+	return 'Neprecizat';
 }
 
 try {

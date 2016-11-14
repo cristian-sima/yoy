@@ -23,7 +23,7 @@ try {
 						</label>
 						<div class="col-md-8">
 							<input
-							class="form-control form-control-warning"
+							class="form-control text-capitalize"
 							id="nume"
 							name="nume"
 							placeholder="ex. Impex S.R.L."
@@ -38,7 +38,7 @@ try {
 						</label>
 						<div class="col-md-8">
 							<input
-							class="form-control form-control-warning"
+							class="form-control text-capitalize"
 							id="localitate"
 							name="localitate"
 							placeholder="ex. Bolintin Vale"
@@ -75,7 +75,7 @@ try {
 						</label>
 						<div class="col-md-8">
 							<textarea
-							class="form-control form-control-warning"
+							class="form-control"
 							id="comentarii"
 							name="comentarii"
 							placeholder="ex. Această firmă este în insolvență"
