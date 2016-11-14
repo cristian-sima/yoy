@@ -21,6 +21,7 @@ class Design {
 			<meta charset="utf-8">
 			<meta http-equiv="x-ua-compatible" content="ie=edge">
 			<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+			<link rel="stylesheet" href="public/css/font-awesome.min.css">
 			<link rel="stylesheet" type="text/css" href="public/css/datatables.min.css"/>
 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
 		</head>
@@ -63,10 +64,13 @@ class Design {
 						<form class="form-inline float-xs-right">
 							<?php
 							echo '
-							<button type="button" class="btn btn-sm btn-secondary-outline" onclick="document.location=' . "'" . 'editare_date_utilizator.php?id_user=' . Aplicatie::getInstance()->getUtilizator()->getID() . "'" . '">
+							<a class="btn btn-sm btn-secondary" href="editare_date_utilizator.php?id_user=' . Aplicatie::getInstance()->getUtilizator()->getID() . '">
+							<i class="fa fa-user" aria-hidden="true"></i>
+							<span class="hidden-md-down">
 							Modifică datele
-							</button>
-							<button type="button" class="btn btn-sm btn-secondary-outline" id="disconnectButton" >
+							</span>
+							</a>
+							<button class="btn btn-sm btn-secondary" id="disconnectButton" >
 							<i class="fa fa-sign-out" aria-hidden="true"></i>
 							<span class="hidden-md-down">
 							Deconectează-mă

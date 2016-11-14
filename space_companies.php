@@ -13,12 +13,18 @@ $db = Aplicatie::getInstance()->Database;
 
 <div class="container">
 	<div class="row">
-		<div class="col-xs-10">
-			<h1><img src="public/images/firme.png" align="absmiddle" /> Firme spațiu</h1>
+		<div class="col-xs-10 h1">
+			<span class="hidden-md-down">
+				<img src="public/images/firme.png" align="absmiddle" />
+			</span>
+			Firme spațiu
 		</div>
 		<div class="col-xs-2 text-xs-right">
 			<a class="btn btn-success" href="firma_noua.php"	>
-				Adaugă firmă
+				<i class="fa fa-plus"></i>
+				<span class="hidden-md-down">
+					Adaugă firmă
+				</span>
 			</a>
 		</div>
 	</div>
