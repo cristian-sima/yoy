@@ -128,9 +128,12 @@ function insertCompany($db, $data) {
 	return $db->lastInsertId();
 }
 
-$db = Aplicatie::getInstance()->Database;
+$db = null;
 
 try {
+	GLOBAL $db;
+	$db = Aplicatie::getInstance()->Database;
+
 	Design::showHeader();
 
 	$db->beginTransaction();

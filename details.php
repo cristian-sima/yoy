@@ -1,317 +1,266 @@
 <?php
 
+require_once "app/func/calendar.php";
+
 require_once "app/Aplicatie.php";
 require_once "app/FirmaSpatiu.php";
 require_once "app/SituatieMecanica.php";
 
-require_once "vendor/StringTemplate/Engine.php";
-$engine = new Engine();
+function getDevices ($db, $companyID) {
+	$query      = (
+		"SELECT *
+		FROM `aparat`
+		WHERE activ='1' AND id_firma=:companyID
+		ORDER BY ordinea ASC"
+	);
 
+	$devices = $db->prepare($query);
+	$ok = $devices->execute(array(
+		"companyID" => $companyID,
+	));
 
-Design::showHeader();
+	if(!$ok) {
+		throw new Exception("Ceva nu a mers așa cum trebuia");
+	}
 
+	return $devices;
+}
 
-$db =  Aplicatie::getInstance()->Database;
+function getStatus($isActive) {
+	$type = $isActive ? "success" : "danger";
+	$text = $isActive ? "contract activ" : "contract încetat";
+	?>
+	<span class="tag tag-<?= $type ?>"><?= $text ?></span>
+	<?php
+}
 
-$firma       = new FirmaSpatiu($_GET['idFirma']);
-$data        = new DataCalendaristica(date("Y-m-d"));
-$ultima_data = SituatieMecanica::getUltimaCompletare($firma, $data);
+function getLastCompletion($company, $date) {
+	$ultima_data = SituatieMecanica::getUltimaCompletare($company, $date);
 
-if ($ultima_data == null) {
-	$ultima_data = "Niciodată";
-	$zileTrecute = "";
-} else {
+	if ($ultima_data == null) {
+		return "Situația nu a fost completată niciodată";
+	}
+
 	$now         = time();
 	$datediff    = $now - strtotime($ultima_data);
 	$dif         = (floor($datediff / (60 * 60 * 24)));
-	$zileTrecute = '( ' . (($dif == 1) ? "o zi în urmă" : (($dif == 0) ? "Astăzi" : ($dif . " zile" . '  în urmă'))) . ' )';
+	$when = '( ' . (($dif == 1) ? "ieri" : (($dif == 0) ? "astăzi" : ($dif . " zile" . '  în urmă'))) . ' )';
+
+	return "Ultima situație completată a fost ".$when;
 }
 
-// devices
+try {
 
-$query      = (
-	"SELECT *
-	FROM `aparat`
-	WHERE activ='1' AND id_firma=:companyID
-	ORDER BY ordinea ASC"
-);
+	$db =  Aplicatie::getInstance()->Database;
+	$company       = new FirmaSpatiu($_GET['idFirma']);
+	$date        = new DataCalendaristica(date("Y-m-d"));
+	$devices = getDevices($db, $company->getID());
 
-$devices = $db->prepare($query);
-$ok = $devices->execute(array(
-	"companyID" => $firma->getID()
-));
+	Design::showHeader();
+	$db = Aplicatie::getInstance()->Database;
 
-if(!$ok) {
-	throw new Exception("Ceva nu a mers așa cum trebuia");
-}
+	?>
+	<div class="container">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="companies.php">Firme partenere</a></li>
+			<li class="breadcrumb-item active"><?php echo $company->getDenumire(); ?></li>
+		</ol>
+		<div class="card">
+			<div class="card-block">
+				<h4 class="card-title">Date generale</h4>
 
-// users
-
-$query      = (
-	"SELECT *
-	FROM `utilizator`
-	WHERE activ='1' AND idFirma=:companyID
-	ORDER BY nume ASC"
-);
-
-$users = $db->prepare($query);
-$ok = $users->execute(array(
-	"companyID" => $_GET['idFirma']
-));
-
-if(!$ok) {
-	throw new Exception("Ceva nu a mers așa cum trebuia");
-}
-
-?>
-
-<link href="public/css/fieldset.css" rel="stylesheet" type="text/css"/>
-
-<ol class="breadcrumb">
-	<li class="breadcrumb-item"><a href="companies.php">Firme partenere</a></li>
-	<li class="breadcrumb-item active"><?php echo $firma->getDenumire(); ?></li>
-</ol>
-
-<div class="card">
-	<div class="card-block">
-		<h4 class="card-title">Date generale</h4>
-		<hr>
-		<div class="card-text">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-xs-4">
-						<div class="container-fluid">
-						  <div class="row">
-						    <div class="col-xs-6">
-						      Denumire
-						    </div>
-						    <div class="col-xs-6">
-						      	<?php echo $firma->getDenumire(); ?>
-						    </div>
-						  </div>
-						  <div class="row">
-						    <div class="col-xs-6">
-						      	Localitate
-						    </div>
-						    <div class="col-xs-6">
-						      	<?php echo $firma->getLocatie(); ?>
-						    </div>
-						  </div>
-						  <div class="row">
-						    <div class="col-xs-6">
-						      	Statut firmă
-						    </div>
-						    <div class="col-xs-6">
-						      <?php
-						      $color = (($firma->isActiva()) ? "success" : "danger");
-						      echo '<span class="tag tag-' . $color . '">' . (($firma->isActiva()) ? "contract activ" : "contract încetat") . "
-						      </span>";
-						      ?>
-						    </div>
-						  </div>
-						  <div class="row">
-						    <div class="col-xs-6">
-						      	Procent
-						    </div>
-						    <div class="col-xs-6">
-						      		<?php	echo $firma->getProcentFirma($data); ?> %
-						    </div>
-						  </div>
+				<div class="card-text">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="container-fluid">
+									<div class="row">
+										<div class="col-xs-6">
+											Denumire
+										</div>
+										<div class="col-xs-6">
+											<?php echo $company->getDenumire(); ?>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-6">
+											Localitate
+										</div>
+										<div class="col-xs-6">
+											<?php echo $company->getLocatie(); ?>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-6">
+											Statut firmă
+										</div>
+										<div class="col-xs-6">
+											<?= getStatus($company->isActiva()); ?>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-6">
+											Procent
+										</div>
+										<div class="col-xs-6">
+											<?php	echo $company->getProcentFirma($date); ?> %
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6 text-md-right text-xs-center mt-2">
+								<button type="button" class="btn btn-info btn-lg" onClick="document.location='situatie_mecanica.php?id_firma=<?php	echo $company->getID();	?>'" >
+									Situație zilnică
+								</button>
+								<br />
+								<span	class="text-muted small">
+									<?= getLastCompletion($company, $date) ?>
+								</span>
+							</div>
 						</div>
-					</div>
-					<div class="col-xs-8 text-xs-right">
-						<button type="button" class="btn btn-info btn-lg" onclick="document.location='situatie_mecanica.php?id_firma=<?php	echo $firma->getID();	?>'" >
-							Situație zilnică
-						</button>
-						<br />
-						<span	class="text-muted small">
-							Ultima completare: <?php echo $ultima_data . ' ' . $zileTrecute; ?>
-						</span>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</div>
-<fieldset>
-	<legend class="bold">Situații</legend>
-	<table width="100%">
-		<tr>
-			<td width="50%" class="smoke">
-				<?php
-				echo 'Anul <select class="custom-select" id="an">';
-				for ($i = 2013; $i <= 2020; $i++) {
-					echo '<option value="' . $i . '" ' . (($i == $data->getAnul()) ? ("selected") : "") . '>' . $i . "</option>";
-				}
-				echo "</select>";
-				echo '&nbsp;&nbsp;&nbsp;&nbsp;Luna <select class="custom-select" id="luna">';
-				for ($luna = 1; $luna <= 12; $luna++) {
-					echo '<option value="' . $luna . '" ' . (($luna == $data->getLuna()) ? ("selected") : "") . ' >' . DataCalendaristica::getNumeleLunii($luna) . "</option>";
-				}
-				echo "</select>";
-				?>
-			</td>
-			<td width="50%" style="text-align: right">
-				<?php
-				if ($firma->isActiva()) {
-					?>
-					<a class="btn btn-primary btn-sm" onclick="seeData('inchide_situatie_luna')" href="#" class="button orange small bold">
-						Închide lună
+
+		<div class="card">
+			<div class="card-block">
+				<h4 class="card-title">Situații</h4>
+
+				<div class="card-text">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-6">
+								<form class="form-inline">
+									<div class="form-group">
+										<label for="year">Anul</label>
+										<select name="year" class="custom-select" id="year">
+											<?php
+											for ($year = $yearStart; $year <= $yearEnd; $year++) {
+												?>
+												<option value="<?= $year ?>" <?= (($year == $date->getAnul()) ? ("selected") : "") ?>><?= $year ?></option>
+												<?php
+											}
+											?>
+										</select>
+									</div>
+									<div class="form-group">
+										<label for="month">Luna</label>
+										<select name="month" class="custom-select" id="month">
+											<?php
+											for ($month = 1; $month <= 12; $month++) {
+												?>
+												<option value="<?= $month ?>" <?= (($month == $date->getLuna()) ? ("selected") : "") ?>><?= getMonthName($month) ?></option>
+												<?php
+											}
+											?>
+										</select>
+									</div>
+								</form>
+								<div class="pt-1 text-xs-center text-md-left">
+									<a class="btn btn-primary btn-sm" onclick="seeData('vizualizare_dispozitii')" href="#">Dispoziții</a>
+									<a class="btn btn-primary btn-sm" onclick="seeData('registru_firma_spatiu')" href="#">Registru firmă</a>
+									<a class="btn btn-primary btn-sm" onclick="seeData('afisare_decont_firma')" href="#">Decont</a>
+								</div>
+							</div>
+							<div class="col-md-6 text-md-right text-xs-center mt-2">
+								<?php
+								if ($company->isActiva()) {
+									?>
+									<a class="btn btn-primary btn-sm" onClick="seeData('inchide_situatie_luna')" href="#" class="button orange small bold">
+										Închide lună
+									</a>
+									<?php
+								}
+								?>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="card">
+			<div class="card-block">
+				<h4 class="card-title">Aparate</h4>
+				<div class="card-text">
+					<div class="clearfix mb-1">
+						<?php
+						if ($company->isActiva() != '0') {
+							?>
+							<a class="btn btn-success btn-sm float-xs-right" href="adauga_aparat.php?id_firma=<?= $company->getID();	?>">
+								Adaugă aparat
+							</a>
+							<?php
+						}
+						?>
+					</div>
+					<div class="table-responsive">
+						<table class="display"	id="devices">
+							<thead>
+								<tr>
+									<th>Nr</th>
+									<th>Seria</th>
+									<th>Denumirea</th>
+									<th>Exp. autoriz.</th>
+									<th>Exp. insp. tech.</th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php
+								foreach($devices as $device) {
+									?>
+									<tr>
+										<td>
+											<?= $device["ordinea"] ?>
+										</td>
+										<td>
+											<a href="optiuni_aparat.php?situatie=true<?= "&" ?>id_aparat=<?= $device["id"]; ?>">
+												<?= $device["serie"]; ?>
+											</a>
+										</td>
+										<td><?= $device["nume"]; ?></td>
+										<td><?= $device["data_autorizatie"] ?></td>
+										<td><?= $device["data_inspectie"] ?></td>
+									</tr>
+									<?php
+								}
+								?>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="card">
+			<div class="card-block">
+				<h4 class="card-title">Alte operațiuni</h4>
+
+				<div class="card-text">
+					<a class="btn btn-primary btn-sm" href="editare_date_firma.php" class="button orange small bold">
+						Modifică informațiile
 					</a>
-					<a class="btn btn-primary btn-sm" onclick="seeData('editare_date_firma')" href="#" class="button orange small bold">
-						Modifică informatii
-					</a>
-					<?php
-				}
-				?>
-			</td>
-		</tr>
-	</table>
+				</div>
+			</div>
+		</div>
 
-	<br />
-	<br />
-
-	<a class="btn btn-primary btn-sm" onclick="seeData('vizualizare_dispozitii')" href="#" class="button blue small bold">Dispoziții</a>
-	<a class="btn btn-primary btn-sm" onclick="seeData('registru_firma_spatiu')" href="#" class="button gray small bold">Registru firmă</a>
-	<a class="btn btn-primary btn-sm" onclick="seeData('afisare_decont_firma')" href="#" class="button blue small bold">Decont</a>
-
-</fieldset>
-
-<fieldset>
-
-	<legend class="bold">Aparate</legend>
-
-	<table width="100%">
-		<tr>
-			<td>
-				<?php
-				if ($firma->isActiva() != '0') {
-					?>
-					<input class="btn btn-success btn-sm" type="button" value="Adaugă aparat" onclick="document.location='adauga_aparat.php?id_firma=<?php	echo $firma->getID();	?>'" />
-					<?php
-				}
-				?>
-			</td>
-			<td style="text-align: right"></td>
-		</tr>
-	</table>
-	<br />
-	<div style=" margin-left: 13px;">
-		<table cellpadding="0" cellspacing="0" border="0" class="display" id="example" style="">
-			<thead>
-				<tr>
-					<th>Nr</th>
-					<th>Seria</th>
-					<th>Denumirea</th>
-					<th>Exp. autoriz.</th>
-					<th>Exp. insp. tech.</th>
-				</tr>
-			</thead>
-			<tbody>
-				<?php
-				foreach($devices as $device) {
-					$result = $engine->render(
-						'<tr onclick=document.location="{url}" class="hover" >
-						<td>{order}</td>
-						<td>{serial}</td>
-						<td>{name}</td>
-						<td>{autorizationDate}</td>
-						<td>{inspectionDate}</td>
-						</tr>',
-						[
-							"companyID" => $device['id_firma'],
-							"url" => 'optiuni_aparat.php?situatie=true&id_aparat='.$device['id'],
-							"order" => $device['ordinea'],
-							"serial" => $device['serie'],
-							"name" => $device['nume'],
-							"autorizationDate" => $device['data_autorizatie'],
-							"inspectionDate" => $device['data_inspectie']
-						]
-					);
-
-					echo $result;
-				}
-				?>
-			</tbody>
-		</table>
 	</div>
-</fieldset>
-<fieldset>
-	<legend class="bold">Operatori</legend>
-	<table width="100%">
-		<tr>
-			<td><?php
-			if ($firma->isActiva()) {
-				?>
-				<input class="btn btn-success btn-sm" type="button" value="Adaugă administrator"	onclick="document.location='adauga_utilizator.php?type=admin'" />
-				<input class="btn btn-success btn-sm" type="button" value="Adaugă operator" onclick="document.location='adauga_utilizator.php?type=normal'" /> <?php
-			}
-			?>
-		</td>
-		<td style="text-align: right"></td>
-	</tr>
-</table>
-<br />
-<div style=" margin-left: 13px;">
-	<table cellpadding="0" cellspacing="0" border="0" class="display"	id="example2" style="">
-		<thead>
-			<tr>
-				<th>Nume și prenume</th>
-				<th>Utilizator</th>
-				<th>Tipul</th>
-				<th>Opțiuni</th>
-			</tr>
-		</thead>
-		<tbody>
-			<?php
-			foreach($users as $user) {
-				$result = $engine->render(
-					'<tr>
-					<td>{name}</td>
-					<td>{username}</td>
-					<td>{type}</td>
-					<td>
-					<input type="button" value="Modifică datele" onclick="document.location=' . "'" . 'editare_date_utilizator.php?id_user={userID}' . "'" . '"/>
-					<input type="button" value="Dezactivează" onclick="document.location=' . "'" . 'activeaza_utilizator.php?id_user={userID}&type=0' . "'" . '" />
-					</td>
-					</tr>',
-					[
-						"name" => $user['nume'],
-						"username" => $user['user'],
-						"type" =>  ($user['tipCont'] == "admin") ? "Administrator" : "Operator (" . $user['tipOperator'] . ')',
-						"userID" => $user['id'],
-					]
-				);
 
-				echo $result;
-			}
-			?>
-		</tbody>
-	</table>
-</div>
+	<?=	DESIGN::showFooter();	?>
 
-</fieldset>
+	<script type="text/javascript">
 
-<script>
-$(document).ready(function() {
-	$('#example').dataTable({
-		"bJQueryUI": true,
-		"sPaginationType": "full_numbers"
-	});
-});
+	function seeData(where) {
+		document.location = where + ".php?id_firma=<?= $company->getID(); ?>&data="+$("#year").val()+"-"+$("#month").val()+"-01";
+	}
 
-$(document).ready(function() {
-	$('#example2').dataTable({
-		"bJQueryUI": true,
-		"sPaginationType": "full_numbers"
-	});
-});
+	(function() {
+		$('#devices').dataTable();
+	})();
+	</script>
 
-function seeData(where) {
-	document.location = where + ".php?id_firma=<?php echo $firma->getID(); ?>&data="+$("#an").val()+"-"+$("#luna").val()+"-01";
+	<?php
+} catch (Exception $e) {
+	DESIGN::complain($e->getMessage());
 }
-
-</script>
-
-<?php
-Design::showFooter();

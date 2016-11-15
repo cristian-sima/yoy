@@ -145,6 +145,7 @@ class Design {
 							true,
 							$.fn.dataTable.defaults, {
 								oLanguage : {
+									"sEmptyTable": "Nu există date disponibile în tabel",
 									"sProcessing":   "Procesează...",
 									"sLengthMenu":   "Afișează _MENU_ rânduri pe pagină",
 									"sZeroRecords":  "Nu am găsit nimic - ne pare rău",

@@ -4,7 +4,6 @@ require_once 'app/Aplicatie.php';
 
 try {
 	Design::showHeader();
-	$db = Aplicatie::getInstance()->Database;
 
 	?>
 	<div class="container">
