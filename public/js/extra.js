@@ -14,7 +14,7 @@ var fixProblems = function () {
 	})(function(b, a, d) {
 		var f = b.fn.dataTable;
 		b.extend(!0, f.defaults, {
-			dom: "<'container'<'row'<'col-xs-4 col-sm-6'l><'col-xs-8 col-sm-6 text-xs-center'f>><'table-responsive'tr>><'row'<'col-sm-5'i><'col-sm-7'p>>",
+			dom: "<'container'<'row'<'col-xs-4 col-sm-6'l><'col-xs-8 col-sm-6 text-xs-center'f>><'table-responsive'tr>><'row'<'col-md-5'i><'col-md-7'p>>",
 			renderer: "bootstrap"
 		});
 		b.extend(f.ext.classes, {
@@ -22,7 +22,7 @@ var fixProblems = function () {
 			sFilterInput: "form-control form-control-sm",
 			sLengthSelect: "custom-select",
 			sProcessing: "dataTables_processing panel panel-default",
-			sPageButton: "paginate_button page-item pagination-sm"
+			sPageButton: " page-item"
 		});
 		f.ext.renderer.pageButton.bootstrap = function(a, h, r, m, j, n) {
 			var o = new f.Api(a),
@@ -82,7 +82,7 @@ var fixProblems = function () {
 			try {
 				i = b(h).find(d.activeElement).data("dt-idx")
 			} catch (u) {}
-			q(b(h).empty().html('<ul class="pagination"/>').children("ul"), m);
+			q(b(h).empty().html('<ul class="pagination pagination-sm"/>').children("ul"), m);
 			i && b(h).find("[data-dt-idx=" + i + "]").focus()
 		};
 		return f
@@ -93,19 +93,19 @@ var fixProblems = function () {
 			oLanguage : {
 				"sEmptyTable": "Nu există date disponibile în tabel",
 				"sProcessing":   "Procesează...",
-				"sLengthMenu":   "Afișează _MENU_ <span class='hidden-sm-down'> rânduri pe pagină</span>",
+				"sLengthMenu":   "Afișez _MENU_ <span class='hidden-sm-down'> rânduri pe pagină</span>",
 				"sZeroRecords":  "Nu am găsit nimic - ne pare rău",
-				"sInfo":         "Afișate de la _START_ la _END_ din _TOTAL_ rânduri",
-				"sInfoEmpty":    "Afișate de la 0 la 0 din 0 rânduri",
+				"sInfo":         "Afișez de la _START_ la _END_ din _TOTAL_ rânduri",
+				"sInfoEmpty":    "Nu sunt rânduri",
 				"sInfoFiltered": "(filtrate dintr-un total de _MAX_ rânduri)",
 				"sInfoPostFix":  "",
 				"sSearch":       "Caută:",
 				"sUrl":          "",
 				"oPaginate": {
-					"sFirst":    "Prima",
-					"sPrevious": "<",
-					"sNext":     ">",
-					"sLast":     "Ultima"
+					"sFirst":    "&laquo;",
+					"sPrevious": "&lsaquo;",
+					"sNext":     "&rsaquo;",
+					"sLast":     "&raquo;"
 				}
 			}
 		}
