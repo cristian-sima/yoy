@@ -3,6 +3,14 @@
 $yearStart = 2013;
 $yearEnd = 2020;
 
+function localeDate($date) {
+	$_exp = explode("-", $date);
+	$year = intval($_exp[0]);
+	$month = ((intval($_exp[1]) < 10) ? ("0" . (intval($_exp[1]))) : (intval($_exp[1])));
+	$day = ((intval($_exp[2]) < 10) ? ("0" . (intval($_exp[2]))) : (intval($_exp[2])));
+	return $day.".".$month.".".$year;
+}
+
 function getMonthName ($number) {
   switch (intval($number)) {
     case 1:

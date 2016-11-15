@@ -1,5 +1,7 @@
 <?php
 
+
+require_once 'app/func/calendar.php';
 require_once 'app/Aplicatie.php';
 
 function getActiveCompanies($db) {
@@ -96,7 +98,7 @@ try {
 									<?= $company["nume"]; ?>
 								</a>
 							</td>
-							<td><?= $company["localitate"]; ?></td>
+							<td class="no-wrap"><?= $company["localitate"]; ?></td>
 							<td><?= getPercent($company["currentPercent"]) ?></td>
 						</tr>
 						<?php
@@ -126,8 +128,8 @@ try {
 									<?= $company["nume"]; ?>
 								</a>
 							</td>
-							<td><?= $company["localitate"]; ?></td>
-							<td><?= $company["dataIncetare"]; ?></td>
+							<td class="no-wrap"><?= $company["localitate"]; ?></td>
+							<td><?= localeDate($company["dataIncetare"]); ?></td>
 						</tr>
 						<?php
 					}
@@ -136,7 +138,7 @@ try {
 			</table>
 		</div>
 	</div>
-	
+
 	<?=	DESIGN::showFooter();	?>
 
 	<script type="text/javascript">

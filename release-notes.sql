@@ -27,4 +27,8 @@ ALTER TABLE `procent` ENGINE = InnoDB;
 
 ALTER TABLE `firma` ADD UNIQUE(`id`);
 ALTER TABLE `procent` ADD INDEX(`idFirma`);
-ALTER TABLE `procent` ADD FOREIGN KEY (`idFirma`) REFERENCES firma(`id`);
+ALTER TABLE procent
+  ADD CONSTRAINT fk_name
+  FOREIGN KEY (idFirma)
+  REFERENCES firma(id)
+  ON DELETE CASCADE;

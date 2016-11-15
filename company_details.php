@@ -193,16 +193,16 @@ try {
 									</div>
 								</form>
 								<div class="pt-1 text-xs-center text-md-left">
-									<a class="btn btn-primary btn-sm" onclick="seeData('vizualizare_dispozitii')" href="#">Dispoziții</a>
-									<a class="btn btn-primary btn-sm" onclick="seeData('registru_firma_spatiu')" href="#">Registru firmă</a>
-									<a class="btn btn-primary btn-sm" onclick="seeData('afisare_decont_firma')" href="#">Decont</a>
+									<a class="btn btn-info btn-sm" onclick="seeData('vizualizare_dispozitii')" href="#">Dispoziții</a>
+									<a class="btn btn-info btn-sm" onclick="seeData('registru_firma_spatiu')" href="#">Registru firmă</a>
+									<a class="btn btn-info btn-sm" onclick="seeData('afisare_decont_firma')" href="#">Decont</a>
 								</div>
 							</div>
 							<div class="col-md-6 text-md-right text-xs-center mt-2">
 								<?php
 								if ($company->isActiva()) {
 									?>
-									<a class="btn btn-primary btn-sm" onClick="seeData('inchide_situatie_luna')" href="#">
+									<a class="btn btn-info btn-sm" onClick="seeData('inchide_situatie_luna')" href="#">
 										Închide lună
 									</a>
 									<?php
@@ -255,10 +255,10 @@ try {
 									</td>
 									<td><?= $device["nume"]; ?></td>
 									<td class="text-xs-center no-wrap">
-										<?= $device["data_autorizatie"] ?>
+										<?= localeDate($device["data_autorizatie"]) ?>
 									</td>
 									<td class="text-xs-center no-wrap">
-										<?= $device["data_inspectie"] ?>
+										<?= localeDate($device["data_inspectie"]) ?>
 									</td>
 								</tr>
 								<?php
