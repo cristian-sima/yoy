@@ -92,7 +92,7 @@ try {
 						?>
 						<tr>
 							<td>
-								<a href="details.php?idFirma=<?= $company["id"]; ?>">
+								<a href="company_details.php?id=<?= $company["id"]; ?>">
 									<?= $company["nume"]; ?>
 								</a>
 							</td>
@@ -122,7 +122,7 @@ try {
 						?>
 						<tr>
 							<td>
-								<a href="details.php?idFirma=<?= $company["id"]; ?>">
+								<a href="company_details.php?id=<?= $company["id"]; ?>">
 									<?= $company["nume"]; ?>
 								</a>
 							</td>

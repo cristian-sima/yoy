@@ -133,7 +133,7 @@
 
 
 		Design::showHeader();
-		
+
 
 
 
@@ -161,7 +161,7 @@
 			</select>&nbsp;&nbsp;<input type="button" value="Procesează !" onclick="seeData();" id="viz_" />
 			';
 		echo '</td><td style="text-align:right">';
-		echo '<a style="display:none"></a><a href="details.php?idFirma='.$firma->getID().'"><input type="button" value="Interfață firmă" /></a>&nbsp;
+		echo '<a style="display:none"></a><a href="company_details.php?id='.$firma->getID().'"><input type="button" value="Interfață firmă" /></a>&nbsp;
 				<a href="aparate.php?id='.$firma->getID().'"><input type="button" title="Lista cu aparate din firmă" value="Aparate" /></a>';
 		echo '</td></tr><tr><td width="50%">';
 		echo 'Anul <select id="an">';

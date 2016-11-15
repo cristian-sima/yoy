@@ -85,7 +85,7 @@ function getLastCompletion($company, $date) {
 try {
 
 	$db =  Aplicatie::getInstance()->Database;
-	$company       = new FirmaSpatiu($_GET['idFirma']);
+	$company       = new FirmaSpatiu($_GET['id']);
 	$date        = new DataCalendaristica(date("Y-m-d"));
 	$companyID = $company->getID();
 	$devices = getDevicesForCompany($db, $companyID);
@@ -202,7 +202,7 @@ try {
 								<?php
 								if ($company->isActiva()) {
 									?>
-									<a class="btn btn-primary btn-sm" onClick="seeData('inchide_situatie_luna')" href="#" class="button orange small bold">
+									<a class="btn btn-primary btn-sm" onClick="seeData('inchide_situatie_luna')" href="#">
 										Închide lună
 									</a>
 									<?php
@@ -340,8 +340,9 @@ try {
 		<div class="card">
 			<div class="card-block">
 				<h4 class="card-title">Alte operațiuni</h4>
+				<hr>
 				<div class="card-text">
-					<a class="btn btn-primary btn-sm" href="editare_date_firma.php" class="button orange small bold">
+					<a class="btn btn-primary btn-sm" href="editare_date_firma.php?id=<?= $companyID ?>">
 						Modifică informațiile
 					</a>
 				</div>

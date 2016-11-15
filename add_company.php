@@ -77,9 +77,7 @@ try {
 							class="form-control"
 							id="comentarii"
 							name="comentarii"
-							placeholder="ex. Această firmă este în insolvență"
-							type="text"
-							value=""></textarea>
+							placeholder="ex. Această firmă este în insolvență"></textarea>
 						</div>
 					</div>
 					<div class="form-group text-xs-left row">
@@ -89,13 +87,9 @@ try {
 						<div class="col-md-8">
 							<textarea
 							class="form-control form-control-warning"
-							check="true"
-							criteria='{type:"string",  maxSize:"30"}'
 							id="date_contact"
 							name="date_contact"
-							placeholder="ex. Strada Republicii Nr. 22"
-							type="text"
-							value=""></textarea>
+							placeholder="ex. Strada Republicii Nr. 22"></textarea>
 						</div>
 					</div>
 					<hr>

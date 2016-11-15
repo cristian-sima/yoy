@@ -10,7 +10,7 @@ $firma			= new FirmaSpatiu($_GET['id_firma']);
 
 Design::showHeader();
 
-Design::showHeading("Editeaza date firma",'<input	type="button" class="disp" value="Înapoi la date firma" onclick="document.location='."'".'details.php?idFirma='.$firma->getID()."'".'" />');
+Design::showHeading("Editeaza date firma",'<input	type="button" class="disp" value="Înapoi la date firma" onclick="document.location='."'".'company_details.php?id='.$firma->getID()."'".'" />');
 
 
 ?>

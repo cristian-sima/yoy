@@ -19,7 +19,7 @@ try
 	$q = "UPDATE  `firma` SET `nume` = '".$data['nume']."', `localitate`='".$data['localitate']."', `dateContact`='".$data['dateContact']."', `comentarii`='".$data['comentarii']."'  WHERE id = '".$data['id_firma']."' ";
 	$result = mysql_query($q, Aplicatie::getInstance()->Database);
 
-	Design::showConfirmation('<span class="confirmation">Datele au fost modificate</span> <a href="details.php?idFirma='.$data['id_firma'].'">Înapoi</a>');
+	Design::showConfirmation('<span class="confirmation">Datele au fost modificate</span> <a href="company_details.php?id='.$data['id_firma'].'">Înapoi</a>');
 
 
 }
