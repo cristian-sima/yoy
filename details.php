@@ -6,7 +6,7 @@ require_once "app/Aplicatie.php";
 require_once "app/FirmaSpatiu.php";
 require_once "app/SituatieMecanica.php";
 
-function getDevices ($db, $companyID) {
+function getDevicesForCompany ($db, $companyID) {
 	$query      = (
 		"SELECT *
 		FROM `aparat`
@@ -26,11 +26,44 @@ function getDevices ($db, $companyID) {
 	return $devices;
 }
 
+function getAccountsForCompany ($db, $companyID) {
+	$query      = (
+		"SELECT *
+		FROM `utilizator`
+		WHERE activ='1' AND idFirma=:companyID
+		ORDER BY nume ASC"
+	);
+
+	$users = $db->prepare($query);
+	$ok = $users->execute(array(
+		"companyID" => $companyID
+	));
+
+	if(!$ok) {
+		throw new Exception("Ceva nu a mers așa cum trebuia");
+	}
+
+	return $users;
+}
+
 function getStatus($isActive) {
 	$type = $isActive ? "success" : "danger";
 	$text = $isActive ? "contract activ" : "contract încetat";
 	?>
 	<span class="tag tag-<?= $type ?>"><?= $text ?></span>
+	<?php
+}
+
+function getUserType($type) {
+	if ($type == "admin") {
+		?>
+		<span class="tag tag-info">Administrator</span>
+		<?php
+		return "";
+	}
+
+	?>
+	<span class="tag tag-default">Operator</span>
 	<?php
 }
 
@@ -54,7 +87,9 @@ try {
 	$db =  Aplicatie::getInstance()->Database;
 	$company       = new FirmaSpatiu($_GET['idFirma']);
 	$date        = new DataCalendaristica(date("Y-m-d"));
-	$devices = getDevices($db, $company->getID());
+	$companyID = $company->getID();
+	$devices = getDevicesForCompany($db, $companyID);
+	$accounts = getAccountsForCompany($db, $companyID);
 
 	Design::showHeader();
 	$db = Aplicatie::getInstance()->Database;
@@ -109,7 +144,7 @@ try {
 								</div>
 							</div>
 							<div class="col-md-6 text-md-right text-xs-center mt-2">
-								<button type="button" class="btn btn-info btn-lg" onClick="document.location='situatie_mecanica.php?id_firma=<?php	echo $company->getID();	?>'" >
+								<button type="button" class="btn btn-info btn-lg" onClick="document.location='situatie_mecanica.php?id_firma=<?php	echo $companyID;	?>'" >
 									Situație zilnică
 								</button>
 								<br />
@@ -188,7 +223,7 @@ try {
 						<?php
 						if ($company->isActiva() != '0') {
 							?>
-							<a class="btn btn-success btn-sm float-xs-right" href="adauga_aparat.php?id_firma=<?= $company->getID();	?>">
+							<a class="btn btn-success btn-sm float-xs-right" href="adauga_aparat.php?id_firma=<?= $companyID;	?>">
 								Adaugă aparat
 							</a>
 							<?php
@@ -196,7 +231,7 @@ try {
 						?>
 					</div>
 					<div class="table-responsive">
-						<table class="display"	id="devices">
+						<table class="display"	id="devices-table">
 							<thead>
 								<tr>
 									<th>Nr</th>
@@ -220,8 +255,77 @@ try {
 											</a>
 										</td>
 										<td><?= $device["nume"]; ?></td>
-										<td><?= $device["data_autorizatie"] ?></td>
-										<td><?= $device["data_inspectie"] ?></td>
+										<td class="text-xs-center">
+											<?= $device["data_autorizatie"] ?>
+										</td>
+										<td class="text-xs-center">
+											<?= $device["data_inspectie"] ?>
+										</td>
+									</tr>
+									<?php
+								}
+								?>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="card">
+			<div class="card-block">
+				<h4 class="card-title">Conturi care au access</h4>
+				<div class="card-text">
+					<div class="clearfix mb-1">
+						<?php
+						if ($company->isActiva() != '0') {
+							?>
+							<div class="float-xs-right">
+								<a class="btn btn-success btn-sm" href="adauga_utilizator.php?type=admin">
+									Adaugă administrator
+								</a>
+								<a class="btn btn-success btn-sm" href="adauga_utilizator.php?type=normal">
+									Adaugă operator
+								</a>
+							</div>
+							<?php
+						}
+						?>
+					</div>
+					<div class="table-responsive">
+						<table class="display"	id="users-table">
+							<thead>
+								<tr>
+									<th>Nume și prenume</th>
+									<th>Utilizator</th>
+									<th>Tipul</th>
+									<th>Opțiuni</th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php
+								foreach($accounts as $account) {
+									?>
+									<tr>
+										<td>
+											<?= $account["nume"] ?>
+										</td>
+										<td style="font-family: courier">
+											<?= $account["user"] ?>
+										</td>
+										<td>
+											<?= getUserType($account["tipCont"]) ?>
+										</td>
+										<td>
+											<div class="">
+												<a class="btn btn-link" href="editare_date_utilizator.php?id_user=<?= $account["id"] ?>">
+													Modifică datele
+												</a>
+												<a class="btn btn-link" href="activeaza_utilizator.php?id_user=?id_user=<?= $account["id"] ?><?= '&' ?>type=0">
+													Dezactivează
+												</a>
+											</div>
+										</td>
 									</tr>
 									<?php
 								}
@@ -236,7 +340,6 @@ try {
 		<div class="card">
 			<div class="card-block">
 				<h4 class="card-title">Alte operațiuni</h4>
-
 				<div class="card-text">
 					<a class="btn btn-primary btn-sm" href="editare_date_firma.php" class="button orange small bold">
 						Modifică informațiile
@@ -252,12 +355,13 @@ try {
 	<script type="text/javascript">
 
 	function seeData(where) {
-		document.location = where + ".php?id_firma=<?= $company->getID(); ?>&data="+$("#year").val()+"-"+$("#month").val()+"-01";
+		document.location = where + ".php?id_firma=<?= $companyID; ?>&data="+$("#year").val()+"-"+$("#month").val()+"-01";
 	}
 
 	(function() {
-		$('#devices').dataTable();
+		$('#devices-table, #users-table').dataTable();
 	})();
+
 	</script>
 
 	<?php

@@ -78,7 +78,7 @@ try {
 		<hr>
 		<div class="mt-2">
 			<h4>Firme active</h4>
-			<table class="display"	id="active_companies">
+			<table class="display"	id="active-companies-table">
 				<thead>
 					<tr>
 						<th>Denumire</th>
@@ -108,7 +108,7 @@ try {
 		<hr>
 		<div class="mt-2">
 			<h4>Firme inactive (contracte terminate)</h4>
-			<table class="display" id="inactive_companies">
+			<table class="display" id="inactive-companies-table">
 				<thead>
 					<tr>
 						<th>Denumire</th>
@@ -141,7 +141,7 @@ try {
 
 	<script type="text/javascript">
 	(function() {
-		$('#inactive_companies, #active_companies').dataTable();
+		$('#active-companies-table, #inactive-companies-table').dataTable();
 	})();
 	</script>
 
