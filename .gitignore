@@ -3,7 +3,8 @@ composer.phar
 
 # Local configs
 config/autoload/*.local.php
-config/db.json
+config/local.json
+.json
 
 # Binary gettext files
 *.mo

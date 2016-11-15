@@ -21,14 +21,7 @@ try {
 							Denumire
 						</label>
 						<div class="col-md-8">
-							<input
-							class="form-control text-capitalize"
-							id="nume"
-							name="nume"
-							placeholder="ex. Impex S.R.L."
-							type="text"
-							value=""
-							/>
+
 						</div>
 					</div>
 					<div class="form-group text-xs-left row">
@@ -116,22 +109,22 @@ try {
 
 	<script type="text/javascript">
 	(function(){
-		$("#nume").focus();
+		// $("#nume").focus();
 
 		$("#company_form").submit(function(event) {
 
 			var checkName = function () {
-				var element = $("#nume"),
-				value = element.val(),
-				isWrong = (
-					value.length < 5 ||
-					value.length > 30
-				);
-
-				if (isWrong) {
-					element.focus();
-					throw "Denumirea are între 5 și 30 de caractere";
-				}
+				// var element = $("#nume"),
+				// value = element.val(),
+				// isWrong = (
+				// 	value.length < 5 ||
+				// 	value.length > 30
+				// );
+				//
+				// if (isWrong) {
+				// 	element.focus();
+				// 	throw "Denumirea are între 5 și 30 de caractere";
+				// }
 			},
 			checkAddress = function () {
 				var element = $("#localitate"),

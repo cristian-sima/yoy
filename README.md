@@ -2,7 +2,7 @@
 
 # How to install
 
-Create a file called `config/db.json` in the main folder. Enter the following details:
+Create a file called `config/local.json` in the main folder. Enter the following details:
 
 ```json
 
@@ -10,7 +10,8 @@ Create a file called `config/db.json` in the main folder. Enter the following de
   "Host"         : "localhost",
   "Username"     : "root",
   "Password"     : "",
-  "DatabaseName" : "yoy_ro_date"
+  "DatabaseName" : "yoy_ro_date",
+  "IsProduction": true
 }
 
 ```

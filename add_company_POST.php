@@ -8,6 +8,7 @@ function verifyCompany ($data) {
 		$length = strlen($value);
 
 		$isWrong = (
+			!isset($value) ||
 			$length < 5 ||
 			$length > 30
 		);
@@ -21,6 +22,7 @@ function verifyCompany ($data) {
 		$length = strlen($value);
 
 		$isWrong = (
+			!isset($value) ||
 			$length < 5 ||
 			$length > 30
 		);
@@ -34,6 +36,7 @@ function verifyCompany ($data) {
 		$value = intval($raw);
 
 		$isWrong = (
+			!isset($raw) ||
 			!is_numeric($raw) ||
 			$value < 0 ||
 			$value > 100
@@ -138,19 +141,10 @@ try {
 
 	$db->beginTransaction();
 
-	$data			=   $_POST;
+	verifyCompany($_POST);
 
-	Procesare::checkRequestedData(
-		array('nume','localitate','procent'),
-		$data,
-		'add_company.php'
-	);
-	Procesare::createEmptyFields($data, array("comentarii","date_contact"));
-
-	verifyCompany($data);
-
-	$companyID = insertCompany($db, $data);
-	insertPercent($db, $data, $companyID);
+	$companyID = insertCompany($db, $_POST);
+	insertPercent($db, $_POST, $companyID);
 
 	$db->commit();
 

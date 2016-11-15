@@ -6,20 +6,28 @@ require_once "Utilizator.php";
 require_once "FirmaOrganizatoare.php";
 require_once "DataCalendaristica.php";
 
-function connectToMySQL() {
+function prepareEnvironment($configuration) {
+  $isProduction = $configuration["IsProduction"];
 
+  if($isProduction) {
+    error_reporting(0);
+  }
+}
+
+function getLocalConfiguration() {
   try {
-    $string = file_get_contents("config/db.json");
-    $decodedFile = json_decode($string, true);
+    $string = file_get_contents("config/local.json");
+    return json_decode($string, true);
   } catch (Exception $e) {
     throw new Exception("Contactează administratorul - cod CONFIG_FILE_NOT_SET");
   }
+}
+function connectToMySQL($configuration) {
 
-
-  $host         =  $decodedFile["Host"];
-  $username     =  $decodedFile["Username"];
-  $password     = $decodedFile["Password"];
-  $databaseName =  $decodedFile["DatabaseName"];
+  $host         =  $configuration["Host"];
+  $username     =  $configuration["Username"];
+  $password     = $configuration["Password"];
+  $databaseName =  $configuration["DatabaseName"];
 
   try {
     $locator = 'mysql:host=' . $host . ';dbname=' . $databaseName . ';charset=utf8mb4';
@@ -38,7 +46,11 @@ class Aplicatie {
   private $time_start = null;
   private function __construct() {
     try {
-      $this->Database            = connectToMySQL();
+
+      $configuration = getLocalConfiguration();
+      prepareEnvironment($configuration);
+
+      $this->Database            = connectToMySQL($configuration);
       $currentUserID             = Login::request_access($this->Database);
       $this->utilizator          = new Utilizator($this->Database, $currentUserID);
       $this->firma_organizatoare = new FirmaOrganizatoare($this->Database, 1);
