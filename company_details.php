@@ -77,7 +77,7 @@ function getLastCompletion($company, $date) {
 	$now         = time();
 	$datediff    = $now - strtotime($ultima_data);
 	$dif         = (floor($datediff / (60 * 60 * 24)));
-	$when = '( ' . (($dif == 1) ? "ieri" : (($dif == 0) ? "astăzi" : ($dif . " zile" . '  în urmă'))) . ' )';
+	$when = (($dif == 1) ? "ieri" : (($dif == 0) ? "astăzi" : ($dif . " zile" . '  în urmă')));
 
 	return "Ultima situație completată a fost ".$when;
 }
@@ -230,44 +230,42 @@ try {
 						}
 						?>
 					</div>
-					<div class="table-responsive">
-						<table class="display"	id="devices-table">
-							<thead>
-								<tr>
-									<th>Nr</th>
-									<th>Seria</th>
-									<th>Denumirea</th>
-									<th>Exp. autoriz.</th>
-									<th>Exp. insp. tech.</th>
-								</tr>
-							</thead>
-							<tbody>
-								<?php
-								foreach($devices as $device) {
-									?>
-									<tr>
-										<td>
-											<?= $device["ordinea"] ?>
-										</td>
-										<td>
-											<a href="optiuni_aparat.php?situatie=true<?= "&" ?>id_aparat=<?= $device["id"]; ?>">
-												<?= $device["serie"]; ?>
-											</a>
-										</td>
-										<td><?= $device["nume"]; ?></td>
-										<td class="text-xs-center">
-											<?= $device["data_autorizatie"] ?>
-										</td>
-										<td class="text-xs-center">
-											<?= $device["data_inspectie"] ?>
-										</td>
-									</tr>
-									<?php
-								}
+					<table class="display"	id="devices-table">
+						<thead>
+							<tr>
+								<th>Nr</th>
+								<th>Seria</th>
+								<th>Denumirea</th>
+								<th class="no-wrap">Exp. autoriz.</th>
+								<th class="no-wrap">Exp. insp. tech.</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php
+							foreach($devices as $device) {
 								?>
-							</tbody>
-						</table>
-					</div>
+								<tr>
+									<td>
+										<?= $device["ordinea"] ?>
+									</td>
+									<td>
+										<a href="optiuni_aparat.php?situatie=true<?= "&" ?>id_aparat=<?= $device["id"]; ?>">
+											<?= $device["serie"]; ?>
+										</a>
+									</td>
+									<td><?= $device["nume"]; ?></td>
+									<td class="text-xs-center no-wrap">
+										<?= $device["data_autorizatie"] ?>
+									</td>
+									<td class="text-xs-center no-wrap">
+										<?= $device["data_inspectie"] ?>
+									</td>
+								</tr>
+								<?php
+							}
+							?>
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>
@@ -280,7 +278,7 @@ try {
 						<?php
 						if ($company->isActiva() != '0') {
 							?>
-							<div class="float-xs-right">
+							<div class="float-sm-right text-xs-center">
 								<a class="btn btn-success btn-sm" href="adauga_utilizator.php?type=admin">
 									Adaugă administrator
 								</a>
@@ -292,47 +290,45 @@ try {
 						}
 						?>
 					</div>
-					<div class="table-responsive">
-						<table class="display"	id="users-table">
-							<thead>
-								<tr>
-									<th>Nume și prenume</th>
-									<th>Utilizator</th>
-									<th>Tipul</th>
-									<th>Opțiuni</th>
-								</tr>
-							</thead>
-							<tbody>
-								<?php
-								foreach($accounts as $account) {
-									?>
-									<tr>
-										<td>
-											<?= $account["nume"] ?>
-										</td>
-										<td style="font-family: courier">
-											<?= $account["user"] ?>
-										</td>
-										<td>
-											<?= getUserType($account["tipCont"]) ?>
-										</td>
-										<td>
-											<div class="">
-												<a class="btn btn-link" href="editare_date_utilizator.php?id_user=<?= $account["id"] ?>">
-													Modifică datele
-												</a>
-												<a class="btn btn-link" href="activeaza_utilizator.php?id_user=?id_user=<?= $account["id"] ?><?= '&' ?>type=0">
-													Dezactivează
-												</a>
-											</div>
-										</td>
-									</tr>
-									<?php
-								}
+					<table class="display"	id="users-table">
+						<thead>
+							<tr>
+								<th class="no-wrap">Nume și prenume</th>
+								<th class="no-wrap">Utilizator</th>
+								<th>Tipul</th>
+								<th>Opțiuni</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php
+							foreach($accounts as $account) {
 								?>
-							</tbody>
-						</table>
-					</div>
+								<tr>
+									<td>
+										<?= $account["nume"] ?>
+									</td>
+									<td style="font-family: courier">
+										<?= $account["user"] ?>
+									</td>
+									<td>
+										<?= getUserType($account["tipCont"]) ?>
+									</td>
+									<td>
+										<div class="no-wrap">
+											<a class="btn btn-link" href="editare_date_utilizator.php?id_user=<?= $account["id"] ?>">
+												Modifică datele
+											</a>
+											<a class="btn btn-link" href="activeaza_utilizator.php?id_user=?id_user=<?= $account["id"] ?><?= '&' ?>type=0">
+												Dezactivează
+											</a>
+										</div>
+									</td>
+								</tr>
+								<?php
+							}
+							?>
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>

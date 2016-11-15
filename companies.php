@@ -8,132 +8,135 @@ function getActiveCompanies($db) {
 			SELECT valoare
 			FROM `procent`
 			WHERE `idFirma` = firma.id AND `isNow`= '1'
-		) AS currentPercent
-		FROM `firma`
-		WHERE `activa`= :active"
-	);
+			) AS currentPercent
+			FROM `firma`
+			WHERE `activa`= :active"
+		);
 
-	$activeCompanies = $db->prepare($query);
-	$ok = $activeCompanies->execute(array(
-		'active' => "1"
-	));
+		$activeCompanies = $db->prepare($query);
+		$ok = $activeCompanies->execute(array(
+			'active' => "1"
+		));
 
-	if(!$ok) {
-		throw new Exception("Ceva nu a mers cum trebuia");
+		if(!$ok) {
+			throw new Exception("Ceva nu a mers cum trebuia");
+		}
+
+		return $activeCompanies;
 	}
 
-	return $activeCompanies;
-}
+	function getInactiveCompanies($db) {
+		$query = (
+			"SELECT *
+			FROM `firma`
+			WHERE `activa`= '0'"
+		);
 
-function getInactiveCompanies($db) {
-	$query = (
-		"SELECT *
-		FROM `firma`
-		WHERE `activa`= '0'"
-	);
+		$inactiveCompanies = $db->prepare($query);
+		$ok = $inactiveCompanies->execute();
 
-	$inactiveCompanies = $db->prepare($query);
-	$ok = $inactiveCompanies->execute();
+		if(!$ok) {
+			throw new Exception("Ceva nu a mers cum trebuia");
+		}
 
-	if(!$ok) {
-		throw new Exception("Ceva nu a mers cum trebuia");
+		return $inactiveCompanies;
 	}
 
-	return $inactiveCompanies;
-}
+	function getPercent($percent) {
+		if(isset($percent)) {
+			return $percent.'%';
+		}
 
-function getPercent($percent) {
-	if(isset($percent)) {
-		return $percent.'%';
+		return 'Neprecizat';
 	}
 
-	return 'Neprecizat';
-}
+	try {
+		Design::showHeader();
+		$db = Aplicatie::getInstance()->Database;
 
-try {
-	Design::showHeader();
-	$db = Aplicatie::getInstance()->Database;
+		$activeCompanies = getActiveCompanies($db);
+		$inactiveCompanies = getInactiveCompanies($db);
 
-	$activeCompanies = getActiveCompanies($db);
-	$inactiveCompanies = getInactiveCompanies($db);
-
-	?>
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-9 col-sm-10 col-md-8 h2">
-				<span class="hidden-sm-down">
-					<img src="public/images/firme.png" alt="Firme partenere" />
-				</span>
-				Firme partenere
-			</div>
-			<div class="col-xs-3 col-sm-2 col-md-4 text-xs-right">
-				<a class="btn btn-success" href="add_company.php"	>
-					<i class="fa fa-plus"></i>
+		?>
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-9 col-sm-10 col-md-8 h2">
 					<span class="hidden-sm-down">
-						Adaugă firmă
+						<img src="public/images/firme.png" alt="Firme partenere" />
 					</span>
-				</a>
+					Firme partenere
+				</div>
+				<div class="col-xs-3 col-sm-2 col-md-4 text-xs-right">
+					<a class="btn btn-success" href="add_company.php"	>
+						<i class="fa fa-plus"></i>
+						<span class="hidden-sm-down">
+							Adaugă firmă
+						</span>
+					</a>
+				</div>
 			</div>
-		</div>
-		<hr>
-		<div class="mt-2">
-			<h4>Firme active</h4>
-			<table class="display"	id="active-companies-table">
-				<thead>
-					<tr>
-						<th>Denumire</th>
-						<th>Localitate</th>
-						<th>Procent</th>
-					</tr>
-				</thead>
-				<tbody>
-					<?php
-					foreach($activeCompanies as $company) {
-						?>
+			<hr>
+			<div class="mt-2">
+				<h4>Firme active</h4>
+				<div class="table-responsive">
+					<table class="display"	id="active-companies-table">
+						<thead>
+							<tr>
+								<th>Denumire</th>
+								<th>Localitate</th>
+								<th>Procent</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php
+							foreach($activeCompanies as $company) {
+								?>
+								<tr>
+									<td class="no-wrap">
+										<a href="company_details.php?id=<?= $company["id"]; ?>">
+											<?= $company["nume"]; ?>
+										</a>
+									</td>
+									<td><?= $company["localitate"]; ?></td>
+									<td><?= getPercent($company["currentPercent"]) ?></td>
+								</tr>
+								<?php
+							}
+							?>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<hr>
+			<div class="mt-2">
+				<h4>Firme inactive</h4>
+				<table class="display" id="inactive-companies-table">
+					<thead>
 						<tr>
-							<td>
-								<a href="company_details.php?id=<?= $company["id"]; ?>">
-									<?= $company["nume"]; ?>
-								</a>
-							</td>
-							<td><?= $company["localitate"]; ?></td>
-							<td><?= getPercent($company["currentPercent"]) ?></td>
+							<th>Denumire</th>
+							<th>Localitate</th>
+							<th class="no-wrap">Dată încetare</th>
 						</tr>
+					</thead>
+					<tbody>
 						<?php
-					}
-					?>
-				</tbody>
-			</table>
-		</div>
-		<hr>
-		<div class="mt-2">
-			<h4>Firme inactive (contracte terminate)</h4>
-			<table class="display" id="inactive-companies-table">
-				<thead>
-					<tr>
-						<th>Denumire</th>
-						<th>Localitate</th>
-						<th>Dată încetare</th>
-					</tr>
-				</thead>
-				<tbody>
-					<?php
-					foreach($inactiveCompanies as $company) {
+						foreach($inactiveCompanies as $company) {
+							?>
+							<tr>
+								<td class="no-wrap">
+									<a href="company_details.php?id=<?= $company["id"]; ?>">
+										<?= $company["nume"]; ?>
+									</a>
+								</td>
+								<td><?= $company["localitate"]; ?></td>
+								<td><?= $company["dataIncetare"]; ?></td>
+							</tr>
+							<?php
+						}
 						?>
-						<tr>
-							<td>
-								<a href="company_details.php?id=<?= $company["id"]; ?>">
-									<?= $company["nume"]; ?>
-								</a>
-							</td>
-							<td><?= $company["localitate"]; ?></td>
-							<td><?= $company["dataIncetare"]; ?></td>
-						</tr>
-						<?php
-					}
-					?>
-				</tbody>
-			</table>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 

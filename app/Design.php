@@ -140,31 +140,11 @@ class Design {
 						<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
 						<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
 						<script type="text/javascript" src="public/js/extra.js"></script>
-						<script type="text/javascript">
-						$.extend(
-							true,
-							$.fn.dataTable.defaults, {
-								oLanguage : {
-									"sEmptyTable": "Nu există date disponibile în tabel",
-									"sProcessing":   "Procesează...",
-									"sLengthMenu":   "Afișează _MENU_ rânduri pe pagină",
-									"sZeroRecords":  "Nu am găsit nimic - ne pare rău",
-									"sInfo":         "Afișate de la _START_ la _END_ din _TOTAL_ rânduri",
-									"sInfoEmpty":    "Afișate de la 0 la 0 din 0 rânduri",
-									"sInfoFiltered": "(filtrate dintr-un total de _MAX_ rânduri)",
-									"sInfoPostFix":  "",
-									"sSearch":       "Caută:",
-									"sUrl":          "",
-									"oPaginate": {
-										"sFirst":    "Prima",
-										"sPrevious": "Precedenta",
-										"sNext":     "Următoarea",
-										"sLast":     "Ultima"
-									}
-								}
+						<style>
+							.no-wrap {
+								white-space: nowrap;
 							}
-						);
-						</script>
+						</style>
 					</body>
 					</html>
 					<?php
